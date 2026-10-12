@@ -73,6 +73,40 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .hitem .t{font-size:22px;font-weight:800;color:#3a2e2e}
 .hitem.done .t{color:#9aa39a;text-decoration:line-through}
 .hitem .d{font-size:14px;color:#9aa39a;margin-top:2px}
+/* 当姐姐 */
+#sister{background:linear-gradient(180deg,#FFE9F2 0%,#FFF7EA 100%)}
+.sishead{display:flex;gap:16px;align-items:center;padding:18px 24px}
+.sishead img{width:88px;height:88px;border-radius:26px;box-shadow:0 8px 20px rgba(200,120,140,.25)}
+.sishead .t{font-size:24px;font-weight:800;color:#3a2e2e}
+.sishead .d{font-size:17px;font-weight:700;color:#c05a7a;margin-top:4px}
+.sislist{flex:1;overflow-y:auto;padding:6px 22px calc(16px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px}
+.sisitem{background:#fff;border:none;border-radius:22px;padding:16px;display:flex;gap:14px;align-items:center;cursor:pointer;box-shadow:0 8px 22px rgba(200,120,140,.14);text-align:left;width:100%}
+.sisitem:active{transform:scale(.97)}
+.sisitem .n{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#FFD3E0,#FFB3C9);color:#a03a5c;font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sisitem .t{font-size:20px;font-weight:800;color:#3a2e2e}
+.sisitem .d{font-size:14px;color:#9a8f96;margin-top:2px}
+/* 爸爸录音棚 */
+#studio{background:linear-gradient(180deg,#E8E4FF 0%,#FFF7EA 100%)}
+.stusub{text-align:center;font-size:16px;font-weight:700;color:#7d7a9a;padding:8px 20px 0}
+.stutoggle{margin:12px 22px;background:#fff;border-radius:20px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;box-shadow:0 8px 22px rgba(120,120,180,.14);font-size:17px;font-weight:800;color:#3a2e2e}
+.switch{width:64px;height:36px;border-radius:20px;background:#d8d8e0;position:relative;flex-shrink:0;transition:background .2s}
+.switch .knob{position:absolute;top:4px;left:4px;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:left .2s}
+.switch.on{background:#8bc34a}
+.switch.on .knob{left:32px}
+.stulist{flex:1;overflow-y:auto;padding:6px 22px;display:flex;flex-direction:column;gap:12px}
+.stuitem{background:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 6px 18px rgba(120,120,180,.12)}
+.stuitem .pn{font-size:15px;font-weight:800;color:#7d7a9a}
+.stuitem .pt{font-size:15px;color:#6a6570;margin:4px 0 10px}
+.stuitem .pbtns{display:flex;gap:10px}
+.stubtn{flex:1;min-height:48px;border:none;border-radius:14px;background:#8b7ff0;color:#fff;font-size:17px;font-weight:800;cursor:pointer}
+.stubtn:active{transform:scale(.96)}
+.stubtn.stop{background:#e05252}
+.stubtn.ghost2{background:#f0eefc;color:#8b7ff0}
+.stubtn:disabled{opacity:.35}
+.stutip{padding:10px 28px calc(16px + env(safe-area-inset-bottom));font-size:13px;color:#9a97ad;text-align:center}
+.micbtn{margin-left:auto;width:52px;height:52px;border-radius:50%;background:#fff;border:none;box-shadow:0 4px 12px rgba(180,120,60,.18);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.micbtn img{width:32px;height:32px}
+.micbtn:active{transform:scale(.92)}
 .sitem .cov{width:64px;height:64px;border-radius:18px;object-fit:cover;flex-shrink:0;box-shadow:0 4px 12px rgba(120,100,180,.16)}
 .zdnav{display:flex;gap:12px;width:100%;max-width:340px}
 .zdnav .btn{flex:1;min-height:56px;font-size:18px;padding:0 8px}
@@ -204,9 +238,10 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
-body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #sister,body.paper #studio{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .sisitem,body.paper .stuitem,body.paper .stutoggle{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t,body.paper .sisitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
+body.paper .sishead .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
 body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#8d7a5c}
 body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
 body.paper .ztab.on{background:#8a6f45;border-color:#8a6f45;color:#FAF3DF}
@@ -234,12 +269,12 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #sister,body.ink #studio{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .scard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
-body.ink .hero h1,body.ink .toptitle,body.ink .mcard .t,body.ink .sitem .t,body.ink .appicon span,body.ink .widget .wt,body.ink .widget.small .wb,body.ink .shapeitem .t,body.ink .hitem .t{color:#1c1c1c}
+body.ink .mcard,body.ink .acard,body.ink .scard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .sisitem,body.ink .stuitem,body.ink .stutoggle{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .hero h1,body.ink .toptitle,body.ink .mcard .t,body.ink .sitem .t,body.ink .appicon span,body.ink .widget .wt,body.ink .widget.small .wb,body.ink .shapeitem .t,body.ink .hitem .t,body.ink .sisitem .t,body.ink .sishead .t{color:#1c1c1c}
 body.ink .hero p,body.ink .mcard .d,body.ink .sitem .d,body.ink .zoocount,body.ink .zcredit,body.ink .homefoot,body.ink .widget .wk,body.ink .widget .wd{color:#5c5c55}
 body.ink .themebtn,body.ink .starpill,body.ink .ztab,body.ink .backbtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-shadow:none}
 body.ink .ztab.on{background:#2b2b2b;color:#F7F7F3}
@@ -293,6 +328,10 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
           <div class="wb" id="wDate" style="font-size:19px"></div>
         </div>
       </div>
+      <div class="widget wide" id="wSis" onclick="go('sister')">
+        <img src="assets/icons/sister.webp" alt="当姐姐">
+        <div><div class="wk">倒计时</div><div class="wt" id="wSisT"></div><div class="wd">宝宝要当姐姐啦</div></div>
+      </div>
     </div>
     <div class="appgrid">
       <div class="appicon" onclick="go('animals')"><img src="assets/icons/animalcard.webp" alt="动物卡"><span>动物卡</span></div>
@@ -302,6 +341,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appicon" onclick="openZoo()"><img src="assets/icons/zoo.webp" alt="动物世界"><span>动物世界</span></div>
       <div class="appicon" onclick="go('shapes')"><img src="assets/icons/shapes.webp" alt="认形状"><span>认形状</span></div>
       <div class="appicon" onclick="openHabits()"><img src="assets/icons/habits.webp" alt="好习惯"><span>好习惯</span></div>
+      <div class="appicon" onclick="go('sister')"><img src="assets/icons/sister.webp" alt="当姐姐"><span>当姐姐</span></div>
     </div>
     <div class="homefoot">
       <span><img class="starico" src="assets/icons/star.webp" alt="星"><b id="homeStars">0</b> 颗星星</span>
@@ -437,6 +477,36 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <div class="habitsub" id="habitSub">今天也要乖乖的哦</div>
     <div class="habitlist" id="habitList"></div>
+  </section>
+
+  <!-- 当姐姐啦 -->
+  <section id="sister" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">当姐姐啦</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="sishead">
+      <img src="assets/icons/sister.webp" alt="姐姐">
+      <div><div class="t">宝宝要当姐姐啦</div><div class="d" id="sisCount"></div></div>
+    </div>
+    <div class="sislist" id="sisList"></div>
+  </section>
+
+  <!-- 爸爸录音棚 -->
+  <section id="studio" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('storylist')">‹</button>
+      <div class="toptitle">爸爸录音棚</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="stusub" id="stuSub"></div>
+    <div class="stutoggle" onclick="toggleDad()">
+      <span>讲故事时用爸爸的声音</span>
+      <div class="switch" id="dadSwitch"><div class="knob"></div></div>
+    </div>
+    <div class="stulist" id="stuList"></div>
+    <div class="stutip">点录音，对着手机讲这一页，讲完点停止。录好后打开开关，故事就是爸爸讲的啦。</div>
   </section>
 
   <!-- 动物世界 -->
@@ -918,6 +988,126 @@ function renderHabits(){
 }
 function openHabits(){ renderHabits(); go('habits'); }
 
+/* ================= 当姐姐啦 ================= */
+const SIS_TIPS = [
+  {t:'抱宝宝要轻轻的', d:'小宝宝软软的，摸摸抱抱都要轻轻的哦'},
+  {t:'学会分享', d:'把喜欢的玩具分给弟弟妹妹一起玩'},
+  {t:'帮忙拿东西', d:'帮妈妈拿尿布、拿小毛巾，你超能干'},
+  {t:'小声说话', d:'宝宝睡觉的时候，我们轻轻说话'},
+  {t:'爱的抱抱', d:'每天给宝宝一个抱抱，他会很开心'},
+];
+(function renderSis(){
+  const list = document.getElementById('sisList');
+  SIS_TIPS.forEach((s,i)=>{
+    const b = document.createElement('button');
+    b.className = 'sisitem';
+    b.innerHTML = `<div class="n">${i+1}</div><div><div class="t">${s.t}</div><div class="d">${s.d}</div></div>`;
+    b.onclick = ()=>say(`${s.t}。${s.d}`);
+    list.appendChild(b);
+  });
+  const due = new Date(2027, 0, 15);
+  const days = Math.max(0, Math.ceil((due - Date.now())/864e5));
+  const txt = days > 0 ? `大约还有 ${days} 天` : '小宝宝快要来啦';
+  document.getElementById('sisCount').textContent = txt;
+  document.getElementById('wSisT').textContent = txt;
+})();
+
+/* ================= 爸爸录音棚 ================= */
+let stuSi = 0, mr = null, mChunks = [], recKey = null;
+let dadOn = localStorage.getItem('dad_voice') === '1';
+function dadIdx(){ try{ return JSON.parse(localStorage.getItem('dad_keys') || '[]'); }catch(e){ return []; } }
+function dadHas(k){ return dadIdx().includes(k); }
+function idb(){
+  return new Promise((res, rej)=>{
+    const r = indexedDB.open('baobao', 1);
+    r.onupgradeneeded = ()=>{ r.result.createObjectStore('recs'); };
+    r.onsuccess = ()=>res(r.result);
+    r.onerror = ()=>rej(r.error);
+  });
+}
+async function idbPut(k, blob){
+  const db = await idb();
+  return new Promise((res, rej)=>{
+    const tx = db.transaction('recs', 'readwrite');
+    tx.objectStore('recs').put(blob, k);
+    tx.oncomplete = ()=>res();
+    tx.onerror = ()=>rej(tx.error);
+  });
+}
+async function idbGet(k){
+  const db = await idb();
+  return new Promise((res, rej)=>{
+    const tx = db.transaction('recs', 'readonly');
+    const q = tx.objectStore('recs').get(k);
+    q.onsuccess = ()=>res(q.result);
+    q.onerror = ()=>rej(q.error);
+  });
+}
+function toggleDad(){
+  dadOn = !dadOn;
+  localStorage.setItem('dad_voice', dadOn ? '1' : '0');
+  renderStudio();
+  say(dadOn ? '已经换成爸爸的声音啦' : '换回原来的声音');
+}
+function openStudio(i){
+  stuSi = i;
+  if(mr && mr.state === 'recording'){ try{ mr.stop(); }catch(e){} }
+  renderStudio();
+  go('studio');
+}
+function renderStudio(){
+  const s = STORIES[stuSi];
+  document.getElementById('stuSub').textContent = `《${s.title}》共 ${s.pages.length} 页`;
+  document.getElementById('dadSwitch').classList.toggle('on', dadOn);
+  const list = document.getElementById('stuList');
+  list.innerHTML = '';
+  s.pages.forEach((p, pi)=>{
+    const k = `dad_${stuSi}_${pi}`;
+    const has = dadHas(k);
+    const recing = recKey === k && mr && mr.state === 'recording';
+    const d = document.createElement('div');
+    d.className = 'stuitem';
+    d.innerHTML = `<div class="pn">第 ${pi+1} 页</div><div class="pt">${p.t.slice(0, 20)}${p.t.length > 20 ? '…' : ''}</div>
+      <div class="pbtns"><button class="stubtn${recing ? ' stop' : ''}">${recing ? '停止' : (has ? '重录' : '录音')}</button><button class="stubtn ghost2"${has ? '' : ' disabled'}>试听</button></div>`;
+    const btns = d.querySelectorAll('button');
+    btns[0].onclick = ()=>recToggle(k);
+    btns[1].onclick = ()=>{ if(has) playDad(k); };
+    list.appendChild(d);
+  });
+}
+async function recToggle(k){
+  if(mr && mr.state === 'recording'){ mr.stop(); return; }
+  let stream;
+  try{ stream = await navigator.mediaDevices.getUserMedia({audio:true}); }
+  catch(e){ say('录音需要允许使用麦克风'); return; }
+  mChunks = []; recKey = k;
+  mr = new MediaRecorder(stream);
+  mr.ondataavailable = e=>{ if(e.data && e.data.size) mChunks.push(e.data); };
+  mr.onstop = async ()=>{
+    stream.getTracks().forEach(t=>t.stop());
+    try{
+      const blob = new Blob(mChunks, {type: mr.mimeType || 'audio/mp4'});
+      await idbPut(k, blob);
+      const idx = dadIdx();
+      if(!idx.includes(k)){ idx.push(k); localStorage.setItem('dad_keys', JSON.stringify(idx)); }
+      say('录好了，真棒');
+    }catch(e){ say('保存失败，再试一次'); }
+    mr = null; recKey = null;
+    renderStudio();
+  };
+  mr.start();
+  renderStudio();
+}
+async function playDad(k){
+  try{
+    const blob = await idbGet(k);
+    if(!blob){ say('还没有录音'); return; }
+    stopAll();
+    curAudio = new Audio(URL.createObjectURL(blob));
+    curAudio.play().catch(()=>{});
+  }catch(e){ say('播放失败'); }
+}
+
 /* ================= 动物世界（近千物种） ================= */
 let zooCat = ANIMAL_CATS[0], zooCur = null, zooList = [], zooIdx = 0;
 function openZoo(){
@@ -1011,8 +1201,9 @@ const slist = document.getElementById('slist');
 STORIES.forEach((s,i)=>{
   const it = document.createElement('div');
   it.className = 'sitem';
-  it.innerHTML = `<img class="cov" src="assets/icons/cover${i+1}.webp" alt="${s.title}"><div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div></div>`;
+  it.innerHTML = `<img class="cov" src="assets/icons/cover${i+1}.webp" alt="${s.title}"><div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div></div><button class="micbtn" aria-label="爸爸录音"><img src="assets/icons/mic.webp" alt="录音"></button>`;
   it.onclick = ()=>openReader(i);
+  it.querySelector('.micbtn').onclick = e=>{ e.stopPropagation(); openStudio(i); };
   slist.appendChild(it);
 });
 // 夜空星星
@@ -1052,7 +1243,11 @@ function rGo(i){
   if(last) document.getElementById('rtip').innerHTML = '💡 给爸爸妈妈：' + STORIES[si].parentTip;
   rSpeak();
 }
-function rSpeak(){ play(STORIES[si].pages[cur].a); }
+function rSpeak(){
+  const k = `dad_${si}_${cur}`;
+  if(dadOn && dadHas(k)){ playDad(k); return; }
+  play(STORIES[si].pages[cur].a);
+}
 function finishStory(){ addStar(); go('storylist'); }
 function closeReader(){ go('storylist'); }
 
