@@ -48,6 +48,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .appicon img{width:78px;height:78px;border-radius:24px;box-shadow:0 8px 20px rgba(180,120,60,.18)}
 .appicon:active{transform:scale(.9)}
 .appicon span{font-size:16px;font-weight:700;color:#5a4a3a}
+/* 认形状 */
+#shapes,#shapequiz{background:linear-gradient(180deg,#FFF3D6 0%,#FFE9F2 60%,#E8F4FF 100%)}
+.shapegrid{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:18px 22px;overflow-y:auto;align-content:start}
+.shapeitem{background:#fff;border-radius:24px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;box-shadow:0 8px 22px rgba(180,120,60,.14);border:none}
+.shapeitem:active{transform:scale(.95)}
+.shapeitem svg{width:96px;height:96px;filter:drop-shadow(0 6px 12px rgba(0,0,0,.12))}
+.shapeitem .t{font-size:21px;font-weight:800;color:#3a2e2e}
+.shapeitem.bounce svg{animation:shkb .5s}
+@keyframes shkb{0%,100%{transform:scale(1)}40%{transform:scale(1.18) rotate(6deg)}}
+.shapeopts{flex:1;display:flex;flex-direction:column;gap:16px;padding:10px 44px;justify-content:center}
+.shapeopt{background:#fff;border-radius:24px;padding:20px;display:flex;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(180,120,60,.14);border:none}
+.shapeopt svg{width:104px;height:104px}
+.shapeopt.ok{outline:5px solid #8bc34a}
+.shapeopt:active{transform:scale(.96)}
+/* 好习惯 */
+#habits{background:linear-gradient(180deg,#E8F8F0 0%,#FFF7EA 100%)}
+.habitsub{text-align:center;font-size:17px;font-weight:700;color:#7d8a7a;padding:8px 20px}
+.habitlist{flex:1;overflow-y:auto;padding:12px 22px calc(16px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px}
+.hitem{background:#fff;border-radius:22px;padding:18px;display:flex;gap:16px;align-items:center;cursor:pointer;box-shadow:0 8px 22px rgba(90,140,120,.14);border:none;text-align:left;width:100%}
+.hitem:active{transform:scale(.97)}
+.hcheck{width:52px;height:52px;border-radius:50%;border:4px solid #d8e2dc;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;font-weight:900}
+.hitem.done .hcheck{background:#8bc34a;border-color:#8bc34a}
+.hitem .t{font-size:22px;font-weight:800;color:#3a2e2e}
+.hitem.done .t{color:#9aa39a;text-decoration:line-through}
+.hitem .d{font-size:14px;color:#9aa39a;margin-top:2px}
 .sitem .cov{width:64px;height:64px;border-radius:18px;object-fit:cover;flex-shrink:0;box-shadow:0 4px 12px rgba(120,100,180,.16)}
 .zdnav{display:flex;gap:12px;width:100%;max-width:340px}
 .zdnav .btn{flex:1;min-height:56px;font-size:18px;padding:0 8px}
@@ -179,9 +204,9 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
-body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
 body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#8d7a5c}
 body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
 body.paper .ztab.on{background:#8a6f45;border-color:#8a6f45;color:#FAF3DF}
@@ -209,10 +234,12 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader{background:#EBEBE6}
-body.ink img{filter:grayscale(1) contrast(.96)}
-body.ink .mcard,body.ink .acard,body.ink .scard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
-body.ink .hero h1,body.ink .toptitle,body.ink .mcard .t,body.ink .sitem .t,body.ink .appicon span,body.ink .widget .wt,body.ink .widget.small .wb{color:#1c1c1c}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits{background:#EBEBE6}
+body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
+/* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
+body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
+body.ink .mcard,body.ink .acard,body.ink .scard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .hero h1,body.ink .toptitle,body.ink .mcard .t,body.ink .sitem .t,body.ink .appicon span,body.ink .widget .wt,body.ink .widget.small .wb,body.ink .shapeitem .t,body.ink .hitem .t{color:#1c1c1c}
 body.ink .hero p,body.ink .mcard .d,body.ink .sitem .d,body.ink .zoocount,body.ink .zcredit,body.ink .homefoot,body.ink .widget .wk,body.ink .widget .wd{color:#5c5c55}
 body.ink .themebtn,body.ink .starpill,body.ink .ztab,body.ink .backbtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-shadow:none}
 body.ink .ztab.on{background:#2b2b2b;color:#F7F7F3}
@@ -273,6 +300,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appicon" onclick="go('coloring')"><img src="assets/icons/color.webp" alt="涂色"><span>涂色</span></div>
       <div class="appicon" onclick="startCount()"><img src="assets/icons/count.webp" alt="数一数"><span>数一数</span></div>
       <div class="appicon" onclick="openZoo()"><img src="assets/icons/zoo.webp" alt="动物世界"><span>动物世界</span></div>
+      <div class="appicon" onclick="go('shapes')"><img src="assets/icons/shapes.webp" alt="认形状"><span>认形状</span></div>
+      <div class="appicon" onclick="openHabits()"><img src="assets/icons/habits.webp" alt="好习惯"><span>好习惯</span></div>
     </div>
     <div class="homefoot">
       <span><img class="starico" src="assets/icons/star.webp" alt="星"><b id="homeStars">0</b> 颗星星</span>
@@ -371,6 +400,43 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     <div class="countitems" id="countItems"></div>
     <div class="countfb" id="countFb"></div>
     <div class="countopts" id="countOpts"></div>
+  </section>
+
+  <!-- 认形状 -->
+  <section id="shapes" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">认形状</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="shapegrid" id="shapeGrid"></div>
+    <div style="padding:0 20px calc(16px + env(safe-area-inset-bottom))"><button class="btn blue" style="width:100%" onclick="startShapeQuiz()"><img class="btnico" src="assets/icons/find.webp" alt="">考一考：找形状</button></div>
+  </section>
+
+  <!-- 找形状 -->
+  <section id="shapequiz" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('shapes')">‹</button>
+      <div class="toptitle">找形状</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="findq">
+      <h2 id="shapeQ">哪个是圆形？</h2>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askShape()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+    </div>
+    <div class="shapeopts" id="shapeOpts"></div>
+    <div class="countfb" id="shapeFb"></div>
+  </section>
+
+  <!-- 好习惯 -->
+  <section id="habits" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">好习惯</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="habitsub" id="habitSub">今天也要乖乖的哦</div>
+    <div class="habitlist" id="habitList"></div>
   </section>
 
   <!-- 动物世界 -->
@@ -758,6 +824,99 @@ function startCount(){
   askCount();
 }
 function askCount(){ if(countN) say(`有几个${countName}？`); }
+
+/* ================= 认形状 ================= */
+const SHAPES = [
+  {n:'圆形', c:'#FF6B6B', svg:'<circle cx="60" cy="60" r="48"/>'},
+  {n:'正方形', c:'#FFA94D', svg:'<rect x="14" y="14" width="92" height="92" rx="12"/>'},
+  {n:'三角形', c:'#FCC419', svg:'<polygon points="60,12 110,104 10,104"/>'},
+  {n:'长方形', c:'#69DB7C', svg:'<rect x="8" y="32" width="104" height="56" rx="12"/>'},
+  {n:'星形', c:'#4DABF7', svg:'<polygon points="60,8 74,44 112,44 81,66 93,102 60,79 27,102 39,66 8,44 46,44"/>'},
+  {n:'心形', c:'#F783AC', svg:'<path d="M60 100 C20 70 8 45 20 28 C30 14 50 16 60 32 C70 16 90 14 100 28 C112 45 100 70 60 100 Z"/>'},
+];
+function shapeSVG(s){ return `<svg viewBox="0 0 120 120"><g fill="${s.c}">${s.svg}</g></svg>`; }
+(function renderShapes(){
+  const g = document.getElementById('shapeGrid');
+  SHAPES.forEach(s=>{
+    const d = document.createElement('div');
+    d.className = 'shapeitem';
+    d.innerHTML = shapeSVG(s) + `<div class="t">${s.n}</div>`;
+    d.onclick = ()=>{
+      d.classList.remove('bounce'); void d.offsetWidth; d.classList.add('bounce');
+      say(s.n);
+    };
+    g.appendChild(d);
+  });
+})();
+let shapeTarget = null;
+function startShapeQuiz(){
+  const opts = [...SHAPES].sort(()=>Math.random()-.5).slice(0,3);
+  shapeTarget = opts[Math.floor(Math.random()*3)];
+  document.getElementById('shapeQ').textContent = `哪个是${shapeTarget.n}？`;
+  document.getElementById('shapeFb').innerHTML = '';
+  const box = document.getElementById('shapeOpts');
+  box.innerHTML = '';
+  opts.forEach(s=>{
+    const b = document.createElement('button');
+    b.className = 'shapeopt';
+    b.innerHTML = shapeSVG(s);
+    b.setAttribute('aria-label', s.n);
+    b.onclick = ()=>{
+      if(s.n === shapeTarget.n){
+        b.classList.add('ok');
+        document.getElementById('shapeFb').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 答对啦！';
+        say(`答对啦，${s.n}`);
+        addStar();
+        setTimeout(startShapeQuiz, 1800);
+      } else {
+        document.getElementById('shapeFb').textContent = '再试试';
+        say('再试试');
+      }
+    };
+    box.appendChild(b);
+  });
+  go('shapequiz');
+  askShape();
+}
+function askShape(){ if(shapeTarget) say(`哪个是${shapeTarget.n}？`); }
+
+/* ================= 好习惯 ================= */
+const HABITS = [
+  {n:'刷牙', tip:'早晚刷牙，牙齿白白'},
+  {n:'洗手', tip:'饭前便后洗洗手'},
+  {n:'自己吃饭', tip:'大口吃饭长高高'},
+  {n:'收拾玩具', tip:'玩完玩具送回家'},
+  {n:'早早睡觉', tip:'睡好觉才能长个子'},
+];
+function habitKey(){ const d = new Date(); return `habits_${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`; }
+function getHabits(){ try{ return JSON.parse(localStorage.getItem(habitKey()) || '[]'); }catch(e){ return []; } }
+function renderHabits(){
+  const done = getHabits();
+  const list = document.getElementById('habitList');
+  list.innerHTML = '';
+  HABITS.forEach((h,i)=>{
+    const ok = done.includes(i);
+    const b = document.createElement('button');
+    b.className = 'hitem' + (ok ? ' done' : '');
+    b.innerHTML = `<div class="hcheck">${ok ? '✓' : ''}</div><div><div class="t">${h.n}</div><div class="d">${h.tip}</div></div>`;
+    b.onclick = ()=>{
+      const cur = getHabits();
+      if(cur.includes(i)){
+        localStorage.setItem(habitKey(), JSON.stringify(cur.filter(x=>x !== i)));
+      } else {
+        cur.push(i);
+        localStorage.setItem(habitKey(), JSON.stringify(cur));
+        addStar();
+        say(`${h.n}完成，真棒`);
+      }
+      renderHabits();
+    };
+    list.appendChild(b);
+  });
+  const n = getHabits().length;
+  document.getElementById('habitSub').textContent = n === HABITS.length ? '全部完成，你是乖宝宝' : `今日已完成 ${n} / ${HABITS.length}`;
+}
+function openHabits(){ renderHabits(); go('habits'); }
 
 /* ================= 动物世界（近千物种） ================= */
 let zooCat = ANIMAL_CATS[0], zooCur = null, zooList = [], zooIdx = 0;
