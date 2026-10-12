@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>宝宝的乐园</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#3a2e2e;background:#FFF7EA;user-select:none;-webkit-user-select:none;overflow:hidden}
+.screen{display:none;height:100dvh;flex-direction:column;overflow:hidden}
+.screen.active{display:flex}
+/* 通用顶栏 */
+.topbar{display:flex;align-items:center;gap:12px;padding:14px 18px;flex-shrink:0}
+.backbtn{width:56px;height:56px;border-radius:50%;border:none;background:#fff;font-size:26px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.1);color:#3a2e2e}
+.backbtn:active{transform:scale(.92)}
+.toptitle{font-size:24px;font-weight:800;flex:1}
+.starpill{background:#fff;border-radius:999px;padding:10px 18px;font-size:19px;font-weight:800;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+/* 按钮 */
+.btn{border:none;cursor:pointer;font-weight:800;color:#fff;border-radius:20px;min-height:64px;padding:0 34px;font-size:20px;background:linear-gradient(135deg,#FF9A3D,#FF6B6B);box-shadow:0 6px 18px rgba(255,107,107,.35);transition:transform .12s}
+.btn:active{transform:scale(.95)}
+.btn.blue{background:linear-gradient(135deg,#4FACFE,#5B6CFF);box-shadow:0 6px 18px rgba(91,108,255,.35)}
+.btn.purple{background:linear-gradient(135deg,#A06CD5,#7B4DFF);box-shadow:0 6px 18px rgba(123,77,255,.35)}
+.btn.ghost{background:#fff;color:#3a2e2e;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+/* 首页 */
+#home{background:linear-gradient(180deg,#FFE9B8 0%,#FFD9E8 48%,#D6EBFF 100%)}
+.hero{padding:34px 24px 8px;text-align:center}
+.hero h1{font-size:46px;font-weight:900;letter-spacing:2px}
+.hero p{margin-top:10px;font-size:17px;color:#8a6d5d}
+.modules{flex:1;display:grid;gap:18px;padding:22px 24px;align-content:start;overflow-y:auto}
+@media(min-width:700px){.modules{grid-template-columns:repeat(3,1fr);align-content:center}}
+.mcard{background:#fff;border-radius:30px;padding:30px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;box-shadow:0 10px 28px rgba(180,120,60,.16);border:3px solid transparent;transition:transform .15s,border-color .15s;min-height:230px;justify-content:center}
+.mcard:active{transform:scale(.96);border-color:#FFB84D}
+.mcard .e{font-size:76px}
+.mcard .t{font-size:27px;font-weight:800}
+.mcard .d{font-size:14px;color:#a08c7d;text-align:center;line-height:1.5}
+.homefoot{display:flex;justify-content:space-between;align-items:center;padding:16px 26px calc(16px + env(safe-area-inset-bottom));font-size:14px;color:#8a6d5d}
+/* 动物卡 */
+#animals{background:linear-gradient(180deg,#DFF3FF 0%,#FFF7EA 100%)}
+.carousel{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;scrollbar-width:none}
+.carousel::-webkit-scrollbar{display:none}
+.acard{min-width:100%;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:10px 30px}
+.acard img{width:min(300px,66vw);height:min(300px,66vw);object-fit:cover;border-radius:36px;box-shadow:0 14px 34px rgba(90,140,200,.25);background:#fff;cursor:pointer}
+.acard .bigemoji{font-size:170px;cursor:pointer;line-height:1.2}
+.acard h2{font-size:50px;font-weight:900}
+.acard .snd{font-size:22px;color:#7d8aa0;background:#fff;padding:8px 22px;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.07)}
+.acard .fact{font-size:15px;color:#8a97ad;max-width:420px;text-align:center;line-height:1.6}
+.bounce{animation:bnc .45s ease}
+@keyframes bnc{0%{transform:scale(1)}35%{transform:scale(1.14) rotate(-3deg)}70%{transform:scale(.96)}100%{transform:scale(1)}}
+.adots{display:flex;justify-content:center;gap:8px;padding:10px}
+.adot{width:10px;height:10px;border-radius:50%;background:#c9d6e8;transition:all .2s}
+.adot.on{background:#FF9A3D;transform:scale(1.4)}
+.abtns{display:flex;justify-content:center;gap:14px;padding:6px 20px calc(20px + env(safe-area-inset-bottom))}
+/* 找一找 */
+#findit{background:linear-gradient(180deg,#E4F9E0 0%,#FFF7EA 100%)}
+.findq{text-align:center;padding:8px 20px}
+.findq h2{font-size:34px;font-weight:900}
+.findgrid{flex:1;display:flex;align-items:center;justify-content:center;gap:18px;padding:20px;flex-wrap:wrap;overflow-y:auto}
+.fopt{background:#fff;border-radius:26px;padding:14px;cursor:pointer;box-shadow:0 8px 22px rgba(90,160,90,.16);border:4px solid transparent;transition:transform .12s}
+.fopt:active{transform:scale(.94)}
+.fopt img{width:min(200px,40vw);height:min(200px,40vw);object-fit:cover;border-radius:20px;background:#f4f7fa}
+.fopt .bigemoji{font-size:110px;line-height:1.3}
+.fopt.ok{border-color:#52C75A;animation:bnc .45s ease}
+.findfb{min-height:60px;text-align:center;font-size:30px;font-weight:900;color:#E8830C}
+/* 故事列表 */
+#storylist{background:linear-gradient(180deg,#E8E4FF 0%,#FFF7EA 100%)}
+.slist{flex:1;overflow-y:auto;padding:14px 22px;display:flex;flex-direction:column;gap:16px}
+.sitem{background:#fff;border-radius:24px;padding:20px;display:flex;gap:18px;align-items:center;cursor:pointer;box-shadow:0 8px 22px rgba(120,100,180,.14)}
+.sitem:active{transform:scale(.97)}
+.sitem .e{font-size:60px}
+.sitem .t{font-size:23px;font-weight:800}
+.sitem .d{font-size:14px;color:#9a8fb0;margin-top:4px}
+/* 故事阅读（夜晚主题） */
+#reader{background:linear-gradient(180deg,#0b1026 0%,#1b1f4b 55%,#2d2a6b 100%);color:#fff;position:relative}
+#reader .topbar .toptitle{color:#fff}
+#reader .backbtn{background:rgba(255,255,255,.14);color:#fff;box-shadow:none}
+#reader .starpill{background:rgba(255,255,255,.14);color:#fff;box-shadow:none}
+.rstars{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.rstar{position:absolute;background:#fff;border-radius:50%;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.25}50%{opacity:1}}
+.rbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:20px;position:relative;z-index:1}
+.remoji{font-size:130px;animation:floaty 3.4s ease-in-out infinite;filter:drop-shadow(0 10px 22px rgba(0,0,0,.4))}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.rtext{font-size:29px;font-weight:700;text-align:center;line-height:1.7;text-shadow:0 3px 14px rgba(0,0,0,.5);max-width:640px;min-height:110px}
+.rdots{display:flex;justify-content:center;gap:8px;padding:8px;position:relative;z-index:1}
+.rbar{display:flex;justify-content:center;align-items:center;gap:14px;padding:10px 20px calc(18px + env(safe-area-inset-bottom));position:relative;z-index:1}
+.rbtn{width:68px;height:68px;border-radius:50%;border:none;background:rgba(255,255,255,.16);color:#fff;font-size:26px;cursor:pointer}
+.rbtn:active{transform:scale(.9)}
+.rbtn:disabled{opacity:.25}
+.rbtn.main{width:auto;height:68px;border-radius:999px;padding:0 30px;font-size:19px;font-weight:800;background:linear-gradient(135deg,#A06CD5,#7B4DFF)}
+.rtip{margin:0 26px 8px;padding:14px 18px;background:rgba(255,255,255,.1);border-radius:16px;font-size:15px;line-height:1.7;color:#e0e7ff;position:relative;z-index:1;text-align:center}
+/* 涂色 */
+#coloring{background:linear-gradient(180deg,#FFE9F2 0%,#FFF7EA 100%)}
+.cpages{display:flex;justify-content:center;gap:10px;padding:6px}
+.cptab{border:none;background:#fff;border-radius:999px;padding:12px 26px;font-size:18px;font-weight:800;color:#8a6d5d;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.07)}
+.cptab.on{background:linear-gradient(135deg,#FF9A3D,#FF6B6B);color:#fff}
+.cwrap{flex:1;display:flex;align-items:center;justify-content:center;padding:8px;min-height:0}
+.cwrap svg{width:min(78vw,380px);height:min(78vw,380px);background:#fff;border-radius:28px;box-shadow:0 10px 26px rgba(200,120,140,.16)}
+.cwrap svg [data-r]{cursor:pointer;stroke:#b9a89a;stroke-width:3;transition:fill .2s}
+.palette{display:flex;justify-content:center;gap:12px;padding:10px;flex-wrap:wrap}
+.sw{width:56px;height:56px;border-radius:50%;cursor:pointer;border:4px solid transparent;box-shadow:0 4px 10px rgba(0,0,0,.12);transition:transform .12s}
+.sw.on{border-color:#fff;transform:scale(1.18);box-shadow:0 0 0 3px #FF9A3D,0 4px 10px rgba(0,0,0,.15)}
+.cdone{text-align:center;font-size:32px;font-weight:900;color:#E8830C;min-height:52px}
+/* 数一数 */
+#count{background:linear-gradient(180deg,#FFF3D6 0%,#FFF7EA 100%)}
+.countq{text-align:center;padding:8px 20px}
+.countq h2{font-size:34px;font-weight:900}
+.countitems{flex:1;display:flex;align-items:center;justify-content:center;gap:14px;padding:20px;flex-wrap:wrap;overflow-y:auto;align-content:center}
+.citem{font-size:84px;cursor:pointer;line-height:1.4;background:#fff;border-radius:26px;padding:8px 18px;box-shadow:0 8px 22px rgba(200,150,60,.16)}
+.citem:active{transform:scale(.92)}
+.countfb{min-height:56px;text-align:center;font-size:30px;font-weight:900;color:#E8830C}
+.countopts{display:flex;justify-content:center;gap:18px;padding:8px 20px calc(22px + env(safe-area-inset-bottom))}
+.copt{width:92px;height:92px;border-radius:50%;border:none;background:#fff;font-size:40px;font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.12);color:#3a2e2e}
+.copt:active{transform:scale(.9)}
+/* 弹窗 */
+.modal{position:fixed;inset:0;background:rgba(40,25,15,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:30px}
+.modal.show{display:flex}
+.mbox{background:#fff;border-radius:28px;padding:34px 30px;max-width:440px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.mbox h2{font-size:30px;margin-bottom:14px}
+.mbox p{font-size:17px;color:#8a6d5d;line-height:1.7;margin-bottom:18px}
+.numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.numpad button{border:none;background:#F4EFE6;border-radius:16px;font-size:26px;font-weight:800;min-height:62px;cursor:pointer;color:#3a2e2e}
+.numpad button:active{background:#EADFCB}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- 首页 -->
+  <section id="home" class="screen active">
+    <div class="hero">
+      <h1>🌙 宝宝的乐园</h1>
+      <p>点一点，就有好玩的事情发生</p>
+    </div>
+    <div class="modules">
+      <div class="mcard" onclick="go('animals')">
+        <div class="e">🐶</div><div class="t">动物卡</div>
+        <div class="d">认识小动物<br>听听它们怎么叫</div>
+      </div>
+      <div class="mcard" onclick="go('storylist')">
+        <div class="e">📖</div><div class="t">听故事</div>
+        <div class="d">睡前小故事<br>讲完就睡觉啦</div>
+      </div>
+      <div class="mcard" onclick="go('coloring')">
+        <div class="e">🎨</div><div class="t">涂色</div>
+        <div class="d">选颜色，点一点<br>画出漂亮的画</div>
+      </div>
+      <div class="mcard" onclick="startCount()">
+        <div class="e">🔢</div><div class="t">数一数</div>
+        <div class="d">1 到 5<br>点一点，数一数</div>
+      </div>
+    </div>
+    <div class="homefoot">
+      <span>⭐ <b id="homeStars">0</b> 颗星星</span>
+      <span style="text-decoration:underline;cursor:pointer" onclick="openGate()">家长</span>
+    </div>
+  </section>
+
+  <!-- 动物卡 -->
+  <section id="animals" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">动物卡</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="carousel" id="acar"></div>
+    <div class="adots" id="adots"></div>
+    <div class="abtns">
+      <button class="btn ghost" onclick="go('home')">‹ 返回</button>
+      <button class="btn blue" onclick="startFind()">🔍 找一找</button>
+    </div>
+  </section>
+
+  <!-- 找一找 -->
+  <section id="findit" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('animals')">‹</button>
+      <div class="toptitle">找一找</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="findq">
+      <h2 id="findQ">哪个是…？</h2>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askFind()">🔊 再听一遍</button>
+    </div>
+    <div class="findgrid" id="findGrid"></div>
+    <div class="findfb" id="findFb"></div>
+  </section>
+
+  <!-- 故事列表 -->
+  <section id="storylist" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">听故事</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="slist" id="slist"></div>
+  </section>
+
+  <!-- 故事阅读 -->
+  <section id="reader" class="screen">
+    <div class="rstars" id="rstars"></div>
+    <div class="topbar">
+      <button class="backbtn" onclick="closeReader()">‹</button>
+      <div class="toptitle" id="rtitle">故事</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="rbody">
+      <div class="remoji" id="remoji"></div>
+      <div class="rtext" id="rtext"></div>
+    </div>
+    <div class="rtip" id="rtip" style="display:none"></div>
+    <div class="rdots" id="rdots"></div>
+    <div class="rbar">
+      <button class="rbtn" id="rprev" onclick="rGo(cur-1)">‹</button>
+      <button class="rbtn main" onclick="rSpeak()">🔊 朗读</button>
+      <button class="rbtn" id="rnext" onclick="rGo(cur+1)">›</button>
+    </div>
+    <div class="rbar" id="rdonebar" style="display:none;padding-top:0">
+      <button class="btn" onclick="finishStory()">讲完啦 ⭐</button>
+    </div>
+  </section>
+
+  <!-- 涂色 -->
+  <section id="coloring" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">涂色</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="cpages" id="cpages"></div>
+    <div class="cwrap"><svg id="csvg" viewBox="0 0 340 340"></svg></div>
+    <div class="cdone" id="cdone"></div>
+    <div class="palette" id="palette"></div>
+    <div style="height:calc(10px + env(safe-area-inset-bottom))"></div>
+  </section>
+
+  <!-- 数一数 -->
+  <section id="count" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">数一数</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="countq">
+      <h2 id="countQ">有几个？</h2>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCount()">🔊 再听一遍</button>
+    </div>
+    <div class="countitems" id="countItems"></div>
+    <div class="countfb" id="countFb"></div>
+    <div class="countopts" id="countOpts"></div>
+  </section>
+
+</div>
+
+<!-- 家长门 -->
+<div class="modal" id="gateModal">
+  <div class="mbox">
+    <h2>🔒 家长验证</h2>
+    <p id="gateQ">请算出 ? + ? = ?</p>
+    <div style="font-size:44px;font-weight:900;min-height:60px" id="gateA"></div>
+    <div class="numpad" id="gatePad"></div>
+    <p id="gateMsg" style="color:#E14D4D;min-height:24px;margin:0"></p>
+    <div id="gateDur" style="display:none">
+      <p style="margin-bottom:10px">单节玩多久后休息？</p>
+      <div style="display:flex;gap:10px">
+        <button class="btn ghost" style="flex:1;min-height:56px;padding:0 10px" onclick="setRest(10)">10 分钟</button>
+        <button class="btn ghost" style="flex:1;min-height:56px;padding:0 10px" onclick="setRest(15)">15 分钟</button>
+        <button class="btn ghost" style="flex:1;min-height:56px;padding:0 10px" onclick="setRest(20)">20 分钟</button>
+      </div>
+    </div>
+    <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
+    <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
+  </div>
+</div>
+
+<!-- 休息页 -->
+<div class="modal" id="restModal">
+  <div class="mbox">
+    <div style="font-size:90px">🌙</div>
+    <h2>休息一下吧</h2>
+    <p>眼睛要休息啦，去喝口水、抱抱爸爸妈妈</p>
+    <button class="btn" style="width:100%" onclick="closeRest()">我知道了</button>
+  </div>
+</div>
+<script>
+/* ================= 数据 ================= */
+const ANIMALS = [
+  {name:'小狗', img:'assets/animals/dog.png', emoji:'🐶', audio:'assets/audio/a_dog.mp3', sound:'汪汪', fact:'狗狗喜欢和人玩，摇尾巴就是开心。'},
+  {name:'小猫', img:'assets/animals/cat.png', emoji:'🐱', audio:'assets/audio/a_cat.mp3', sound:'喵喵', fact:'猫咪喜欢晒太阳，呼噜呼噜表示舒服。'},
+  {name:'小兔子', img:'assets/animals/rabbit.png', emoji:'🐰', audio:'assets/audio/a_rabbit.mp3', sound:'蹦蹦跳', fact:'兔子爱吃胡萝卜，跑起来一蹦一蹦的。'},
+  {name:'小熊', img:'assets/animals/bear.png', emoji:'🐻', audio:'assets/audio/a_bear.mp3', sound:'嗷呜', fact:'小熊冬天会冬眠，睡一个长长的觉。'},
+  {name:'大象', img:'assets/animals/elephant.png', emoji:'🐘', audio:'assets/audio/a_elephant.mp3', sound:'嘟——', fact:'大象的鼻子很长，能卷起东西。'},
+  {name:'狮子', img:'assets/animals/lion.png', emoji:'🦁', audio:'assets/audio/a_lion.mp3', sound:'吼！', fact:'狮子是草原之王，头发像围脖。'},
+  {name:'猴子', img:'assets/animals/monkey.png', emoji:'🐵', audio:'assets/audio/a_monkey.mp3', sound:'吱吱', fact:'猴子爱爬树，尾巴能勾住树枝。'},
+  {name:'小鸭', img:'assets/animals/duck.png', emoji:'🦆', audio:'assets/audio/a_duck.mp3', sound:'嘎嘎', fact:'小鸭子会游泳，羽毛不怕水。'},
+  {name:'青蛙', img:null, emoji:'🐸', audio:'assets/audio/a_frog.mp3', sound:'呱呱', fact:'青蛙从小蝌蚪长大，爱吃害虫。'},
+  {name:'熊猫', img:null, emoji:'🐼', audio:'assets/audio/a_panda.mp3', sound:'嗯嗯', fact:'熊猫是中国国宝，最爱吃竹子。'},
+];
+const STORIES = [
+  {title:'宝宝和小熊找月亮', parentTip:'问问她：月亮像什么呀？', pages:[
+    {t:'天黑啦。', e:'🌃', a:'assets/audio/s1_00.mp3'},
+    {t:'月亮出来了，圆圆的，像一块大饼干。', e:'🌕', a:'assets/audio/s1_01.mp3'},
+    {t:'宝宝和小熊，一起找月亮玩。', e:'👧🏻🐾🧸', a:'assets/audio/s1_02.mp3'},
+    {t:'一颗星星眨眨眼：“你好呀，宝宝！”', e:'🌟', a:'assets/audio/s1_03.mp3'},
+    {t:'小熊抬起头：“嗷——”它在打哈欠。', e:'🧸💤', a:'assets/audio/s1_04.mp3'},
+    {t:'宝宝说：“小熊，你困了吗？”', e:'👧🏻❓', a:'assets/audio/s1_05.mp3'},
+    {t:'小熊点点头：“嗯！”', e:'🧸👍', a:'assets/audio/s1_06.mp3'},
+    {t:'月亮笑了：“晚安，宝宝。晚安，小熊。”', e:'🌙😊', a:'assets/audio/s1_07.mp3'},
+    {t:'宝宝抱住小熊：“晚安，月亮。”', e:'👧🏻🤗🧸', a:'assets/audio/s1_08.mp3'},
+    {t:'天上的星星，一颗一颗，慢慢睡着了。', e:'⭐😴', a:'assets/audio/s1_09.mp3'},
+    {t:'故事讲完啦，宝宝也该睡觉了。', e:'💤', a:'assets/audio/s1_10.mp3'},
+    {t:'晚安。🌙', e:'🌙', a:'assets/audio/s1_11.mp3'},
+  ]},
+  {title:'小兔子找胡萝卜', parentTip:'问问她：好东西要不要和妈妈分享？', pages:[
+    {t:'早上好，太阳公公起床啦。', e:'☀️', a:'assets/audio/s2_00.mp3'},
+    {t:'小兔子蹦蹦跳，肚子咕咕叫。', e:'🐰', a:'assets/audio/s2_01.mp3'},
+    {t:'它跑到菜园里，东闻闻，西找找。', e:'🥬', a:'assets/audio/s2_02.mp3'},
+    {t:'哇，一根大胡萝卜！', e:'🥕', a:'assets/audio/s2_03.mp3'},
+    {t:'小兔子拔呀拔，嘿哟嘿哟。', e:'🐰💪', a:'assets/audio/s2_04.mp3'},
+    {t:'胡萝卜出土啦，又大又甜。', e:'🥕✨', a:'assets/audio/s2_05.mp3'},
+    {t:'小兔子分给妈妈一半。', e:'🐰❤️', a:'assets/audio/s2_06.mp3'},
+    {t:'吃饱啦，午睡时间到。', e:'💤', a:'assets/audio/s2_07.mp3'},
+  ]},
+  {title:'大象和小蚂蚁', parentTip:'和她比一比：家里谁最大？谁最小？', pages:[
+    {t:'森林里，住着大象。', e:'🌳', a:'assets/audio/s3_00.mp3'},
+    {t:'大象走起路来，咚——咚——咚。', e:'🐘', a:'assets/audio/s3_01.mp3'},
+    {t:'一只小蚂蚁，爬呀爬，爬呀爬。', e:'🐜', a:'assets/audio/s3_02.mp3'},
+    {t:'大象说：“你好呀，小不点儿！”', e:'🐘', a:'assets/audio/s3_03.mp3'},
+    {t:'小蚂蚁说：“你好呀，大块头！”', e:'🐜', a:'assets/audio/s3_04.mp3'},
+    {t:'哗啦啦，下雨啦。', e:'🌧️', a:'assets/audio/s3_05.mp3'},
+    {t:'小蚂蚁喊：“雨点太大啦！”', e:'🐜', a:'assets/audio/s3_06.mp3'},
+    {t:'大象伸出大耳朵：“快到我这里来！”', e:'🐘', a:'assets/audio/s3_07.mp3'},
+    {t:'小蚂蚁躲在耳朵下，干干的，暖暖的。', e:'🐜', a:'assets/audio/s3_08.mp3'},
+    {t:'雨停了。小蚂蚁说：“谢谢你，大象！”', e:'🌈', a:'assets/audio/s3_09.mp3'},
+    {t:'大象笑了：“我们是好朋友！”', e:'🐘', a:'assets/audio/s3_10.mp3'},
+  ]},
+  {title:'小狮子不生气了', parentTip:'问问她：你生气的时候，可以怎么做呀？', pages:[
+    {t:'小狮子在玩球。', e:'🦁', a:'assets/audio/s4_00.mp3'},
+    {t:'球滚呀滚，滚进了水坑。', e:'⚽', a:'assets/audio/s4_01.mp3'},
+    {t:'小狮子跺跺脚：“哼！我生气了！”', e:'🦁', a:'assets/audio/s4_02.mp3'},
+    {t:'它的脸，鼓得像大气球。', e:'😤', a:'assets/audio/s4_03.mp3'},
+    {t:'小猴说：“别生气，深呼吸——”', e:'🐵', a:'assets/audio/s4_04.mp3'},
+    {t:'呼——吸——呼——吸——', e:'🌬️', a:'assets/audio/s4_05.mp3'},
+    {t:'小狮子也试试：呼——吸——', e:'🦁', a:'assets/audio/s4_06.mp3'},
+    {t:'气消了，脸不鼓了。', e:'😊', a:'assets/audio/s4_07.mp3'},
+    {t:'小狮子说：“对不起，刚才我太凶了。”', e:'🦁', a:'assets/audio/s4_08.mp3'},
+    {t:'小猴笑了：“没关系！我们一起玩吧！”', e:'🐵', a:'assets/audio/s4_09.mp3'},
+  ]},
+  {title:'小鸭子排排队', parentTip:'和她一起数：家里有几只“小鸭子”（玩具）呀？', pages:[
+    {t:'小鸭子，嘎嘎嘎。', e:'🦆', a:'assets/audio/s5_00.mp3'},
+    {t:'后面又来一只，嘎嘎嘎。', e:'🦆', a:'assets/audio/s5_01.mp3'},
+    {t:'一只小鸭子。', e:'1️⃣', a:'assets/audio/s5_02.mp3'},
+    {t:'两只小鸭子。', e:'2️⃣', a:'assets/audio/s5_03.mp3'},
+    {t:'又来一只，嘎嘎嘎！', e:'🦆', a:'assets/audio/s5_04.mp3'},
+    {t:'三只小鸭子，排排队。', e:'3️⃣', a:'assets/audio/s5_05.mp3'},
+    {t:'扑通！第一只跳下水。', e:'🌊', a:'assets/audio/s5_06.mp3'},
+    {t:'扑通！第二只跳下水。', e:'🌊', a:'assets/audio/s5_07.mp3'},
+    {t:'扑通！第三只跳下水。', e:'🌊', a:'assets/audio/s5_08.mp3'},
+    {t:'一只、两只、三只，游呀游，真开心！', e:'🦆', a:'assets/audio/s5_09.mp3'},
+  ]},
+];
+const PALETTE = ['#FF5A5A','#FF9A3D','#FFD93D','#52C75A','#4FACFE','#7B4DFF','#FF7BAC','#8D5A3B'];
+const COLOR_PAGES = [
+  {name:'小熊', regions:[
+    {id:'earL', n:'耳朵', k:'c', cx:105, cy:105, r:38},
+    {id:'earR', n:'耳朵', k:'c', cx:235, cy:105, r:38},
+    {id:'face', n:'脸', k:'c', cx:170, cy:185, r:88},
+    {id:'nose', n:'鼻子', k:'e', cx:170, cy:205, rx:20, ry:15},
+  ]},
+  {name:'月亮', regions:[
+    {id:'moon', n:'月亮', k:'c', cx:170, cy:140, r:68},
+    {id:'star1', n:'星星', k:'s', cx:70, cy:260, r:30},
+    {id:'star2', n:'星星', k:'s', cx:270, cy:250, r:24},
+    {id:'cloud', n:'云', k:'e', cx:170, cy:285, rx:72, ry:26},
+  ]},
+  {name:'花', regions:[
+    {id:'p0', n:'花瓣', k:'p', cx:170, cy:130, a:0, len:96, wid:46},
+    {id:'p1', n:'花瓣', k:'p', cx:170, cy:130, a:72, len:96, wid:46},
+    {id:'p2', n:'花瓣', k:'p', cx:170, cy:130, a:144, len:96, wid:46},
+    {id:'p3', n:'花瓣', k:'p', cx:170, cy:130, a:216, len:96, wid:46},
+    {id:'p4', n:'花瓣', k:'p', cx:170, cy:130, a:288, len:96, wid:46},
+    {id:'center', n:'花心', k:'c', cx:170, cy:130, r:30},
+    {id:'leaf', n:'叶子', k:'e', cx:105, cy:265, rx:36, ry:20},
+  ]},
+  {name:'太阳', regions:[
+    {id:'ray0', n:'光芒', k:'p', cx:170, cy:150, a:0, len:120, wid:30},
+    {id:'ray1', n:'光芒', k:'p', cx:170, cy:150, a:45, len:120, wid:30},
+    {id:'ray2', n:'光芒', k:'p', cx:170, cy:150, a:90, len:120, wid:30},
+    {id:'ray3', n:'光芒', k:'p', cx:170, cy:150, a:135, len:120, wid:30},
+    {id:'face', n:'脸', k:'c', cx:170, cy:150, r:58},
+  ]},
+  {name:'小鸭', regions:[
+    {id:'water', n:'水', k:'e', cx:170, cy:300, rx:112, ry:22},
+    {id:'body', n:'身体', k:'e', cx:150, cy:212, rx:75, ry:55},
+    {id:'wing', n:'翅膀', k:'e', cx:148, cy:208, rx:34, ry:22},
+    {id:'head', n:'头', k:'c', cx:226, cy:140, r:42},
+    {id:'beak', n:'嘴巴', k:'e', cx:264, cy:148, rx:18, ry:10},
+    {id:'eye', n:'眼睛', k:'c', cx:238, cy:130, r:8},
+  ]},
+  {name:'气球', regions:[
+    {id:'cloud', n:'云', k:'e', cx:80, cy:282, rx:56, ry:24},
+    {id:'star', n:'星星', k:'s', cx:272, cy:272, r:28},
+    {id:'balloon', n:'气球', k:'c', cx:170, cy:140, r:70},
+    {id:'knot', n:'绳结', k:'e', cx:170, cy:218, rx:14, ry:10},
+  ]},
+];
+
+/* ================= 通用 ================= */
+let stars = +(localStorage.getItem('park_stars') || 0);
+let curAudio = null;
+function play(src){
+  try{
+    if(curAudio){ curAudio.pause(); curAudio = null; }
+    speechSynthesis.cancel();
+    curAudio = new Audio(src);
+    curAudio.play().catch(()=>{});
+  }catch(e){}
+}
+function stopAll(){
+  try{ if(curAudio){ curAudio.pause(); curAudio = null; } speechSynthesis.cancel(); }catch(e){}
+}
+function say(text){
+  try{
+    stopAll();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'zh-CN'; u.rate = 0.85; u.pitch = 1.1;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function addStar(){
+  stars++;
+  localStorage.setItem('park_stars', stars);
+  document.querySelectorAll('.starN').forEach(el=>el.textContent = stars);
+  document.getElementById('homeStars').textContent = stars;
+}
+function go(id){
+  stopAll();
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+// 温柔收尾（家长门可改 10/15/20 分钟）
+let restMin = 15, restTimer = null;
+function scheduleRest(){
+  if(restTimer) clearTimeout(restTimer);
+  restTimer = setTimeout(()=>{ document.getElementById('restModal').classList.add('show'); }, restMin*60*1000);
+}
+scheduleRest();
+function closeRest(){ document.getElementById('restModal').classList.remove('show'); }
+
+/* ================= 动物卡 ================= */
+const acar = document.getElementById('acar');
+const adots = document.getElementById('adots');
+ANIMALS.forEach((a,i)=>{
+  const card = document.createElement('div');
+  card.className = 'acard';
+  card.innerHTML = (a.img
+      ? `<img src="${a.img}" alt="${a.name}">`
+      : `<div class="bigemoji">${a.emoji}</div>`)
+    + `<h2>${a.name}</h2><div class="snd">“${a.sound}”</div><div class="fact">${a.fact}</div>`;
+  const media = card.querySelector('img') || card.querySelector('.bigemoji');
+  media.onclick = ()=>{
+    media.classList.remove('bounce'); void media.offsetWidth; media.classList.add('bounce');
+    play(a.audio);
+  };
+  acar.appendChild(card);
+  const d = document.createElement('div');
+  d.className = 'adot' + (i===0 ? ' on' : '');
+  adots.appendChild(d);
+});
+acar.addEventListener('scroll', ()=>{
+  const i = Math.round(acar.scrollLeft / acar.clientWidth);
+  [...adots.children].forEach((d,j)=>d.classList.toggle('on', j===i));
+}, {passive:true});
+
+/* ================= 找一找 ================= */
+let findTarget = null;
+function startFind(){
+  const opts = [...ANIMALS].sort(()=>Math.random()-.5).slice(0,3);
+  findTarget = opts[Math.floor(Math.random()*3)];
+  document.getElementById('findQ').textContent = `哪个是${findTarget.name}？`;
+  document.getElementById('findFb').textContent = '';
+  const g = document.getElementById('findGrid');
+  g.innerHTML = '';
+  opts.forEach(a=>{
+    const b = document.createElement('div');
+    b.className = 'fopt';
+    b.innerHTML = a.img ? `<img src="${a.img}" alt="${a.name}">` : `<div class="bigemoji">${a.emoji}</div>`;
+    b.onclick = ()=>{
+      if(a.name === findTarget.name){
+        b.classList.add('ok');
+        document.getElementById('findFb').textContent = '⭐ 答对啦！';
+        play(a.audio);
+        addStar();
+        setTimeout(startFind, 1800);
+      } else {
+        document.getElementById('findFb').textContent = '再试试';
+        say('再试试');
+      }
+    };
+    g.appendChild(b);
+  });
+  go('findit');
+  askFind();
+}
+function askFind(){
+  if(findTarget) say(`哪个是${findTarget.name}？`);
+}
+
+/* ================= 数一数 ================= */
+const COUNT_EMOJI = [['🍎','苹果'],['🐤','小鸡'],['⭐','星星'],['🍓','草莓'],['🐟','小鱼'],['🌼','小花']];
+const NUM_WORD = ['一','二','三','四','五'];
+let countN = 0, countName = '';
+function startCount(){
+  countN = 1 + Math.floor(Math.random()*5);
+  const pick = COUNT_EMOJI[Math.floor(Math.random()*COUNT_EMOJI.length)];
+  const ce = pick[0]; countName = pick[1];
+  document.getElementById('countQ').textContent = `有几个${countName}？`;
+  document.getElementById('countFb').textContent = '';
+  const box = document.getElementById('countItems');
+  box.innerHTML = '';
+  for(let i=0;i<countN;i++){
+    const d = document.createElement('div');
+    d.className = 'citem';
+    d.textContent = ce;
+    d.onclick = ()=>{
+      d.classList.remove('bounce'); void d.offsetWidth; d.classList.add('bounce');
+      say(NUM_WORD[i]);
+    };
+    box.appendChild(d);
+  }
+  const opts = new Set([countN]);
+  while(opts.size<3){ opts.add(1+Math.floor(Math.random()*5)); }
+  const arr = [...opts].sort(()=>Math.random()-.5);
+  const ob = document.getElementById('countOpts');
+  ob.innerHTML = '';
+  arr.forEach(n=>{
+    const b = document.createElement('button');
+    b.className = 'copt';
+    b.textContent = n;
+    b.onclick = ()=>{
+      if(n===countN){
+        document.getElementById('countFb').textContent = '⭐ 答对啦！';
+        say('答对啦！');
+        addStar();
+        setTimeout(startCount, 1800);
+      } else {
+        document.getElementById('countFb').textContent = '再数数';
+        say('再数数');
+      }
+    };
+    ob.appendChild(b);
+  });
+  go('count');
+  askCount();
+}
+function askCount(){ if(countN) say(`有几个${countName}？`); }
+
+/* ================= 故事 ================= */
+const slist = document.getElementById('slist');
+STORIES.forEach((s,i)=>{
+  const it = document.createElement('div');
+  it.className = 'sitem';
+  it.innerHTML = `<div class="e">🌙</div><div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div></div>`;
+  it.onclick = ()=>openReader(i);
+  slist.appendChild(it);
+});
+// 夜空星星
+const rs = document.getElementById('rstars');
+for(let i=0;i<50;i++){
+  const s = document.createElement('div');
+  s.className = 'rstar';
+  const sz = 2 + Math.random()*3;
+  s.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*70}%;width:${sz}px;height:${sz}px;animation-delay:${(Math.random()*3).toFixed(1)}s`;
+  rs.appendChild(s);
+}
+let si = 0, cur = 0;
+function openReader(i){
+  si = i; cur = 0;
+  document.getElementById('rtitle').textContent = STORIES[si].title;
+  const rd = document.getElementById('rdots');
+  rd.innerHTML = '';
+  STORIES[si].pages.forEach((_,j)=>{
+    const d = document.createElement('div');
+    d.className = 'adot' + (j===0 ? ' on' : '');
+    rd.appendChild(d);
+  });
+  go('reader');
+  rGo(0);
+}
+function rGo(i){
+  const pages = STORIES[si].pages;
+  cur = Math.max(0, Math.min(pages.length-1, i));
+  document.getElementById('remoji').textContent = pages[cur].e;
+  document.getElementById('rtext').textContent = pages[cur].t;
+  [...document.getElementById('rdots').children].forEach((d,j)=>d.classList.toggle('on', j===cur));
+  document.getElementById('rprev').disabled = cur===0;
+  document.getElementById('rnext').disabled = cur===pages.length-1;
+  const last = cur===pages.length-1;
+  document.getElementById('rtip').style.display = last ? 'block' : 'none';
+  document.getElementById('rdonebar').style.display = last ? 'flex' : 'none';
+  if(last) document.getElementById('rtip').innerHTML = '💡 给爸爸妈妈：' + STORIES[si].parentTip;
+  rSpeak();
+}
+function rSpeak(){ play(STORIES[si].pages[cur].a); }
+function finishStory(){ addStar(); go('storylist'); }
+function closeReader(){ go('storylist'); }
+
+/* ================= 涂色 ================= */
+let cPage = 0, cColor = PALETTE[0], cFills = {}, cDone = false;
+const csvg = document.getElementById('csvg');
+function starPts(cx, cy, r){
+  const p = [];
+  for(let i=0;i<10;i++){
+    const a = i*Math.PI/5 - Math.PI/2, rad = i%2===0 ? r : r*0.45;
+    p.push((cx+rad*Math.cos(a)).toFixed(1)+','+(cy+rad*Math.sin(a)).toFixed(1));
+  }
+  return p.join(' ');
+}
+function renderColoring(){
+  const pg = COLOR_PAGES[cPage];
+  csvg.innerHTML = '';
+  const NS = 'http://www.w3.org/2000/svg';
+  pg.regions.forEach(r=>{
+    let el;
+    if(r.k==='c'){ el = document.createElementNS(NS,'circle'); el.setAttribute('cx',r.cx); el.setAttribute('cy',r.cy); el.setAttribute('r',r.r); }
+    else if(r.k==='e'){ el = document.createElementNS(NS,'ellipse'); el.setAttribute('cx',r.cx); el.setAttribute('cy',r.cy); el.setAttribute('rx',r.rx); el.setAttribute('ry',r.ry); }
+    else if(r.k==='s'){ el = document.createElementNS(NS,'polygon'); el.setAttribute('points', starPts(r.cx,r.cy,r.r)); }
+    else { el = document.createElementNS(NS,'ellipse'); el.setAttribute('cx',r.cx); el.setAttribute('cy',r.cy); el.setAttribute('rx',r.wid/2); el.setAttribute('ry',r.len/2); el.setAttribute('transform',`rotate(${r.a} ${r.cx} ${r.cy})`); }
+    el.setAttribute('data-r', r.id);
+    el.setAttribute('fill', cFills[r.id] || '#F1EDE6');
+    el.onclick = ()=>{
+      cFills[r.id] = cColor;
+      el.setAttribute('fill', cColor);
+      say(r.n);
+      const ids = pg.regions.map(x=>x.id);
+      if(!cDone && ids.every(id=>cFills[id])){
+        cDone = true;
+        document.getElementById('cdone').textContent = '🎉 太漂亮了！⭐';
+        addStar();
+        say('太漂亮了！');
+      }
+    };
+    csvg.appendChild(el);
+  });
+  // 页签
+  const tabs = document.getElementById('cpages');
+  tabs.innerHTML = '';
+  COLOR_PAGES.forEach((p,i)=>{
+    const b = document.createElement('button');
+    b.className = 'cptab' + (i===cPage ? ' on' : '');
+    b.textContent = p.name;
+    b.onclick = ()=>{ cPage = i; cFills = {}; cDone = false; document.getElementById('cdone').textContent=''; renderColoring(); };
+    tabs.appendChild(b);
+  });
+}
+const pal = document.getElementById('palette');
+PALETTE.forEach((c,i)=>{
+  const s = document.createElement('div');
+  s.className = 'sw' + (i===0 ? ' on' : '');
+  s.style.background = c;
+  s.onclick = ()=>{
+    cColor = c;
+    [...pal.children].forEach(x=>x.classList.remove('on'));
+    s.classList.add('on');
+  };
+  pal.appendChild(s);
+});
+renderColoring();
+
+/* ================= 家长门 ================= */
+let gA = 0, gB = 0, gInput = '';
+function openGate(){
+  gA = 3 + Math.floor(Math.random()*6);
+  gB = 2 + Math.floor(Math.random()*5);
+  gInput = '';
+  document.getElementById('gateQ').textContent = `请算出 ${gA} + ${gB} = ?`;
+  document.getElementById('gateA').textContent = '';
+  document.getElementById('gateMsg').textContent = '';
+  document.getElementById('gatePad').style.display = '';
+  document.getElementById('gateOk').style.display = '';
+  document.getElementById('gateDur').style.display = 'none';
+  const pad = document.getElementById('gatePad');
+  pad.innerHTML = '';
+  [1,2,3,4,5,6,7,8,9,0].forEach(n=>{
+    const b = document.createElement('button');
+    b.textContent = n;
+    b.onclick = ()=>{ if(gInput.length<2){ gInput += n; document.getElementById('gateA').textContent = gInput; } };
+    pad.appendChild(b);
+  });
+  document.getElementById('gateModal').classList.add('show');
+}
+function gateCheck(){
+  if(parseInt(gInput,10) === gA + gB){
+    document.getElementById('gateQ').textContent = '验证通过 ✅';
+    document.getElementById('gateA').textContent = '';
+    document.getElementById('gatePad').style.display = 'none';
+    document.getElementById('gateOk').style.display = 'none';
+    document.getElementById('gateDur').style.display = 'block';
+  } else {
+    document.getElementById('gateMsg').textContent = '不对，再想想';
+    gInput = '';
+    document.getElementById('gateA').textContent = '';
+  }
+}
+function closeGate(){ document.getElementById('gateModal').classList.remove('show'); }
+function setRest(min){
+  restMin = min;
+  scheduleRest();
+  closeGate();
+  alert(`家长设置：\n• 单节 ${min} 分钟，到点温柔收尾\n• 内容全部内置，无网络无广告\n• 语音全部本机，不上传`);
+}
+
+// 初始化星星显示
+document.getElementById('homeStars').textContent = stars;
+document.querySelectorAll('.starN').forEach(el=>el.textContent = stars);
+</script>
+</body>
+</html>
