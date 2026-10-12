@@ -112,6 +112,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .countopts{display:flex;justify-content:center;gap:18px;padding:8px 20px calc(22px + env(safe-area-inset-bottom))}
 .copt{width:92px;height:92px;border-radius:50%;border:none;background:#fff;font-size:40px;font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.12);color:#3a2e2e}
 .copt:active{transform:scale(.9)}
+/* 动物世界 */
+#zoo{background:linear-gradient(180deg,#E8F4FF 0%,#FFF7EA 100%)}
+.zootabs{display:flex;gap:8px;padding:10px 16px 4px;overflow-x:auto;flex-shrink:0}
+.ztab{flex:none;border:none;background:#fff;border-radius:999px;padding:12px 20px;font-size:16px;font-weight:800;color:#8a6d5d;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.07)}
+.ztab.on{background:linear-gradient(135deg,#4FACFE,#5B6CFF);color:#fff}
+.zoocount{text-align:center;font-size:14px;color:#8a97ad;padding:4px}
+.zoogrid{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:10px 16px calc(16px + env(safe-area-inset-bottom));align-content:start}
+.zcard{background:#fff;border-radius:20px;padding:14px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;box-shadow:0 6px 16px rgba(90,140,200,.12)}
+.zcard:active{transform:scale(.94)}
+.zcard .e{font-size:52px}
+.zcard .t{font-size:15px;font-weight:800;text-align:center}
 /* 弹窗 */
 .modal{position:fixed;inset:0;background:rgba(40,25,15,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:30px}
 .modal.show{display:flex}
@@ -148,6 +159,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
       <div class="mcard" onclick="startCount()">
         <div class="e">🔢</div><div class="t">数一数</div>
         <div class="d">1 到 5<br>点一点，数一数</div>
+      </div>
+      <div class="mcard" onclick="openZoo()">
+        <div class="e">🌍</div><div class="t">动物世界</div>
+        <div class="d">1000 多种动物<br>按分类逛一逛</div>
       </div>
     </div>
     <div class="homefoot">
@@ -250,6 +265,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
     <div class="countopts" id="countOpts"></div>
   </section>
 
+  <!-- 动物世界 -->
+  <section id="zoo" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">动物世界</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="zootabs" id="zooTabs"></div>
+    <div class="zoocount" id="zooCount"></div>
+    <div class="zoogrid" id="zooGrid"></div>
+  </section>
+
+</div>
+
+<!-- 动物详情 -->
+<div class="modal" id="zooModal">
+  <div class="mbox">
+    <div style="font-size:110px" id="zooE"></div>
+    <h2 id="zooN"></h2>
+    <p id="zooS" style="font-weight:800;color:#3a2e2e"></p>
+    <p id="zooF"></p>
+    <button class="btn blue" style="width:100%" onclick="zooSpeak()">🔊 读给我听</button>
+    <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeZoo()">关闭</button>
+  </div>
 </div>
 
 <!-- 家长门 -->
@@ -282,6 +321,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
     <button class="btn" style="width:100%" onclick="closeRest()">我知道了</button>
   </div>
 </div>
+<script src="animals-data.js"></script>
 <script>
 /* ================= 数据 ================= */
 const ANIMALS = [
@@ -419,11 +459,22 @@ function play(src){
 function stopAll(){
   try{ if(curAudio){ curAudio.pause(); curAudio = null; } speechSynthesis.cancel(); }catch(e){}
 }
+/* 中文语音优选：优先用设备自带中文嗓音（iOS 上更自然）， fallback 系统默认 */
+let zhVoice = null;
+function pickZhVoice(){
+  try{
+    const vs = speechSynthesis.getVoices();
+    zhVoice = vs.find(v=>/^zh/i.test(v.lang) && /ting|yun|mei|xiao|yao|chen/i.test(v.name))
+      || vs.find(v=>/^zh/i.test(v.lang));
+  }catch(e){}
+}
+try{ pickZhVoice(); speechSynthesis.onvoiceschanged = pickZhVoice; }catch(e){}
 function say(text){
   try{
     stopAll();
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'zh-CN'; u.rate = 0.85; u.pitch = 1.1;
+    u.lang = 'zh-CN'; u.rate = 0.92; u.pitch = 1.05;
+    if(zhVoice) u.voice = zhVoice;
     speechSynthesis.speak(u);
   }catch(e){}
 }
@@ -475,21 +526,23 @@ acar.addEventListener('scroll', ()=>{
 /* ================= 找一找 ================= */
 let findTarget = null;
 function startFind(){
-  const opts = [...ANIMALS].sort(()=>Math.random()-.5).slice(0,3);
+  const opts = [...ANIMALS_ALL].sort(()=>Math.random()-.5).slice(0,3);
   findTarget = opts[Math.floor(Math.random()*3)];
-  document.getElementById('findQ').textContent = `哪个是${findTarget.name}？`;
+  const tname = findTarget.n || findTarget.name;
+  document.getElementById('findQ').textContent = `哪个是${tname}？`;
   document.getElementById('findFb').textContent = '';
   const g = document.getElementById('findGrid');
   g.innerHTML = '';
   opts.forEach(a=>{
+    const nm = a.n || a.name, em = a.e || a.emoji;
     const b = document.createElement('div');
     b.className = 'fopt';
-    b.innerHTML = a.img ? `<img src="${a.img}" alt="${a.name}">` : `<div class="bigemoji">${a.emoji}</div>`;
+    b.innerHTML = a.img ? `<img src="${a.img}" alt="${nm}">` : `<div class="bigemoji">${em}</div>`;
     b.onclick = ()=>{
-      if(a.name === findTarget.name){
+      if(nm === tname){
         b.classList.add('ok');
         document.getElementById('findFb').textContent = '⭐ 答对啦！';
-        play(a.audio);
+        if(a.audio) play(a.audio); else say(`答对啦，${nm}`);
         addStar();
         setTimeout(startFind, 1800);
       } else {
@@ -503,7 +556,7 @@ function startFind(){
   askFind();
 }
 function askFind(){
-  if(findTarget) say(`哪个是${findTarget.name}？`);
+  if(findTarget) say(`哪个是${findTarget.n || findTarget.name}？`);
 }
 
 /* ================= 数一数 ================= */
@@ -554,6 +607,48 @@ function startCount(){
   askCount();
 }
 function askCount(){ if(countN) say(`有几个${countName}？`); }
+
+/* ================= 动物世界（1000+ 物种） ================= */
+let zooCat = ANIMAL_CATS[0], zooCur = null;
+function openZoo(){
+  const tabs = document.getElementById('zooTabs');
+  tabs.innerHTML = '';
+  ANIMAL_CATS.forEach(c=>{
+    const b = document.createElement('button');
+    b.className = 'ztab' + (c===zooCat ? ' on' : '');
+    b.textContent = c;
+    b.onclick = ()=>{ zooCat = c; renderZoo(); };
+    tabs.appendChild(b);
+  });
+  renderZoo();
+  go('zoo');
+}
+function renderZoo(){
+  [...document.getElementById('zooTabs').children].forEach(b=>b.classList.toggle('on', b.textContent===zooCat));
+  const list = ANIMALS_ALL.filter(a=>a.c===zooCat);
+  document.getElementById('zooCount').textContent = `${zooCat} · ${list.length} 种`;
+  const g = document.getElementById('zooGrid');
+  g.innerHTML = '';
+  list.forEach(a=>{
+    const d = document.createElement('div');
+    d.className = 'zcard';
+    d.innerHTML = `<div class="e">${a.e}</div><div class="t">${a.n}</div>`;
+    d.onclick = ()=>openZooDetail(a);
+    g.appendChild(d);
+  });
+  g.scrollTop = 0;
+}
+function openZooDetail(a){
+  zooCur = a;
+  document.getElementById('zooE').textContent = a.e;
+  document.getElementById('zooN').textContent = a.n;
+  document.getElementById('zooS').textContent = `叫声：${a.s}`;
+  document.getElementById('zooF').textContent = a.f;
+  document.getElementById('zooModal').classList.add('show');
+  zooSpeak();
+}
+function closeZoo(){ document.getElementById('zooModal').classList.remove('show'); stopAll(); }
+function zooSpeak(){ if(zooCur) say(`${zooCur.n}。${zooCur.s}。${zooCur.f}`); }
 
 /* ================= 故事 ================= */
 const slist = document.getElementById('slist');
