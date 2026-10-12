@@ -123,6 +123,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .zcard:active{transform:scale(.94)}
 .zcard .e{font-size:52px}
 .zcard .t{font-size:15px;font-weight:800;text-align:center}
+.zcard img{width:76px;height:76px;object-fit:cover;border-radius:18px;background:#f2f2f2}
+.zoodetail img{width:220px;height:220px;object-fit:cover;border-radius:28px}
+.zcredit{text-align:center;font-size:12px;color:#a8b0c0;padding:0 16px 10px;flex-shrink:0}
 /* 弹窗 */
 .modal{position:fixed;inset:0;background:rgba(40,25,15,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:30px}
 .modal.show{display:flex}
@@ -275,13 +278,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
     <div class="zootabs" id="zooTabs"></div>
     <div class="zoocount" id="zooCount"></div>
     <div class="zoogrid" id="zooGrid"></div>
+    <div class="zcredit">图片来自维基百科 / iNaturalist（CC 协议），仅供学习</div>
   </section>
 
 </div>
 
 <!-- 动物详情 -->
 <div class="modal" id="zooModal">
-  <div class="mbox">
+  <div class="mbox zoodetail">
     <div style="font-size:110px" id="zooE"></div>
     <h2 id="zooN"></h2>
     <p id="zooS" style="font-weight:800;color:#3a2e2e"></p>
@@ -632,7 +636,9 @@ function renderZoo(){
   list.forEach(a=>{
     const d = document.createElement('div');
     d.className = 'zcard';
-    d.innerHTML = `<div class="e">${a.e}</div><div class="t">${a.n}</div>`;
+    d.innerHTML = a.img
+      ? `<img src="${a.img}" alt="${a.n}" loading="lazy"><div class="t">${a.n}</div>`
+      : `<div class="e">${a.e}</div><div class="t">${a.n}</div>`;
     d.onclick = ()=>openZooDetail(a);
     g.appendChild(d);
   });
@@ -640,7 +646,7 @@ function renderZoo(){
 }
 function openZooDetail(a){
   zooCur = a;
-  document.getElementById('zooE').textContent = a.e;
+  document.getElementById('zooE').innerHTML = a.img ? `<img src="${a.img}" alt="${a.n}">` : a.e;
   document.getElementById('zooN').textContent = a.n;
   document.getElementById('zooS').textContent = `叫声：${a.s}`;
   document.getElementById('zooF').textContent = a.f;
