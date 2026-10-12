@@ -134,8 +134,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 /* 首页分类图标 */
 .mcard .ico{width:92px;height:92px;border-radius:28px;object-fit:cover;box-shadow:0 8px 20px rgba(180,120,60,.18)}
 /* 主题切换 */
-#home{position:relative}
-.themebtn{position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;z-index:5;border:none;background:#fff;border-radius:999px;width:56px;height:56px;font-size:28px;box-shadow:0 6px 16px rgba(0,0,0,.1);cursor:pointer}
+.hero{display:flex;align-items:center;gap:14px;padding:22px 24px 6px;text-align:left}
+.herotx{flex:1;min-width:0}
+.themebtn{position:static;border:none;background:#fff;border-radius:999px;width:56px;height:56px;font-size:28px;box-shadow:0 6px 16px rgba(0,0,0,.1);cursor:pointer;flex-shrink:0}
 /* 动物详情整页：照片卡 + 信息卡 + 小知识卡，分区明确 */
 #zoodetail{background:linear-gradient(180deg,#E8F4FF 0%,#FFF7EA 100%)}
 .zdwrap{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 20px calc(20px + env(safe-area-inset-bottom))}
@@ -148,39 +149,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .zdrow + .zdrow{border-top:2px solid #f3ecdd}
 .zdrow .k{color:#a08c6d;font-weight:700;flex-shrink:0}
 .zdrow .v{font-weight:800;color:#3a2e2e}
+.enspk{margin-left:auto;border:none;background:#eef4fb;border-radius:12px;width:44px;height:44px;cursor:pointer;flex-shrink:0}
+.enspk img{width:26px;height:26px;display:block;margin:auto}
+body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 .zdfact{font-size:19px;line-height:1.8;color:#5d4e42;margin:6px 0 14px}
 /* 按钮与徽章图标 */
-.btnico{width:26px;height:26px;vertical-align:-6px;margin-right:8px}
+.btnico{width:26px;height:26px;vertical-align:-6px;margin-right:8px;background:#fff;border-radius:8px;padding:2px}
 .starico{width:22px;height:22px;vertical-align:-4px;margin-right:3px}
 .lockico{width:30px;height:30px;vertical-align:-6px;margin-right:8px}
 .themebtn img{width:34px;height:34px;display:block;margin:auto}
-/* 护眼纸质书主题 3.0：印刷品质感——纸纹底、油墨字、扁平按钮、照片白边框 */
-body.paper{background:#dccfa9}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader{background-color:#F3E8CB;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel{background:#FCF6E4;border:2px solid #D9C69C;box-shadow:0 3px 0 rgba(120,95,50,.12)}
-body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#33291d}
-body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#93805e}
-body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FCF6E4;border:2px solid #D9C69C;color:#6d5c3f;box-shadow:none}
-body.paper .ztab.on{background:#8a6f45;border-color:#8a6f45;color:#FCF6E4}
-body.paper .btn{background:#8a6f45;box-shadow:0 3px 0 rgba(90,70,40,.28);color:#FCF6E4}
-body.paper .btn.blue{background:#6f7f56;box-shadow:0 3px 0 rgba(70,85,50,.28);color:#FCF6E4}
-body.paper .btn.purple{background:#7d6a8a;box-shadow:0 3px 0 rgba(80,65,90,.28);color:#FCF6E4}
-body.paper .btn.ghost{background:#FCF6E4;border:2px solid #D9C69C;color:#4d4232;box-shadow:0 3px 0 rgba(120,95,50,.12)}
-body.paper .zdrow .k{color:#93805e}
-body.paper .zdrow .v{color:#33291d}
-body.paper .zdrow + .zdrow{border-top-color:#e4d5ae}
-body.paper .zdsec h3{color:#93805e}
-body.paper .zdfact{color:#4d4232}
-body.paper .zcard img{border:6px solid #fff;box-sizing:border-box;filter:sepia(.25) saturate(.92)}
-body.paper .zdphoto img{filter:sepia(.25) saturate(.92)}
-body.paper .acard img{filter:sepia(.18)}
-body.paper .mcard .ico,body.paper .sitem .cov,body.paper .applogo,body.paper .parentlink img{filter:sepia(.14)}
-body.paper #reader{color:#33291d}
+/* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
+body.paper{background:#d8c69c}
+body.paper *{text-shadow:none !important}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
+body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#8d7a5c}
+body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
+body.paper .ztab.on{background:#8a6f45;border-color:#8a6f45;color:#FAF3DF}
+body.paper .btn{background:#8a6f45;box-shadow:0 3px 0 rgba(90,70,40,.25);color:#FAF3DF}
+body.paper .btn.blue{background:#75855f;box-shadow:0 3px 0 rgba(70,85,55,.25);color:#FAF3DF}
+body.paper .btn.purple{background:#7d6f86;box-shadow:0 3px 0 rgba(80,70,90,.25);color:#FAF3DF}
+body.paper .btn.ghost{background:#FAF3DF;border:2px solid #D8C6A0;color:#4e4438;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper .zdrow .k{color:#8d7a5c}
+body.paper .zdrow .v{color:#3a3128}
+body.paper .zdrow + .zdrow{border-top-color:#e2d3ab}
+body.paper .zdsec h3{color:#8d7a5c}
+body.paper .zdfact{color:#4e4438}
+body.paper .zcard img{border:6px solid #fff;box-sizing:border-box;filter:sepia(.28) saturate(.9)}
+body.paper .zdphoto img{filter:sepia(.28) saturate(.9)}
+body.paper .acard img{filter:sepia(.2)}
+body.paper .mcard .ico,body.paper .sitem .cov,body.paper .applogo,body.paper .parentlink img,body.paper .starico,body.paper .btnico,body.paper .themebtn img{filter:sepia(.16)}
+body.paper #reader{color:#3a3128}
 body.paper .rstars{display:none}
-body.paper .rtext{color:#33291d;text-shadow:none;font-family:Georgia,'Songti SC','STSong',serif;line-height:2.1;max-width:34em}
+body.paper .rtext{color:#3a3128;font-family:Georgia,'Songti SC','STSong',serif;line-height:2.1;max-width:34em}
 body.paper .remoji{filter:drop-shadow(0 10px 22px rgba(120,90,40,.25))}
-body.paper .rbtn{background:#FCF6E4;border:2px solid #D9C69C;color:#6d5c3f;box-shadow:none}
-body.paper .rbtn.main{background:#8a6f45;border-color:#8a6f45;color:#FCF6E4}
+body.paper .rbtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
+body.paper .rbtn.main{background:#8a6f45;border-color:#8a6f45;color:#FAF3DF}
 body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
 /* 弹窗 */
 .modal{position:fixed;inset:0;background:rgba(40,25,15,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:30px}
@@ -198,10 +203,10 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
 
   <!-- 首页 -->
   <section id="home" class="screen active">
-    <button class="themebtn" id="themeBtn" onclick="toggleTheme()" title="切换主题"><img id="themeIcon" src="assets/icons/theme-paper.webp" alt="主题"></button>
     <div class="hero">
       <img class="applogo" src="assets/icons/logo.webp" alt="宝宝乐园">
       <div class="herotx"><h1>宝宝的乐园</h1><p>点一点，就有好玩的事情发生</p></div>
+      <button class="themebtn" id="themeBtn" onclick="toggleTheme()" title="切换主题"><img id="themeIcon" src="assets/icons/theme-paper.webp" alt="主题"></button>
     </div>
     <div class="modules">
       <div class="mcard" onclick="go('animals')">
@@ -227,7 +232,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
       <div class="mcard" onclick="openZoo()">
         <img class="ico" src="assets/icons/zoo.webp" alt="动物世界">
         <div class="t">动物世界</div>
-        <div class="d">1000 多种动物<br>按分类逛一逛</div>
+        <div class="d">900 多种动物<br>按分类逛一逛</div>
       </div>
     </div>
     <div class="homefoot">
@@ -247,15 +252,14 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
     <div class="adots" id="adots"></div>
     <div class="abtns">
       <button class="btn ghost" onclick="go('home')">‹ 返回</button>
-      <button class="btn blue" onclick="startFind()"><img class="btnico" src="assets/icons/find.webp" alt="">找一找</button>
     </div>
   </section>
 
   <!-- 找一找 -->
   <section id="findit" class="screen">
     <div class="topbar">
-      <button class="backbtn" onclick="go('animals')">‹</button>
-      <div class="toptitle">找一找</div>
+      <button class="backbtn" onclick="go('zoo')">‹</button>
+      <div class="toptitle">考一考</div>
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="findq">
@@ -339,6 +343,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
     </div>
     <div class="zootabs" id="zooTabs"></div>
     <div class="zoocount" id="zooCount"></div>
+    <div style="padding:0 20px 10px"><button class="btn blue" style="width:100%" id="zooQuizBtn" onclick="startZooQuiz()"><img class="btnico" src="assets/icons/find.webp" alt="">考一考</button></div>
     <div class="zoogrid" id="zooGrid"></div>
     <div class="zcredit">图片来自维基百科 / iNaturalist（CC 协议），仅供学习</div>
   </section>
@@ -355,6 +360,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
       <div class="zdsec">
         <div class="zdrow"><span class="k">分类</span><span class="v" id="zdCat"></span></div>
         <div class="zdrow"><span class="k">叫声</span><span class="v" id="zdCall"></span></div>
+        <div class="zdrow" id="zdEnRow"><span class="k">英文</span><span class="v" id="zdEn"></span><button class="enspk" onclick="speakEn()" title="读英文"><img src="assets/icons/speaker.webp" alt=""></button></div>
       </div>
       <div class="zdsec">
         <h3>小知识</h3>
@@ -602,10 +608,16 @@ acar.addEventListener('scroll', ()=>{
   [...adots.children].forEach((d,j)=>d.classList.toggle('on', j===i));
 }, {passive:true});
 
-/* ================= 找一找 ================= */
+/* ================= 考一考（动物世界同类出题） ================= */
 let findTarget = null;
-function startFind(){
-  const opts = [...ANIMALS_ALL].sort(()=>Math.random()-.5).slice(0,3);
+function startZooQuiz(){
+  const pool = zooList.filter(a=>a.img);
+  if(pool.length < 3){ say('这个分类的照片还不够多，换个分类试试'); return; }
+  startFind(pool);
+}
+function startFind(pool){
+  const list = (pool && pool.length >= 3) ? pool : ANIMALS_ALL.filter(a=>a.img);
+  const opts = [...list].sort(()=>Math.random()-.5).slice(0,3);
   findTarget = opts[Math.floor(Math.random()*3)];
   const tname = findTarget.n || findTarget.name;
   document.getElementById('findQ').textContent = `哪个是${tname}？`;
@@ -620,7 +632,7 @@ function startFind(){
     b.onclick = ()=>{
       if(nm === tname){
         b.classList.add('ok');
-        document.getElementById('findFb').textContent = '⭐ 答对啦！';
+        document.getElementById('findFb').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 答对啦！';
         if(a.audio) play(a.audio); else say(`答对啦，${nm}`);
         addStar();
         setTimeout(startFind, 1800);
@@ -687,7 +699,7 @@ function startCount(){
 }
 function askCount(){ if(countN) say(`有几个${countName}？`); }
 
-/* ================= 动物世界（1000+ 物种） ================= */
+/* ================= 动物世界（近千物种） ================= */
 let zooCat = ANIMAL_CATS[0], zooCur = null, zooList = [], zooIdx = 0;
 function openZoo(){
   const tabs = document.getElementById('zooTabs');
@@ -707,6 +719,7 @@ function renderZoo(){
   const list = ANIMALS_ALL.filter(a=>a.c===zooCat);
   zooList = list;
   document.getElementById('zooCount').textContent = `${zooCat} · ${list.length} 种`;
+  document.getElementById('zooQuizBtn').innerHTML = `<img class="btnico" src="assets/icons/find.webp" alt="">考一考：${zooCat}`;
   const g = document.getElementById('zooGrid');
   g.innerHTML = '';
   list.forEach((a,i)=>{
@@ -727,11 +740,25 @@ function openZooDetail(a,i){
   document.getElementById('zdImg').innerHTML = a.img ? `<img src="${a.img}" alt="${a.n}">` : `<div class="bigemoji">${a.e}</div>`;
   document.getElementById('zdCat').textContent = a.c;
   document.getElementById('zdCall').textContent = a.s;
+  const enRow = document.getElementById('zdEnRow');
+  if(a.en){ enRow.style.display = 'flex'; document.getElementById('zdEn').textContent = a.en; }
+  else enRow.style.display = 'none';
   document.getElementById('zdFact').textContent = a.f;
   go('zoodetail');
-  zooSpeak();
 }
 function zooSpeak(){ if(zooCur) say(`${zooCur.n}。${zooCur.s}。${zooCur.f}`); }
+function sayEn(text){
+  try{
+    stopAll();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US'; u.rate = 0.85;
+    const vs = speechSynthesis.getVoices();
+    const v = vs.find(v=>v.lang && v.lang.toLowerCase().indexOf('en')===0);
+    if(v) u.voice = v;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function speakEn(){ if(zooCur && zooCur.en) sayEn(zooCur.en); }
 function zooNav(d){
   if(!zooList.length) return;
   zooIdx = (zooIdx + d + zooList.length) % zooList.length;
@@ -743,7 +770,6 @@ function toggleTheme(){
   const paper = document.body.classList.toggle('paper');
   try{ localStorage.setItem('bb_theme', paper ? 'paper' : 'color'); }catch(e){}
   document.getElementById('themeIcon').src = paper ? 'assets/icons/theme-color.webp' : 'assets/icons/theme-paper.webp';
-  say(paper ? '护眼模式，像在看纸质书' : '彩色模式');
 }
 (function initTheme(){
   try{
