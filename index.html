@@ -136,35 +136,52 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 /* 主题切换 */
 #home{position:relative}
 .themebtn{position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;z-index:5;border:none;background:#fff;border-radius:999px;width:56px;height:56px;font-size:28px;box-shadow:0 6px 16px rgba(0,0,0,.1);cursor:pointer}
-/* 动物详情整页 */
+/* 动物详情整页：照片卡 + 信息卡 + 小知识卡，分区明确 */
 #zoodetail{background:linear-gradient(180deg,#E8F4FF 0%,#FFF7EA 100%)}
-.zdwrap{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px 20px calc(20px + env(safe-area-inset-bottom))}
-.zdimg img{width:min(76vw,330px);height:min(76vw,330px);object-fit:cover;border-radius:32px;box-shadow:0 14px 36px rgba(90,140,200,.28);background:#fff}
-.zdimg .bigemoji{font-size:140px;line-height:1.25}
-.zdcat{font-size:15px;font-weight:800;color:#fff;background:#8bc34a;border-radius:999px;padding:8px 22px}
-.zdcall{font-size:24px;font-weight:800;color:#3a2e2e}
-.zdfact{font-size:19px;line-height:1.8;color:#5d4e42;text-align:center;background:#fff;border-radius:22px;padding:18px 22px;max-width:360px;box-shadow:0 8px 20px rgba(90,140,200,.12);margin:0}
-/* 护眼纸质书主题：暖纸底+纸纹+油墨字+衬线标题，降饱和去蓝光 */
-body.paper{background:#e2d4ae}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader{background-color:#F6EFDB;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.28 0 0 0 0.055 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdfact,body.paper .carousel{background:#FFFDF3;box-shadow:0 8px 22px rgba(130,105,60,.13)}
-body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .zdcall{font-family:Georgia,'Songti SC','STSong',serif;color:#43382a}
-body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#9a8567}
-body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FFFDF3;color:#7d6647;box-shadow:0 4px 12px rgba(130,105,60,.13)}
-body.paper .ztab.on{background:#b49b62;color:#fff}
-body.paper .btn{background:linear-gradient(135deg,#d99f5f,#c07f4a);box-shadow:0 6px 18px rgba(160,110,60,.3)}
-body.paper .btn.blue{background:linear-gradient(135deg,#7fa3c8,#6889b3);box-shadow:0 6px 18px rgba(100,130,170,.3)}
-body.paper .btn.ghost{background:#FFFDF3;color:#43382a}
-body.paper .zdcat{background:#a3b76a}
+.zdwrap{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 20px calc(20px + env(safe-area-inset-bottom))}
+.zdphoto{background:#fff;padding:10px;border-radius:26px;box-shadow:0 14px 36px rgba(90,140,200,.22);width:min(84vw,360px)}
+.zdphoto img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;display:block;background:#f4f8fc}
+.zdphoto .bigemoji{font-size:130px;text-align:center;line-height:1.3}
+.zdsec{background:#fff;border-radius:22px;padding:8px 22px;width:min(84vw,360px);box-shadow:0 8px 22px rgba(90,140,200,.12)}
+.zdsec h3{margin:12px 0 4px;font-size:16px;color:#9a8fb0;letter-spacing:3px;font-weight:800}
+.zdrow{display:flex;gap:12px;padding:13px 0;font-size:18px;align-items:baseline}
+.zdrow + .zdrow{border-top:2px solid #f3ecdd}
+.zdrow .k{color:#a08c6d;font-weight:700;flex-shrink:0}
+.zdrow .v{font-weight:800;color:#3a2e2e}
+.zdfact{font-size:19px;line-height:1.8;color:#5d4e42;margin:6px 0 14px}
+/* 按钮与徽章图标 */
+.btnico{width:26px;height:26px;vertical-align:-6px;margin-right:8px}
+.starico{width:22px;height:22px;vertical-align:-4px;margin-right:3px}
+.lockico{width:30px;height:30px;vertical-align:-6px;margin-right:8px}
+.themebtn img{width:34px;height:34px;display:block;margin:auto}
+/* 护眼纸质书主题 3.0：印刷品质感——纸纹底、油墨字、扁平按钮、照片白边框 */
+body.paper{background:#dccfa9}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader{background-color:#F3E8CB;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel{background:#FCF6E4;border:2px solid #D9C69C;box-shadow:0 3px 0 rgba(120,95,50,.12)}
+body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#33291d}
+body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#93805e}
+body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FCF6E4;border:2px solid #D9C69C;color:#6d5c3f;box-shadow:none}
+body.paper .ztab.on{background:#8a6f45;border-color:#8a6f45;color:#FCF6E4}
+body.paper .btn{background:#8a6f45;box-shadow:0 3px 0 rgba(90,70,40,.28);color:#FCF6E4}
+body.paper .btn.blue{background:#6f7f56;box-shadow:0 3px 0 rgba(70,85,50,.28);color:#FCF6E4}
+body.paper .btn.purple{background:#7d6a8a;box-shadow:0 3px 0 rgba(80,65,90,.28);color:#FCF6E4}
+body.paper .btn.ghost{background:#FCF6E4;border:2px solid #D9C69C;color:#4d4232;box-shadow:0 3px 0 rgba(120,95,50,.12)}
+body.paper .zdrow .k{color:#93805e}
+body.paper .zdrow .v{color:#33291d}
+body.paper .zdrow + .zdrow{border-top-color:#e4d5ae}
+body.paper .zdsec h3{color:#93805e}
 body.paper .zdfact{color:#4d4232}
-body.paper .zcard img,body.paper .zdimg img,body.paper .acard img{filter:sepia(.22) saturate(.94)}
-body.paper #reader{color:#43382a}
+body.paper .zcard img{border:6px solid #fff;box-sizing:border-box;filter:sepia(.25) saturate(.92)}
+body.paper .zdphoto img{filter:sepia(.25) saturate(.92)}
+body.paper .acard img{filter:sepia(.18)}
+body.paper .mcard .ico,body.paper .sitem .cov,body.paper .applogo,body.paper .parentlink img{filter:sepia(.14)}
+body.paper #reader{color:#33291d}
 body.paper .rstars{display:none}
-body.paper .rtext{color:#3d332a;text-shadow:none;font-family:Georgia,'Songti SC','STSong',serif;line-height:2;max-width:34em}
+body.paper .rtext{color:#33291d;text-shadow:none;font-family:Georgia,'Songti SC','STSong',serif;line-height:2.1;max-width:34em}
 body.paper .remoji{filter:drop-shadow(0 10px 22px rgba(120,90,40,.25))}
-body.paper .rbtn{background:#FFFDF3;color:#7d6647;box-shadow:0 4px 10px rgba(130,105,60,.13)}
-body.paper .rbtn.main{background:linear-gradient(135deg,#c9a86a,#a8814f);color:#fff}
-body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
+body.paper .rbtn{background:#FCF6E4;border:2px solid #D9C69C;color:#6d5c3f;box-shadow:none}
+body.paper .rbtn.main{background:#8a6f45;border-color:#8a6f45;color:#FCF6E4}
+body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
 /* 弹窗 */
 .modal{position:fixed;inset:0;background:rgba(40,25,15,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:30px}
 .modal.show{display:flex}
@@ -181,7 +198,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
 
   <!-- 首页 -->
   <section id="home" class="screen active">
-    <button class="themebtn" id="themeBtn" onclick="toggleTheme()" title="切换主题">📄</button>
+    <button class="themebtn" id="themeBtn" onclick="toggleTheme()" title="切换主题"><img id="themeIcon" src="assets/icons/theme-paper.webp" alt="主题"></button>
     <div class="hero">
       <img class="applogo" src="assets/icons/logo.webp" alt="宝宝乐园">
       <div class="herotx"><h1>宝宝的乐园</h1><p>点一点，就有好玩的事情发生</p></div>
@@ -214,7 +231,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
       </div>
     </div>
     <div class="homefoot">
-      <span>⭐ <b id="homeStars">0</b> 颗星星</span>
+      <span><img class="starico" src="assets/icons/star.webp" alt="星"><b id="homeStars">0</b> 颗星星</span>
       <span class="parentlink" onclick="openGate()"><img src="assets/icons/parent.webp" alt="家长">家长</span>
     </div>
   </section>
@@ -224,13 +241,13 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="go('home')">‹</button>
       <div class="toptitle">动物卡</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="carousel" id="acar"></div>
     <div class="adots" id="adots"></div>
     <div class="abtns">
       <button class="btn ghost" onclick="go('home')">‹ 返回</button>
-      <button class="btn blue" onclick="startFind()">🔍 找一找</button>
+      <button class="btn blue" onclick="startFind()"><img class="btnico" src="assets/icons/find.webp" alt="">找一找</button>
     </div>
   </section>
 
@@ -239,11 +256,11 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="go('animals')">‹</button>
       <div class="toptitle">找一找</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="findq">
       <h2 id="findQ">哪个是…？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askFind()">🔊 再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askFind()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
     </div>
     <div class="findgrid" id="findGrid"></div>
     <div class="findfb" id="findFb"></div>
@@ -254,7 +271,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="go('home')">‹</button>
       <div class="toptitle">听故事</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="slist" id="slist"></div>
   </section>
@@ -265,7 +282,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="closeReader()">‹</button>
       <div class="toptitle" id="rtitle">故事</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="rbody">
       <div class="remoji" id="remoji"></div>
@@ -275,11 +292,11 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="rdots" id="rdots"></div>
     <div class="rbar">
       <button class="rbtn" id="rprev" onclick="rGo(cur-1)">‹</button>
-      <button class="rbtn main" onclick="rSpeak()">🔊 朗读</button>
+      <button class="rbtn main" onclick="rSpeak()"><img class="btnico" src="assets/icons/speaker.webp" alt="">朗读</button>
       <button class="rbtn" id="rnext" onclick="rGo(cur+1)">›</button>
     </div>
     <div class="rbar" id="rdonebar" style="display:none;padding-top:0">
-      <button class="btn" onclick="finishStory()">讲完啦 ⭐</button>
+      <button class="btn" onclick="finishStory()">讲完啦 <img class="starico" src="assets/icons/star.webp" alt="星"></button>
     </div>
   </section>
 
@@ -288,7 +305,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="go('home')">‹</button>
       <div class="toptitle">涂色</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="cpages" id="cpages"></div>
     <div class="cwrap"><svg id="csvg" viewBox="0 0 340 340"></svg></div>
@@ -302,11 +319,11 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="go('home')">‹</button>
       <div class="toptitle">数一数</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="countq">
       <h2 id="countQ">有几个？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCount()">🔊 再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCount()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
     </div>
     <div class="countitems" id="countItems"></div>
     <div class="countfb" id="countFb"></div>
@@ -318,7 +335,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="go('home')">‹</button>
       <div class="toptitle">动物世界</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="zootabs" id="zooTabs"></div>
     <div class="zoocount" id="zooCount"></div>
@@ -331,14 +348,19 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
     <div class="topbar">
       <button class="backbtn" onclick="go('zoo')">‹</button>
       <div class="toptitle" id="zdName">动物</div>
-      <div class="starpill">⭐ <span class="starN">0</span></div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="zdwrap">
-      <div class="zdimg" id="zdImg"></div>
-      <div class="zdcat" id="zdCat"></div>
-      <div class="zdcall" id="zdCall"></div>
-      <p class="zdfact" id="zdFact"></p>
-      <button class="btn blue" style="width:100%;max-width:340px" onclick="zooSpeak()">🔊 读给我听</button>
+      <div class="zdphoto"><div id="zdImg"></div></div>
+      <div class="zdsec">
+        <div class="zdrow"><span class="k">分类</span><span class="v" id="zdCat"></span></div>
+        <div class="zdrow"><span class="k">叫声</span><span class="v" id="zdCall"></span></div>
+      </div>
+      <div class="zdsec">
+        <h3>小知识</h3>
+        <p class="zdfact" id="zdFact"></p>
+      </div>
+      <button class="btn blue" style="width:100%;max-width:360px" onclick="zooSpeak()"><img class="btnico" src="assets/icons/speaker.webp" alt="">读给我听</button>
       <div class="zdnav">
         <button class="btn ghost" onclick="zooNav(-1)">‹ 上一个</button>
         <button class="btn ghost" onclick="zooNav(1)">下一个 ›</button>
@@ -351,7 +373,7 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#7d6647}
 <!-- 家长门 -->
 <div class="modal" id="gateModal">
   <div class="mbox">
-    <h2>🔒 家长验证</h2>
+    <h2><img class="lockico" src="assets/icons/lock.webp" alt="">家长验证</h2>
     <p id="gateQ">请算出 ? + ? = ?</p>
     <div style="font-size:44px;font-weight:900;min-height:60px" id="gateA"></div>
     <div class="numpad" id="gatePad"></div>
@@ -704,7 +726,7 @@ function openZooDetail(a,i){
   document.getElementById('zdName').textContent = a.n;
   document.getElementById('zdImg').innerHTML = a.img ? `<img src="${a.img}" alt="${a.n}">` : `<div class="bigemoji">${a.e}</div>`;
   document.getElementById('zdCat').textContent = a.c;
-  document.getElementById('zdCall').textContent = `叫声：${a.s}`;
+  document.getElementById('zdCall').textContent = a.s;
   document.getElementById('zdFact').textContent = a.f;
   go('zoodetail');
   zooSpeak();
@@ -720,14 +742,14 @@ function zooNav(d){
 function toggleTheme(){
   const paper = document.body.classList.toggle('paper');
   try{ localStorage.setItem('bb_theme', paper ? 'paper' : 'color'); }catch(e){}
-  document.getElementById('themeBtn').textContent = paper ? '🎨' : '📄';
+  document.getElementById('themeIcon').src = paper ? 'assets/icons/theme-color.webp' : 'assets/icons/theme-paper.webp';
   say(paper ? '护眼模式，像在看纸质书' : '彩色模式');
 }
 (function initTheme(){
   try{
     if(localStorage.getItem('bb_theme') === 'paper'){
       document.body.classList.add('paper');
-      document.getElementById('themeBtn').textContent = '🎨';
+      document.getElementById('themeIcon').src = 'assets/icons/theme-color.webp';
     }
   }catch(e){}
 })();
