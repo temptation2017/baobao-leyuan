@@ -30,6 +30,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .hero p{margin:6px 0 0;font-size:15px;color:#8a6d5d}
 .parentlink{display:inline-flex;align-items:center;gap:6px;text-decoration:underline;cursor:pointer}
 .parentlink img{width:30px;height:30px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+/* 首页：手机图标网格 + 小组件 */
+.widgets{padding:8px 24px 0;display:flex;flex-direction:column;gap:12px}
+.widget{background:#fff;border-radius:24px;box-shadow:0 8px 22px rgba(180,120,60,.14);overflow:hidden}
+.widget.wide{display:flex;align-items:center;gap:14px;padding:14px 16px;cursor:pointer;text-align:left}
+.widget.wide:active{transform:scale(.98)}
+.widget.wide img{width:84px;height:84px;border-radius:18px;object-fit:cover;flex-shrink:0;background:#f4f8fc}
+.widget .wk{font-size:13px;color:#a08c7d;font-weight:700;letter-spacing:1px}
+.widget .wt{font-size:22px;font-weight:800;color:#3a2e2e;margin-top:2px}
+.widget .wd{font-size:14px;color:#a08c7d;margin-top:2px}
+.wrow{display:flex;gap:12px}
+.widget.small{flex:1;padding:14px 16px;cursor:pointer}
+.widget.small:active{transform:scale(.97)}
+.widget.small .wb{font-size:26px;font-weight:800;color:#3a2e2e;margin-top:4px;display:flex;align-items:center;gap:6px}
+.appgrid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 12px;padding:20px 24px;align-content:start;overflow-y:auto}
+.appicon{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;border:none;background:none;padding:0}
+.appicon img{width:78px;height:78px;border-radius:24px;box-shadow:0 8px 20px rgba(180,120,60,.18)}
+.appicon:active{transform:scale(.9)}
+.appicon span{font-size:16px;font-weight:700;color:#5a4a3a}
 .sitem .cov{width:64px;height:64px;border-radius:18px;object-fit:cover;flex-shrink:0;box-shadow:0 4px 12px rgba(120,100,180,.16)}
 .zdnav{display:flex;gap:12px;width:100%;max-width:340px}
 .zdnav .btn{flex:1;min-height:56px;font-size:18px;padding:0 8px}
@@ -162,7 +180,7 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
 body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
 body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#8d7a5c}
 body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
@@ -187,6 +205,31 @@ body.paper .remoji{filter:drop-shadow(0 10px 22px rgba(120,90,40,.25))}
 body.paper .rbtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
 body.paper .rbtn.main{background:#8a6f45;border-color:#8a6f45;color:#FAF3DF}
 body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
+body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{color:#3a3128}
+body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
+/* 墨水屏模式：极致护眼，全灰阶无彩色 */
+body.ink{background:#d2d2cc}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader{background:#EBEBE6}
+body.ink img{filter:grayscale(1) contrast(.96)}
+body.ink .mcard,body.ink .acard,body.ink .scard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .hero h1,body.ink .toptitle,body.ink .mcard .t,body.ink .sitem .t,body.ink .appicon span,body.ink .widget .wt,body.ink .widget.small .wb{color:#1c1c1c}
+body.ink .hero p,body.ink .mcard .d,body.ink .sitem .d,body.ink .zoocount,body.ink .zcredit,body.ink .homefoot,body.ink .widget .wk,body.ink .widget .wd{color:#5c5c55}
+body.ink .themebtn,body.ink .starpill,body.ink .ztab,body.ink .backbtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-shadow:none}
+body.ink .ztab.on{background:#2b2b2b;color:#F7F7F3}
+body.ink .btn,body.ink .btn.blue,body.ink .btn.purple{background:#2b2b2b;box-shadow:none;color:#F7F7F3}
+body.ink .btn.ghost{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-shadow:none}
+body.ink .zdrow .k{color:#5c5c55}
+body.ink .zdrow .v{color:#1c1c1c}
+body.ink .zdrow + .zdrow{border-top-color:#d8d8d2}
+body.ink .zdsec h3{color:#5c5c55}
+body.ink .zdfact{color:#33332e}
+body.ink .zcard img{border:6px solid #fff;box-sizing:border-box}
+body.ink #reader .rstars{display:none}
+body.ink .rtext{color:#1c1c1c;text-shadow:none}
+body.ink .rbtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-shadow:none}
+body.ink .rbtn.main{background:#2b2b2b;color:#F7F7F3}
+body.ink .rtip{background:rgba(0,0,0,.06);color:#33332e}
+body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
 /* 弹窗 */
 .modal{position:fixed;inset:0;background:rgba(40,25,15,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:30px}
 .modal.show{display:flex}
@@ -205,35 +248,31 @@ body.paper .rtip{background:rgba(180,150,100,.14);color:#6d5c3f}
   <section id="home" class="screen active">
     <div class="hero">
       <img class="applogo" src="assets/icons/logo.webp" alt="宝宝乐园">
-      <div class="herotx"><h1>宝宝的乐园</h1><p>点一点，就有好玩的事情发生</p></div>
+      <div class="herotx"><h1>宝宝的乐园</h1><p id="greet">点一点，就有好玩的事情发生</p></div>
       <button class="themebtn" id="themeBtn" onclick="toggleTheme()" title="切换主题"><img id="themeIcon" src="assets/icons/theme-paper.webp" alt="主题"></button>
     </div>
-    <div class="modules">
-      <div class="mcard" onclick="go('animals')">
-        <img class="ico" src="assets/icons/animalcard.webp" alt="动物卡">
-        <div class="t">动物卡</div>
-        <div class="d">认识小动物<br>听听它们怎么叫</div>
+    <div class="widgets">
+      <div class="widget wide" id="wDaily">
+        <img id="wDailyImg" src="" alt="今日小动物">
+        <div><div class="wk">今日小动物</div><div class="wt" id="wDailyName"></div><div class="wd" id="wDailyEn"></div></div>
       </div>
-      <div class="mcard" onclick="go('storylist')">
-        <img class="ico" src="assets/icons/story.webp" alt="听故事">
-        <div class="t">听故事</div>
-        <div class="d">睡前小故事<br>讲完就睡觉啦</div>
+      <div class="wrow">
+        <div class="widget small" onclick="say('你已经有'+stars+'颗星星了，真棒')">
+          <div class="wk">我的星星</div>
+          <div class="wb"><img class="starico" src="assets/icons/star.webp" alt="星"><b id="wStars">0</b></div>
+        </div>
+        <div class="widget small">
+          <div class="wk">今天</div>
+          <div class="wb" id="wDate" style="font-size:19px"></div>
+        </div>
       </div>
-      <div class="mcard" onclick="go('coloring')">
-        <img class="ico" src="assets/icons/color.webp" alt="涂色">
-        <div class="t">涂色</div>
-        <div class="d">选颜色，点一点<br>画出漂亮的画</div>
-      </div>
-      <div class="mcard" onclick="startCount()">
-        <img class="ico" src="assets/icons/count.webp" alt="数一数">
-        <div class="t">数一数</div>
-        <div class="d">1 到 5<br>点一点，数一数</div>
-      </div>
-      <div class="mcard" onclick="openZoo()">
-        <img class="ico" src="assets/icons/zoo.webp" alt="动物世界">
-        <div class="t">动物世界</div>
-        <div class="d">900 多种动物<br>按分类逛一逛</div>
-      </div>
+    </div>
+    <div class="appgrid">
+      <div class="appicon" onclick="go('animals')"><img src="assets/icons/animalcard.webp" alt="动物卡"><span>动物卡</span></div>
+      <div class="appicon" onclick="go('storylist')"><img src="assets/icons/story.webp" alt="听故事"><span>听故事</span></div>
+      <div class="appicon" onclick="go('coloring')"><img src="assets/icons/color.webp" alt="涂色"><span>涂色</span></div>
+      <div class="appicon" onclick="startCount()"><img src="assets/icons/count.webp" alt="数一数"><span>数一数</span></div>
+      <div class="appicon" onclick="openZoo()"><img src="assets/icons/zoo.webp" alt="动物世界"><span>动物世界</span></div>
     </div>
     <div class="homefoot">
       <span><img class="starico" src="assets/icons/star.webp" alt="星"><b id="homeStars">0</b> 颗星星</span>
@@ -568,7 +607,28 @@ function addStar(){
   localStorage.setItem('park_stars', stars);
   document.querySelectorAll('.starN').forEach(el=>el.textContent = stars);
   document.getElementById('homeStars').textContent = stars;
+  const ws = document.getElementById('wStars');
+  if(ws) ws.textContent = stars;
 }
+
+/* ================= 首页小组件 ================= */
+function renderHome(){
+  const now = new Date(), h = now.getHours();
+  const g = h<6 ? '夜深了' : h<9 ? '早上好' : h<12 ? '上午好' : h<14 ? '中午好' : h<18 ? '下午好' : '晚上好';
+  const week = ['日','一','二','三','四','五','六'][now.getDay()];
+  document.getElementById('greet').textContent = `${g}，宝宝`;
+  document.getElementById('wDate').textContent = `${now.getMonth()+1}月${now.getDate()}日 周${week}`;
+  const pool = ANIMALS_ALL.filter(a=>a.img);
+  if(pool.length){
+    const a = pool[Math.floor(Date.now()/864e5) % pool.length];
+    document.getElementById('wDailyImg').src = a.img;
+    document.getElementById('wDailyName').textContent = a.n;
+    document.getElementById('wDailyEn').textContent = a.en || a.s || '';
+    document.getElementById('wDaily').onclick = ()=>{ zooList = pool; openZooDetail(a, pool.indexOf(a)); };
+  }
+  document.getElementById('wStars').textContent = stars;
+}
+renderHome();
 function go(id){
   stopAll();
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
@@ -652,10 +712,10 @@ function askFind(){
 
 /* ================= 数一数 ================= */
 const COUNT_EMOJI = [['🍎','苹果'],['🐤','小鸡'],['⭐','星星'],['🍓','草莓'],['🐟','小鱼'],['🌼','小花']];
-const NUM_WORD = ['一','二','三','四','五'];
+const NUM_WORD = ['一','二','三','四','五','六','七','八','九','十'];
 let countN = 0, countName = '';
 function startCount(){
-  countN = 1 + Math.floor(Math.random()*5);
+  countN = 1 + Math.floor(Math.random()*10);
   const pick = COUNT_EMOJI[Math.floor(Math.random()*COUNT_EMOJI.length)];
   const ce = pick[0]; countName = pick[1];
   document.getElementById('countQ').textContent = `有几个${countName}？`;
@@ -673,7 +733,7 @@ function startCount(){
     box.appendChild(d);
   }
   const opts = new Set([countN]);
-  while(opts.size<3){ opts.add(1+Math.floor(Math.random()*5)); }
+  while(opts.size<3){ opts.add(1+Math.floor(Math.random()*10)); }
   const arr = [...opts].sort(()=>Math.random()-.5);
   const ob = document.getElementById('countOpts');
   ob.innerHTML = '';
@@ -683,7 +743,7 @@ function startCount(){
     b.textContent = n;
     b.onclick = ()=>{
       if(n===countN){
-        document.getElementById('countFb').textContent = '⭐ 答对啦！';
+        document.getElementById('countFb').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 答对啦！';
         say('答对啦！');
         addStar();
         setTimeout(startCount, 1800);
@@ -765,18 +825,25 @@ function zooNav(d){
   openZooDetail(zooList[zooIdx], zooIdx);
 }
 
-/* ================= 主题（护眼纸质书） ================= */
-function toggleTheme(){
-  const paper = document.body.classList.toggle('paper');
-  try{ localStorage.setItem('bb_theme', paper ? 'paper' : 'color'); }catch(e){}
-  document.getElementById('themeIcon').src = paper ? 'assets/icons/theme-color.webp' : 'assets/icons/theme-paper.webp';
+/* ================= 主题：彩色 / 纸质书 / 墨水屏 ================= */
+const THEMES = ['color','paper','ink'];
+const THEME_ICON = {color:'assets/icons/theme-paper.webp',paper:'assets/icons/theme-ink.webp',ink:'assets/icons/theme-color.webp'};
+function curTheme(){
+  if(document.body.classList.contains('paper')) return 'paper';
+  if(document.body.classList.contains('ink')) return 'ink';
+  return 'color';
 }
+function applyTheme(t){
+  document.body.classList.remove('paper','ink');
+  if(t==='paper'||t==='ink') document.body.classList.add(t);
+  try{localStorage.setItem('bb_theme', t);}catch(e){}
+  document.getElementById('themeIcon').src = THEME_ICON[t];
+}
+function toggleTheme(){ applyTheme(THEMES[(THEMES.indexOf(curTheme())+1)%3]); }
 (function initTheme(){
   try{
-    if(localStorage.getItem('bb_theme') === 'paper'){
-      document.body.classList.add('paper');
-      document.getElementById('themeIcon').src = 'assets/icons/theme-color.webp';
-    }
+    const t = localStorage.getItem('bb_theme');
+    if(t==='paper'||t==='ink') applyTheme(t);
   }catch(e){}
 })();
 
