@@ -124,8 +124,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .zcard .e{font-size:52px}
 .zcard .t{font-size:15px;font-weight:800;text-align:center}
 .zcard img{width:76px;height:76px;object-fit:cover;border-radius:18px;background:#f2f2f2}
-.zoodetail img{width:220px;height:220px;object-fit:cover;border-radius:28px}
 .zcredit{text-align:center;font-size:12px;color:#a8b0c0;padding:0 16px 10px;flex-shrink:0}
+/* 首页分类图标 */
+.mcard .ico{width:92px;height:92px;border-radius:28px;object-fit:cover;box-shadow:0 8px 20px rgba(180,120,60,.18)}
+/* 主题切换 */
+#home{position:relative}
+.themebtn{position:absolute;top:calc(16px + env(safe-area-inset-top));right:16px;z-index:5;border:none;background:#fff;border-radius:999px;width:56px;height:56px;font-size:28px;box-shadow:0 6px 16px rgba(0,0,0,.1);cursor:pointer}
+/* 动物详情整页 */
+#zoodetail{background:linear-gradient(180deg,#E8F4FF 0%,#FFF7EA 100%)}
+.zdwrap{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:12px;padding:18px 20px calc(20px + env(safe-area-inset-bottom))}
+.zdimg img{width:min(76vw,330px);height:min(76vw,330px);object-fit:cover;border-radius:32px;box-shadow:0 14px 36px rgba(90,140,200,.28);background:#fff}
+.zdimg .bigemoji{font-size:140px;line-height:1.25}
+.zdcat{font-size:15px;font-weight:800;color:#fff;background:#8bc34a;border-radius:999px;padding:8px 22px}
+.zdcall{font-size:24px;font-weight:800;color:#3a2e2e}
+.zdfact{font-size:19px;line-height:1.8;color:#5d4e42;text-align:center;background:#fff;border-radius:22px;padding:18px 22px;max-width:360px;box-shadow:0 8px 20px rgba(90,140,200,.12);margin:0}
+/* 护眼纸质书主题 */
+body.paper{background:#e7dcc3}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail{background:linear-gradient(180deg,#FAF5E6 0%,#F1E7CC 100%)}
+body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdfact,body.paper .carousel{background:#FFFDF2;box-shadow:0 8px 22px rgba(130,105,60,.14)}
+body.paper .hero h1{color:#6b5636}
+body.paper .hero p{color:#97816a}
+body.paper .toptitle{color:#6b5636}
+body.paper .themebtn,body.paper .starpill,body.paper .ztab{background:#FFFDF2;color:#8a6d4d}
+body.paper .ztab.on{background:#b89b5e;color:#fff}
+body.paper .zdcat{background:#a5b96a}
+body.paper .zdcall{color:#4a3a28}
+body.paper .zdfact{color:#5d4e37}
+body.paper .zoocount,body.paper .zcredit{color:#a08c6d}
+body.paper .mcard .d{color:#a08c6d}
+body.paper #reader{background:#F6EFDC;color:#4a3a28}
+body.paper #reader .topbar .toptitle{color:#6b5636}
+body.paper #reader .backbtn,body.paper #reader .starpill{background:#FFFDF2;color:#6b5636;box-shadow:0 4px 10px rgba(130,105,60,.14)}
+body.paper .rstars{display:none}
+body.paper .rtext{color:#4a3a28;text-shadow:none;font-family:Georgia,'Songti SC','SimSun',serif}
+body.paper .remoji{filter:drop-shadow(0 10px 22px rgba(120,90,40,.25))}
+body.paper .rbtn{background:#FFFDF2;color:#6b5636;box-shadow:0 4px 10px rgba(130,105,60,.14)}
+body.paper .rbtn.main{background:linear-gradient(135deg,#c9a86a,#a8814f);color:#fff}
+body.paper .rtip{background:rgba(180,150,100,.14);color:#6b5636}
 /* 弹窗 */
 .modal{position:fixed;inset:0;background:rgba(40,25,15,.5);display:none;align-items:center;justify-content:center;z-index:50;padding:30px}
 .modal.show{display:flex}
@@ -142,6 +177,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 
   <!-- 首页 -->
   <section id="home" class="screen active">
+    <button class="themebtn" id="themeBtn" onclick="toggleTheme()" title="切换主题">📄</button>
     <div class="hero">
       <h1>🌙 宝宝的乐园</h1>
       <p>点一点，就有好玩的事情发生</p>
@@ -152,19 +188,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
         <div class="d">认识小动物<br>听听它们怎么叫</div>
       </div>
       <div class="mcard" onclick="go('storylist')">
-        <div class="e">📖</div><div class="t">听故事</div>
+        <img class="ico" src="assets/icons/story.webp" alt="听故事">
+        <div class="t">听故事</div>
         <div class="d">睡前小故事<br>讲完就睡觉啦</div>
       </div>
       <div class="mcard" onclick="go('coloring')">
-        <div class="e">🎨</div><div class="t">涂色</div>
+        <img class="ico" src="assets/icons/color.webp" alt="涂色">
+        <div class="t">涂色</div>
         <div class="d">选颜色，点一点<br>画出漂亮的画</div>
       </div>
       <div class="mcard" onclick="startCount()">
-        <div class="e">🔢</div><div class="t">数一数</div>
+        <img class="ico" src="assets/icons/count.webp" alt="数一数">
+        <div class="t">数一数</div>
         <div class="d">1 到 5<br>点一点，数一数</div>
       </div>
       <div class="mcard" onclick="openZoo()">
-        <div class="e">🌍</div><div class="t">动物世界</div>
+        <img class="ico" src="assets/icons/zoo.webp" alt="动物世界">
+        <div class="t">动物世界</div>
         <div class="d">1000 多种动物<br>按分类逛一逛</div>
       </div>
     </div>
@@ -281,18 +321,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
     <div class="zcredit">图片来自维基百科 / iNaturalist（CC 协议），仅供学习</div>
   </section>
 
-</div>
+  <!-- 动物详情（整页） -->
+  <section id="zoodetail" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('zoo')">‹</button>
+      <div class="toptitle" id="zdName">动物</div>
+      <div class="starpill">⭐ <span class="starN">0</span></div>
+    </div>
+    <div class="zdwrap">
+      <div class="zdimg" id="zdImg"></div>
+      <div class="zdcat" id="zdCat"></div>
+      <div class="zdcall" id="zdCall"></div>
+      <p class="zdfact" id="zdFact"></p>
+      <button class="btn blue" style="width:100%;max-width:340px" onclick="zooSpeak()">🔊 读给我听</button>
+    </div>
+  </section>
 
-<!-- 动物详情 -->
-<div class="modal" id="zooModal">
-  <div class="mbox zoodetail">
-    <div style="font-size:110px" id="zooE"></div>
-    <h2 id="zooN"></h2>
-    <p id="zooS" style="font-weight:800;color:#3a2e2e"></p>
-    <p id="zooF"></p>
-    <button class="btn blue" style="width:100%" onclick="zooSpeak()">🔊 读给我听</button>
-    <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeZoo()">关闭</button>
-  </div>
 </div>
 
 <!-- 家长门 -->
@@ -646,15 +690,31 @@ function renderZoo(){
 }
 function openZooDetail(a){
   zooCur = a;
-  document.getElementById('zooE').innerHTML = a.img ? `<img src="${a.img}" alt="${a.n}">` : a.e;
-  document.getElementById('zooN').textContent = a.n;
-  document.getElementById('zooS').textContent = `叫声：${a.s}`;
-  document.getElementById('zooF').textContent = a.f;
-  document.getElementById('zooModal').classList.add('show');
+  document.getElementById('zdName').textContent = a.n;
+  document.getElementById('zdImg').innerHTML = a.img ? `<img src="${a.img}" alt="${a.n}">` : `<div class="bigemoji">${a.e}</div>`;
+  document.getElementById('zdCat').textContent = a.c;
+  document.getElementById('zdCall').textContent = `叫声：${a.s}`;
+  document.getElementById('zdFact').textContent = a.f;
+  go('zoodetail');
   zooSpeak();
 }
-function closeZoo(){ document.getElementById('zooModal').classList.remove('show'); stopAll(); }
 function zooSpeak(){ if(zooCur) say(`${zooCur.n}。${zooCur.s}。${zooCur.f}`); }
+
+/* ================= 主题（护眼纸质书） ================= */
+function toggleTheme(){
+  const paper = document.body.classList.toggle('paper');
+  try{ localStorage.setItem('bb_theme', paper ? 'paper' : 'color'); }catch(e){}
+  document.getElementById('themeBtn').textContent = paper ? '🎨' : '📄';
+  say(paper ? '护眼模式，像在看纸质书' : '彩色模式');
+}
+(function initTheme(){
+  try{
+    if(localStorage.getItem('bb_theme') === 'paper'){
+      document.body.classList.add('paper');
+      document.getElementById('themeBtn').textContent = '🎨';
+    }
+  }catch(e){}
+})();
 
 /* ================= 故事 ================= */
 const slist = document.getElementById('slist');
