@@ -61,6 +61,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 /* 认糖果 */
 #candy{background:linear-gradient(180deg,#FFF0F5 0%,#FFF7EA 100%)}
 #candyquiz{background:linear-gradient(180deg,#FFF0F5 0%,#FFE9F2 100%)}
+#hanzi{background:linear-gradient(180deg,#FFF6E5 0%,#FFF7EA 100%)}
+#hanziquiz{background:linear-gradient(180deg,#FFF6E5 0%,#FFE9F2 100%)}
+.hzcard{min-width:100%;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:12px 30px}
+.hzimg{width:min(290px,64vw);height:min(290px,64vw);object-fit:cover;border-radius:32px;box-shadow:0 14px 34px rgba(180,120,60,.22);background:#fff;cursor:pointer}
+.hzmain{display:flex;flex-direction:column;align-items:center;line-height:1}
+.hzpy{font-size:24px;font-weight:800;color:#E8862E;letter-spacing:3px}
+.hzchar{font-size:96px;font-weight:900;color:#3a2e2e;line-height:1.08}
+.hzword{font-size:22px;font-weight:800;color:#7A5C2E;background:#fff;padding:8px 26px;border-radius:999px;box-shadow:0 4px 10px rgba(0,0,0,.07)}
+.hztip{font-size:16px;color:#8a97ad;text-align:center;line-height:1.6;max-width:430px}
+.hzopts{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:16px 22px;align-content:center}
+.hzopt{background:#fff;border:none;border-radius:28px;min-height:132px;font-size:64px;font-weight:900;color:#3a2e2e;cursor:pointer;box-shadow:0 10px 24px rgba(90,140,200,.15)}
+.hzopt:active{transform:scale(.94)}
+.hzopt.ok{outline:5px solid #8bc34a}
 .candygrid{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:30px 6px;padding:24px 12px;overflow-y:auto;align-content:start}
 .candyitem{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;background:none;border:none;padding:0}
 .candyitem:active{transform:scale(.95)}
@@ -148,8 +161,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .micbtn img{width:32px;height:32px}
 .micbtn:active{transform:scale(.92)}
 .sitem .cov{width:64px;height:64px;border-radius:18px;object-fit:cover;flex-shrink:0;box-shadow:0 4px 12px rgba(120,100,180,.16)}
-.zdnav{display:flex;gap:12px;width:100%;max-width:340px}
-.zdnav .btn{flex:1;min-height:56px;font-size:18px;padding:0 8px}
 .modules{flex:1;display:grid;gap:18px;padding:22px 24px;align-content:start;overflow-y:auto}
 @media(min-width:700px){.modules{grid-template-columns:repeat(3,1fr);align-content:center}}
 .mcard{background:#fff;border-radius:30px;padding:30px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;box-shadow:0 10px 28px rgba(180,120,60,.16);border:3px solid transparent;transition:transform .15s,border-color .15s;min-height:230px;justify-content:center}
@@ -221,8 +232,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .cptab{border:none;background:#fff;border-radius:999px;padding:12px 26px;font-size:18px;font-weight:800;color:#8a6d5d;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.07)}
 .cptab.on{background:linear-gradient(135deg,#FF9A3D,#FF6B6B);color:#fff}
 .cwrap{flex:1;display:flex;align-items:center;justify-content:center;padding:8px;min-height:0}
-.cwrap svg{width:min(78vw,380px);height:min(78vw,380px);background:#fff;border-radius:28px;box-shadow:0 10px 26px rgba(200,120,140,.16)}
-.cwrap svg [data-r]{cursor:pointer;stroke:#b9a89a;stroke-width:3;transition:fill .2s}
+.cwrap svg{width:min(90vw,410px);height:min(90vw,410px);touch-action:manipulation;background:#fff;border-radius:28px;box-shadow:0 10px 26px rgba(200,120,140,.16)}
+.cwrap svg g[data-r]{cursor:pointer;transform-box:fill-box;transform-origin:center}
+.cwrap svg g.pop{animation:cpop .28s ease}
+@keyframes cpop{40%{transform:scale(1.06)}}
+#cpages{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:6px 12px;scrollbar-width:none}
+#cpages::-webkit-scrollbar{display:none}
+#cpages .cptab{flex-shrink:0}
+#stuTabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}
+#stuTabs::-webkit-scrollbar{display:none}
+#stuTabs .cptab{flex-shrink:0}
+.ctools{display:flex;justify-content:center;gap:12px;padding:4px 0 0}
+.ctool{border:none;background:#fff;border-radius:999px;padding:10px 22px;font-size:16px;font-weight:800;color:#8a6d5d;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.07)}
+.ctool.on{background:#FFD93D;color:#7a5b12}
 .palette{display:flex;justify-content:center;gap:12px;padding:10px;flex-wrap:wrap}
 .sw{width:56px;height:56px;border-radius:50%;cursor:pointer;border:4px solid transparent;box-shadow:0 4px 10px rgba(0,0,0,.12);transition:transform .12s}
 .sw.on{border-color:#fff;transform:scale(1.18);box-shadow:0 0 0 3px #FF9A3D,0 4px 10px rgba(0,0,0,.15)}
@@ -259,6 +281,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .themebtn{position:static;border:none;background:#fff;border-radius:999px;width:56px;height:56px;font-size:28px;box-shadow:0 6px 16px rgba(0,0,0,.1);cursor:pointer;flex-shrink:0}
 /* 动物详情整页：照片卡 + 信息卡 + 小知识卡，分区明确 */
 #zoodetail{background:linear-gradient(180deg,#E8F4FF 0%,#FFF7EA 100%)}
+.zdcard{min-width:100%;scroll-snap-align:center;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 20px calc(20px + env(safe-area-inset-bottom))}
 .zdwrap{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;gap:14px;padding:18px 20px calc(20px + env(safe-area-inset-bottom))}
 .zdphoto{background:#fff;padding:10px;border-radius:26px;box-shadow:0 14px 36px rgba(90,140,200,.22);width:min(84vw,360px)}
 .zdphoto img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:18px;display:block;background:#f4f8fc}
@@ -281,7 +304,7 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
@@ -313,7 +336,7 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
@@ -384,6 +407,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appicon" onclick="go('shapes')"><img src="assets/icons/shapes.webp" alt="认形状"><span>认形状</span></div>
       <div class="appicon" onclick="go('colors')"><img src="assets/icons/colors.webp" alt="认颜色"><span>认颜色</span></div>
       <div class="appicon" onclick="go('candy')"><img src="assets/icons/candy.webp" alt="认糖果"><span>认糖果</span></div>
+      <div class="appicon" onclick="go('hanzi')"><img src="assets/icons/hanzi.webp" alt="认汉字"><span>认汉字</span></div>
       <div class="appicon" onclick="openHabits()"><img src="assets/icons/habits.webp" alt="好习惯"><span>好习惯</span></div>
       <div class="appicon" onclick="openStudioHome()"><img src="assets/icons/mic.webp" alt="录音棚"><span>录音棚</span></div>
       <div class="appicon" onclick="startPuzzle()"><img src="assets/icons/puzzle.webp" alt="拼图"><span>拼图</span></div>
@@ -467,6 +491,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <div class="cpages" id="cpages"></div>
     <div class="cwrap"><svg id="csvg" viewBox="0 0 340 340"></svg></div>
+    <div class="ctools"><button class="ctool" id="cEraserBtn">橡皮擦</button><button class="ctool" id="cResetBtn">重新涂</button></div>
     <div class="cdone" id="cdone"></div>
     <div class="palette" id="palette"></div>
     <div style="height:calc(10px + env(safe-area-inset-bottom))"></div>
@@ -566,6 +591,36 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     <div class="countfb" id="candyFb"></div>
   </section>
 
+
+  <!-- 认汉字 -->
+  <section id="hanzi" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">认汉字</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="carousel" id="hzcar"></div>
+    <div class="acount" id="hzcount">1 / 60</div>
+    <div class="abtns">
+      <button class="btn primary" onclick="startHanziQuiz()"><img class="btnico" src="assets/icons/trophy.webp" alt="">考一考：找汉字</button>
+    </div>
+  </section>
+
+  <!-- 找汉字 -->
+  <section id="hanziquiz" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('hanzi')">‹</button>
+      <div class="toptitle">找汉字</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="findq">
+      <h2 id="hzQ">哪个是…？</h2>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askHanzi()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+    </div>
+    <div class="hzopts" id="hzOpts"></div>
+    <div class="countfb" id="hzFb"></div>
+  </section>
+
   <!-- 好习惯 -->
   <section id="habits" class="screen">
     <div class="topbar">
@@ -643,23 +698,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="toptitle" id="zdName">动物</div>
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
-    <div class="zdwrap">
-      <div class="zdphoto"><div id="zdImg"></div></div>
-      <div class="zdsec">
-        <div class="zdrow"><span class="k">分类</span><span class="v" id="zdCat"></span></div>
-        <div class="zdrow"><span class="k">叫声</span><span class="v" id="zdCall"></span></div>
-        <div class="zdrow" id="zdEnRow"><span class="k">英文</span><span class="v" id="zdEn"></span><button class="enspk" onclick="speakEn()" title="读英文"><img src="assets/icons/speaker.webp" alt=""></button></div>
-      </div>
-      <div class="zdsec">
-        <h3>小知识</h3>
-        <p class="zdfact" id="zdFact"></p>
-      </div>
-      <button class="btn blue" style="width:100%;max-width:360px" onclick="zooSpeak()"><img class="btnico" src="assets/icons/speaker.webp" alt="">读给我听</button>
-      <div class="zdnav">
-        <button class="btn ghost" onclick="zooNav(-1)">‹ 上一个</button>
-        <button class="btn ghost" onclick="zooNav(1)">下一个 ›</button>
-      </div>
-    </div>
+    <div class="carousel" id="zdcar"></div>
+    <div class="acount" id="zdcount">1 / 1</div>
   </section>
 
 </div>
@@ -963,74 +1003,970 @@ const STORIES = [
     {t:'扑通！第三只跳下水。', e:'🌊', a:'assets/audio/s5_08.mp3'},
     {t:'一只、两只、三只，游呀游，真开心！', e:'🦆', a:'assets/audio/s5_09.mp3'},
   ]},
+  {title:'小熊的蜂蜜罐', parentTip:'问问她：有好东西，要和谁分享呀？', pages:[
+    {t:'森林里，住着一只小熊。', e:'🐻', a:'assets/audio/s6_00.mp3'},
+    {t:'小熊有一罐蜂蜜，金黄金黄。', e:'🍯', a:'assets/audio/s6_01.mp3'},
+    {t:'它抱着蜂蜜罐，舔一舔。', e:'🐻', a:'assets/audio/s6_02.mp3'},
+    {t:'哇，好甜好甜呀！', e:'😋', a:'assets/audio/s6_03.mp3'},
+    {t:'小兔子来了，鼻子动一动。', e:'🐰', a:'assets/audio/s6_04.mp3'},
+    {t:'小熊说：“请你吃一口！”', e:'🍯', a:'assets/audio/s6_05.mp3'},
+    {t:'小松鼠来了，眼睛亮晶晶。', e:'🐿️', a:'assets/audio/s6_06.mp3'},
+    {t:'小熊说：“也请你吃一口！”', e:'🍯', a:'assets/audio/s6_07.mp3'},
+    {t:'蜂蜜分给大家，更甜啦。', e:'❤️', a:'assets/audio/s6_08.mp3'},
+  ]},
+  {title:'小猫学钓鱼', parentTip:'问问她：做事情要怎么坐得住呀？', pages:[
+    {t:'小猫咪咪，拿着小鱼竿。', e:'🐱', a:'assets/audio/s7_00.mp3'},
+    {t:'它坐在河边，静静等鱼儿。', e:'🎣', a:'assets/audio/s7_01.mp3'},
+    {t:'蝴蝶飞来了，咪咪想去追。', e:'🦋', a:'assets/audio/s7_02.mp3'},
+    {t:'咪咪摇摇头：“我要专心。”', e:'🐱', a:'assets/audio/s7_03.mp3'},
+    {t:'鱼竿动一动，哗啦啦！', e:'💦', a:'assets/audio/s7_04.mp3'},
+    {t:'一条小鱼上钩啦！', e:'🐟', a:'assets/audio/s7_05.mp3'},
+    {t:'咪咪开心地笑：“我做到啦！”', e:'😄', a:'assets/audio/s7_06.mp3'},
+  ]},
+  {title:'小狗的骨头', parentTip:'和她一起学小狗叫：汪汪汪！', pages:[
+    {t:'小狗汪汪，鼻子灵灵的。', e:'🐶', a:'assets/audio/s8_00.mp3'},
+    {t:'它在院子里，闻呀闻。', e:'👃', a:'assets/audio/s8_01.mp3'},
+    {t:'这里刨刨，那里挖挖。', e:'🐾', a:'assets/audio/s8_02.mp3'},
+    {t:'哇，找到一根大骨头！', e:'🦴', a:'assets/audio/s8_03.mp3'},
+    {t:'汪汪叼着骨头跑回家。', e:'🐶', a:'assets/audio/s8_04.mp3'},
+    {t:'它把骨头藏进小窝里。', e:'🏠', a:'assets/audio/s8_05.mp3'},
+    {t:'汪汪做了一个香香的梦。', e:'💤', a:'assets/audio/s8_06.mp3'},
+  ]},
+  {title:'小猪盖房子', parentTip:'问问她：小猪的房子是什么做的呀？', pages:[
+    {t:'小猪噜噜，想盖个房子。', e:'🐷', a:'assets/audio/s9_00.mp3'},
+    {t:'它和了好多泥巴，啪嗒啪嗒。', e:'🟤', a:'assets/audio/s9_01.mp3'},
+    {t:'一块一块，垒起来。', e:'🧱', a:'assets/audio/s9_02.mp3'},
+    {t:'房子盖好啦，圆圆的。', e:'🏠', a:'assets/audio/s9_03.mp3'},
+    {t:'下雨啦，噜噜躲进房子里。', e:'🌧️', a:'assets/audio/s9_04.mp3'},
+    {t:'雨点敲门：咚咚咚。', e:'🚪', a:'assets/audio/s9_05.mp3'},
+    {t:'噜噜在房子里，睡得香。', e:'💤', a:'assets/audio/s9_06.mp3'},
+  ]},
+  {title:'小猴摘香蕉', parentTip:'数一数：树上有几根香蕉呀？', pages:[
+    {t:'小猴子皮皮，住在大树上。', e:'🐒', a:'assets/audio/s10_00.mp3'},
+    {t:'它看见香蕉，黄黄的。', e:'🍌', a:'assets/audio/s10_01.mp3'},
+    {t:'爬呀爬，爬到树顶上。', e:'🌳', a:'assets/audio/s10_02.mp3'},
+    {t:'伸手够一够，还差一点。', e:'🐒', a:'assets/audio/s10_03.mp3'},
+    {t:'皮皮荡起秋千，嗖——', e:'💨', a:'assets/audio/s10_04.mp3'},
+    {t:'抓到啦！一大串香蕉！', e:'🍌', a:'assets/audio/s10_05.mp3'},
+    {t:'皮皮分给猴妈妈一根。', e:'❤️', a:'assets/audio/s10_06.mp3'},
+    {t:'香蕉真好吃，啊呜啊呜。', e:'😋', a:'assets/audio/s10_07.mp3'},
+  ]},
+  {title:'小青蛙唱歌', parentTip:'和她一起唱：呱呱呱！', pages:[
+    {t:'池塘里，住着小青蛙。', e:'🐸', a:'assets/audio/s11_00.mp3'},
+    {t:'晚上，小青蛙想唱歌。', e:'🌙', a:'assets/audio/s11_01.mp3'},
+    {t:'它跳上荷叶，挺起胸脯。', e:'🍃', a:'assets/audio/s11_02.mp3'},
+    {t:'呱呱呱，呱呱呱。', e:'🎵', a:'assets/audio/s11_03.mp3'},
+    {t:'小鱼儿探出头来听。', e:'🐟', a:'assets/audio/s11_04.mp3'},
+    {t:'萤火虫提着灯笼听。', e:'✨', a:'assets/audio/s11_05.mp3'},
+    {t:'歌声停了，大家拍拍手。', e:'👏', a:'assets/audio/s11_06.mp3'},
+    {t:'小青蛙鞠个躬：“谢谢！”', e:'🐸', a:'assets/audio/s11_07.mp3'},
+  ]},
+  {title:'小乌龟慢慢走', parentTip:'问问她：慢慢走，也能到终点吗？', pages:[
+    {t:'小乌龟背着重重的壳。', e:'🐢', a:'assets/audio/s12_00.mp3'},
+    {t:'它要去山顶看彩虹。', e:'🌈', a:'assets/audio/s12_01.mp3'},
+    {t:'走呀走，慢慢走。', e:'🐢', a:'assets/audio/s12_02.mp3'},
+    {t:'小鸟飞过：“你太慢啦！”', e:'🐦', a:'assets/audio/s12_03.mp3'},
+    {t:'小乌龟笑笑：“我不停下。”', e:'😊', a:'assets/audio/s12_04.mp3'},
+    {t:'一步一步，爬上山顶。', e:'⛰️', a:'assets/audio/s12_05.mp3'},
+    {t:'哇，彩虹！好美呀！', e:'🌈', a:'assets/audio/s12_06.mp3'},
+    {t:'慢慢走，也能看到彩虹。', e:'❤️', a:'assets/audio/s12_07.mp3'},
+  ]},
+  {title:'小松鼠的松果', parentTip:'问问她：松果藏在哪里啦？', pages:[
+    {t:'秋天到了，松果熟了。', e:'🌰', a:'assets/audio/s13_00.mp3'},
+    {t:'小松鼠跳下树，捡松果。', e:'🐿️', a:'assets/audio/s13_01.mp3'},
+    {t:'一颗，两颗，三颗……', e:'🔢', a:'assets/audio/s13_02.mp3'},
+    {t:'它把松果藏进树洞里。', e:'🌳', a:'assets/audio/s13_03.mp3'},
+    {t:'一颗给妈妈，一颗给爸爸。', e:'❤️', a:'assets/audio/s13_04.mp3'},
+    {t:'剩下的，留给冬天吃。', e:'❄️', a:'assets/audio/s13_05.mp3'},
+    {t:'小松鼠抱着松果笑眯眯。', e:'😊', a:'assets/audio/s13_06.mp3'},
+  ]},
+  {title:'小刺猬背苹果', parentTip:'和她学小刺猬：滚一滚，苹果上背啦！', pages:[
+    {t:'小刺猬在果园里散步。', e:'🦔', a:'assets/audio/s14_00.mp3'},
+    {t:'苹果熟了，掉下来：咚！', e:'🍎', a:'assets/audio/s14_01.mp3'},
+    {t:'小刺猬滚一滚，滚一滚。', e:'🦔', a:'assets/audio/s14_02.mp3'},
+    {t:'苹果扎在背上啦！', e:'🍎', a:'assets/audio/s14_03.mp3'},
+    {t:'一颗，两颗，三颗苹果。', e:'🔢', a:'assets/audio/s14_04.mp3'},
+    {t:'它背着苹果，慢慢走回家。', e:'🏠', a:'assets/audio/s14_05.mp3'},
+    {t:'刺猬妈妈说：“真能干！”', e:'❤️', a:'assets/audio/s14_06.mp3'},
+  ]},
+  {title:'小蝴蝶找花', parentTip:'问问她：蝴蝶最喜欢什么颜色的花呀？', pages:[
+    {t:'小蝴蝶，穿着花衣裳。', e:'🦋', a:'assets/audio/s15_00.mp3'},
+    {t:'它飞呀飞，找最香的花。', e:'💐', a:'assets/audio/s15_01.mp3'},
+    {t:'红花说：“来我这里！”', e:'🌹', a:'assets/audio/s15_02.mp3'},
+    {t:'黄花说：“来我这里！”', e:'🌼', a:'assets/audio/s15_03.mp3'},
+    {t:'小蝴蝶闻闻这朵，闻闻那朵。', e:'🦋', a:'assets/audio/s15_04.mp3'},
+    {t:'它停在最大的花上。', e:'🌸', a:'assets/audio/s15_05.mp3'},
+    {t:'花蜜甜甜的，真幸福。', e:'😊', a:'assets/audio/s15_06.mp3'},
+  ]},
+  {title:'小蜜蜂采蜜', parentTip:'和她学蜜蜂飞：嗡嗡嗡！', pages:[
+    {t:'小蜜蜂，嗡嗡嗡。', e:'🐝', a:'assets/audio/s16_00.mp3'},
+    {t:'它飞到花园里采花蜜。', e:'🌸', a:'assets/audio/s16_01.mp3'},
+    {t:'这朵花，采一采。', e:'🌼', a:'assets/audio/s16_02.mp3'},
+    {t:'那朵花，采一采。', e:'🌹', a:'assets/audio/s16_03.mp3'},
+    {t:'小篮子装满啦，沉甸甸。', e:'🧺', a:'assets/audio/s16_04.mp3'},
+    {t:'它飞回蜂巢，酿蜂蜜。', e:'🍯', a:'assets/audio/s16_05.mp3'},
+    {t:'甜甜的蜂蜜，大家一起尝。', e:'😋', a:'assets/audio/s16_06.mp3'},
+  ]},
+  {title:'小蚂蚁搬西瓜', parentTip:'问问她：大家一起搬，力量大不大？', pages:[
+    {t:'草地上，有一块大西瓜。', e:'🍉', a:'assets/audio/s17_00.mp3'},
+    {t:'小蚂蚁看见了，想搬回家。', e:'🐜', a:'assets/audio/s17_01.mp3'},
+    {t:'它推一推，推不动。', e:'😣', a:'assets/audio/s17_02.mp3'},
+    {t:'它喊来好多好朋友。', e:'🐜🐜', a:'assets/audio/s17_03.mp3'},
+    {t:'一二三，嘿哟！一二三，嘿哟！', e:'💪', a:'assets/audio/s17_04.mp3'},
+    {t:'西瓜动起来啦，慢慢走。', e:'🍉', a:'assets/audio/s17_05.mp3'},
+    {t:'大家一起吃西瓜，真甜！', e:'😋', a:'assets/audio/s17_06.mp3'},
+  ]},
+  {title:'小鹿过河', parentTip:'问问她：小鹿是怎么过河的呀？', pages:[
+    {t:'小鹿跳跳，想去河对岸。', e:'🦌', a:'assets/audio/s18_00.mp3'},
+    {t:'河水哗哗流，跳跳有点怕。', e:'💦', a:'assets/audio/s18_01.mp3'},
+    {t:'它看见一排小石头。', e:'🪨', a:'assets/audio/s18_02.mp3'},
+    {t:'踩一块，稳稳的。', e:'🦌', a:'assets/audio/s18_03.mp3'},
+    {t:'再踩一块，慢慢来。', e:'🐾', a:'assets/audio/s18_04.mp3'},
+    {t:'跳一跳，跳过最后一块！', e:'✨', a:'assets/audio/s18_05.mp3'},
+    {t:'跳跳过河啦，它回头笑。', e:'😄', a:'assets/audio/s18_06.mp3'},
+  ]},
+  {title:'小老鼠的奶酪', parentTip:'和她学小老鼠：吱吱吱！', pages:[
+    {t:'小老鼠灰灰，肚子咕咕叫。', e:'🐭', a:'assets/audio/s19_00.mp3'},
+    {t:'它闻到香香的味道。', e:'👃', a:'assets/audio/s19_01.mp3'},
+    {t:'爬上柜子，东找找西找找。', e:'🐾', a:'assets/audio/s19_02.mp3'},
+    {t:'哇，一大块黄奶酪！', e:'🧀', a:'assets/audio/s19_03.mp3'},
+    {t:'灰灰抱住奶酪，咬一口。', e:'😋', a:'assets/audio/s19_04.mp3'},
+    {t:'它留了一半给妹妹。', e:'❤️', a:'assets/audio/s19_05.mp3'},
+    {t:'两个小老鼠，吃得肚子圆。', e:'🐭', a:'assets/audio/s19_06.mp3'},
+  ]},
+  {title:'小企鹅不怕冷', parentTip:'问问她：企鹅宝宝冷的时候怎么办呀？', pages:[
+    {t:'南极好冷好冷，风呼呼吹。', e:'❄️', a:'assets/audio/s20_00.mp3'},
+    {t:'小企鹅摇摇摆摆走路。', e:'🐧', a:'assets/audio/s20_01.mp3'},
+    {t:'它滑下雪坡，哧溜——', e:'🛷', a:'assets/audio/s20_02.mp3'},
+    {t:'冷的时候，大家抱一抱。', e:'🤗', a:'assets/audio/s20_03.mp3'},
+    {t:'你靠着我，我靠着你。', e:'🐧🐧', a:'assets/audio/s20_04.mp3'},
+    {t:'抱在一起，一点都不冷。', e:'❤️', a:'assets/audio/s20_05.mp3'},
+    {t:'小企鹅在雪地上睡着了。', e:'💤', a:'assets/audio/s20_06.mp3'},
+  ]},
+  {title:'长颈鹿的围巾', parentTip:'问问她：围巾是谁织的呀？', pages:[
+    {t:'长颈鹿的脖子长长的。', e:'🦒', a:'assets/audio/s21_00.mp3'},
+    {t:'冬天到了，脖子好冷呀。', e:'❄️', a:'assets/audio/s21_01.mp3'},
+    {t:'猴妈妈织了一条围巾。', e:'🧣', a:'assets/audio/s21_02.mp3'},
+    {t:'围巾长长的，红红的。', e:'🧣', a:'assets/audio/s21_03.mp3'},
+    {t:'围一圈，又围一圈。', e:'🦒', a:'assets/audio/s21_04.mp3'},
+    {t:'长颈鹿说：“暖和多啦！”', e:'😊', a:'assets/audio/s21_05.mp3'},
+    {t:'它低下头，让小鸟站一站。', e:'🐦', a:'assets/audio/s21_06.mp3'},
+  ]},
+  {title:'小河马刷牙', parentTip:'和她一起念：刷牙刷干净，张嘴啊——', pages:[
+    {t:'小河马的嘴巴大大的。', e:'🦛', a:'assets/audio/s22_00.mp3'},
+    {t:'它张开嘴：啊——', e:'😲', a:'assets/audio/s22_01.mp3'},
+    {t:'牙医说：“牙齿要刷干净。”', e:'🪥', a:'assets/audio/s22_02.mp3'},
+    {t:'拿起大牙刷，刷刷刷。', e:'✨', a:'assets/audio/s22_03.mp3'},
+    {t:'上面刷，下面刷，里面刷。', e:'🪥', a:'assets/audio/s22_04.mp3'},
+    {t:'泡泡飞出来，好多泡泡。', e:'🫧', a:'assets/audio/s22_05.mp3'},
+    {t:'小河马的牙齿，白白的。', e:'😁', a:'assets/audio/s22_06.mp3'},
+  ]},
+  {title:'小袋鼠的口袋', parentTip:'问问她：袋鼠口袋里装了什么呀？', pages:[
+    {t:'袋鼠妈妈有个大口袋。', e:'🦘', a:'assets/audio/s23_00.mp3'},
+    {t:'口袋里，住着袋鼠宝宝。', e:'👶', a:'assets/audio/s23_01.mp3'},
+    {t:'宝宝探出头，看一看。', e:'👀', a:'assets/audio/s23_02.mp3'},
+    {t:'看见蝴蝶，笑一笑。', e:'🦋', a:'assets/audio/s23_03.mp3'},
+    {t:'累了，就缩进口袋里。', e:'🦘', a:'assets/audio/s23_04.mp3'},
+    {t:'口袋里暖暖的，香香的。', e:'❤️', a:'assets/audio/s23_05.mp3'},
+    {t:'宝宝在口袋里睡着啦。', e:'💤', a:'assets/audio/s23_06.mp3'},
+  ]},
+  {title:'小猫头鹰的夜晚', parentTip:'问问她：猫头鹰为什么白天睡觉呀？', pages:[
+    {t:'小猫头鹰，白天睡大觉。', e:'🦉', a:'assets/audio/s24_00.mp3'},
+    {t:'天黑了，它睁开大眼睛。', e:'👀', a:'assets/audio/s24_01.mp3'},
+    {t:'月亮出来了，星星眨眼。', e:'✨', a:'assets/audio/s24_02.mp3'},
+    {t:'它飞到树枝上，看一看。', e:'🌳', a:'assets/audio/s24_03.mp3'},
+    {t:'田野静悄悄，虫儿轻轻叫。', e:'🌙', a:'assets/audio/s24_04.mp3'},
+    {t:'小猫头鹰守着夜晚。', e:'🦉', a:'assets/audio/s24_05.mp3'},
+    {t:'天快亮了，它说：“晚安。”', e:'💤', a:'assets/audio/s24_06.mp3'},
+  ]},
+  {title:'宝宝自己吃饭', parentTip:'问问她：你会自己吃饭吗？真棒！', pages:[
+    {t:'吃饭时间到，宝宝坐好啦。', e:'🍚', a:'assets/audio/s25_00.mp3'},
+    {t:'小手拿起小勺子。', e:'🥄', a:'assets/audio/s25_01.mp3'},
+    {t:'舀一勺米饭，啊呜一口。', e:'😋', a:'assets/audio/s25_02.mp3'},
+    {t:'舀一勺青菜，啊呜一口。', e:'🥬', a:'assets/audio/s25_03.mp3'},
+    {t:'一颗饭粒掉桌上，捡起来。', e:'🍚', a:'assets/audio/s25_04.mp3'},
+    {t:'宝宝把饭吃得干干净净。', e:'✨', a:'assets/audio/s25_05.mp3'},
+    {t:'妈妈说：“宝宝真能干！”', e:'👍', a:'assets/audio/s25_06.mp3'},
+  ]},
+  {title:'刷牙小超人', parentTip:'和她一起：刷刷刷，把牙虫赶跑！', pages:[
+    {t:'晚上到，刷牙时间到。', e:'🌙', a:'assets/audio/s26_00.mp3'},
+    {t:'挤一点牙膏，小小的。', e:'🪥', a:'assets/audio/s26_01.mp3'},
+    {t:'上刷刷，下刷刷，左刷刷。', e:'✨', a:'assets/audio/s26_02.mp3'},
+    {t:'牙虫说：“哎呀，我搬家啦！”', e:'🦷', a:'assets/audio/s26_03.mp3'},
+    {t:'咕噜咕噜，吐泡泡。', e:'🫧', a:'assets/audio/s26_04.mp3'},
+    {t:'照照镜子，牙齿亮晶晶。', e:'😁', a:'assets/audio/s26_05.mp3'},
+    {t:'刷牙小超人，睡觉啦。', e:'💤', a:'assets/audio/s26_06.mp3'},
+  ]},
+  {title:'洗手歌', parentTip:'和她一起唱洗手歌，搓泡泡！', pages:[
+    {t:'玩好玩具，洗洗小手。', e:'🧸', a:'assets/audio/s27_00.mp3'},
+    {t:'打开水龙头，哗啦啦。', e:'🚰', a:'assets/audio/s27_01.mp3'},
+    {t:'抹上香皂，搓泡泡。', e:'🫧', a:'assets/audio/s27_02.mp3'},
+    {t:'手心搓，手背搓，指缝搓。', e:'🙌', a:'assets/audio/s27_03.mp3'},
+    {t:'泡泡冲干净，小手香香。', e:'✨', a:'assets/audio/s27_04.mp3'},
+    {t:'擦干小手，可以吃点心啦。', e:'🍪', a:'assets/audio/s27_05.mp3'},
+  ]},
+  {title:'自己穿衣服', parentTip:'问问她：你会自己穿哪件衣服呀？', pages:[
+    {t:'早上起床，穿衣服啦。', e:'🌞', a:'assets/audio/s28_00.mp3'},
+    {t:'宝宝拿起小毛衣。', e:'👕', a:'assets/audio/s28_01.mp3'},
+    {t:'钻呀钻，头出来啦！', e:'😄', a:'assets/audio/s28_02.mp3'},
+    {t:'伸左手，伸右手，都出来啦。', e:'🙌', a:'assets/audio/s28_03.mp3'},
+    {t:'拉一拉，整整齐齐。', e:'✨', a:'assets/audio/s28_04.mp3'},
+    {t:'宝宝照镜子：“我穿好啦！”', e:'🪞', a:'assets/audio/s28_05.mp3'},
+    {t:'奶奶拍拍手：“真棒！”', e:'👏', a:'assets/audio/s28_06.mp3'},
+  ]},
+  {title:'收拾玩具啦', parentTip:'问问她：玩具的家在哪里呀？', pages:[
+    {t:'玩好啦，玩具要回家。', e:'🧸', a:'assets/audio/s29_00.mp3'},
+    {t:'积木回家，进盒子。', e:'📦', a:'assets/audio/s29_01.mp3'},
+    {t:'小汽车回家，进车库。', e:'🚗', a:'assets/audio/s29_02.mp3'},
+    {t:'娃娃回家，躺床上。', e:'🛏️', a:'assets/audio/s29_03.mp3'},
+    {t:'地板上干干净净。', e:'✨', a:'assets/audio/s29_04.mp3'},
+    {t:'宝宝拍拍手：“收拾好啦！”', e:'👏', a:'assets/audio/s29_05.mp3'},
+    {t:'玩具们在盒子里说晚安。', e:'💤', a:'assets/audio/s29_06.mp3'},
+  ]},
+  {title:'睡觉时间到', parentTip:'问问她：睡觉前，我们要做哪几件事呀？', pages:[
+    {t:'天黑了，星星出来了。', e:'✨', a:'assets/audio/s30_00.mp3'},
+    {t:'宝宝换上睡衣，软软的。', e:'👕', a:'assets/audio/s30_01.mp3'},
+    {t:'刷刷牙，洗洗脸。', e:'🪥', a:'assets/audio/s30_02.mp3'},
+    {t:'爬上小床，盖好被子。', e:'🛏️', a:'assets/audio/s30_03.mp3'},
+    {t:'抱着小熊，听个故事。', e:'🧸', a:'assets/audio/s30_04.mp3'},
+    {t:'眼睛闭上，呼——呼——', e:'😴', a:'assets/audio/s30_05.mp3'},
+    {t:'晚安，宝宝，做个好梦。', e:'💤', a:'assets/audio/s30_06.mp3'},
+  ]},
+  {title:'剪指甲不怕', parentTip:'问问她：指甲长长了，要怎么办呀？', pages:[
+    {t:'指甲长长了，像小钩子。', e:'💅', a:'assets/audio/s31_00.mp3'},
+    {t:'妈妈拿来指甲剪。', e:'✂️', a:'assets/audio/s31_01.mp3'},
+    {t:'宝宝伸出手，不乱动。', e:'🖐️', a:'assets/audio/s31_02.mp3'},
+    {t:'咔嚓，咔嚓，一只手指好啦。', e:'✨', a:'assets/audio/s31_03.mp3'},
+    {t:'咔嚓，咔嚓，十只都好啦。', e:'🙌', a:'assets/audio/s31_04.mp3'},
+    {t:'指甲短短的，干干净净。', e:'😊', a:'assets/audio/s31_05.mp3'},
+    {t:'宝宝说：“一点都不疼！”', e:'👍', a:'assets/audio/s31_06.mp3'},
+  ]},
+  {title:'宝宝喝水啦', parentTip:'和她一起：咕咚咕咚，喝水啦！', pages:[
+    {t:'玩得满头汗，口渴啦。', e:'😅', a:'assets/audio/s32_00.mp3'},
+    {t:'宝宝拿起小水杯。', e:'🥤', a:'assets/audio/s32_01.mp3'},
+    {t:'咕咚，咕咚，喝一口。', e:'💧', a:'assets/audio/s32_02.mp3'},
+    {t:'再喝一口，咕咚咕咚。', e:'💧', a:'assets/audio/s32_03.mp3'},
+    {t:'水喝够了，肚子圆圆的。', e:'😊', a:'assets/audio/s32_04.mp3'},
+    {t:'宝宝说：“还要跑一跑！”', e:'🏃', a:'assets/audio/s32_05.mp3'},
+    {t:'喝水长大个，身体棒棒。', e:'💪', a:'assets/audio/s32_06.mp3'},
+  ]},
+  {title:'穿鞋小能手', parentTip:'问问她：左脚的鞋，穿在哪只脚上呀？', pages:[
+    {t:'出门啦，宝宝穿鞋子。', e:'👟', a:'assets/audio/s33_00.mp3'},
+    {t:'左脚伸进左鞋，哎呀不对。', e:'🤔', a:'assets/audio/s33_01.mp3'},
+    {t:'换一换，右脚伸进右鞋。', e:'👟', a:'assets/audio/s33_02.mp3'},
+    {t:'粘上粘扣，啪嗒一声。', e:'✨', a:'assets/audio/s33_03.mp3'},
+    {t:'站起来，跺跺脚。', e:'👣', a:'assets/audio/s33_04.mp3'},
+    {t:'宝宝说：“我自己穿好啦！”', e:'😄', a:'assets/audio/s33_05.mp3'},
+    {t:'穿对鞋子，走路稳稳的。', e:'👍', a:'assets/audio/s33_06.mp3'},
+  ]},
+  {title:'叠被子的小能手', parentTip:'和她一起：拉一拉，折一折，被子变方啦！', pages:[
+    {t:'起床啦，先叠被子。', e:'🌞', a:'assets/audio/s34_00.mp3'},
+    {t:'拉一拉这边，平平的。', e:'🛏️', a:'assets/audio/s34_01.mp3'},
+    {t:'折一折那边，方方的。', e:'✨', a:'assets/audio/s34_02.mp3'},
+    {t:'小手拍一拍，整整齐齐。', e:'👏', a:'assets/audio/s34_03.mp3'},
+    {t:'枕头放上面，摆摆好。', e:'😊', a:'assets/audio/s34_04.mp3'},
+    {t:'小床变得干干净净。', e:'🛏️', a:'assets/audio/s34_05.mp3'},
+    {t:'妈妈说：“小能手，真棒！”', e:'👍', a:'assets/audio/s34_06.mp3'},
+  ]},
+  {title:'垃圾要回家', parentTip:'问问她：香蕉皮应该扔到哪里呀？', pages:[
+    {t:'宝宝吃香蕉，剩下香蕉皮。', e:'🍌', a:'assets/audio/s35_00.mp3'},
+    {t:'香蕉皮不能乱扔哦。', e:'❌', a:'assets/audio/s35_01.mp3'},
+    {t:'宝宝拿着它，找垃圾桶。', e:'🗑️', a:'assets/audio/s35_02.mp3'},
+    {t:'垃圾桶张开大嘴巴。', e:'😲', a:'assets/audio/s35_03.mp3'},
+    {t:'扑通，香蕉皮回家啦。', e:'✨', a:'assets/audio/s35_04.mp3'},
+    {t:'地面干干净净，真舒服。', e:'🌳', a:'assets/audio/s35_05.mp3'},
+    {t:'小鸟说：“谢谢爱干净的宝宝！”', e:'🐦', a:'assets/audio/s35_06.mp3'},
+  ]},
+  {title:'红绿灯前停一停', parentTip:'和她一起念：红灯停，绿灯行！', pages:[
+    {t:'过马路，牵好妈妈的手。', e:'🤝', a:'assets/audio/s36_00.mp3'},
+    {t:'红灯亮了，停一停。', e:'🔴', a:'assets/audio/s36_01.mp3'},
+    {t:'汽车跑过去，嗖嗖嗖。', e:'🚗', a:'assets/audio/s36_02.mp3'},
+    {t:'绿灯亮了，看一看。', e:'🟢', a:'assets/audio/s36_03.mp3'},
+    {t:'左边看看，右边看看。', e:'👀', a:'assets/audio/s36_04.mp3'},
+    {t:'没有车，走过去。', e:'🚶', a:'assets/audio/s36_05.mp3'},
+    {t:'宝宝说：“我会过马路啦！”', e:'👍', a:'assets/audio/s36_06.mp3'},
+  ]},
+  {title:'排队滑滑梯', parentTip:'问问她：玩滑梯的时候，要怎么做呀？', pages:[
+    {t:'公园里，有大滑梯。', e:'🛝', a:'assets/audio/s37_00.mp3'},
+    {t:'好多小朋友都想玩。', e:'👧👦', a:'assets/audio/s37_01.mp3'},
+    {t:'宝宝排在小明的后面。', e:'🚶', a:'assets/audio/s37_02.mp3'},
+    {t:'一个滑下去，轮到下一个。', e:'🛝', a:'assets/audio/s37_03.mp3'},
+    {t:'轮到宝宝啦，坐稳啦。', e:'😄', a:'assets/audio/s37_04.mp3'},
+    {t:'哧溜——滑下去啦！', e:'💨', a:'assets/audio/s37_05.mp3'},
+    {t:'排队玩，大家都开心。', e:'❤️', a:'assets/audio/s37_06.mp3'},
+  ]},
+  {title:'会说谢谢的小嘴巴', parentTip:'问问她：别人帮了我们，要说什么呀？', pages:[
+    {t:'阿姨递给宝宝一个苹果。', e:'🍎', a:'assets/audio/s38_00.mp3'},
+    {t:'宝宝双手接过来。', e:'🙌', a:'assets/audio/s38_01.mp3'},
+    {t:'宝宝笑眯眯：“谢谢阿姨！”', e:'😊', a:'assets/audio/s38_02.mp3'},
+    {t:'阿姨的眼睛笑弯了。', e:'😄', a:'assets/audio/s38_03.mp3'},
+    {t:'公交车上，爷爷让座。', e:'🚌', a:'assets/audio/s38_04.mp3'},
+    {t:'宝宝说：“谢谢爷爷！”', e:'❤️', a:'assets/audio/s38_05.mp3'},
+    {t:'会说谢谢的嘴巴，真甜。', e:'🍬', a:'assets/audio/s38_06.mp3'},
+  ]},
+  {title:'分享饼干', parentTip:'问问她：饼干分给好朋友，心里甜不甜呀？', pages:[
+    {t:'妈妈烤了香香的饼干。', e:'🍪', a:'assets/audio/s39_00.mp3'},
+    {t:'宝宝拿起一块，咬一口。', e:'😋', a:'assets/audio/s39_01.mp3'},
+    {t:'好朋友乐乐看着她。', e:'👀', a:'assets/audio/s39_02.mp3'},
+    {t:'宝宝递过去：“给你一块！”', e:'🍪', a:'assets/audio/s39_03.mp3'},
+    {t:'乐乐说：“谢谢你！”', e:'😊', a:'assets/audio/s39_04.mp3'},
+    {t:'两个人一起吃，咔嚓咔嚓。', e:'🍪', a:'assets/audio/s39_05.mp3'},
+    {t:'分享的饼干，格外香。', e:'❤️', a:'assets/audio/s39_06.mp3'},
+  ]},
+  {title:'宝宝坐便盆', parentTip:'问问她：想尿尿的时候，要告诉谁呀？', pages:[
+    {t:'宝宝的肚子咕噜噜。', e:'🤔', a:'assets/audio/s40_00.mp3'},
+    {t:'“妈妈，我想尿尿！”', e:'📣', a:'assets/audio/s40_01.mp3'},
+    {t:'宝宝跑向小便盆。', e:'🏃', a:'assets/audio/s40_02.mp3'},
+    {t:'脱下裤子，坐好啦。', e:'✨', a:'assets/audio/s40_03.mp3'},
+    {t:'等一等，哗啦啦。', e:'💧', a:'assets/audio/s40_04.mp3'},
+    {t:'冲一冲，洗洗手。', e:'🙌', a:'assets/audio/s40_05.mp3'},
+    {t:'宝宝说：“我长大啦！”', e:'👍', a:'assets/audio/s40_06.mp3'},
+  ]},
+  {title:'理发不可怕', parentTip:'和她学理发师：咔嚓咔嚓，头发变短啦！', pages:[
+    {t:'头发长长了，遮住眼睛啦。', e:'💇', a:'assets/audio/s41_00.mp3'},
+    {t:'宝宝坐上理发椅。', e:'💺', a:'assets/audio/s41_01.mp3'},
+    {t:'围上围布，像个小超人。', e:'🦸', a:'assets/audio/s41_02.mp3'},
+    {t:'咔嚓咔嚓，头发落下来。', e:'✂️', a:'assets/audio/s41_03.mp3'},
+    {t:'痒痒的，宝宝咯咯笑。', e:'😄', a:'assets/audio/s41_04.mp3'},
+    {t:'照照镜子，精神多啦！', e:'🪞', a:'assets/audio/s41_05.mp3'},
+    {t:'宝宝说：“理发一点都不可怕！”', e:'👍', a:'assets/audio/s41_06.mp3'},
+  ]},
+  {title:'看医生不害怕', parentTip:'问问她：医生阿姨的听诊器，是做什么的呀？', pages:[
+    {t:'宝宝有点咳嗽，咳咳咳。', e:'🤧', a:'assets/audio/s42_00.mp3'},
+    {t:'妈妈带宝宝去看医生。', e:'🏥', a:'assets/audio/s42_01.mp3'},
+    {t:'医生阿姨笑眯眯：“张嘴，啊——”', e:'😲', a:'assets/audio/s42_02.mp3'},
+    {t:'听诊器凉凉的，贴在胸口。', e:'🩺', a:'assets/audio/s42_03.mp3'},
+    {t:'“心跳咚咚，身体棒棒！”', e:'💪', a:'assets/audio/s42_04.mp3'},
+    {t:'喝几天药，多喝水。', e:'💊', a:'assets/audio/s42_05.mp3'},
+    {t:'宝宝说：“谢谢医生阿姨！”', e:'❤️', a:'assets/audio/s42_06.mp3'},
+  ]},
+  {title:'自己吃饭不挑嘴', parentTip:'问问她：青菜和胡萝卜，哪个是你的好朋友呀？', pages:[
+    {t:'今天的菜，五颜六色。', e:'🥗', a:'assets/audio/s43_00.mp3'},
+    {t:'红红的胡萝卜，脆脆的。', e:'🥕', a:'assets/audio/s43_01.mp3'},
+    {t:'绿绿的青菜，香香的。', e:'🥬', a:'assets/audio/s43_02.mp3'},
+    {t:'黄黄的玉米，甜甜的。', e:'🌽', a:'assets/audio/s43_03.mp3'},
+    {t:'宝宝每样都尝一口。', e:'😋', a:'assets/audio/s43_04.mp3'},
+    {t:'不挑食，长得高。', e:'💪', a:'assets/audio/s43_05.mp3'},
+    {t:'妈妈竖起大拇指：“真棒！”', e:'👍', a:'assets/audio/s43_06.mp3'},
+  ]},
+  {title:'春天的种子', parentTip:'问问她：种子长大需要什么呀？', pages:[
+    {t:'春天来了，宝宝种下一颗种子。', e:'🌱', a:'assets/audio/s44_00.mp3'},
+    {t:'挖一个小坑，放进去。', e:'🕳️', a:'assets/audio/s44_01.mp3'},
+    {t:'盖上土，浇浇水。', e:'💧', a:'assets/audio/s44_02.mp3'},
+    {t:'太阳公公照一照。', e:'☀️', a:'assets/audio/s44_03.mp3'},
+    {t:'等呀等，芽芽冒出来啦！', e:'🌱', a:'assets/audio/s44_04.mp3'},
+    {t:'叶子长大啦，绿绿的。', e:'🍃', a:'assets/audio/s44_05.mp3'},
+    {t:'开出一朵小花，香香的。', e:'🌸', a:'assets/audio/s44_06.mp3'},
+  ]},
+  {title:'夏天的西瓜', parentTip:'和她一起：咔嚓！西瓜切开啦！', pages:[
+    {t:'夏天好热呀，知了在叫。', e:'🌞', a:'assets/audio/s45_00.mp3'},
+    {t:'爸爸抱回一个大西瓜。', e:'🍉', a:'assets/audio/s45_01.mp3'},
+    {t:'敲一敲，咚咚响，熟啦！', e:'✊', a:'assets/audio/s45_02.mp3'},
+    {t:'咔嚓一刀，西瓜开啦。', e:'🔪', a:'assets/audio/s45_03.mp3'},
+    {t:'红红的瓤，黑黑的籽。', e:'🍉', a:'assets/audio/s45_04.mp3'},
+    {t:'宝宝咬一口，甜到心里。', e:'😋', a:'assets/audio/s45_05.mp3'},
+    {t:'吃西瓜的夏天，真凉快。', e:'🍃', a:'assets/audio/s45_06.mp3'},
+  ]},
+  {title:'秋天的落叶', parentTip:'问问她：落叶是什么颜色的呀？', pages:[
+    {t:'秋天到了，叶子变黄了。', e:'🍂', a:'assets/audio/s46_00.mp3'},
+    {t:'风一吹，叶子飘下来。', e:'🍃', a:'assets/audio/s46_01.mp3'},
+    {t:'像蝴蝶，飞呀飞。', e:'🦋', a:'assets/audio/s46_02.mp3'},
+    {t:'宝宝伸手，接住一片。', e:'🙌', a:'assets/audio/s46_03.mp3'},
+    {t:'踩在落叶上，沙沙响。', e:'👣', a:'assets/audio/s46_04.mp3'},
+    {t:'把最美的叶子夹进书里。', e:'📖', a:'assets/audio/s46_05.mp3'},
+    {t:'落叶是秋天的信。', e:'✉️', a:'assets/audio/s46_06.mp3'},
+  ]},
+  {title:'冬天的雪人', parentTip:'问问她：雪人的鼻子是什么做的呀？', pages:[
+    {t:'下雪啦，白白的一片。', e:'❄️', a:'assets/audio/s47_00.mp3'},
+    {t:'宝宝滚一个大雪球。', e:'⚪', a:'assets/audio/s47_01.mp3'},
+    {t:'再滚一个小雪球，叠上去。', e:'⛄', a:'assets/audio/s47_02.mp3'},
+    {t:'胡萝卜当鼻子，尖尖的。', e:'🥕', a:'assets/audio/s47_03.mp3'},
+    {t:'纽扣当眼睛，圆圆的。', e:'👀', a:'assets/audio/s47_04.mp3'},
+    {t:'围上红围巾，暖和啦。', e:'🧣', a:'assets/audio/s47_05.mp3'},
+    {t:'雪人笑眯眯：“你好呀！”', e:'⛄', a:'assets/audio/s47_06.mp3'},
+  ]},
+  {title:'下雨啦', parentTip:'和她一起听：滴答滴答，小雨下啦！', pages:[
+    {t:'乌云飘来了，天暗了。', e:'☁️', a:'assets/audio/s48_00.mp3'},
+    {t:'滴答，滴答，下雨啦。', e:'🌧️', a:'assets/audio/s48_01.mp3'},
+    {t:'宝宝撑起小花伞。', e:'☂️', a:'assets/audio/s48_02.mp3'},
+    {t:'穿上小雨靴，踩水洼。', e:'👢', a:'assets/audio/s48_03.mp3'},
+    {t:'啪嗒，啪嗒，水花跳起来。', e:'💦', a:'assets/audio/s48_04.mp3'},
+    {t:'小青蛙唱起歌：呱呱。', e:'🐸', a:'assets/audio/s48_05.mp3'},
+    {t:'雨停了，空气香香的。', e:'🌈', a:'assets/audio/s48_06.mp3'},
+  ]},
+  {title:'彩虹桥', parentTip:'数一数：彩虹有几种颜色呀？', pages:[
+    {t:'雨停了，太阳出来了。', e:'🌤️', a:'assets/audio/s49_00.mp3'},
+    {t:'天边挂起一道彩虹。', e:'🌈', a:'assets/audio/s49_01.mp3'},
+    {t:'红、橙、黄、绿、青、蓝、紫。', e:'🎨', a:'assets/audio/s49_02.mp3'},
+    {t:'像一座弯弯的桥。', e:'🌉', a:'assets/audio/s49_03.mp3'},
+    {t:'小鸟从桥下飞过去。', e:'🐦', a:'assets/audio/s49_04.mp3'},
+    {t:'宝宝挥挥手：“彩虹你好！”', e:'👋', a:'assets/audio/s49_05.mp3'},
+    {t:'彩虹慢慢淡了，下次再见。', e:'✨', a:'assets/audio/s49_06.mp3'},
+  ]},
+  {title:'月亮船', parentTip:'问问她：月亮船要开到哪里去呀？', pages:[
+    {t:'晚上的月亮，弯弯的。', e:'🌙', a:'assets/audio/s50_00.mp3'},
+    {t:'像一只小小的船。', e:'⛵', a:'assets/audio/s50_01.mp3'},
+    {t:'宝宝爬上月亮船。', e:'😴', a:'assets/audio/s50_02.mp3'},
+    {t:'船儿摇呀摇，飘过星星海。', e:'✨', a:'assets/audio/s50_03.mp3'},
+    {t:'星星眨眨眼，跟宝宝打招呼。', e:'⭐', a:'assets/audio/s50_04.mp3'},
+    {t:'船儿飘到云朵边，软软的。', e:'☁️', a:'assets/audio/s50_05.mp3'},
+    {t:'宝宝在月亮船上睡着了。', e:'💤', a:'assets/audio/s50_06.mp3'},
+  ]},
+  {title:'星星眨眼睛', parentTip:'问问她：你数过天上的星星吗？', pages:[
+    {t:'天黑了，星星出来了。', e:'⭐', a:'assets/audio/s51_00.mp3'},
+    {t:'一颗星星眨眼睛。', e:'✨', a:'assets/audio/s51_01.mp3'},
+    {t:'两颗星星眨眼睛。', e:'🌟', a:'assets/audio/s51_02.mp3'},
+    {t:'好多好多星星，数不清。', e:'🌌', a:'assets/audio/s51_03.mp3'},
+    {t:'宝宝指着最亮的那颗。', e:'👆', a:'assets/audio/s51_04.mp3'},
+    {t:'“那是我的星星！”', e:'😊', a:'assets/audio/s51_05.mp3'},
+    {t:'星星陪着宝宝一起睡。', e:'💤', a:'assets/audio/s51_06.mp3'},
+  ]},
+  {title:'风儿吹气球', parentTip:'问问她：风把气球吹到哪里去啦？', pages:[
+    {t:'宝宝拿着红气球。', e:'🎈', a:'assets/audio/s52_00.mp3'},
+    {t:'一阵风吹来，呼——', e:'💨', a:'assets/audio/s52_01.mp3'},
+    {t:'气球挣脱小手，飞起来啦。', e:'🎈', a:'assets/audio/s52_02.mp3'},
+    {t:'飞过屋顶，飞过树梢。', e:'🌳', a:'assets/audio/s52_03.mp3'},
+    {t:'气球对小鸟说：“你好！”', e:'🐦', a:'assets/audio/s52_04.mp3'},
+    {t:'宝宝挥挥手：“再见，气球！”', e:'👋', a:'assets/audio/s52_05.mp3'},
+    {t:'气球飞到云朵旁边去啦。', e:'☁️', a:'assets/audio/s52_06.mp3'},
+  ]},
+  {title:'云朵变变变', parentTip:'问问她：你看见的云，像什么呀？', pages:[
+    {t:'天上的云，白白的。', e:'☁️', a:'assets/audio/s53_00.mp3'},
+    {t:'这朵云，像小兔子。', e:'🐰', a:'assets/audio/s53_01.mp3'},
+    {t:'那朵云，像大鲸鱼。', e:'🐳', a:'assets/audio/s53_02.mp3'},
+    {t:'风一吹，云变样啦。', e:'💨', a:'assets/audio/s53_03.mp3'},
+    {t:'变成小火车，呜呜呜。', e:'🚂', a:'assets/audio/s53_04.mp3'},
+    {t:'变成棉花糖，软软的。', e:'🍬', a:'assets/audio/s53_05.mp3'},
+    {t:'宝宝看云，看得入了迷。', e:'😊', a:'assets/audio/s53_06.mp3'},
+  ]},
+  {title:'太阳公公上班', parentTip:'和她一起：太阳公公，早上好！', pages:[
+    {t:'天蒙蒙亮，公鸡叫：喔喔喔！', e:'🐓', a:'assets/audio/s54_00.mp3'},
+    {t:'太阳公公起床啦。', e:'🌅', a:'assets/audio/s54_01.mp3'},
+    {t:'它爬上山坡，笑呵呵。', e:'☀️', a:'assets/audio/s54_02.mp3'},
+    {t:'花儿醒了，伸懒腰。', e:'🌸', a:'assets/audio/s54_03.mp3'},
+    {t:'小鸟醒了，唱起歌。', e:'🐦', a:'assets/audio/s54_04.mp3'},
+    {t:'宝宝醒了：“太阳公公早！”', e:'👋', a:'assets/audio/s54_05.mp3'},
+    {t:'新的一天开始啦。', e:'✨', a:'assets/audio/s54_06.mp3'},
+  ]},
+  {title:'小水滴旅行', parentTip:'问问她：小水滴最后到哪里去啦？', pages:[
+    {t:'小水滴住在云朵里。', e:'💧', a:'assets/audio/s55_00.mp3'},
+    {t:'下雨啦，小水滴跳下来。', e:'🌧️', a:'assets/audio/s55_01.mp3'},
+    {t:'落在小河里，哗啦啦。', e:'🏞️', a:'assets/audio/s55_02.mp3'},
+    {t:'跟着河水跑呀跑。', e:'💦', a:'assets/audio/s55_03.mp3'},
+    {t:'跑到大海里， 波浪 摇呀摇。', e:'🌊', a:'assets/audio/s55_04.mp3'},
+    {t:'太阳晒一晒，小水滴飞起来。', e:'☀️', a:'assets/audio/s55_05.mp3'},
+    {t:'飞回云朵里，睡大觉。', e:'☁️', a:'assets/audio/s55_06.mp3'},
+  ]},
+  {title:'雷声轰隆隆', parentTip:'问问她：打雷的时候，我们在哪里最安全呀？', pages:[
+    {t:'乌云滚滚，天黑了。', e:'☁️', a:'assets/audio/s56_00.mp3'},
+    {t:'轰隆隆，雷声响啦。', e:'⛈️', a:'assets/audio/s56_01.mp3'},
+    {t:'宝宝钻进妈妈怀里。', e:'🤗', a:'assets/audio/s56_02.mp3'},
+    {t:'妈妈说：“雷公公在敲鼓。”', e:'🥁', a:'assets/audio/s56_03.mp3'},
+    {t:'闪电亮一亮，像拍照。', e:'⚡', a:'assets/audio/s56_04.mp3'},
+    {t:'雨下过，天晴了。', e:'🌤️', a:'assets/audio/s56_05.mp3'},
+    {t:'彩虹出来啦，不怕不怕。', e:'🌈', a:'assets/audio/s56_06.mp3'},
+  ]},
+  {title:'雾蒙蒙的早晨', parentTip:'问问她：雾散了以后，我们能看见什么呀？', pages:[
+    {t:'早上起来，白茫茫。', e:'🌫️', a:'assets/audio/s57_00.mp3'},
+    {t:'大树藏起来了，只看见影子。', e:'🌳', a:'assets/audio/s57_01.mp3'},
+    {t:'小桥藏起来了，慢慢走。', e:'🌉', a:'assets/audio/s57_02.mp3'},
+    {t:'宝宝喊：“雾，你好呀！”', e:'👋', a:'assets/audio/s57_03.mp3'},
+    {t:'太阳出来了，雾散了。', e:'☀️', a:'assets/audio/s57_04.mp3'},
+    {t:'大树出来了，小桥出来了。', e:'✨', a:'assets/audio/s57_05.mp3'},
+    {t:'原来大家都在呀。', e:'😊', a:'assets/audio/s57_06.mp3'},
+  ]},
+  {title:'竹笋长高高', parentTip:'和她一起比：竹笋一天长这么高！', pages:[
+    {t:'春雨下过，竹林湿漉漉。', e:'🌧️', a:'assets/audio/s58_00.mp3'},
+    {t:'土里冒出尖尖头，是竹笋！', e:'🎋', a:'assets/audio/s58_01.mp3'},
+    {t:'喝饱雨水，长一长。', e:'💧', a:'assets/audio/s58_02.mp3'},
+    {t:'晒晒太阳，再长一长。', e:'☀️', a:'assets/audio/s58_03.mp3'},
+    {t:'一天，两天，长得比宝宝还高。', e:'📏', a:'assets/audio/s58_04.mp3'},
+    {t:'竹笋变竹子，直直的。', e:'🎋', a:'assets/audio/s58_05.mp3'},
+    {t:'宝宝说：“你要长到天上去吗？”', e:'😄', a:'assets/audio/s58_06.mp3'},
+  ]},
+  {title:'秋天的菊花', parentTip:'问问她：菊花有哪几种颜色呀？', pages:[
+    {t:'秋天到，菊花开。', e:'🌼', a:'assets/audio/s59_00.mp3'},
+    {t:'黄菊花，像小太阳。', e:'☀️', a:'assets/audio/s59_01.mp3'},
+    {t:'白菊花，像小雪球。', e:'⚪', a:'assets/audio/s59_02.mp3'},
+    {t:'粉菊花，像小裙子。', e:'👗', a:'assets/audio/s59_03.mp3'},
+    {t:'蜜蜂飞来闻一闻。', e:'🐝', a:'assets/audio/s59_04.mp3'},
+    {t:'宝宝说：“菊花真漂亮！”', e:'😊', a:'assets/audio/s59_05.mp3'},
+    {t:'菊花笑着点点头。', e:'🌼', a:'assets/audio/s59_06.mp3'},
+  ]},
+  {title:'冬天的冰花', parentTip:'问问她：冰花是画在什么地方的呀？', pages:[
+    {t:'冬天的早上，好冷呀。', e:'❄️', a:'assets/audio/s60_00.mp3'},
+    {t:'窗玻璃上，开满冰花。', e:'🪟', a:'assets/audio/s60_01.mp3'},
+    {t:'这朵像小树，那朵像星星。', e:'✨', a:'assets/audio/s60_02.mp3'},
+    {t:'宝宝哈一口气：哈——', e:'💨', a:'assets/audio/s60_03.mp3'},
+    {t:'冰花化开一个小圆洞。', e:'⭕', a:'assets/audio/s60_04.mp3'},
+    {t:'透过小洞，看见雪地。', e:'⛄', a:'assets/audio/s60_05.mp3'},
+    {t:'冰花是冬爷爷画的画。', e:'🎨', a:'assets/audio/s60_06.mp3'},
+  ]},
+  {title:'海边的贝壳', parentTip:'问问她：贝壳里能听见什么声音呀？', pages:[
+    {t:'宝宝来到大海边。', e:'🌊', a:'assets/audio/s61_00.mp3'},
+    {t:'沙滩上，有好多贝壳。', e:'🐚', a:'assets/audio/s61_01.mp3'},
+    {t:'这只白白的，那只粉粉的。', e:'✨', a:'assets/audio/s61_02.mp3'},
+    {t:'捡一只，放进小桶里。', e:'🪣', a:'assets/audio/s61_03.mp3'},
+    {t:'把贝壳贴在耳朵上听一听。', e:'👂', a:'assets/audio/s61_04.mp3'},
+    {t:'“哗——哗——是大海在唱歌！”', e:'🌊', a:'assets/audio/s61_05.mp3'},
+    {t:'贝壳是大海送的礼物。', e:'🎁', a:'assets/audio/s61_06.mp3'},
+  ]},
+  {title:'草地上的蒲公英', parentTip:'和她一起：呼——吹蒲公英啦！', pages:[
+    {t:'草地上，开着蒲公英。', e:'🌼', a:'assets/audio/s62_00.mp3'},
+    {t:'黄花谢了，变成小绒球。', e:'⚪', a:'assets/audio/s62_01.mp3'},
+    {t:'宝宝摘起一朵，深吸一口气。', e:'😮', a:'assets/audio/s62_02.mp3'},
+    {t:'呼——绒球飞起来啦！', e:'💨', a:'assets/audio/s62_03.mp3'},
+    {t:'小伞兵们飞呀飞。', e:'🪂', a:'assets/audio/s62_04.mp3'},
+    {t:'飞到哪里，就在哪里安家。', e:'🏠', a:'assets/audio/s62_05.mp3'},
+    {t:'明年春天，长出新蒲公英。', e:'🌱', a:'assets/audio/s62_06.mp3'},
+  ]},
+  {title:'小火车呜呜呜', parentTip:'问问她：小火车要开到哪里去呀？', pages:[
+    {t:'小火车，呜呜呜。', e:'🚂', a:'assets/audio/s63_00.mp3'},
+    {t:'它拉着长长的车厢。', e:'🚃', a:'assets/audio/s63_01.mp3'},
+    {t:'况且况且，跑过田野。', e:'🌾', a:'assets/audio/s63_02.mp3'},
+    {t:'况且况且，钻过山洞。', e:'⛰️', a:'assets/audio/s63_03.mp3'},
+    {t:'小羊抬头看：“慢点跑！”', e:'🐑', a:'assets/audio/s63_04.mp3'},
+    {t:'小火车挥挥手：“我要去远方！”', e:'👋', a:'assets/audio/s63_05.mp3'},
+    {t:'月亮出来了，火车到站啦。', e:'🌙', a:'assets/audio/s63_06.mp3'},
+  ]},
+  {title:'公共汽车到站啦', parentTip:'问问她：坐公交车，要给谁让座呀？', pages:[
+    {t:'公共汽车开来了，叮咚。', e:'🚌', a:'assets/audio/s64_00.mp3'},
+    {t:'“本站到了，请上车。”', e:'🔊', a:'assets/audio/s64_01.mp3'},
+    {t:'宝宝拉着妈妈，排队上车。', e:'👩‍👧', a:'assets/audio/s64_02.mp3'},
+    {t:'老爷爷上车，宝宝让座。', e:'💺', a:'assets/audio/s64_03.mp3'},
+    {t:'“谢谢你，小朋友！”', e:'😊', a:'assets/audio/s64_04.mp3'},
+    {t:'汽车开动啦，窗外树在跑。', e:'🌳', a:'assets/audio/s64_05.mp3'},
+    {t:'下一站，公园到啦！', e:'🏞️', a:'assets/audio/s64_06.mp3'},
+  ]},
+  {title:'消防车真快', parentTip:'问问她：着火了要打什么电话呀？', pages:[
+    {t:'呜——呜——消防车来啦！', e:'🚒', a:'assets/audio/s65_00.mp3'},
+    {t:'红红的车身，亮亮的灯。', e:'🔴', a:'assets/audio/s65_01.mp3'},
+    {t:'消防员叔叔穿好衣服。', e:'🧑‍🚒', a:'assets/audio/s65_02.mp3'},
+    {t:'水管喷出水，哗啦啦。', e:'💦', a:'assets/audio/s65_03.mp3'},
+    {t:'小火苗被浇灭啦。', e:'✨', a:'assets/audio/s65_04.mp3'},
+    {t:'大家拍手：“谢谢消防员！”', e:'👏', a:'assets/audio/s65_05.mp3'},
+    {t:'消防车慢慢开回消防站。', e:'🚒', a:'assets/audio/s65_06.mp3'},
+  ]},
+  {title:'救护车来了', parentTip:'问问她：救护车是去帮助谁的呀？', pages:[
+    {t:'小熊的肚子疼，哎哟哎哟。', e:'🐻', a:'assets/audio/s66_00.mp3'},
+    {t:'救护车来了，呜哇呜哇。', e:'🚑', a:'assets/audio/s66_01.mp3'},
+    {t:'医生叔叔轻轻抱起小熊。', e:'🧑‍⚕️', a:'assets/audio/s66_02.mp3'},
+    {t:'汽车开得快，又稳稳的。', e:'💨', a:'assets/audio/s66_03.mp3'},
+    {t:'到了医院，小熊不疼了。', e:'🏥', a:'assets/audio/s66_04.mp3'},
+    {t:'小熊说：“谢谢你们！”', e:'❤️', a:'assets/audio/s66_05.mp3'},
+    {t:'救护车是救人的小英雄。', e:'🦸', a:'assets/audio/s66_06.mp3'},
+  ]},
+  {title:'大轮船出海', parentTip:'和她学轮船叫：呜——呜——', pages:[
+    {t:'大轮船停在港口边。', e:'🚢', a:'assets/audio/s67_00.mp3'},
+    {t:'呜——呜——要出发啦！', e:'📣', a:'assets/audio/s67_01.mp3'},
+    {t:'轮船慢慢开进大海。', e:'🌊', a:'assets/audio/s67_02.mp3'},
+    {t:'海浪摇呀摇，像摇篮。', e:'🛏️', a:'assets/audio/s67_03.mp3'},
+    {t:'海鸥跟着飞，叽叽喳喳。', e:'🕊️', a:'assets/audio/s67_04.mp3'},
+    {t:'轮船看见小岛，挥挥手。', e:'🏝️', a:'assets/audio/s67_05.mp3'},
+    {t:'天黑了，轮船的灯亮了。', e:'💡', a:'assets/audio/s67_06.mp3'},
+  ]},
+  {title:'飞机飞上天', parentTip:'问问她：坐飞机能看见什么呀？', pages:[
+    {t:'大飞机停在机场上。', e:'✈️', a:'assets/audio/s68_00.mp3'},
+    {t:'宝宝系好安全带，坐稳啦。', e:'💺', a:'assets/audio/s68_01.mp3'},
+    {t:'飞机跑呀跑，飞起来啦！', e:'🛫', a:'assets/audio/s68_02.mp3'},
+    {t:'房子变小啦，像积木。', e:'🏠', a:'assets/audio/s68_03.mp3'},
+    {t:'云朵在窗边，白白软软。', e:'☁️', a:'assets/audio/s68_04.mp3'},
+    {t:'飞机飞过彩虹桥。', e:'🌈', a:'assets/audio/s68_05.mp3'},
+    {t:'落地啦，旅行开始啦！', e:'🛬', a:'assets/audio/s68_06.mp3'},
+  ]},
+  {title:'挖掘机挖土', parentTip:'和她一起：轰隆隆，挖土啦！', pages:[
+    {t:'挖掘机，黄黄的大个子。', e:'🚜', a:'assets/audio/s69_00.mp3'},
+    {t:'它伸出长长的手臂。', e:'💪', a:'assets/audio/s69_01.mp3'},
+    {t:'挖一斗土，举起来。', e:'🪨', a:'assets/audio/s69_02.mp3'},
+    {t:'转个圈，倒进卡车里。', e:'🚛', a:'assets/audio/s69_03.mp3'},
+    {t:'轰隆隆，轰隆隆，真有力气。', e:'💨', a:'assets/audio/s69_04.mp3'},
+    {t:'坑挖好啦，要种大树。', e:'🌳', a:'assets/audio/s69_05.mp3'},
+    {t:'挖掘机休息啦，明天见。', e:'🌙', a:'assets/audio/s69_06.mp3'},
+  ]},
+  {title:'警车巡逻', parentTip:'问问她：警察叔叔是做什么的呀？', pages:[
+    {t:'天黑了，警车出门巡逻。', e:'🚓', a:'assets/audio/s70_00.mp3'},
+    {t:'它慢慢开过小街道。', e:'🏘️', a:'assets/audio/s70_01.mp3'},
+    {t:'看看商店，门锁好了。', e:'🔒', a:'assets/audio/s70_02.mp3'},
+    {t:'看看路灯，亮亮的。', e:'💡', a:'assets/audio/s70_03.mp3'},
+    {t:'小猫迷路了，警车送它回家。', e:'🐱', a:'assets/audio/s70_04.mp3'},
+    {t:'小镇静悄悄，大家睡得香。', e:'💤', a:'assets/audio/s70_05.mp3'},
+    {t:'警车说：“有我守着，放心睡。”', e:'🌙', a:'assets/audio/s70_06.mp3'},
+  ]},
+  {title:'送信的邮递员', parentTip:'问问她：邮递员叔叔送的是什么呀？', pages:[
+    {t:'邮递员叔叔，骑着绿车子。', e:'🚲', a:'assets/audio/s71_00.mp3'},
+    {t:'他的包里，装满了信。', e:'✉️', a:'assets/audio/s71_01.mp3'},
+    {t:'这封信，送给奶奶。', e:'👵', a:'assets/audio/s71_02.mp3'},
+    {t:'那封信，送给小明。', e:'👦', a:'assets/audio/s71_03.mp3'},
+    {t:'小狗跟着跑，汪汪叫。', e:'🐶', a:'assets/audio/s71_04.mp3'},
+    {t:'“信来啦！”大家都开心。', e:'😄', a:'assets/audio/s71_05.mp3'},
+    {t:'信里装着想念和问候。', e:'❤️', a:'assets/audio/s71_06.mp3'},
+  ]},
+  {title:'图书馆里静悄悄', parentTip:'问问她：在图书馆，我们要怎么做呀？', pages:[
+    {t:'图书馆里，好多好多书。', e:'📚', a:'assets/audio/s72_00.mp3'},
+    {t:'宝宝踮起脚，轻轻走。', e:'👣', a:'assets/audio/s72_01.mp3'},
+    {t:'抽出一本图画书。', e:'📖', a:'assets/audio/s72_02.mp3'},
+    {t:'和妈妈坐下来，慢慢看。', e:'👩‍👧', a:'assets/audio/s72_03.mp3'},
+    {t:'嘘——说话要小声哦。', e:'🤫', a:'assets/audio/s72_04.mp3'},
+    {t:'书里的小熊在睡觉。', e:'🐻', a:'assets/audio/s72_05.mp3'},
+    {t:'宝宝把书轻轻放回去。', e:'📚', a:'assets/audio/s72_06.mp3'},
+  ]},
+  {title:'去超市买东西', parentTip:'问问她：去超市，你想买什么呀？', pages:[
+    {t:'宝宝推着小推车，去超市。', e:'🛒', a:'assets/audio/s73_00.mp3'},
+    {t:'先买红红的苹果。', e:'🍎', a:'assets/audio/s73_01.mp3'},
+    {t:'再买黄黄的香蕉。', e:'🍌', a:'assets/audio/s73_02.mp3'},
+    {t:'牛奶放在最上面，小心哦。', e:'🥛', a:'assets/audio/s73_03.mp3'},
+    {t:'排队结账，滴——滴——', e:'🧾', a:'assets/audio/s73_04.mp3'},
+    {t:'宝宝帮忙提小袋子。', e:'🛍️', a:'assets/audio/s73_05.mp3'},
+    {t:'买好东西，回家做饭啦。', e:'🏠', a:'assets/audio/s73_06.mp3'},
+  ]},
+  {title:'旋转木马', parentTip:'和她一起：木马转呀转，叮叮当当！', pages:[
+    {t:'游乐场里，有旋转木马。', e:'🎠', a:'assets/audio/s74_00.mp3'},
+    {t:'白马、红马、花马，排排站。', e:'🐴', a:'assets/audio/s74_01.mp3'},
+    {t:'宝宝坐上小白马，抓紧啦。', e:'🙌', a:'assets/audio/s74_02.mp3'},
+    {t:'音乐响起，叮叮当当。', e:'🎵', a:'assets/audio/s74_03.mp3'},
+    {t:'木马转呀转，上上下下。', e:'🎠', a:'assets/audio/s74_04.mp3'},
+    {t:'像是飞起来一样，好开心。', e:'😄', a:'assets/audio/s74_05.mp3'},
+    {t:'转了一圈又一圈，不想下来。', e:'✨', a:'assets/audio/s74_06.mp3'},
+  ]},
+  {title:'动物园一日游', parentTip:'问问她：你在动物园最想看哪种动物呀？', pages:[
+    {t:'今天去动物园玩！', e:'🦁', a:'assets/audio/s75_00.mp3'},
+    {t:'先看大熊猫，吃竹子。', e:'🐼', a:'assets/audio/s75_01.mp3'},
+    {t:'再看长颈鹿，脖子高高。', e:'🦒', a:'assets/audio/s75_02.mp3'},
+    {t:'大象喷水，哗啦啦。', e:'🐘', a:'assets/audio/s75_03.mp3'},
+    {t:'猴子荡秋千，嗖嗖嗖。', e:'🐒', a:'assets/audio/s75_04.mp3'},
+    {t:'宝宝学老虎叫：嗷呜——', e:'🐯', a:'assets/audio/s75_05.mp3'},
+    {t:'逛累了，下次再来玩。', e:'👋', a:'assets/audio/s75_06.mp3'},
+  ]},
+  {title:'面包房香喷喷', parentTip:'问问她：你最爱吃什么面包呀？', pages:[
+    {t:'面包房里，香喷喷。', e:'🍞', a:'assets/audio/s76_00.mp3'},
+    {t:'面包师傅起得早。', e:'👨‍🍳', a:'assets/audio/s76_01.mp3'},
+    {t:'揉面团，捏一捏。', e:'🙌', a:'assets/audio/s76_02.mp3'},
+    {t:'放进烤箱，叮——', e:'🔥', a:'assets/audio/s76_03.mp3'},
+    {t:'面包出炉啦，金黄金黄。', e:'🥖', a:'assets/audio/s76_04.mp3'},
+    {t:'宝宝咬一口，软软甜甜。', e:'😋', a:'assets/audio/s76_05.mp3'},
+    {t:'“谢谢面包师傅！”', e:'❤️', a:'assets/audio/s76_06.mp3'},
+  ]},
+  {title:'农场挤牛奶', parentTip:'问问她：牛奶是从哪里来的呀？', pages:[
+    {t:'农场里，住着花奶牛。', e:'🐄', a:'assets/audio/s77_00.mp3'},
+    {t:'奶牛吃青草，哞——哞——', e:'🌿', a:'assets/audio/s77_01.mp3'},
+    {t:'农场阿姨轻轻挤牛奶。', e:'🥛', a:'assets/audio/s77_02.mp3'},
+    {t:'白白的牛奶，流进桶里。', e:'🪣', a:'assets/audio/s77_03.mp3'},
+    {t:'牛奶煮一煮，香香的。', e:'♨️', a:'assets/audio/s77_04.mp3'},
+    {t:'宝宝喝一口：“真好喝！”', e:'😋', a:'assets/audio/s77_05.mp3'},
+    {t:'谢谢奶牛，谢谢阿姨。', e:'❤️', a:'assets/audio/s77_06.mp3'},
+  ]},
+  {title:'厨师做蛋糕', parentTip:'和她一起：搅一搅，拌一拌，蛋糕香啦！', pages:[
+    {t:'厨师叔叔要做大蛋糕。', e:'👨‍🍳', a:'assets/audio/s78_00.mp3'},
+    {t:'倒面粉，加鸡蛋，搅一搅。', e:'🥚', a:'assets/audio/s78_01.mp3'},
+    {t:'放进烤箱，等一等。', e:'⏰', a:'assets/audio/s78_02.mp3'},
+    {t:'蛋糕出炉，香喷喷。', e:'🎂', a:'assets/audio/s78_03.mp3'},
+    {t:'抹上奶油，白白的。', e:'🍦', a:'assets/audio/s78_04.mp3'},
+    {t:'摆上草莓，红红的。', e:'🍓', a:'assets/audio/s78_05.mp3'},
+    {t:'点上蜡烛，生日快乐！', e:'🎉', a:'assets/audio/s78_06.mp3'},
+  ]},
+  {title:'园丁种花', parentTip:'问问她：花儿喝什么长大呀？', pages:[
+    {t:'园丁爷爷在花园里。', e:'👴', a:'assets/audio/s79_00.mp3'},
+    {t:'松松土，挖小坑。', e:'🌱', a:'assets/audio/s79_01.mp3'},
+    {t:'放花苗，扶正它。', e:'🌷', a:'assets/audio/s79_02.mp3'},
+    {t:'浇浇水，喝饱饱。', e:'💧', a:'assets/audio/s79_03.mp3'},
+    {t:'太阳照一照，暖暖的。', e:'☀️', a:'assets/audio/s79_04.mp3'},
+    {t:'花儿开了，红的黄的紫的。', e:'💐', a:'assets/audio/s79_05.mp3'},
+    {t:'园丁爷爷笑开了花。', e:'😊', a:'assets/audio/s79_06.mp3'},
+  ]},
+  {title:'小渔船回家', parentTip:'问问她：渔船带回了什么呀？', pages:[
+    {t:'小渔船出海捕鱼啦。', e:'⛵', a:'assets/audio/s80_00.mp3'},
+    {t:'撒下网，等一等。', e:'🎣', a:'assets/audio/s80_01.mp3'},
+    {t:'拉起来，好多小鱼！', e:'🐟', a:'assets/audio/s80_02.mp3'},
+    {t:'太阳落山，天边红红的。', e:'🌅', a:'assets/audio/s80_03.mp3'},
+    {t:'渔船摇呀摇，往家开。', e:'🚤', a:'assets/audio/s80_04.mp3'},
+    {t:'岸上的灯，亮了。', e:'💡', a:'assets/audio/s80_05.mp3'},
+    {t:'今晚有鲜鲜的鱼汤喝。', e:'🍲', a:'assets/audio/s80_06.mp3'},
+  ]},
+  {title:'会飞的公交车', parentTip:'问问她：如果公交车会飞，你想去哪里呀？', pages:[
+    {t:'有一辆公交车，长了翅膀。', e:'🚌', a:'assets/audio/s81_00.mp3'},
+    {t:'它飞起来啦，飞到云朵边。', e:'☁️', a:'assets/audio/s81_01.mp3'},
+    {t:'小朋友们趴着窗户看。', e:'👀', a:'assets/audio/s81_02.mp3'},
+    {t:'看见高山，看见大海。', e:'🌊', a:'assets/audio/s81_03.mp3'},
+    {t:'看见奶奶家的小院子。', e:'🏡', a:'assets/audio/s81_04.mp3'},
+    {t:'公交车慢慢降落。', e:'🛬', a:'assets/audio/s81_05.mp3'},
+    {t:'“明天，还带你们飞！”', e:'✨', a:'assets/audio/s81_06.mp3'},
+  ]},
+  {title:'拖拉机下乡', parentTip:'和她学拖拉机：突突突，突突突！', pages:[
+    {t:'拖拉机，突突突。', e:'🚜', a:'assets/audio/s82_00.mp3'},
+    {t:'它拉着满满一车干草。', e:'🌾', a:'assets/audio/s82_01.mp3'},
+    {t:'开过小桥，嘎吱嘎吱。', e:'🌉', a:'assets/audio/s82_02.mp3'},
+    {t:'开过田野，金黄金黄。', e:'🌻', a:'assets/audio/s82_03.mp3'},
+    {t:'小羊看见了，咩咩叫。', e:'🐑', a:'assets/audio/s82_04.mp3'},
+    {t:'把草送到牛棚里。', e:'🐄', a:'assets/audio/s82_05.mp3'},
+    {t:'拖拉机停下来，喝口水。', e:'💧', a:'assets/audio/s82_06.mp3'},
+  ]},
+  {title:'妈妈的吻', parentTip:'问问她：妈妈的吻，是什么味道的呀？', pages:[
+    {t:'洗完澡，香香的。', e:'🛁', a:'assets/audio/s83_00.mp3'},
+    {t:'妈妈抱着宝宝，讲故事。', e:'📖', a:'assets/audio/s83_01.mp3'},
+    {t:'讲完故事，灯关了。', e:'💡', a:'assets/audio/s83_02.mp3'},
+    {t:'妈妈在宝宝额头上亲一下。', e:'💋', a:'assets/audio/s83_03.mp3'},
+    {t:'“晚安，我的小宝贝。”', e:'🌙', a:'assets/audio/s83_04.mp3'},
+    {t:'宝宝的心里，暖暖的。', e:'❤️', a:'assets/audio/s83_05.mp3'},
+    {t:'带着妈妈的吻，做个好梦。', e:'💤', a:'assets/audio/s83_06.mp3'},
+  ]},
+  {title:'爸爸的肩膀', parentTip:'问问她：坐在爸爸肩膀上，能看见什么呀？', pages:[
+    {t:'爸爸的肩膀，高高的。', e:'👨', a:'assets/audio/s84_00.mp3'},
+    {t:'宝宝骑上去，哇——', e:'😄', a:'assets/audio/s84_01.mp3'},
+    {t:'看见树顶的小鸟窝。', e:'🐦', a:'assets/audio/s84_02.mp3'},
+    {t:'看见远处的大风车。', e:'🎡', a:'assets/audio/s84_03.mp3'},
+    {t:'爸爸走稳稳，宝宝抓牢牢。', e:'🙌', a:'assets/audio/s84_04.mp3'},
+    {t:'“爸爸，你是我的大山！”', e:'⛰️', a:'assets/audio/s84_05.mp3'},
+    {t:'爸爸笑了，笑得眼睛弯弯。', e:'😊', a:'assets/audio/s84_06.mp3'},
+  ]},
+  {title:'奶奶的摇椅', parentTip:'问问她：奶奶的摇椅，摇起来像什么呀？', pages:[
+    {t:'奶奶坐在摇椅上，摇呀摇。', e:'🪑', a:'assets/audio/s85_00.mp3'},
+    {t:'宝宝搬个小凳子，坐在旁边。', e:'👧', a:'assets/audio/s85_01.mp3'},
+    {t:'奶奶讲起小时候的故事。', e:'📖', a:'assets/audio/s85_02.mp3'},
+    {t:'讲小猫，讲小桥，讲月亮。', e:'🌙', a:'assets/audio/s85_03.mp3'},
+    {t:'摇椅吱呀吱呀，像唱歌。', e:'🎵', a:'assets/audio/s85_04.mp3'},
+    {t:'宝宝听着听着，靠在奶奶身边。', e:'🤗', a:'assets/audio/s85_05.mp3'},
+    {t:'奶奶的故事，讲也讲不完。', e:'❤️', a:'assets/audio/s85_06.mp3'},
+  ]},
+  {title:'我的好朋友', parentTip:'问问她：你的好朋友是谁呀？', pages:[
+    {t:'乐乐是我的好朋友。', e:'👧👦', a:'assets/audio/s86_00.mp3'},
+    {t:'我们一起搭积木。', e:'🧱', a:'assets/audio/s86_01.mp3'},
+    {t:'一起滑滑梯。', e:'🛝', a:'assets/audio/s86_02.mp3'},
+    {t:'我摔倒了，乐乐扶我起来。', e:'🤝', a:'assets/audio/s86_03.mp3'},
+    {t:'乐乐哭了，我给他擦眼泪。', e:'😢', a:'assets/audio/s86_04.mp3'},
+    {t:'好东西，我们一起分享。', e:'🍪', a:'assets/audio/s86_05.mp3'},
+    {t:'好朋友，手拉手。', e:'❤️', a:'assets/audio/s86_06.mp3'},
+  ]},
+  {title:'对不起，没关系', parentTip:'问问她：不小心碰到别人，要说什么呀？', pages:[
+    {t:'跑跑跑，哎呀，撞到乐乐了。', e:'💥', a:'assets/audio/s87_00.mp3'},
+    {t:'乐乐的积木倒了，哗啦啦。', e:'🧱', a:'assets/audio/s87_01.mp3'},
+    {t:'宝宝说：“对不起，我不是故意的。”', e:'🙇', a:'assets/audio/s87_02.mp3'},
+    {t:'乐乐说：“没关系！”', e:'😊', a:'assets/audio/s87_03.mp3'},
+    {t:'两个人一起重新搭。', e:'🧱', a:'assets/audio/s87_04.mp3'},
+    {t:'搭得比原来还高！', e:'🏰', a:'assets/audio/s87_05.mp3'},
+    {t:'说声对不起，心里亮堂堂。', e:'✨', a:'assets/audio/s87_06.mp3'},
+  ]},
+  {title:'大声说爱你', parentTip:'问问她：你最爱谁呀？大声说出来！', pages:[
+    {t:'早上起来，宝宝对妈妈说。', e:'🌞', a:'assets/audio/s88_00.mp3'},
+    {t:'“妈妈，我爱你！”', e:'❤️', a:'assets/audio/s88_01.mp3'},
+    {t:'吃完早饭，对爸爸说。', e:'🍳', a:'assets/audio/s88_02.mp3'},
+    {t:'“爸爸，我爱你！”', e:'💗', a:'assets/audio/s88_03.mp3'},
+    {t:'看见奶奶，也大声说。', e:'👵', a:'assets/audio/s88_04.mp3'},
+    {t:'“奶奶，我爱你！”', e:'💖', a:'assets/audio/s88_05.mp3'},
+    {t:'爱要说出来，大家都开心。', e:'😊', a:'assets/audio/s88_06.mp3'},
+  ]},
+  {title:'梦里去旅行', parentTip:'问问她：你想在梦里去哪里呀？', pages:[
+    {t:'宝宝睡着了，做起梦来。', e:'💤', a:'assets/audio/s89_00.mp3'},
+    {t:'梦里，她骑上大鲸鱼。', e:'🐳', a:'assets/audio/s89_01.mp3'},
+    {t:'鲸鱼带着她，游过大海。', e:'🌊', a:'assets/audio/s89_02.mp3'},
+    {t:'飞上天，摘下一颗星星。', e:'⭐', a:'assets/audio/s89_03.mp3'},
+    {t:'星星放在口袋里，亮晶晶。', e:'✨', a:'assets/audio/s89_04.mp3'},
+    {t:'鲸鱼说：“天亮了，回家吧。”', e:'🌅', a:'assets/audio/s89_05.mp3'},
+    {t:'宝宝睁开眼，笑眯眯。', e:'😊', a:'assets/audio/s89_06.mp3'},
+  ]},
+  {title:'影子好朋友', parentTip:'问问她：影子什么时候会躲起来呀？', pages:[
+    {t:'太阳出来了，影子也来了。', e:'🌞', a:'assets/audio/s90_00.mp3'},
+    {t:'宝宝走，影子也走。', e:'👣', a:'assets/audio/s90_01.mp3'},
+    {t:'宝宝跳，影子也跳。', e:'🦘', a:'assets/audio/s90_02.mp3'},
+    {t:'宝宝挥挥手，影子挥挥手。', e:'👋', a:'assets/audio/s90_03.mp3'},
+    {t:'躲到大树下，影子不见了。', e:'🌳', a:'assets/audio/s90_04.mp3'},
+    {t:'跑到太阳下，影子又出来啦。', e:'✨', a:'assets/audio/s90_05.mp3'},
+    {t:'影子是我的好朋友。', e:'❤️', a:'assets/audio/s90_06.mp3'},
+  ]},
+  {title:'泡泡飞上天', parentTip:'和她一起：泡泡泡泡，飞呀飞！', pages:[
+    {t:'宝宝拿起泡泡棒。', e:'🫧', a:'assets/audio/s91_00.mp3'},
+    {t:'蘸一蘸，吹一吹。', e:'💨', a:'assets/audio/s91_01.mp3'},
+    {t:'泡泡出来啦，圆圆的。', e:'⭕', a:'assets/audio/s91_02.mp3'},
+    {t:'大泡泡，小泡泡，排着队。', e:'🫧', a:'assets/audio/s91_03.mp3'},
+    {t:'太阳照一照，五颜六色。', e:'🌈', a:'assets/audio/s91_04.mp3'},
+    {t:'泡泡飞上天，越飞越高。', e:'☁️', a:'assets/audio/s91_05.mp3'},
+    {t:'啪——泡泡说再见啦。', e:'👋', a:'assets/audio/s91_06.mp3'},
+  ]},
+  {title:'积木城堡', parentTip:'问问她：你的城堡里，住着谁呀？', pages:[
+    {t:'宝宝拿出积木，哗啦啦。', e:'🧱', a:'assets/audio/s92_00.mp3'},
+    {t:'先搭一块大地基。', e:'🟦', a:'assets/audio/s92_01.mp3'},
+    {t:'一块，两块，往上搭。', e:'🟥', a:'assets/audio/s92_02.mp3'},
+    {t:'搭个城门，搭个高塔。', e:'🏰', a:'assets/audio/s92_03.mp3'},
+    {t:'插上小旗子，飘呀飘。', e:'🚩', a:'assets/audio/s92_04.mp3'},
+    {t:'小熊住进城堡里。', e:'🐻', a:'assets/audio/s92_05.mp3'},
+    {t:'宝宝拍手：“我的城堡好棒！”', e:'👏', a:'assets/audio/s92_06.mp3'},
+  ]},
+  {title:'画画的小手', parentTip:'问问她：你想画一个什么呀？', pages:[
+    {t:'宝宝拿起蜡笔，沙沙沙。', e:'🖍️', a:'assets/audio/s93_00.mp3'},
+    {t:'画个太阳，红红的。', e:'☀️', a:'assets/audio/s93_01.mp3'},
+    {t:'画座房子，方方的。', e:'🏠', a:'assets/audio/s93_02.mp3'},
+    {t:'画朵小花，香香的。', e:'🌸', a:'assets/audio/s93_03.mp3'},
+    {t:'画上爸爸妈妈和宝宝。', e:'👨‍👩‍👧', a:'assets/audio/s93_04.mp3'},
+    {t:'手拉手，笑哈哈。', e:'😄', a:'assets/audio/s93_05.mp3'},
+    {t:'把画贴在墙上，真漂亮！', e:'🖼️', a:'assets/audio/s93_06.mp3'},
+  ]},
+  {title:'我是小歌手', parentTip:'和她一起：啦啦啦，唱起来！', pages:[
+    {t:'宝宝拿起小话筒。', e:'🎤', a:'assets/audio/s94_00.mp3'},
+    {t:'清清嗓子，咳咳。', e:'😊', a:'assets/audio/s94_01.mp3'},
+    {t:'啦啦啦，唱起歌来。', e:'🎵', a:'assets/audio/s94_02.mp3'},
+    {t:'唱小星星，唱小兔子。', e:'🐰', a:'assets/audio/s94_03.mp3'},
+    {t:'爸爸妈妈当观众，拍拍手。', e:'👏', a:'assets/audio/s94_04.mp3'},
+    {t:'唱完歌，鞠个躬。', e:'🙇', a:'assets/audio/s94_05.mp3'},
+    {t:'“谢谢大家，我是小歌手！”', e:'✨', a:'assets/audio/s94_06.mp3'},
+  ]},
+  {title:'萤火虫的灯', parentTip:'问问她：萤火虫的灯，是什么颜色的呀？', pages:[
+    {t:'夏天的夜晚，黑黑的。', e:'🌙', a:'assets/audio/s95_00.mp3'},
+    {t:'草丛里，亮起小灯。', e:'💡', a:'assets/audio/s95_01.mp3'},
+    {t:'一闪，一闪，是萤火虫！', e:'✨', a:'assets/audio/s95_02.mp3'},
+    {t:'它们提着灯笼飞呀飞。', e:'🏮', a:'assets/audio/s95_03.mp3'},
+    {t:'给晚回家的小虫照路。', e:'🐛', a:'assets/audio/s95_04.mp3'},
+    {t:'宝宝轻轻看，不吵它们。', e:'🤫', a:'assets/audio/s95_05.mp3'},
+    {t:'小灯慢慢飞远了，晚安。', e:'💤', a:'assets/audio/s95_06.mp3'},
+  ]},
+  {title:'纸飞机飞呀飞', parentTip:'问问她：纸飞机要飞到谁的手里呀？', pages:[
+    {t:'宝宝折了一架纸飞机。', e:'✈️', a:'assets/audio/s96_00.mp3'},
+    {t:'哈一口气，扔出去。', e:'💨', a:'assets/audio/s96_01.mp3'},
+    {t:'纸飞机飞呀飞，摇摇摆摆。', e:'〰️', a:'assets/audio/s96_02.mp3'},
+    {t:'飞过花丛，飞过小溪。', e:'🌸', a:'assets/audio/s96_03.mp3'},
+    {t:'落在奶奶的脚边。', e:'👵', a:'assets/audio/s96_04.mp3'},
+    {t:'奶奶捡起来，笑眯眯。', e:'😊', a:'assets/audio/s96_05.mp3'},
+    {t:'纸飞机带着宝宝的问候。', e:'❤️', a:'assets/audio/s96_06.mp3'},
+  ]},
+  {title:'风筝和风', parentTip:'问问她：风筝飞得高，要谢谢谁呀？', pages:[
+    {t:'春风吹，风筝飞。', e:'🪁', a:'assets/audio/s97_00.mp3'},
+    {t:'宝宝拉着线，跑起来。', e:'🏃', a:'assets/audio/s97_01.mp3'},
+    {t:'风筝摇摇摆摆，升上天。', e:'💨', a:'assets/audio/s97_02.mp3'},
+    {t:'越飞越高，像只大鸟。', e:'🐦', a:'assets/audio/s97_03.mp3'},
+    {t:'云朵说：“你飞得真高！”', e:'☁️', a:'assets/audio/s97_04.mp3'},
+    {t:'线儿紧紧的，不能松手哦。', e:'🙌', a:'assets/audio/s97_05.mp3'},
+    {t:'风筝是风的好朋友。', e:'❤️', a:'assets/audio/s97_06.mp3'},
+  ]},
+  {title:'沙滩城堡', parentTip:'问问她：沙滩城堡会被海浪怎么样呀？', pages:[
+    {t:'宝宝在沙滩上玩沙子。', e:'🏖️', a:'assets/audio/s98_00.mp3'},
+    {t:'装满一桶沙，扣下来。', e:'🪣', a:'assets/audio/s98_01.mp3'},
+    {t:'拍一拍，一座小塔好啦。', e:'🏰', a:'assets/audio/s98_02.mp3'},
+    {t:'再扣一个，连成城堡。', e:'✨', a:'assets/audio/s98_03.mp3'},
+    {t:'插上贝壳当窗户。', e:'🐚', a:'assets/audio/s98_04.mp3'},
+    {t:'海浪来了，哗——城堡不见了。', e:'🌊', a:'assets/audio/s98_05.mp3'},
+    {t:'宝宝笑着说：“再盖一个！”', e:'😄', a:'assets/audio/s98_06.mp3'},
+  ]},
+  {title:'月亮婆婆讲故事', parentTip:'问问她：今晚想听月亮婆婆讲什么故事呀？', pages:[
+    {t:'天黑了，月亮婆婆出来了。', e:'🌙', a:'assets/audio/s99_00.mp3'},
+    {t:'她坐在云朵上，打开故事书。', e:'📖', a:'assets/audio/s99_01.mp3'},
+    {t:'小星星们围过来听。', e:'⭐', a:'assets/audio/s99_02.mp3'},
+    {t:'讲小熊，讲小船，讲大海。', e:'🌊', a:'assets/audio/s99_03.mp3'},
+    {t:'声音轻轻的，柔柔的。', e:'🎵', a:'assets/audio/s99_04.mp3'},
+    {t:'宝宝听着听着，眼睛闭上了。', e:'😴', a:'assets/audio/s99_05.mp3'},
+    {t:'月亮婆婆说：“晚安，好孩子。”', e:'💤', a:'assets/audio/s99_06.mp3'},
+  ]},
+  {title:'小闹钟滴答', parentTip:'问问她：小闹钟每天早上做什么呀？', pages:[
+    {t:'床头有个小闹钟。', e:'⏰', a:'assets/audio/s100_00.mp3'},
+    {t:'滴答滴答，它走个不停。', e:'🎵', a:'assets/audio/s100_01.mp3'},
+    {t:'早上七点，铃铃铃——', e:'🔔', a:'assets/audio/s100_02.mp3'},
+    {t:'“宝宝起床啦，太阳晒屁股啦！”', e:'🌞', a:'assets/audio/s100_03.mp3'},
+    {t:'宝宝揉揉眼睛，坐起来。', e:'😊', a:'assets/audio/s100_04.mp3'},
+    {t:'伸个懒腰：“早上好！”', e:'🙌', a:'assets/audio/s100_05.mp3'},
+    {t:'小闹钟是守时的好朋友。', e:'⏰', a:'assets/audio/s100_06.mp3'},
+  ]},
 ];
-const PALETTE = ['#FF5A5A','#FF9A3D','#FFD93D','#52C75A','#4FACFE','#7B4DFF','#FF7BAC','#8D5A3B'];
+const PALETTE = ['#FF5A5A','#FF9A3D','#FFD93D','#52C75A','#2EC4B6','#4FACFE','#7B4DFF','#FF7BAC','#8D5A3B','#444444','#B8B8B8','#FFFFFF'];
 const COLOR_PAGES = [
-  {name:'小熊', regions:[
-    {id:'earL', n:'耳朵', k:'c', cx:105, cy:105, r:38},
-    {id:'earR', n:'耳朵', k:'c', cx:235, cy:105, r:38},
-    {id:'face', n:'脸', k:'c', cx:170, cy:185, r:88},
-    {id:'nose', n:'鼻子', k:'e', cx:170, cy:205, rx:20, ry:15},
-  ]},
-  {name:'月亮', regions:[
-    {id:'moon', n:'月亮', k:'c', cx:170, cy:140, r:68},
-    {id:'star1', n:'星星', k:'s', cx:70, cy:260, r:30},
-    {id:'star2', n:'星星', k:'s', cx:270, cy:250, r:24},
-    {id:'cloud', n:'云', k:'e', cx:170, cy:285, rx:72, ry:26},
-  ]},
-  {name:'花', regions:[
-    {id:'p0', n:'花瓣', k:'p', cx:170, cy:130, a:0, len:96, wid:46},
-    {id:'p1', n:'花瓣', k:'p', cx:170, cy:130, a:72, len:96, wid:46},
-    {id:'p2', n:'花瓣', k:'p', cx:170, cy:130, a:144, len:96, wid:46},
-    {id:'p3', n:'花瓣', k:'p', cx:170, cy:130, a:216, len:96, wid:46},
-    {id:'p4', n:'花瓣', k:'p', cx:170, cy:130, a:288, len:96, wid:46},
-    {id:'center', n:'花心', k:'c', cx:170, cy:130, r:30},
-    {id:'leaf', n:'叶子', k:'e', cx:105, cy:265, rx:36, ry:20},
-  ]},
-  {name:'太阳', regions:[
-    {id:'ray0', n:'光芒', k:'p', cx:170, cy:150, a:0, len:120, wid:30},
-    {id:'ray1', n:'光芒', k:'p', cx:170, cy:150, a:45, len:120, wid:30},
-    {id:'ray2', n:'光芒', k:'p', cx:170, cy:150, a:90, len:120, wid:30},
-    {id:'ray3', n:'光芒', k:'p', cx:170, cy:150, a:135, len:120, wid:30},
-    {id:'face', n:'脸', k:'c', cx:170, cy:150, r:58},
-  ]},
-  {name:'小鸭', regions:[
-    {id:'water', n:'水', k:'e', cx:170, cy:300, rx:112, ry:22},
-    {id:'body', n:'身体', k:'e', cx:150, cy:212, rx:75, ry:55},
-    {id:'wing', n:'翅膀', k:'e', cx:148, cy:208, rx:34, ry:22},
-    {id:'head', n:'头', k:'c', cx:226, cy:140, r:42},
-    {id:'beak', n:'嘴巴', k:'e', cx:264, cy:148, rx:18, ry:10},
-    {id:'eye', n:'眼睛', k:'c', cx:238, cy:130, r:8},
-  ]},
-  {name:'气球', regions:[
-    {id:'cloud', n:'云', k:'e', cx:80, cy:282, rx:56, ry:24},
-    {id:'star', n:'星星', k:'s', cx:272, cy:272, r:28},
-    {id:'balloon', n:'气球', k:'c', cx:170, cy:140, r:70},
-    {id:'knot', n:'绳结', k:'e', cx:170, cy:218, rx:14, ry:10},
-  ]},
-  {name:'蝴蝶', regions:[
-    {id:'wingL', n:'翅膀', k:'e', cx:102, cy:150, rx:56, ry:72},
-    {id:'wingR', n:'翅膀', k:'e', cx:238, cy:150, rx:56, ry:72},
-    {id:'body', n:'身体', k:'e', cx:170, cy:175, rx:18, ry:62},
-    {id:'head', n:'头', k:'c', cx:170, cy:102, r:22},
-  ]},
-  {name:'汽车', regions:[
-    {id:'body', n:'车身', k:'e', cx:170, cy:225, rx:105, ry:42},
-    {id:'top', n:'车顶', k:'e', cx:170, cy:155, rx:58, ry:42},
-    {id:'window', n:'车窗', k:'e', cx:170, cy:155, rx:34, ry:24},
-    {id:'wheelL', n:'轮子', k:'c', cx:105, cy:262, r:26},
-    {id:'wheelR', n:'轮子', k:'c', cx:235, cy:262, r:26},
-  ]},
+  {name:'小汽车', regions:[
+    {id:'body', n:'车身', svg:'<path d="M36 216 L36 182 Q36 164 58 160 L100 155 Q112 122 146 112 L222 112 Q254 122 266 155 L304 160 Q324 164 324 184 L324 216 Q324 228 310 228 L50 228 Q36 228 36 216 Z"/>'},
+    {id:'win', n:'车窗', svg:'<path d="M124 156 C130 128 146 112 170 112 L206 112 C230 112 244 130 250 156 Z"/>'},
+    {id:'wheelL', n:'轮子', svg:'<circle cx="96" cy="228" r="27"/>'},
+    {id:'wheelR', n:'轮子', svg:'<circle cx="244" cy="228" r="27"/>'},
+    {id:'hubL', n:'轮毂', svg:'<circle cx="96" cy="228" r="12"/>'},
+    {id:'hubR', n:'轮毂', svg:'<circle cx="244" cy="228" r="12"/>'},
+    {id:'light', n:'车灯', svg:'<circle cx="312" cy="194" r="11"/>'},
+  ], overlay:'<path d="M14 262 H326" stroke="#C9BBA6" stroke-width="4" stroke-linecap="round" fill="none" stroke-dasharray="2 14"/>'},
   {name:'苹果', regions:[
-    {id:'body', n:'苹果', k:'c', cx:170, cy:195, r:78},
-    {id:'leaf', n:'叶子', k:'e', cx:218, cy:100, rx:30, ry:14},
-    {id:'stem', n:'果柄', k:'p', cx:170, cy:112, a:75, len:52, wid:14},
+    {id:'sun', n:'太阳', svg:'<circle cx="54" cy="52" r="25"/>'},
+    {id:'cloud', n:'云朵', svg:'<path d="M228 68 C234 48 260 40 274 52 C290 42 312 54 310 72 C320 86 306 100 292 98 L244 98 C228 98 220 82 228 68 Z"/>'},
+    {id:'fruit', n:'苹果', svg:'<path d="M170 128 C138 92 66 100 58 168 C50 232 108 300 142 300 C158 300 166 294 170 294 C174 294 182 300 198 300 C232 300 290 232 282 168 C274 100 202 92 170 128 Z"/>'},
+    {id:'leaf', n:'叶子', svg:'<path d="M166 98 C166 78 174 62 190 52 L198 64 C186 72 180 84 178 100 Z M182 86 C196 50 240 38 262 50 C258 88 224 112 184 100 Z"/>'},
+    {id:'grass', n:'草地', svg:'<path d="M14 302 C60 290 110 306 170 298 C230 290 280 306 326 296 L326 330 L14 330 Z"/>'},
   ]},
   {name:'小鱼', regions:[
-    {id:'body', n:'身体', k:'e', cx:165, cy:185, rx:80, ry:52},
-    {id:'tail', n:'尾巴', k:'p', cx:258, cy:185, a:90, len:72, wid:46},
-    {id:'fin', n:'鱼鳍', k:'p', cx:165, cy:140, a:0, len:44, wid:24},
-    {id:'eye', n:'眼睛', k:'c', cx:125, cy:170, r:10},
+    {id:'bub1', n:'泡泡', svg:'<circle cx="82" cy="82" r="14"/>'},
+    {id:'bub2', n:'泡泡', svg:'<circle cx="128" cy="56" r="10"/>'},
+    {id:'body', n:'身体', svg:'<path d="M52 172 C104 104 208 98 264 166 C210 240 106 238 52 172 Z"/>'},
+    {id:'tail', n:'尾巴', svg:'<path d="M262 166 L314 120 C321 152 321 184 312 216 Z"/>'},
+    {id:'fin', n:'鱼鳍', svg:'<path d="M138 118 C152 92 190 90 204 112 C186 128 154 130 138 118 Z"/>'},
+    {id:'weed', n:'海草', svg:'<path d="M58 308 C48 278 68 258 58 226 C84 252 74 282 84 308 Z M280 308 C272 280 292 260 282 230 C306 254 296 284 306 308 Z"/>'},
+    {id:'eye', n:'眼睛', svg:'<circle cx="102" cy="156" r="12"/>'},
+  ], overlay:'<circle cx="102" cy="156" r="5" fill="#3a2e2e"/><path d="M196 150 C214 162 214 182 196 194" stroke="#9B8570" stroke-width="3.5" fill="none" stroke-linecap="round"/>'},
+  {name:'小狗', regions:[
+    {id:'earL', n:'耳朵', svg:'<ellipse cx="74" cy="148" rx="30" ry="64" transform="rotate(14 74 148)"/>'},
+    {id:'earR', n:'耳朵', svg:'<ellipse cx="266" cy="148" rx="30" ry="64" transform="rotate(-14 266 148)"/>'},
+    {id:'face', n:'脸', svg:'<circle cx="170" cy="182" r="90"/>'},
+    {id:'spot', n:'斑点', svg:'<circle cx="218" cy="138" r="27"/>'},
+    {id:'muzzle', n:'嘴巴', svg:'<ellipse cx="170" cy="228" rx="48" ry="35"/>'},
+    {id:'nose', n:'鼻子', svg:'<ellipse cx="170" cy="208" rx="18" ry="13"/>'},
+    {id:'tongue', n:'舌头', svg:'<path d="M156 254 L184 254 L184 272 C184 284 156 284 156 272 Z"/>'},
+  ], overlay:'<circle cx="128" cy="168" r="8" fill="#3a2e2e"/><circle cx="212" cy="168" r="8" fill="#3a2e2e"/><circle cx="131" cy="165" r="3" fill="#fff"/><circle cx="215" cy="165" r="3" fill="#fff"/>'},
+  {name:'蝴蝶', regions:[
+    {id:'wingTL', n:'翅膀', svg:'<ellipse cx="102" cy="122" rx="60" ry="40" transform="rotate(-28 102 122)"/>'},
+    {id:'wingTR', n:'翅膀', svg:'<ellipse cx="238" cy="122" rx="60" ry="40" transform="rotate(28 238 122)"/>'},
+    {id:'wingBL', n:'翅膀', svg:'<ellipse cx="110" cy="222" rx="48" ry="34" transform="rotate(24 110 222)"/>'},
+    {id:'wingBR', n:'翅膀', svg:'<ellipse cx="230" cy="222" rx="48" ry="34" transform="rotate(-24 230 222)"/>'},
+    {id:'spotL', n:'斑点', svg:'<circle cx="96" cy="118" r="14"/>'},
+    {id:'spotR', n:'斑点', svg:'<circle cx="244" cy="118" r="14"/>'},
+    {id:'body', n:'身体', svg:'<ellipse cx="170" cy="176" rx="18" ry="60"/>'},
+  ], overlay:'<path d="M162 122 C150 96 132 84 116 80 M178 122 C190 96 208 84 224 80" stroke="#3a2e2e" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="116" cy="80" r="5" fill="#3a2e2e"/><circle cx="224" cy="80" r="5" fill="#3a2e2e"/><circle cx="163" cy="140" r="4" fill="#fff"/><circle cx="177" cy="140" r="4" fill="#fff"/>'},
+  {name:'冰淇淋', regions:[
+    {id:'cone', n:'蛋筒', svg:'<path d="M116 200 L224 200 L178 314 C174 324 166 324 162 314 Z"/>'},
+    {id:'sc1', n:'冰淇淋', svg:'<circle cx="170" cy="166" r="56"/>'},
+    {id:'sc2', n:'冰淇淋', svg:'<circle cx="170" cy="112" r="45"/>'},
+    {id:'sc3', n:'冰淇淋', svg:'<circle cx="170" cy="70" r="32"/>'},
+    {id:'cherry', n:'樱桃', svg:'<circle cx="170" cy="34" r="13"/>'},
+  ], overlay:'<path d="M134 232 L196 286 M206 232 L144 286 M170 226 L170 300" stroke="#D8B98A" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M170 24 C176 12 188 8 196 10" stroke="#7A9A4D" stroke-width="4" fill="none" stroke-linecap="round"/>'},
+  {name:'房子', regions:[
+    {id:'sun', n:'太阳', svg:'<circle cx="298" cy="46" r="24"/>'},
+    {id:'roof', n:'屋顶', svg:'<path d="M44 178 L170 68 L296 178 L266 178 L170 96 L74 178 Z"/>'},
+    {id:'wall', n:'墙', svg:'<path d="M84 178 L256 178 L256 292 L84 292 Z"/>'},
+    {id:'door', n:'门', svg:'<path d="M148 292 L148 228 C148 212 192 212 192 228 L192 292 Z"/>'},
+    {id:'winL', n:'窗户', svg:'<circle cx="114" cy="216" r="15"/>'},
+    {id:'winR', n:'窗户', svg:'<circle cx="226" cy="216" r="15"/>'},
+    {id:'grass', n:'草地', svg:'<path d="M12 296 C70 286 130 300 190 292 C240 286 290 298 328 292 L328 328 L12 328 Z"/>'},
+  ], overlay:'<circle cx="176" cy="258" r="4" fill="#3a2e2e"/>'},
+  {name:'企鹅', regions:[
+    {id:'body', n:'身体', svg:'<ellipse cx="170" cy="178" rx="88" ry="110"/>'},
+    {id:'wingL', n:'翅膀', svg:'<ellipse cx="76" cy="190" rx="21" ry="54" transform="rotate(16 76 190)"/>'},
+    {id:'wingR', n:'翅膀', svg:'<ellipse cx="264" cy="190" rx="21" ry="54" transform="rotate(-16 264 190)"/>'},
+    {id:'belly', n:'肚子', svg:'<ellipse cx="170" cy="208" rx="57" ry="78"/>'},
+    {id:'footL', n:'脚丫', svg:'<ellipse cx="130" cy="294" rx="25" ry="11"/>'},
+    {id:'footR', n:'脚丫', svg:'<ellipse cx="210" cy="294" rx="25" ry="11"/>'},
+    {id:'beak', n:'嘴巴', svg:'<path d="M152 128 L188 128 L170 148 Z"/>'},
+  ], overlay:'<circle cx="146" cy="106" r="7" fill="#3a2e2e"/><circle cx="194" cy="106" r="7" fill="#3a2e2e"/><circle cx="148" cy="103" r="2.6" fill="#fff"/><circle cx="196" cy="103" r="2.6" fill="#fff"/>'},
+  {name:'火箭', regions:[
+    {id:'star1', n:'星星', svg:'<polygon points="60.0,69.0 64.5,79.8 76.2,80.7 67.3,88.4 70.0,99.8 60.0,93.7 50.0,99.8 52.7,88.4 43.8,80.7 55.5,79.8"/>'},
+    {id:'star2', n:'星星', svg:'<polygon points="284.0,102.0 287.7,110.9 297.3,111.7 290.0,117.9 292.2,127.3 284.0,122.3 275.8,127.3 278.0,117.9 270.7,111.7 280.3,110.9"/>'},
+    {id:'finL', n:'尾翼', svg:'<path d="M126 164 C98 192 88 224 92 252 L128 234 Z"/>'},
+    {id:'finR', n:'尾翼', svg:'<path d="M214 164 C242 192 252 224 248 252 L212 234 Z"/>'},
+    {id:'body', n:'箭身', svg:'<path d="M170 26 C206 68 220 128 215 198 L125 198 C120 128 134 68 170 26 Z"/>'},
+    {id:'win', n:'窗口', svg:'<circle cx="170" cy="116" r="25"/>'},
+    {id:'flame', n:'火焰', svg:'<path d="M144 232 C148 266 160 292 170 310 C180 292 192 266 196 232 C184 246 156 246 144 232 Z"/>'},
+  ]},
+  {name:'大象', regions:[
+    {id:'legL', n:'腿', svg:'<rect x="140" y="238" width="28" height="58" rx="9"/>'},
+    {id:'legR', n:'腿', svg:'<rect x="214" y="238" width="28" height="58" rx="9"/>'},
+    {id:'body', n:'身体', svg:'<ellipse cx="188" cy="176" rx="98" ry="78"/>'},
+    {id:'head', n:'头', svg:'<circle cx="90" cy="146" r="50"/>'},
+    {id:'trunk', n:'鼻子', svg:'<path d="M54 166 C34 198 36 244 56 268 C64 278 79 274 81 261 C71 238 71 206 82 178 Z"/>'},
+    {id:'ear', n:'耳朵', svg:'<ellipse cx="114" cy="142" rx="27" ry="38"/>'},
+  ], overlay:'<circle cx="76" cy="132" r="6" fill="#3a2e2e"/><circle cx="78" cy="130" r="2.4" fill="#fff"/><path d="M282 128 C296 150 296 176 288 196" stroke="#9B8570" stroke-width="4" fill="none" stroke-linecap="round"/>'},
+  {name:'小猫', regions:[
+    {id:'earL', n:'耳朵', svg:'<path d="M94 112 L76 42 C75 32 84 28 92 34 L148 78 Z"/>'},
+    {id:'earR', n:'耳朵', svg:'<path d="M246 112 L264 42 C265 32 256 28 248 34 L192 78 Z"/>'},
+    {id:'face', n:'脸', svg:'<circle cx="170" cy="186" r="92"/>'},
+    {id:'bow', n:'蝴蝶结', svg:'<path d="M224 68 L194 48 C188 44 184 52 186 62 L186 72 C184 82 189 89 196 85 L224 70 L252 85 C259 89 264 82 262 72 L262 62 C264 52 258 44 252 48 Z"/>'},
+    {id:'cheekL', n:'腮红', svg:'<ellipse cx="106" cy="224" rx="16" ry="10"/>'},
+    {id:'cheekR', n:'腮红', svg:'<ellipse cx="234" cy="224" rx="16" ry="10"/>'},
+    {id:'nose', n:'鼻子', svg:'<path d="M157 208 L183 208 C187 208 188 214 184 219 L176 229 C172 233 168 233 164 229 L156 219 C152 214 153 208 157 208 Z"/>'},
+  ], overlay:'<ellipse cx="126" cy="176" rx="9" ry="12" fill="#3a2e2e"/><ellipse cx="214" cy="176" rx="9" ry="12" fill="#3a2e2e"/><circle cx="129" cy="171" r="3.4" fill="#fff"/><circle cx="217" cy="171" r="3.4" fill="#fff"/><path d="M170 232 C170 240 160 244 152 240 M170 232 C170 240 180 244 188 240 M52 200 L96 208 M56 230 L96 224 M288 200 L244 208 M284 230 L244 224" stroke="#3a2e2e" stroke-width="3.4" fill="none" stroke-linecap="round"/>'},
+  {name:'彩虹', regions:[
+    {id:'grass', n:'草地', svg:'<path d="M8 262 L332 262 L332 304 L8 304 Z"/>'},
+    {id:'band1', n:'彩虹', svg:'<path d="M46 262 A124 124 0 0 1 294 262 L256 262 A86 86 0 0 0 84 262 Z"/>'},
+    {id:'band2', n:'彩虹', svg:'<path d="M84 262 A86 86 0 0 1 256 262 L224 262 A54 54 0 0 0 116 262 Z"/>'},
+    {id:'hill', n:'小山', svg:'<path d="M116 262 A54 54 0 0 1 224 262 Z"/>'},
+    {id:'cloudL', n:'云朵', svg:'<path d="M28 262 C22 244 38 230 54 234 C60 216 84 208 100 218 C116 210 134 222 132 238 C144 248 136 264 120 262 Z"/>'},
+    {id:'cloudR', n:'云朵', svg:'<path d="M312 262 C318 244 302 230 286 234 C280 216 256 208 240 218 C224 210 206 222 208 238 C196 248 204 264 220 262 Z"/>'},
+    {id:'sun', n:'太阳', svg:'<circle cx="170" cy="62" r="30"/>'},
   ]},
 ];
 
@@ -1796,6 +2732,121 @@ function spawnBub(){
   w.appendChild(b);
 }
 
+
+/* ================= 认汉字 ================= */
+const HANZI = [
+  {c:'日', py:'rì', w:'太阳', tip:'太阳圆圆的，中间有一点，就是日。', img:'assets/hanzi/h01.webp'},
+  {c:'月', py:'yuè', w:'月亮', tip:'月亮弯弯像小船，就是月。', img:'assets/hanzi/h02.webp'},
+  {c:'山', py:'shān', w:'大山', tip:'三座高高的山峰，就是山。', img:'assets/hanzi/h03.webp'},
+  {c:'水', py:'shuǐ', w:'喝水', tip:'中间是水流，两边是水花，就是水。', img:'assets/hanzi/h04.webp'},
+  {c:'火', py:'huǒ', w:'火焰', tip:'火苗往上窜，就是火。', img:'assets/hanzi/h05.webp'},
+  {c:'木', py:'mù', w:'木头', tip:'大树有树干，也有树根，就是木。', img:'assets/hanzi/h06.webp'},
+  {c:'林', py:'lín', w:'树林', tip:'两棵树并排站，就是树林。', img:'assets/hanzi/h07.webp'},
+  {c:'森', py:'sēn', w:'森林', tip:'三棵树在一起，就是森林。', img:'assets/hanzi/h08.webp'},
+  {c:'人', py:'rén', w:'家人', tip:'一个人迈开腿走路，就是人。', img:'assets/hanzi/h09.webp'},
+  {c:'大', py:'dà', w:'大象', tip:'张开手臂比划“好大呀”，就是大。', img:'assets/hanzi/h10.webp'},
+  {c:'天', py:'tiān', w:'天空', tip:'头顶上面就是天，就是天。', img:'assets/hanzi/h11.webp'},
+  {c:'口', py:'kǒu', w:'开口', tip:'张开的嘴巴方方的，就是口。', img:'assets/hanzi/h12.webp'},
+  {c:'手', py:'shǒu', w:'小手', tip:'小手张开，五根手指，就是手。', img:'assets/hanzi/h13.webp'},
+  {c:'目', py:'mù', w:'目光', tip:'眼睛圆圆的，里面有眼珠，就是目。', img:'assets/hanzi/h14.webp'},
+  {c:'耳', py:'ěr', w:'耳朵', tip:'耳朵听声音，就是耳。', img:'assets/hanzi/h15.webp'},
+  {c:'足', py:'zú', w:'足球', tip:'小脚丫踩在地上，就是足。', img:'assets/hanzi/h16.webp'},
+  {c:'心', py:'xīn', w:'爱心', tip:'心脏扑通扑通跳，就是心。', img:'assets/hanzi/h17.webp'},
+  {c:'子', py:'zǐ', w:'孩子', tip:'小宝宝裹在小被子里，就是子。', img:'assets/hanzi/h18.webp'},
+  {c:'马', py:'mǎ', w:'小马', tip:'马儿有鬃毛，还有四条腿，就是马。', img:'assets/hanzi/h19.webp'},
+  {c:'牛', py:'niú', w:'小牛', tip:'牛有两只大大的角，就是牛。', img:'assets/hanzi/h20.webp'},
+  {c:'羊', py:'yáng', w:'小羊', tip:'羊角弯弯卷卷的，就是羊。', img:'assets/hanzi/h21.webp'},
+  {c:'鸟', py:'niǎo', w:'小鸟', tip:'小鸟有羽毛，还有长尾巴，就是鸟。', img:'assets/hanzi/h22.webp'},
+  {c:'鱼', py:'yú', w:'小鱼', tip:'鱼儿嘴巴尖尖，尾巴摇摇，就是鱼。', img:'assets/hanzi/h23.webp'},
+  {c:'龟', py:'guī', w:'乌龟', tip:'乌龟背着硬硬的壳，就是龟。', img:'assets/hanzi/h24.webp'},
+  {c:'象', py:'xiàng', w:'大象', tip:'大象有长长的鼻子，就是象。', img:'assets/hanzi/h25.webp'},
+  {c:'虎', py:'hǔ', w:'老虎', tip:'老虎张大嘴巴，真威风，就是虎。', img:'assets/hanzi/h26.webp'},
+  {c:'鹿', py:'lù', w:'小鹿', tip:'小鹿头上有大大的角，就是鹿。', img:'assets/hanzi/h27.webp'},
+  {c:'兔', py:'tù', w:'兔子', tip:'兔子耳朵长，尾巴短，就是兔。', img:'assets/hanzi/h28.webp'},
+  {c:'犬', py:'quǎn', w:'小犬', tip:'小狗竖着耳朵，汪汪叫，就是犬。', img:'assets/hanzi/h29.webp'},
+  {c:'禾', py:'hé', w:'禾苗', tip:'稻穗熟了，垂下来，就是禾。', img:'assets/hanzi/h30.webp'},
+  {c:'米', py:'mǐ', w:'大米', tip:'米粒白白的，一颗颗，就是米。', img:'assets/hanzi/h31.webp'},
+  {c:'竹', py:'zhú', w:'竹子', tip:'竹子一节一节，叶子垂下来，就是竹。', img:'assets/hanzi/h32.webp'},
+  {c:'瓜', py:'guā', w:'西瓜', tip:'瓜藤上结着圆圆的瓜，就是瓜。', img:'assets/hanzi/h33.webp'},
+  {c:'果', py:'guǒ', w:'水果', tip:'树上结满圆圆的果子，就是果。', img:'assets/hanzi/h34.webp'},
+  {c:'豆', py:'dòu', w:'豆子', tip:'豆荚里装着圆豆子，就是豆。', img:'assets/hanzi/h35.webp'},
+  {c:'贝', py:'bèi', w:'贝壳', tip:'贝壳有好看的纹路，就是贝。', img:'assets/hanzi/h36.webp'},
+  {c:'玉', py:'yù', w:'玉米', tip:'玉石圆圆的，串成一串，就是玉。', img:'assets/hanzi/h37.webp'},
+  {c:'石', py:'shí', w:'石头', tip:'山崖下面有块石头，就是石。', img:'assets/hanzi/h38.webp'},
+  {c:'土', py:'tǔ', w:'土地', tip:'小苗从土里长出来，就是土。', img:'assets/hanzi/h39.webp'},
+  {c:'金', py:'jīn', w:'金子', tip:'金子藏在土里，闪闪发亮，就是金。', img:'assets/hanzi/h40.webp'},
+  {c:'刀', py:'dāo', w:'小刀', tip:'刀刃弯弯亮亮的，就是刀。', img:'assets/hanzi/h41.webp'},
+  {c:'弓', py:'gōng', w:'弓箭', tip:'弓拉得弯弯的，就是弓。', img:'assets/hanzi/h42.webp'},
+  {c:'门', py:'mén', w:'大门', tip:'两扇门板合起来，就是门。', img:'assets/hanzi/h43.webp'},
+  {c:'户', py:'hù', w:'窗户', tip:'一扇小门，就是户。', img:'assets/hanzi/h44.webp'},
+  {c:'车', py:'chē', w:'汽车', tip:'车子有轮子，跑得快，就是车。', img:'assets/hanzi/h45.webp'},
+  {c:'舟', py:'zhōu', w:'小舟', tip:'小船漂在水面上，就是舟。', img:'assets/hanzi/h46.webp'},
+  {c:'衣', py:'yī', w:'衣服', tip:'衣服有领子，还有袖子，就是衣。', img:'assets/hanzi/h47.webp'},
+  {c:'网', py:'wǎng', w:'鱼网', tip:'渔网网住小鱼，就是网。', img:'assets/hanzi/h48.webp'},
+  {c:'田', py:'tián', w:'田地', tip:'田地分成一块一块的，就是田。', img:'assets/hanzi/h49.webp'},
+  {c:'雨', py:'yǔ', w:'下雨', tip:'天上落下小雨点，就是雨。', img:'assets/hanzi/h50.webp'},
+  {c:'云', py:'yún', w:'白云', tip:'云朵飘在天上，软软的，就是云。', img:'assets/hanzi/h51.webp'},
+  {c:'电', py:'diàn', w:'闪电', tip:'闪电咔嚓划破天空，就是电。', img:'assets/hanzi/h52.webp'},
+  {c:'川', py:'chuān', w:'山川', tip:'三条小河哗哗流，就是川。', img:'assets/hanzi/h53.webp'},
+  {c:'立', py:'lì', w:'站立', tip:'一个人稳稳站在地上，就是立。', img:'assets/hanzi/h54.webp'},
+  {c:'休', py:'xiū', w:'休息', tip:'靠着大树歇一歇，就是休。', img:'assets/hanzi/h55.webp'},
+  {c:'看', py:'kàn', w:'看书', tip:'手搭凉棚往远处看，就是看。', img:'assets/hanzi/h56.webp'},
+  {c:'明', py:'míng', w:'明亮', tip:'太阳和月亮一起发亮，就是明。', img:'assets/hanzi/h57.webp'},
+  {c:'一', py:'yī', w:'一个', tip:'伸出一根手指，就是一。', img:'assets/hanzi/h58.webp'},
+  {c:'二', py:'èr', w:'两个', tip:'伸出两根手指，就是二。', img:'assets/hanzi/h59.webp'},
+  {c:'三', py:'sān', w:'三个', tip:'伸出三根手指，就是三。', img:'assets/hanzi/h60.webp'},
+];
+const hzcar = document.getElementById('hzcar');
+HANZI.forEach(h=>{
+  const card = document.createElement('div');
+  card.className = 'hzcard';
+  card.innerHTML = `<img class="hzimg" loading="lazy" src="${h.img}" alt="${h.c}">`
+    + `<div class="hzmain"><span class="hzpy">${h.py}</span><span class="hzchar">${h.c}</span></div>`
+    + `<div class="hzword">${h.w}</div><div class="hztip">${h.tip}</div>`;
+  const img = card.querySelector('.hzimg');
+  img.onclick = ()=>{
+    img.classList.remove('bounce'); void img.offsetWidth; img.classList.add('bounce');
+    say(`${h.c}，${h.w}。${h.tip}`);
+  };
+  hzcar.appendChild(card);
+});
+function updateHzCount(){
+  const i = Math.round(hzcar.scrollLeft / hzcar.clientWidth);
+  document.getElementById('hzcount').textContent = `${i+1} / ${HANZI.length}`;
+}
+hzcar.addEventListener('scroll', updateHzCount, {passive:true});
+updateHzCount();
+let hzTarget = null;
+function startHanziQuiz(){
+  hzTarget = HANZI[Math.floor(Math.random()*HANZI.length)];
+  const opts = [...HANZI.filter(h=>h!==hzTarget)].sort(()=>Math.random()-.5).slice(0,2).concat(hzTarget);
+  opts.sort(()=>Math.random()-.5);
+  document.getElementById('hzQ').textContent = `哪个是“${hzTarget.c}”？`;
+  document.getElementById('hzFb').textContent = '';
+  const box = document.getElementById('hzOpts');
+  box.innerHTML = '';
+  opts.forEach(h=>{
+    const b = document.createElement('button');
+    b.className = 'hzopt';
+    b.textContent = h.c;
+    b.onclick = ()=>{
+      if(h === hzTarget){
+        b.classList.add('ok');
+        document.getElementById('hzFb').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 答对啦！';
+        addStar();
+        say(`答对啦！这是${h.c}，${h.w}。`);
+        setTimeout(startHanziQuiz, 1400);
+      } else {
+        say('再想想');
+      }
+    };
+    box.appendChild(b);
+  });
+  go('hanziquiz');
+  askHanzi();
+}
+function askHanzi(){ if(hzTarget) say(`哪个是${hzTarget.c}？`); }
+
 /* ================= 好习惯 ================= */
 const HABITS = [
   {n:'刷牙', tip:'早晚刷牙，牙齿白白'},
@@ -1989,19 +3040,46 @@ function renderZoo(){
   });
   g.scrollTop = 0;
 }
+const zdcar = document.getElementById('zdcar');
+function renderZooDetail(){
+  zdcar.innerHTML = '';
+  zooList.forEach(a=>{
+    const s = document.createElement('div');
+    s.className = 'zdcard';
+    s.innerHTML = `<div class="zdphoto">${a.img ? `<img loading="lazy" src="${a.img}" alt="${a.n}">` : `<div class="bigemoji">${a.e}</div>`}</div>`
+      + `<div class="zdsec">`
+      + `<div class="zdrow"><span class="k">分类</span><span class="v">${a.c}</span></div>`
+      + `<div class="zdrow"><span class="k">叫声</span><span class="v">${a.s}</span></div>`
+      + (a.en ? `<div class="zdrow"><span class="k">英文</span><span class="v">${a.en}</span><button class="enspk" title="读英文"><img src="assets/icons/speaker.webp" alt=""></button></div>` : '')
+      + `</div>`
+      + `<div class="zdsec"><h3>小知识</h3><p class="zdfact">${a.f}</p></div>`;
+    const speakBtn = document.createElement('button');
+    speakBtn.className = 'btn blue';
+    speakBtn.style.cssText = 'width:100%;max-width:360px';
+    speakBtn.innerHTML = '<img class="btnico" src="assets/icons/speaker.webp" alt="">读给我听';
+    speakBtn.onclick = ()=>say(`${a.n}。${a.s}。${a.f}`);
+    s.appendChild(speakBtn);
+    const en = s.querySelector('.enspk');
+    if(en) en.onclick = ()=>sayEn(a.en);
+    zdcar.appendChild(s);
+  });
+}
 function openZooDetail(a,i){
   zooCur = a;
   zooIdx = (typeof i === 'number') ? i : Math.max(0, zooList.indexOf(a));
+  renderZooDetail();
   document.getElementById('zdName').textContent = a.n;
-  document.getElementById('zdImg').innerHTML = a.img ? `<img src="${a.img}" alt="${a.n}">` : `<div class="bigemoji">${a.e}</div>`;
-  document.getElementById('zdCat').textContent = a.c;
-  document.getElementById('zdCall').textContent = a.s;
-  const enRow = document.getElementById('zdEnRow');
-  if(a.en){ enRow.style.display = 'flex'; document.getElementById('zdEn').textContent = a.en; }
-  else enRow.style.display = 'none';
-  document.getElementById('zdFact').textContent = a.f;
   go('zoodetail');
+  requestAnimationFrame(()=>{ zdcar.scrollTo({left: zooIdx * zdcar.clientWidth}); updateZdCount(); });
 }
+function updateZdCount(){
+  if(!zooList.length || !zdcar.clientWidth) return;
+  const i = Math.min(zooList.length - 1, Math.max(0, Math.round(zdcar.scrollLeft / zdcar.clientWidth)));
+  zooIdx = i; zooCur = zooList[i];
+  document.getElementById('zdcount').textContent = `${i+1} / ${zooList.length}`;
+  if(zooCur) document.getElementById('zdName').textContent = zooCur.n;
+}
+zdcar.addEventListener('scroll', updateZdCount, {passive:true});
 function zooSpeak(){ if(zooCur) say(`${zooCur.n}。${zooCur.s}。${zooCur.f}`); }
 function sayEn(text){
   try{
@@ -2015,11 +3093,6 @@ function sayEn(text){
   }catch(e){}
 }
 function speakEn(){ if(zooCur && zooCur.en) sayEn(zooCur.en); }
-function zooNav(d){
-  if(!zooList.length) return;
-  zooIdx = (zooIdx + d + zooList.length) % zooList.length;
-  openZooDetail(zooList[zooIdx], zooIdx);
-}
 
 /* ================= 主题：彩色 / 纸质书 / 墨水屏 ================= */
 const THEMES = ['color','paper','ink'];
@@ -2048,7 +3121,7 @@ const slist = document.getElementById('slist');
 STORIES.forEach((s,i)=>{
   const it = document.createElement('div');
   it.className = 'sitem';
-  it.innerHTML = `<img class="cov" src="assets/icons/cover${i+1}.webp" alt="${s.title}"><div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div></div><button class="micbtn" aria-label="录音"><img src="assets/icons/mic.webp" alt="录音"></button>`;
+  it.innerHTML = `<img class="cov" loading="lazy" src="assets/icons/cover${i+1}.webp" alt="${s.title}"><div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div></div><button class="micbtn" aria-label="录音"><img src="assets/icons/mic.webp" alt="录音"></button>`;
   it.onclick = ()=>openReader(i);
   it.querySelector('.micbtn').onclick = e=>{ e.stopPropagation(); openStudio(i); };
   slist.appendChild(it);
@@ -2099,43 +3172,42 @@ function finishStory(){ addStar(); go('storylist'); }
 function closeReader(){ go('storylist'); }
 
 /* ================= 涂色 ================= */
-let cPage = 0, cColor = PALETTE[0], cFills = {}, cDone = false;
+let cPage = 0, cColor = PALETTE[0], cFills = {}, cDone = false, cEraser = false;
 const csvg = document.getElementById('csvg');
-function starPts(cx, cy, r){
-  const p = [];
-  for(let i=0;i<10;i++){
-    const a = i*Math.PI/5 - Math.PI/2, rad = i%2===0 ? r : r*0.45;
-    p.push((cx+rad*Math.cos(a)).toFixed(1)+','+(cy+rad*Math.sin(a)).toFixed(1));
-  }
-  return p.join(' ');
+const CNS = 'http://www.w3.org/2000/svg';
+const CBLANK = '#FBF7EF';
+function cMakeEl(svg){
+  const t = document.createElementNS(CNS, 'g');
+  t.innerHTML = svg;
+  return t.firstChild;
 }
 function renderColoring(){
   const pg = COLOR_PAGES[cPage];
   csvg.innerHTML = '';
-  const NS = 'http://www.w3.org/2000/svg';
   pg.regions.forEach(r=>{
-    let el;
-    if(r.k==='c'){ el = document.createElementNS(NS,'circle'); el.setAttribute('cx',r.cx); el.setAttribute('cy',r.cy); el.setAttribute('r',r.r); }
-    else if(r.k==='e'){ el = document.createElementNS(NS,'ellipse'); el.setAttribute('cx',r.cx); el.setAttribute('cy',r.cy); el.setAttribute('rx',r.rx); el.setAttribute('ry',r.ry); }
-    else if(r.k==='s'){ el = document.createElementNS(NS,'polygon'); el.setAttribute('points', starPts(r.cx,r.cy,r.r)); }
-    else { el = document.createElementNS(NS,'ellipse'); el.setAttribute('cx',r.cx); el.setAttribute('cy',r.cy); el.setAttribute('rx',r.wid/2); el.setAttribute('ry',r.len/2); el.setAttribute('transform',`rotate(${r.a} ${r.cx} ${r.cy})`); }
-    el.setAttribute('data-r', r.id);
-    el.setAttribute('fill', cFills[r.id] || '#F1EDE6');
-    el.onclick = ()=>{
-      cFills[r.id] = cColor;
-      el.setAttribute('fill', cColor);
-      say(r.n);
-      const ids = pg.regions.map(x=>x.id);
-      if(!cDone && ids.every(id=>cFills[id])){
-        cDone = true;
-        document.getElementById('cdone').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 太漂亮了！';
-        addStar();
-        say('太漂亮了！');
-      }
-    };
-    csvg.appendChild(el);
+    const g = document.createElementNS(CNS, 'g');
+    g.setAttribute('data-r', r.id);
+    g.setAttribute('data-n', r.n);
+    const f = cFills[r.id] || CBLANK;
+    const hit = cMakeEl(r.svg), vis = cMakeEl(r.svg);
+    hit.setAttribute('fill', f);
+    hit.setAttribute('stroke', 'rgba(0,0,0,0)');
+    hit.setAttribute('stroke-width', '24');
+    vis.setAttribute('fill', f);
+    vis.setAttribute('stroke', '#9B8570');
+    vis.setAttribute('stroke-width', '3.5');
+    vis.setAttribute('stroke-linejoin', 'round');
+    vis.setAttribute('stroke-linecap', 'round');
+    vis.setAttribute('pointer-events', 'none');
+    g.appendChild(hit); g.appendChild(vis);
+    csvg.appendChild(g);
   });
-  // 页签
+  if(pg.overlay){
+    const o = document.createElementNS(CNS, 'g');
+    o.innerHTML = pg.overlay;
+    o.setAttribute('pointer-events', 'none');
+    csvg.appendChild(o);
+  }
   const tabs = document.getElementById('cpages');
   tabs.innerHTML = '';
   COLOR_PAGES.forEach((p,i)=>{
@@ -2146,18 +3218,47 @@ function renderColoring(){
     tabs.appendChild(b);
   });
 }
+csvg.addEventListener('pointerdown', e=>{
+  const g = e.target.closest('[data-r]');
+  if(!g) return;
+  const id = g.getAttribute('data-r'), n = g.getAttribute('data-n');
+  if(cEraser) delete cFills[id]; else cFills[id] = cColor;
+  const f = cFills[id] || CBLANK;
+  [...g.children].forEach(el=>el.setAttribute('fill', f));
+  g.classList.remove('pop'); void g.getBoundingClientRect(); g.classList.add('pop');
+  if(cEraser){ say('擦掉啦'); return; }
+  say(n);
+  const pg = COLOR_PAGES[cPage];
+  if(!cDone && pg.regions.every(r=>cFills[r.id])){
+    cDone = true;
+    document.getElementById('cdone').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 太漂亮了！';
+    addStar();
+    say('太漂亮了！');
+  }
+});
 const pal = document.getElementById('palette');
 PALETTE.forEach((c,i)=>{
   const s = document.createElement('div');
   s.className = 'sw' + (i===0 ? ' on' : '');
   s.style.background = c;
   s.onclick = ()=>{
-    cColor = c;
+    cColor = c; cEraser = false;
+    document.getElementById('cEraserBtn').classList.remove('on');
     [...pal.children].forEach(x=>x.classList.remove('on'));
     s.classList.add('on');
   };
   pal.appendChild(s);
 });
+document.getElementById('cEraserBtn').onclick = ()=>{
+  cEraser = !cEraser;
+  document.getElementById('cEraserBtn').classList.toggle('on', cEraser);
+  if(cEraser) [...pal.children].forEach(x=>x.classList.remove('on'));
+};
+document.getElementById('cResetBtn').onclick = ()=>{
+  cFills = {}; cDone = false;
+  document.getElementById('cdone').textContent = '';
+  renderColoring();
+};
 renderColoring();
 
 /* ================= 家长门 ================= */
