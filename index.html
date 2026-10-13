@@ -24,7 +24,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .btn.ghost{background:#fff;color:#3a2e2e;box-shadow:0 4px 12px rgba(0,0,0,.1)}
 /* 首页 */
 #home{background:linear-gradient(180deg,#FFE9B8 0%,#FFD9E8 48%,#D6EBFF 100%)}
-.hero{display:flex;align-items:center;gap:14px;padding:22px 24px 6px;text-align:left}
+.hero{display:flex;align-items:center;gap:14px;padding:calc(16px + env(safe-area-inset-top)) 20px 16px;text-align:left;background:linear-gradient(135deg,#FFE7C7 0%,#FFD9E0 52%,#CFE8FF 100%);border-radius:0 0 30px 30px;box-shadow:0 10px 24px rgba(180,120,60,.12)}
 .applogo{width:78px;height:78px;border-radius:26px;box-shadow:0 10px 24px rgba(180,120,60,.22);flex-shrink:0}
 .hero h1{font-size:33px;font-weight:900;letter-spacing:2px;margin:0}
 .hero p{margin:6px 0 0;font-size:15px;color:#8a6d5d}
@@ -43,7 +43,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .widget.small{flex:1;padding:14px 16px;cursor:pointer}
 .widget.small:active{transform:scale(.97)}
 .widget.small .wb{font-size:26px;font-weight:800;color:#3a2e2e;margin-top:4px;display:flex;align-items:center;gap:6px}
-.appgrid{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 12px;padding:20px 24px;align-content:start;overflow-y:auto}
+.appgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px 18px 4px;align-content:start}
 .appicon{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;border:none;background:none;padding:0}
 .appicon img{width:78px;height:78px;border-radius:24px;box-shadow:0 8px 20px rgba(180,120,60,.18)}
 .appicon:active{transform:scale(.9)}
@@ -258,6 +258,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .hzdword{display:inline-block;background:#FFF3E0;color:#E65100;border-radius:999px;padding:5px 16px;font-size:16.5px;font-weight:800;margin-top:6px}
 .hzdtip{font-size:15px;color:#6B7280;font-weight:700;line-height:1.55;margin-top:10px}
 .hzdnav{display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.homescroll{flex:1;overflow-y:auto;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+.sech{font-size:14px;font-weight:900;color:#B09A83;letter-spacing:3px;padding:16px 22px 0}
+.applogo{border:3px solid rgba(255,255,255,.95);box-shadow:0 6px 16px rgba(180,120,60,.20)}
+.appcard{display:flex;flex-direction:column;align-items:center;padding:14px 4px 11px;border-radius:24px;cursor:pointer;box-shadow:0 6px 16px rgba(180,120,60,.10)}
+.appcard:active{transform:scale(.94)}
+.appcard img{width:62px;height:62px;border-radius:18px;background:#fff;box-shadow:0 4px 10px rgba(180,120,60,.14)}
+.appcard .an{font-size:15.5px;font-weight:800;color:#4A3B2F;margin-top:7px}
+.appcard .as{font-size:11px;color:#AE9A83;font-weight:700;margin-top:1px}
+.tintA{background:#FFF1E4}.tintB{background:#E6F7EE}.tintC{background:#E8F2FF}.tintD{background:#F2EBFF}.tintE{background:#FFEAF1}.tintF{background:#FFF6D8}
+.widget.small{padding:10px 14px}
+.widget.small .wb{font-size:20px;margin-top:2px}
+body.paper .hero,body.ink .hero{background:transparent;box-shadow:none;border-radius:0}
+body.paper .appcard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.ink .appcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.paper .appcard .an,body.ink .appcard .an{color:#1c1c1c}
+body.paper .appcard .as,body.ink .appcard .as{color:#8d7a5c}
 .sitem{background:#fff;border-radius:24px;padding:20px;display:flex;gap:18px;align-items:center;cursor:pointer;box-shadow:0 8px 22px rgba(120,100,180,.14)}
 .sitem:active{transform:scale(.97)}
 .sitem .e{font-size:60px}
@@ -361,7 +377,7 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
 body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -396,7 +412,7 @@ body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink 
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .scard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .hero h1,body.ink .toptitle,body.ink .mcard .t,body.ink .sitem .t,body.ink .appicon span,body.ink .widget .wt,body.ink .widget.small .wb,body.ink .shapeitem .t,body.ink .hitem .t{color:#1c1c1c}
@@ -438,6 +454,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="herotx"><h1>宝宝的乐园</h1><p id="greet">点一点，就有好玩的事情发生</p></div>
       <button class="themebtn" id="themeBtn" onclick="toggleTheme()" title="切换主题"><img id="themeIcon" src="assets/icons/theme-paper.webp" alt="主题"></button>
     </div>
+    <div class="homescroll">
     <div class="widgets">
       <div class="widget wide" id="wDaily">
         <img id="wDailyImg" src="" alt="今日小动物">
@@ -454,20 +471,25 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
         </div>
       </div>
     </div>
+    <div class="sech">学 一 学</div>
     <div class="appgrid">
-      <div class="appicon" onclick="go('animals')"><img src="assets/icons/animalcard.webp" alt="动物卡"><span>动物卡</span></div>
-      <div class="appicon" onclick="go('storylist')"><img src="assets/icons/story.webp" alt="听故事"><span>听故事</span></div>
-      <div class="appicon" onclick="go('coloring')"><img src="assets/icons/color.webp" alt="涂色"><span>涂色</span></div>
-      <div class="appicon" onclick="startCount()"><img src="assets/icons/count.webp" alt="数一数"><span>数一数</span></div>
-      <div class="appicon" onclick="openZoo()"><img src="assets/icons/zoo.webp" alt="动物世界"><span>动物世界</span></div>
-      <div class="appicon" onclick="go('shapes')"><img src="assets/icons/shapes.webp" alt="认形状"><span>认形状</span></div>
-      <div class="appicon" onclick="go('colors')"><img src="assets/icons/colors.webp" alt="认颜色"><span>认颜色</span></div>
-      <div class="appicon" onclick="go('candy')"><img src="assets/icons/candy.webp" alt="认糖果"><span>认糖果</span></div>
-      <div class="appicon" onclick="go('hanzi')"><img src="assets/icons/hanzi.webp" alt="认汉字"><span>认汉字</span></div>
-      <div class="appicon" onclick="openHabits()"><img src="assets/icons/habits.webp" alt="好习惯"><span>好习惯</span></div>
-      <div class="appicon" onclick="openStudioHome()"><img src="assets/icons/mic.webp" alt="录音棚"><span>录音棚</span></div>
-      <div class="appicon" onclick="startPuzzle()"><img src="assets/icons/puzzle.webp" alt="拼图"><span>拼图</span></div>
-      <div class="appicon" onclick="openBubbles()"><img src="assets/icons/bubbles.webp" alt="泡泡"><span>泡泡</span></div>
+      <div class="appcard tintB" onclick="go('animals')"><img src="assets/icons/animalcard.webp" alt="动物卡"><span class="an">动物卡</span><span class="as">202 种动物</span></div>
+      <div class="appcard tintB" onclick="openZoo()"><img src="assets/icons/zoo.webp" alt="动物世界"><span class="an">动物世界</span><span class="as">998 种</span></div>
+      <div class="appcard tintC" onclick="go('shapes')"><img src="assets/icons/shapes.webp" alt="认形状"><span class="an">认形状</span><span class="as">100 种图形</span></div>
+      <div class="appcard tintE" onclick="go('colors')"><img src="assets/icons/colors.webp" alt="认颜色"><span class="an">认颜色</span><span class="as">12 种颜色</span></div>
+      <div class="appcard tintE" onclick="go('candy')"><img src="assets/icons/candy.webp" alt="认糖果"><span class="an">认糖果</span><span class="as">200 种糖果</span></div>
+      <div class="appcard tintF" onclick="go('hanzi')"><img src="assets/icons/hanzi.webp" alt="认汉字"><span class="an">认汉字</span><span class="as">5000 个汉字</span></div>
+      <div class="appcard tintC" onclick="startCount()"><img src="assets/icons/count.webp" alt="数一数"><span class="an">数一数</span><span class="as">数到 100</span></div>
+    </div>
+    <div class="sech">玩 一 玩</div>
+    <div class="appgrid">
+      <div class="appcard tintA" onclick="go('storylist')"><img src="assets/icons/story.webp" alt="听故事"><span class="an">听故事</span><span class="as">100 个故事</span></div>
+      <div class="appcard tintA" onclick="go('coloring')"><img src="assets/icons/color.webp" alt="涂色"><span class="an">涂色</span><span class="as">200 张图画</span></div>
+      <div class="appcard tintD" onclick="openHabits()"><img src="assets/icons/habits.webp" alt="好习惯"><span class="an">好习惯</span><span class="as">我是乖宝宝</span></div>
+      <div class="appcard tintD" onclick="openStudioHome()"><img src="assets/icons/mic.webp" alt="录音棚"><span class="an">录音棚</span><span class="as">家人的声音</span></div>
+      <div class="appcard tintF" onclick="startPuzzle()"><img src="assets/icons/puzzle.webp" alt="拼图"><span class="an">拼图</span><span class="as">动动小手</span></div>
+      <div class="appcard tintC" onclick="openBubbles()"><img src="assets/icons/bubbles.webp" alt="泡泡"><span class="an">泡泡</span><span class="as">戳一戳泡泡</span></div>
+    </div>
     </div>
     <div class="homefoot">
       <span><img class="starico" src="assets/icons/star.webp" alt="星"><b id="homeStars">0</b> 颗星星</span>
@@ -684,7 +706,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     <div class="hubscroll">
       <div class="featcard" onclick="go('hanzipic')">
         <img src="assets/icons/hanzi.webp" alt="象形启蒙">
-        <div><div class="featn">象形启蒙</div><div class="feats">60 个字 · 看图识字 · 有象形讲解</div></div>
+        <div><div class="featn">象形启蒙</div><div class="feats">200 个字 · 看图识字 · 有象形讲解</div></div>
         <div class="featgo">›</div>
       </div>
       <button class="btn blue" style="width:100%" onclick="startHanziQuiz()"><img class="btnico" src="assets/icons/find.webp" alt="">考一考：找汉字</button>
@@ -703,7 +725,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="carousel" id="hzcar"></div>
-    <div class="acount" id="hzcount">1 / 60</div>
+    <div class="acount" id="hzcount">1 / 200</div>
     <div class="abtns">
       <button class="btn primary" onclick="startHanziQuiz()"><img class="btnico" src="assets/icons/trophy.webp" alt="">考一考：找汉字</button>
     </div>
@@ -2819,6 +2841,146 @@ const HANZI = [
   {c:'一', py:'yī', w:'一个', tip:'伸出一根手指，就是一。', img:'assets/hanzi/h58.webp'},
   {c:'二', py:'èr', w:'两个', tip:'伸出两根手指，就是二。', img:'assets/hanzi/h59.webp'},
   {c:'三', py:'sān', w:'三个', tip:'伸出三根手指，就是三。', img:'assets/hanzi/h60.webp'},
+  {c:'头', py:'tóu', w:'头发', tip:'圆圆的脑袋上长着头发，就是头。', img:'assets/hanzi/h61.webp'},
+  {c:'面', py:'miàn', w:'洗脸', tip:'一张方方的脸，中间有眼睛，就是面。', img:'assets/hanzi/h62.webp'},
+  {c:'眉', py:'méi', w:'眉毛', tip:'眼睛上面一排毛，就是眉毛。', img:'assets/hanzi/h63.webp'},
+  {c:'鼻', py:'bí', w:'鼻子', tip:'高高的鼻子能闻香香的味道，就是鼻。', img:'assets/hanzi/h64.webp'},
+  {c:'舌', py:'shé', w:'舌头', tip:'嘴巴里伸出的小舌头，就是舌。', img:'assets/hanzi/h65.webp'},
+  {c:'牙', py:'yá', w:'牙齿', tip:'一颗颗白白的牙齿，就是牙。', img:'assets/hanzi/h66.webp'},
+  {c:'身', py:'shēn', w:'身体', tip:'一个人挺着肚子站着，就是身。', img:'assets/hanzi/h67.webp'},
+  {c:'毛', py:'máo', w:'毛毛', tip:'一根根弯弯的绒毛，就是毛。', img:'assets/hanzi/h68.webp'},
+  {c:'皮', py:'pí', w:'皮球', tip:'一张展开的兽皮，就是皮。', img:'assets/hanzi/h69.webp'},
+  {c:'骨', py:'gǔ', w:'骨头', tip:'一根骨头带着关节，就是骨。', img:'assets/hanzi/h70.webp'},
+  {c:'血', py:'xuè', w:'流血', tip:'一滴红红的血，就是血。', img:'assets/hanzi/h71.webp'},
+  {c:'肉', py:'ròu', w:'吃肉', tip:'一块切好的肉，有好看的纹理，就是肉。', img:'assets/hanzi/h72.webp'},
+  {c:'爪', py:'zhuǎ', w:'爪子', tip:'尖尖的爪子能抓东西，就是爪。', img:'assets/hanzi/h73.webp'},
+  {c:'角', py:'jiǎo', w:'牛角', tip:'弯弯的牛角，就是角。', img:'assets/hanzi/h74.webp'},
+  {c:'尾', py:'wěi', w:'尾巴', tip:'小动物身后甩来甩去的尾巴，就是尾。', img:'assets/hanzi/h75.webp'},
+  {c:'星', py:'xīng', w:'星星', tip:'小星星在天上眨眼睛，就是星。', img:'assets/hanzi/h76.webp'},
+  {c:'晨', py:'chén', w:'早晨', tip:'太阳升起来，新的一天开始了，就是晨。', img:'assets/hanzi/h77.webp'},
+  {c:'夜', py:'yè', w:'夜晚', tip:'天黑了，月亮出来了，就是夜。', img:'assets/hanzi/h78.webp'},
+  {c:'光', py:'guāng', w:'阳光', tip:'太阳发出一道道光芒，就是光。', img:'assets/hanzi/h79.webp'},
+  {c:'声', py:'shēng', w:'声音', tip:'耳朵听到美妙的声音，就是声。', img:'assets/hanzi/h80.webp'},
+  {c:'风', py:'fēng', w:'大风', tip:'风吹得树叶哗哗响，就是风。', img:'assets/hanzi/h81.webp'},
+  {c:'雪', py:'xuě', w:'下雪', tip:'雪花从天上飘下来，白白的，就是雪。', img:'assets/hanzi/h82.webp'},
+  {c:'冰', py:'bīng', w:'冰块', tip:'水冻成了硬硬的冰，就是冰。', img:'assets/hanzi/h83.webp'},
+  {c:'泉', py:'quán', w:'泉水', tip:'山石间流出的清清泉水，就是泉。', img:'assets/hanzi/h84.webp'},
+  {c:'虹', py:'hóng', w:'彩虹', tip:'雨后天上挂着弯弯的彩虹，就是虹。', img:'assets/hanzi/h85.webp'},
+  {c:'露', py:'lù', w:'露珠', tip:'清晨草叶上一颗颗小水珠，就是露。', img:'assets/hanzi/h86.webp'},
+  {c:'霜', py:'shuāng', w:'白霜', tip:'冬天的早上，叶子上白白一层霜，就是霜。', img:'assets/hanzi/h87.webp'},
+  {c:'沙', py:'shā', w:'沙子', tip:'海边细细软软的沙子，就是沙。', img:'assets/hanzi/h88.webp'},
+  {c:'岛', py:'dǎo', w:'小岛', tip:'大海中间露出一个小山头，就是岛。', img:'assets/hanzi/h89.webp'},
+  {c:'江', py:'jiāng', w:'长江', tip:'宽宽的大江，水流向远方，就是江。', img:'assets/hanzi/h90.webp'},
+  {c:'河', py:'hé', w:'小河', tip:'弯弯的小河水在流淌，就是河。', img:'assets/hanzi/h91.webp'},
+  {c:'湖', py:'hú', w:'湖水', tip:'平静的湖面像一面大镜子，就是湖。', img:'assets/hanzi/h92.webp'},
+  {c:'海', py:'hǎi', w:'大海', tip:'大海一望无边，浪花朵朵，就是海。', img:'assets/hanzi/h93.webp'},
+  {c:'浪', py:'làng', w:'浪花', tip:'海浪卷起白白的浪花，就是浪。', img:'assets/hanzi/h94.webp'},
+  {c:'春', py:'chūn', w:'春天', tip:'太阳暖暖的，草儿发芽了，就是春天。', img:'assets/hanzi/h95.webp'},
+  {c:'夏', py:'xià', w:'夏天', tip:'太阳火辣辣，知了在叫，就是夏天。', img:'assets/hanzi/h96.webp'},
+  {c:'秋', py:'qiū', w:'秋天', tip:'禾苗黄了，果子熟了，就是秋天。', img:'assets/hanzi/h97.webp'},
+  {c:'冬', py:'dōng', w:'冬天', tip:'天冷了，河水结冰了，就是冬天。', img:'assets/hanzi/h98.webp'},
+  {c:'家', py:'jiā', w:'家人', tip:'房子里住着一家人，就是家。', img:'assets/hanzi/h99.webp'},
+  {c:'屋', py:'wū', w:'屋子', tip:'有屋顶有墙的小屋子，就是屋。', img:'assets/hanzi/h100.webp'},
+  {c:'窗', py:'chuāng', w:'窗户', tip:'方方的窗户，阳光照进来，就是窗。', img:'assets/hanzi/h101.webp'},
+  {c:'床', py:'chuáng', w:'小床', tip:'木头做的床，是睡觉的地方，就是床。', img:'assets/hanzi/h102.webp'},
+  {c:'桌', py:'zhuō', w:'桌子', tip:'平平的桌面四条腿，就是桌子。', img:'assets/hanzi/h103.webp'},
+  {c:'椅', py:'yǐ', w:'椅子', tip:'有靠背的椅子，坐着看书，就是椅。', img:'assets/hanzi/h104.webp'},
+  {c:'伞', py:'sǎn', w:'雨伞', tip:'伞面大大的，能挡雨，就是伞。', img:'assets/hanzi/h105.webp'},
+  {c:'帽', py:'mào', w:'帽子', tip:'戴在头上的帽子，就是帽。', img:'assets/hanzi/h106.webp'},
+  {c:'鞋', py:'xié', w:'鞋子', tip:'穿在脚上的鞋子，一双一双的，就是鞋。', img:'assets/hanzi/h107.webp'},
+  {c:'袜', py:'wà', w:'袜子', tip:'软软的袜子穿在脚上，就是袜。', img:'assets/hanzi/h108.webp'},
+  {c:'书', py:'shū', w:'书本', tip:'一本打开的书，里面有好多故事，就是书。', img:'assets/hanzi/h109.webp'},
+  {c:'笔', py:'bǐ', w:'铅笔', tip:'长长的笔，能写字画画，就是笔。', img:'assets/hanzi/h110.webp'},
+  {c:'纸', py:'zhǐ', w:'白纸', tip:'薄薄的白纸，能画画，就是纸。', img:'assets/hanzi/h111.webp'},
+  {c:'剪', py:'jiǎn', w:'剪刀', tip:'两把小刀交叉，咔嚓剪纸，就是剪。', img:'assets/hanzi/h112.webp'},
+  {c:'针', py:'zhēn', w:'缝针', tip:'细细的针，尾巴上有小孔穿线，就是针。', img:'assets/hanzi/h113.webp'},
+  {c:'线', py:'xiàn', w:'毛线', tip:'一根长长的线，能织毛衣，就是线。', img:'assets/hanzi/h114.webp'},
+  {c:'灯', py:'dēng', w:'台灯', tip:'灯亮起来，照得屋里亮堂堂，就是灯。', img:'assets/hanzi/h115.webp'},
+  {c:'钟', py:'zhōng', w:'闹钟', tip:'圆圆的钟表，滴答滴答走，就是钟。', img:'assets/hanzi/h116.webp'},
+  {c:'桥', py:'qiáo', w:'小桥', tip:'木头搭的桥，跨过小河，就是桥。', img:'assets/hanzi/h117.webp'},
+  {c:'路', py:'lù', w:'马路', tip:'一条长长的路，通向远方，就是路。', img:'assets/hanzi/h118.webp'},
+  {c:'村', py:'cūn', w:'村子', tip:'村子里有树木和房子，就是村。', img:'assets/hanzi/h119.webp'},
+  {c:'市', py:'shì', w:'超市', tip:'热闹的地方，有好多商店，就是市。', img:'assets/hanzi/h120.webp'},
+  {c:'店', py:'diàn', w:'商店', tip:'小小的店，卖好吃的，就是店。', img:'assets/hanzi/h121.webp'},
+  {c:'园', py:'yuán', w:'花园', tip:'围起来的园子，开满鲜花，就是园。', img:'assets/hanzi/h122.webp'},
+  {c:'井', py:'jǐng', w:'水井', tip:'方方的井口，深深的井水，就是井。', img:'assets/hanzi/h123.webp'},
+  {c:'走', py:'zǒu', w:'走路', tip:'一个人迈开脚步走，就是走。', img:'assets/hanzi/h124.webp'},
+  {c:'跑', py:'pǎo', w:'跑步', tip:'脚步快快的，就是跑。', img:'assets/hanzi/h125.webp'},
+  {c:'跳', py:'tiào', w:'跳高', tip:'双脚离开地面跳起来，就是跳。', img:'assets/hanzi/h126.webp'},
+  {c:'飞', py:'fēi', w:'飞翔', tip:'小鸟张开翅膀飞上天，就是飞。', img:'assets/hanzi/h127.webp'},
+  {c:'游', py:'yóu', w:'游泳', tip:'在水里像小鱼一样游，就是游。', img:'assets/hanzi/h128.webp'},
+  {c:'爬', py:'pá', w:'爬山', tip:'手脚并用往上爬，就是爬。', img:'assets/hanzi/h129.webp'},
+  {c:'坐', py:'zuò', w:'坐下', tip:'两个人坐在地上休息，就是坐。', img:'assets/hanzi/h130.webp'},
+  {c:'睡', py:'shuì', w:'睡觉', tip:'闭上眼睛垂下头，睡觉啦，就是睡。', img:'assets/hanzi/h131.webp'},
+  {c:'吃', py:'chī', w:'吃饭', tip:'张开嘴巴吃东西，就是吃。', img:'assets/hanzi/h132.webp'},
+  {c:'喝', py:'hē', w:'喝水', tip:'端起杯子喝水，就是喝。', img:'assets/hanzi/h133.webp'},
+  {c:'笑', py:'xiào', w:'笑脸', tip:'开心得眼睛弯弯，就是笑。', img:'assets/hanzi/h134.webp'},
+  {c:'哭', py:'kū', w:'哭脸', tip:'张大嘴巴哇哇哭，眼泪汪汪，就是哭。', img:'assets/hanzi/h135.webp'},
+  {c:'唱', py:'chàng', w:'唱歌', tip:'张开嘴巴唱出好听的歌，就是唱。', img:'assets/hanzi/h136.webp'},
+  {c:'听', py:'tīng', w:'听话', tip:'竖起耳朵认真听，就是听。', img:'assets/hanzi/h137.webp'},
+  {c:'说', py:'shuō', w:'说话', tip:'嘴巴一张一合在说话，就是说。', img:'assets/hanzi/h138.webp'},
+  {c:'读', py:'dú', w:'读书', tip:'打开书本念出声，就是读。', img:'assets/hanzi/h139.webp'},
+  {c:'画', py:'huà', w:'画画', tip:'拿起笔，在纸上画出图画，就是画。', img:'assets/hanzi/h140.webp'},
+  {c:'玩', py:'wán', w:'玩耍', tip:'手里拿着宝贝玩具，开心地玩，就是玩。', img:'assets/hanzi/h141.webp'},
+  {c:'爱', py:'ài', w:'爱心', tip:'心里装着好朋友，就是爱。', img:'assets/hanzi/h142.webp'},
+  {c:'学', py:'xué', w:'学习', tip:'小朋友在屋子里读书，就是学。', img:'assets/hanzi/h143.webp'},
+  {c:'校', py:'xiào', w:'学校', tip:'学校里有大树和教室，就是校。', img:'assets/hanzi/h144.webp'},
+  {c:'友', py:'yǒu', w:'朋友', tip:'两只手拉在一起，就是好朋友，就是友。', img:'assets/hanzi/h145.webp'},
+  {c:'好', py:'hǎo', w:'你好', tip:'妈妈和宝宝在一起，就是好。', img:'assets/hanzi/h146.webp'},
+  {c:'多', py:'duō', w:'很多', tip:'好多好多，数也数不清，就是多。', img:'assets/hanzi/h147.webp'},
+  {c:'少', py:'shǎo', w:'很少', tip:'小小的一点点，就是少。', img:'assets/hanzi/h148.webp'},
+  {c:'长', py:'cháng', w:'长发', tip:'长长的头发披下来，就是长。', img:'assets/hanzi/h149.webp'},
+  {c:'高', py:'gāo', w:'高楼', tip:'高高的楼房，有好几层，就是高。', img:'assets/hanzi/h150.webp'},
+  {c:'矮', py:'ǎi', w:'矮小', tip:'个子小小的，就是矮。', img:'assets/hanzi/h151.webp'},
+  {c:'胖', py:'pàng', w:'胖乎乎', tip:'圆圆的肚子，就是胖乎乎，就是胖。', img:'assets/hanzi/h152.webp'},
+  {c:'瘦', py:'shòu', w:'瘦瘦的', tip:'细细长长的，就是瘦瘦的，就是瘦。', img:'assets/hanzi/h153.webp'},
+  {c:'快', py:'kuài', w:'很快', tip:'跑得飞快，像风一样，就是快。', img:'assets/hanzi/h154.webp'},
+  {c:'慢', py:'màn', w:'慢慢', tip:'不着急，一步一步慢慢走，就是慢。', img:'assets/hanzi/h155.webp'},
+  {c:'早', py:'zǎo', w:'早上', tip:'太阳升起来，就是早上，就是早。', img:'assets/hanzi/h156.webp'},
+  {c:'晚', py:'wǎn', w:'晚上', tip:'太阳落山，天黑了，就是晚上，就是晚。', img:'assets/hanzi/h157.webp'},
+  {c:'新', py:'xīn', w:'新衣服', tip:'崭崭新新的，就是新。', img:'assets/hanzi/h158.webp'},
+  {c:'美', py:'měi', w:'美丽', tip:'打扮得漂漂亮亮，就是美。', img:'assets/hanzi/h159.webp'},
+  {c:'香', py:'xiāng', w:'香喷喷', tip:'香味飘出来，香喷喷，就是香。', img:'assets/hanzi/h160.webp'},
+  {c:'四', py:'sì', w:'四个', tip:'方方的框框，就是四。', img:'assets/hanzi/h161.webp'},
+  {c:'五', py:'wǔ', w:'五个', tip:'一只手五个手指头，就是五。', img:'assets/hanzi/h162.webp'},
+  {c:'六', py:'liù', w:'六个', tip:'一点一横下面八，就是六。', img:'assets/hanzi/h163.webp'},
+  {c:'七', py:'qī', w:'七个', tip:'彩虹有七种颜色，就是七。', img:'assets/hanzi/h164.webp'},
+  {c:'八', py:'bā', w:'八个', tip:'两条腿分开站，就是八。', img:'assets/hanzi/h165.webp'},
+  {c:'九', py:'jiǔ', w:'九个', tip:'弯弯绕绕，就是九。', img:'assets/hanzi/h166.webp'},
+  {c:'十', py:'shí', w:'十个', tip:'一横一竖十字路，就是十。', img:'assets/hanzi/h167.webp'},
+  {c:'百', py:'bǎi', w:'一百', tip:'好多好多，数到一百，就是百。', img:'assets/hanzi/h168.webp'},
+  {c:'千', py:'qiān', w:'一千', tip:'比一百还多得多，就是千。', img:'assets/hanzi/h169.webp'},
+  {c:'万', py:'wàn', w:'一万', tip:'好大好大的数，就是万。', img:'assets/hanzi/h170.webp'},
+  {c:'半', py:'bàn', w:'一半', tip:'东西分成两半，一人一半，就是半。', img:'assets/hanzi/h171.webp'},
+  {c:'双', py:'shuāng', w:'双手', tip:'两只小鸟并排站，就是一双，就是双。', img:'assets/hanzi/h172.webp'},
+  {c:'全', py:'quán', w:'全部', tip:'一个人站在屋檐下，大家全到齐，就是全。', img:'assets/hanzi/h173.webp'},
+  {c:'猫', py:'māo', w:'小猫', tip:'田里的小兽喵喵叫，就是小猫，就是猫。', img:'assets/hanzi/h174.webp'},
+  {c:'猪', py:'zhū', w:'小猪', tip:'圆滚滚的小猪，哼哼叫，就是猪。', img:'assets/hanzi/h175.webp'},
+  {c:'鼠', py:'shǔ', w:'老鼠', tip:'小老鼠尖尖嘴，爱偷吃米，就是鼠。', img:'assets/hanzi/h176.webp'},
+  {c:'猴', py:'hóu', w:'猴子', tip:'猴子爬树摘桃子，就是猴。', img:'assets/hanzi/h177.webp'},
+  {c:'熊', py:'xióng', w:'大熊', tip:'大大的熊，力气也大，就是熊。', img:'assets/hanzi/h178.webp'},
+  {c:'蛙', py:'wā', w:'青蛙', tip:'青蛙在水边呱呱叫，就是蛙。', img:'assets/hanzi/h179.webp'},
+  {c:'蛇', py:'shé', w:'小蛇', tip:'弯弯曲曲的小蛇，吐着舌头，就是蛇。', img:'assets/hanzi/h180.webp'},
+  {c:'蝶', py:'dié', w:'蝴蝶', tip:'蝴蝶扇着花翅膀，就是蝶。', img:'assets/hanzi/h181.webp'},
+  {c:'蜂', py:'fēng', w:'蜜蜂', tip:'小蜜蜂采花蜜，嗡嗡嗡，就是蜂。', img:'assets/hanzi/h182.webp'},
+  {c:'蚂', py:'mǎ', w:'蚂蚁', tip:'小蚂蚁搬粮食，排排队，就是蚂。', img:'assets/hanzi/h183.webp'},
+  {c:'虾', py:'xiā', w:'大虾', tip:'弯着腰的大虾，就是虾。', img:'assets/hanzi/h184.webp'},
+  {c:'蟹', py:'xiè', w:'螃蟹', tip:'螃蟹横着走，举着大钳子，就是蟹。', img:'assets/hanzi/h185.webp'},
+  {c:'鸭', py:'yā', w:'鸭子', tip:'鸭子在水里嘎嘎叫，就是鸭。', img:'assets/hanzi/h186.webp'},
+  {c:'鹅', py:'é', w:'白鹅', tip:'大白鹅伸长脖子唱歌，就是鹅。', img:'assets/hanzi/h187.webp'},
+  {c:'鸡', py:'jī', w:'母鸡', tip:'母鸡咯咯叫，下鸡蛋，就是鸡。', img:'assets/hanzi/h188.webp'},
+  {c:'燕', py:'yàn', w:'燕子', tip:'小燕子剪刀尾，春天飞回来，就是燕。', img:'assets/hanzi/h189.webp'},
+  {c:'花', py:'huā', w:'花朵', tip:'草丛里开出花，就是花。', img:'assets/hanzi/h190.webp'},
+  {c:'草', py:'cǎo', w:'小草', tip:'春天小草冒出头，就是草。', img:'assets/hanzi/h191.webp'},
+  {c:'叶', py:'yè', w:'叶子', tip:'树上长出绿叶子，就是叶。', img:'assets/hanzi/h192.webp'},
+  {c:'麦', py:'mài', w:'麦子', tip:'金黄的麦子熟了，就是麦。', img:'assets/hanzi/h193.webp'},
+  {c:'茶', py:'chá', w:'茶叶', tip:'山上采下嫩茶叶，就是茶。', img:'assets/hanzi/h194.webp'},
+  {c:'桃', py:'táo', w:'桃子', tip:'树上结桃子，粉粉的，就是桃。', img:'assets/hanzi/h195.webp'},
+  {c:'梨', py:'lí', w:'梨子', tip:'梨树结梨子，甜甜的，就是梨。', img:'assets/hanzi/h196.webp'},
+  {c:'虫', py:'chóng', w:'虫子', tip:'一条小虫扭啊扭，就是虫。', img:'assets/hanzi/h197.webp'},
+  {c:'羽', py:'yǔ', w:'羽毛', tip:'两片羽毛轻飘飘，就是羽。', img:'assets/hanzi/h198.webp'},
+  {c:'树', py:'shù', w:'大树', tip:'高高的大树，枝叶多，就是树。', img:'assets/hanzi/h199.webp'},
+  {c:'舞', py:'wǔ', w:'跳舞', tip:'张开手臂转圈圈跳舞，就是舞。', img:'assets/hanzi/h200.webp'},
 ];
 const hzcar = document.getElementById('hzcar');
 HANZI.forEach(h=>{
