@@ -3419,7 +3419,7 @@ function renderStories(){
     if(storyFilter !== 'all' && storyCatOf(i) !== storyFilter) return;
     const it = document.createElement('div');
     it.className = 'scard';
-    it.innerHTML = `<div class="covwrap"><img class="cov" loading="lazy" src="assets/icons/cover${i+1}.webp?v=2" alt="${s.title}"><button class="micbtn" aria-label="录音"><img src="assets/icons/mic.webp" alt="录音"></button></div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div>`;
+    it.innerHTML = `<div class="covwrap"><img class="cov" loading="lazy" src="assets/icons/cover${i+1}.webp?v=3" alt="${s.title}"><button class="micbtn" aria-label="录音"><img src="assets/icons/mic.webp" alt="录音"></button></div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div>`;
     it.onclick = ()=>openReader(i);
     it.querySelector('.micbtn').onclick = e=>{ e.stopPropagation(); openStudio(i); };
     slist.appendChild(it);
