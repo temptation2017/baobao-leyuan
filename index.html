@@ -210,7 +210,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .scard .covwrap{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 10px 22px rgba(31,41,55,.13)}
 .scard img.cov{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
 .scard .micbtn{position:absolute;right:8px;bottom:8px;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.94);box-shadow:0 4px 10px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;cursor:pointer}
-.scard .micbtn img{width:24px;height:24px}
+.scard .micbtn img{width:27px;height:27px;border-radius:50%}
 .scard .t{font-size:16.5px;font-weight:800;color:#1F2937;margin-top:9px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:42px}
 .scard .d{font-size:13px;color:#9CA3AF;font-weight:700;margin-top:2px}
 .randbar{padding:2px 18px 8px;flex-shrink:0}
@@ -3419,7 +3419,7 @@ function renderStories(){
     if(storyFilter !== 'all' && storyCatOf(i) !== storyFilter) return;
     const it = document.createElement('div');
     it.className = 'scard';
-    it.innerHTML = `<div class="covwrap"><img class="cov" loading="lazy" src="assets/icons/cover${i+1}.webp" alt="${s.title}"><button class="micbtn" aria-label="录音"><img src="assets/icons/mic.webp" alt="录音"></button></div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div>`;
+    it.innerHTML = `<div class="covwrap"><img class="cov" loading="lazy" src="assets/icons/cover${i+1}.webp?v=2" alt="${s.title}"><button class="micbtn" aria-label="录音"><img src="assets/icons/mic.webp" alt="录音"></button></div><div class="t">${s.title}</div><div class="d">${s.pages.length} 页 · 约 1 分钟</div>`;
     it.onclick = ()=>openReader(i);
     it.querySelector('.micbtn').onclick = e=>{ e.stopPropagation(); openStudio(i); };
     slist.appendChild(it);
