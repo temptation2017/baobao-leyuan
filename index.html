@@ -57,6 +57,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .shapeitem .t{font-size:21px;font-weight:800;color:#3a2e2e}
 .shapeitem.bounce svg{animation:shkb .5s}
 .shapeitem.bounce .swatch{animation:shkb .5s}
+.shapeitem.bounce .candyimg{animation:shkb .5s}
+/* 认糖果 */
+#candy{background:linear-gradient(180deg,#FFF0F5 0%,#FFF7EA 100%)}
+#candyquiz{background:linear-gradient(180deg,#FFF0F5 0%,#FFE9F2 100%)}
+.candyimg{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.12))}
+.shapeopt .candyimg{width:104px;height:104px}
 @keyframes shkb{0%,100%{transform:scale(1)}40%{transform:scale(1.18) rotate(6deg)}}
 /* 认颜色 */
 #colors,#colorquiz{background:linear-gradient(180deg,#FFF7EA 0%,#FFE9F2 60%,#E8F4FF 100%)}
@@ -105,6 +111,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .ptile.empty{background:#fff;box-shadow:inset 0 0 0 3px #d8e4f0;cursor:default}
 .ptile:active{transform:scale(.96)}
 .puzfb{min-height:56px;text-align:center;font-size:30px;font-weight:900;color:#E8830C}
+.puzref{display:flex;align-items:center;justify-content:center;gap:10px;padding:6px}
+.puzref img{width:74px;height:74px;border-radius:16px;object-fit:cover;box-shadow:0 4px 12px rgba(90,140,200,.2);background:#f2f2f2}
+.puzref span{font-size:15px;font-weight:700;color:#8a97ad}
 /* 泡泡 */
 #bubbles{background:linear-gradient(180deg,#BEE3FF 0%,#E8F7FF 60%,#FFF7EA 100%)}
 .bubwrap{flex:1;position:relative;overflow:hidden}
@@ -247,7 +256,7 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 body.paper .mcard,body.paper .acard,body.paper .scard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
@@ -279,7 +288,7 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
@@ -349,6 +358,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appicon" onclick="openZoo()"><img src="assets/icons/zoo.webp" alt="动物世界"><span>动物世界</span></div>
       <div class="appicon" onclick="go('shapes')"><img src="assets/icons/shapes.webp" alt="认形状"><span>认形状</span></div>
       <div class="appicon" onclick="go('colors')"><img src="assets/icons/colors.webp" alt="认颜色"><span>认颜色</span></div>
+      <div class="appicon" onclick="go('candy')"><img src="assets/icons/candy.webp" alt="认糖果"><span>认糖果</span></div>
       <div class="appicon" onclick="openHabits()"><img src="assets/icons/habits.webp" alt="好习惯"><span>好习惯</span></div>
       <div class="appicon" onclick="openStudioHome()"><img src="assets/icons/mic.webp" alt="录音棚"><span>录音棚</span></div>
       <div class="appicon" onclick="startPuzzle()"><img src="assets/icons/puzzle.webp" alt="拼图"><span>拼图</span></div>
@@ -505,6 +515,32 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     <div class="countfb" id="colorFb"></div>
   </section>
 
+  <!-- 认糖果 -->
+  <section id="candy" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">认糖果</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="shapegrid" id="candyGrid"></div>
+    <div style="padding:0 20px calc(16px + env(safe-area-inset-bottom))"><button class="btn blue" style="width:100%" onclick="startCandyQuiz()"><img class="btnico" src="assets/icons/find.webp" alt="">考一考：找糖果</button></div>
+  </section>
+
+  <!-- 找糖果 -->
+  <section id="candyquiz" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('candy')">‹</button>
+      <div class="toptitle">找糖果</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="findq">
+      <h2 id="candyQ">哪个是棒棒糖？</h2>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCandy()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+    </div>
+    <div class="shapeopts" id="candyOpts"></div>
+    <div class="countfb" id="candyFb"></div>
+  </section>
+
   <!-- 好习惯 -->
   <section id="habits" class="screen">
     <div class="topbar">
@@ -542,8 +578,10 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <div class="puzq">
       <h2 id="puzQ">拼一拼</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="startPuzzle()"><img class="btnico" src="assets/icons/speaker.webp" alt="">换一张</button>
+      <div class="cpages" id="puzTabs" style="padding:4px 0"></div>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:4px" onclick="startPuzzle()"><img class="btnico" src="assets/icons/speaker.webp" alt="">换一张</button>
     </div>
+    <div class="puzref"><img id="puzRef" src="" alt="参考图"><span>照着这张图拼</span></div>
     <div class="puzgrid" id="puzGrid"></div>
     <div class="puzfb" id="puzFb"></div>
   </section>
@@ -645,6 +683,16 @@ const ANIMALS = [
   {name:'小鸭', img:'assets/animals/duck.png', emoji:'🦆', audio:'assets/audio/a_duck.mp3', sound:'嘎嘎', fact:'小鸭子会游泳，羽毛不怕水。'},
   {name:'青蛙', img:'assets/animals/frog.webp', emoji:'🐸', audio:'assets/audio/a_frog.mp3', sound:'呱呱', fact:'青蛙从小蝌蚪长大，爱吃害虫。'},
   {name:'熊猫', img:'assets/animals/panda.webp', emoji:'🐼', audio:'assets/audio/a_panda.mp3', sound:'嗯嗯', fact:'熊猫是中国国宝，最爱吃竹子。'},
+  {name:'小马', img:'assets/animals/horse.png', emoji:'🐴', audio:'assets/audio/a_horse.mp3', sound:'嘶', fact:'小马跑得很快，长大可以骑。'},
+  {name:'小鸡', img:'assets/animals/chick.png', emoji:'🐤', audio:'assets/audio/a_chick.mp3', sound:'叽叽', fact:'小鸡爱吃米，整天跟着鸡妈妈。'},
+  {name:'小猪', img:'assets/animals/pig.png', emoji:'🐷', audio:'assets/audio/a_pig.mp3', sound:'哼哼', fact:'小猪爱打滚，鼻子圆圆的。'},
+  {name:'小羊', img:'assets/animals/sheep.png', emoji:'🐑', audio:'assets/audio/a_sheep.mp3', sound:'咩咩', fact:'小羊的毛卷卷的，摸起来软软的。'},
+  {name:'小牛', img:'assets/animals/cow.png', emoji:'🐮', audio:'assets/audio/a_cow.mp3', sound:'哞哞', fact:'小牛爱吃草，长大能产牛奶。'},
+  {name:'老虎', img:'assets/animals/tiger.png', emoji:'🐯', audio:'assets/audio/a_tiger.mp3', sound:'嗷呜', fact:'老虎头上有个王字，是森林之王。'},
+  {name:'长颈鹿', img:'assets/animals/giraffe.png', emoji:'🦒', audio:'assets/audio/a_giraffe.mp3', sound:'嗯', fact:'长颈鹿脖子最长，能吃到高高的叶子。'},
+  {name:'斑马', img:'assets/animals/zebra.png', emoji:'🦓', audio:'assets/audio/a_zebra.mp3', sound:'嘶嘶', fact:'斑马穿着条纹衣，每只花纹都不一样。'},
+  {name:'企鹅', img:'assets/animals/penguin.png', emoji:'🐧', audio:'assets/audio/a_penguin.mp3', sound:'嘎嘎', fact:'企鹅住在南极，走路一摇一摆。'},
+  {name:'袋鼠', img:'assets/animals/kangaroo.png', emoji:'🦘', audio:'assets/audio/a_kangaroo.mp3', sound:'呜呜', fact:'袋鼠妈妈有育儿袋，宝宝住在里面。'},
 ];
 const STORIES = [
   {title:'宝宝和小熊找月亮', parentTip:'问问她：月亮像什么呀？', pages:[
@@ -921,7 +969,7 @@ function askFind(){
 }
 
 /* ================= 数一数 ================= */
-const COUNT_EMOJI = [['🍎','苹果'],['🐤','小鸡'],['⭐','星星'],['🍓','草莓'],['🐟','小鱼'],['🌼','小花'],['🍇','葡萄'],['🐶','小狗'],['🚗','小汽车'],['🎈','气球'],['🐚','贝壳'],['🌙','月亮']];
+const COUNT_EMOJI = [['🍎','苹果'],['🐤','小鸡'],['⭐','星星'],['🍓','草莓'],['🐟','小鱼'],['🌼','小花'],['🍇','葡萄'],['🐶','小狗'],['🚗','小汽车'],['🎈','气球'],['🐚','贝壳'],['🌙','月亮'],['🍉','西瓜'],['🐰','小兔'],['🚂','小火车'],['⚽','皮球'],['🦋','蝴蝶'],['🍪','饼干'],['🐠','热带鱼'],['🍩','甜甜圈'],['🐢','乌龟'],['🍒','樱桃'],['🧸','小熊'],['🪁','风筝']];
 const NUM_WORD = ['一','二','三','四','五','六','七','八','九','十'];
 let countN = 0, countName = '';
 function startCount(){
@@ -979,6 +1027,18 @@ const SHAPES = [
   {n:'心形', c:'#F783AC', svg:'<path d="M60 100 C20 70 8 45 20 28 C30 14 50 16 60 32 C70 16 90 14 100 28 C112 45 100 70 60 100 Z"/>'},
   {n:'椭圆形', c:'#9775FA', svg:'<ellipse cx="60" cy="60" rx="50" ry="33"/>'},
   {n:'菱形', c:'#3BC9DB', svg:'<polygon points="60,10 110,60 60,110 10,60"/>'},
+  {n:'五边形', c:'#FF8787', svg:'<polygon points="60,8 110,45 91,102 29,102 10,45"/>'},
+  {n:'六边形', c:'#E599F7', svg:'<polygon points="60,8 105,34 105,86 60,112 15,86 15,34"/>'},
+  {n:'梯形', c:'#66D9E5', svg:'<polygon points="35,15 85,15 105,105 15,105"/>'},
+  {n:'平行四边形', c:'#FFC078', svg:'<polygon points="40,15 105,15 80,105 15,105"/>'},
+  {n:'月牙形', c:'#FCC419', svg:'<path d="M80 12 A48 48 0 1 0 80 108 A36 36 0 1 1 80 12 Z"/>'},
+  {n:'十字形', c:'#B197FC', svg:'<polygon points="45,10 75,10 75,45 110,45 110,75 75,75 75,110 45,110 45,75 10,75 10,45 45,45"/>'},
+  {n:'箭头形', c:'#63E6BE', svg:'<polygon points="10,45 65,45 65,20 110,60 65,100 65,75 10,75"/>'},
+  {n:'水滴形', c:'#74C0FC', svg:'<path d="M60 12 C60 12 18 62 18 82 A42 42 0 0 0 102 82 C102 62 60 12 60 12 Z"/>'},
+  {n:'扇形', c:'#FFD43B', svg:'<path d="M60 60 L110 60 A50 50 0 0 0 60 10 Z"/>'},
+  {n:'半圆形', c:'#A9E34B', svg:'<path d="M10 90 A50 50 0 0 1 110 90 Z"/>'},
+  {n:'橄榄形', c:'#94D82D', svg:'<path d="M60 15 C90 40 90 80 60 105 C30 80 30 40 60 15 Z"/>'},
+  {n:'八边形', c:'#FFA8A8', svg:'<polygon points="40,8 80,8 112,40 112,80 80,112 40,112 8,80 8,40"/>'},
 ];
 function shapeSVG(s){ return `<svg viewBox="0 0 120 120"><g fill="${s.c}">${s.svg}</g></svg>`; }
 (function renderShapes(){
@@ -1040,6 +1100,14 @@ const COLORS = [
   {n:'黑色', c:'#343A40'},
   {n:'灰色', c:'#ADB5BD'},
   {n:'金色', c:'#E8A90C'},
+  {n:'天蓝色', c:'#74C0FC'},
+  {n:'深蓝色', c:'#1864AB'},
+  {n:'浅绿色', c:'#8CE99A'},
+  {n:'深绿色', c:'#2B8A3E'},
+  {n:'米色', c:'#F3E5C0'},
+  {n:'肤色', c:'#FFD8A8'},
+  {n:'浅紫色', c:'#D0BFFF'},
+  {n:'青色', c:'#22B8CF'},
 ];
 (function renderColors(){
   const g = document.getElementById('colorGrid');
@@ -1086,39 +1154,119 @@ function startColorQuiz(){
 }
 function askColor(){ if(colorTarget) say(`哪个是${colorTarget.n}？`); }
 
-/* ================= 拼图 ================= */
-let puzOrder = [], puzImgUrl = '';
-function puzInv(arr){
-  let n = 0;
-  for(let i=0;i<arr.length;i++) for(let j=i+1;j<arr.length;j++) if(arr[i] > arr[j]) n++;
-  return n;
+/* ================= 认糖果 ================= */
+const CANDIES = [
+  {n:'棒棒糖', img:'assets/candy/lollipop.png'},
+  {n:'小熊软糖', img:'assets/candy/gummy.png'},
+  {n:'巧克力', img:'assets/candy/chocolate.png'},
+  {n:'棉花糖', img:'assets/candy/marshmallow.png'},
+  {n:'彩虹糖', img:'assets/candy/rainbow.png'},
+  {n:'太妃糖', img:'assets/candy/toffee.png'},
+  {n:'果冻', img:'assets/candy/jelly.png'},
+  {n:'奶糖', img:'assets/candy/milkcandy.png'},
+];
+function candyImg(c){ return `<img class="candyimg" src="${c.img}" alt="${c.n}">`; }
+(function renderCandy(){
+  const g = document.getElementById('candyGrid');
+  CANDIES.forEach(c=>{
+    const d = document.createElement('div');
+    d.className = 'shapeitem';
+    d.innerHTML = candyImg(c) + `<div class="t">${c.n}</div>`;
+    d.onclick = ()=>{
+      d.classList.remove('bounce'); void d.offsetWidth; d.classList.add('bounce');
+      say(c.n);
+    };
+    g.appendChild(d);
+  });
+})();
+let candyTarget = null;
+function startCandyQuiz(){
+  const opts = [...CANDIES].sort(()=>Math.random()-.5).slice(0,3);
+  candyTarget = opts[Math.floor(Math.random()*3)];
+  document.getElementById('candyQ').textContent = `哪个是${candyTarget.n}？`;
+  document.getElementById('candyFb').innerHTML = '';
+  const box = document.getElementById('candyOpts');
+  box.innerHTML = '';
+  opts.forEach(c=>{
+    const b = document.createElement('button');
+    b.className = 'shapeopt';
+    b.innerHTML = candyImg(c);
+    b.setAttribute('aria-label', c.n);
+    b.onclick = ()=>{
+      if(c.n === candyTarget.n){
+        b.classList.add('ok');
+        document.getElementById('candyFb').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 答对啦！';
+        say(`答对啦，${c.n}`);
+        addStar();
+        setTimeout(startCandyQuiz, 1800);
+      } else {
+        document.getElementById('candyFb').textContent = '再试试';
+        say('再试试');
+      }
+    };
+    box.appendChild(b);
+  });
+  go('candyquiz');
+  askCandy();
 }
-function startPuzzle(){
+function askCandy(){ if(candyTarget) say(`哪个是${candyTarget.n}？`); }
+
+/* ================= 拼图 ================= */
+let puzOrder = [], puzImgUrl = '', puzName = '', puzN = 2;
+function puzShuffle(total){
+  const N = Math.round(Math.sqrt(total));
+  const order = [...Array(total).keys()];
+  let e = total - 1;
+  for(let k=0;k<50;k++){
+    const r = Math.floor(e/N), c = e%N, cands = [];
+    if(c > 0) cands.push(e-1);
+    if(c < N-1) cands.push(e+1);
+    if(r > 0) cands.push(e-N);
+    if(r < N-1) cands.push(e+N);
+    const p = cands[Math.floor(Math.random()*cands.length)];
+    [order[p], order[e]] = [order[e], order[p]];
+    e = p;
+  }
+  if(order.every((t,i)=>t === i)) return puzShuffle(total);
+  return order;
+}
+function startPuzzle(n){
+  if(n) puzN = n;
   const pool = ANIMALS_ALL.filter(a=>a.img);
   const a = pool[Math.floor(Math.random()*pool.length)];
   puzImgUrl = a.img;
-  document.getElementById('puzQ').textContent = `拼一拼：${a.n}`;
+  puzName = a.n;
+  puzOrder = puzShuffle(puzN*puzN);
+  const tabs = document.getElementById('puzTabs');
+  tabs.innerHTML = '';
+  [[2,'4 块'],[3,'9 块']].forEach(([n2,label])=>{
+    const b = document.createElement('button');
+    b.className = 'cptab' + (n2 === puzN ? ' on' : '');
+    b.textContent = label;
+    b.onclick = ()=>startPuzzle(n2);
+    tabs.appendChild(b);
+  });
+  document.getElementById('puzQ').textContent = `拼一拼：${puzName}`;
+  document.getElementById('puzRef').src = puzImgUrl;
   document.getElementById('puzFb').innerHTML = '';
-  let guard = 0;
-  do{
-    puzOrder = [...Array(9).keys()].sort(()=>Math.random()-.5);
-    guard++;
-  }while(puzInv(puzOrder) % 2 === 1 && guard < 60);
   renderPuzzle();
   go('puzzle');
 }
 function renderPuzzle(){
+  const N = puzN, blank = N*N-1;
   const g = document.getElementById('puzGrid');
+  g.style.gridTemplateColumns = `repeat(${N},1fr)`;
   g.innerHTML = '';
   puzOrder.forEach((t,pos)=>{
     const d = document.createElement('button');
-    if(t === 8){
+    if(t === blank){
       d.className = 'ptile empty';
       d.disabled = true;
     } else {
       d.className = 'ptile';
       d.style.backgroundImage = `url(${puzImgUrl})`;
-      d.style.backgroundPosition = `${(t%3)*50}% ${Math.floor(t/3)*50}%`;
+      d.style.backgroundSize = `${N*100}% ${N*100}%`;
+      d.style.backgroundPosition = `${(t%N)/(N-1)*100}% ${(Math.floor(t/N))/(N-1)*100}%`;
       d.setAttribute('aria-label', `拼图块 ${t+1}`);
       d.onclick = ()=>puzMove(pos);
     }
@@ -1126,16 +1274,16 @@ function renderPuzzle(){
   });
 }
 function puzMove(pos){
-  const e = puzOrder.indexOf(8);
-  const ok = (pos === e-1 && pos%3 !== 2) || (pos === e+1 && pos%3 !== 0) || pos === e-3 || pos === e+3;
-  if(!ok) return;
+  const N = puzN, blank = N*N-1, e = puzOrder.indexOf(blank);
+  const dr = Math.abs(Math.floor(pos/N)-Math.floor(e/N)), dc = Math.abs(pos%N-e%N);
+  if(dr + dc !== 1) return;
   [puzOrder[pos], puzOrder[e]] = [puzOrder[e], puzOrder[pos]];
   renderPuzzle();
   if(puzOrder.every((t,i)=>t === i)){
     document.getElementById('puzFb').innerHTML = '<img class="starico" src="assets/icons/star.webp" alt="星"> 拼好啦！';
     say('拼好啦，真棒');
     addStar();
-    setTimeout(startPuzzle, 2400);
+    setTimeout(()=>startPuzzle(), 2400);
   }
 }
 
@@ -1177,6 +1325,18 @@ const HABITS = [
   {n:'自己穿衣服', tip:'衣服穿得整整齐齐'},
   {n:'说谢谢', tip:'谢谢要挂在嘴边'},
   {n:'不挑食', tip:'什么都吃身体棒'},
+  {n:'自己穿鞋子', tip:'出门自己穿鞋子'},
+  {n:'乖乖午睡', tip:'中午睡个小午觉'},
+  {n:'多喝水', tip:'每天喝好多水'},
+  {n:'说对不起', tip:'做错事要说对不起'},
+  {n:'学会排队', tip:'排队不挤不抢'},
+  {n:'不乱扔垃圾', tip:'垃圾扔进垃圾桶'},
+  {n:'爱护图书', tip:'看书轻轻翻'},
+  {n:'轻拿轻放', tip:'玩具轻拿轻放'},
+  {n:'帮摆碗筷', tip:'帮妈妈摆碗筷'},
+  {n:'见面问好', tip:'见面说声你好'},
+  {n:'睡前晚安', tip:'睡觉说声晚安'},
+  {n:'便后冲水', tip:'上完厕所冲冲水'},
 ];
 function habitKey(){ const d = new Date(); return `habits_${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`; }
 function getHabits(){ try{ return JSON.parse(localStorage.getItem(habitKey()) || '[]'); }catch(e){ return []; } }
