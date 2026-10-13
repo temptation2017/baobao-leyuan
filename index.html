@@ -65,7 +65,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .shapeopt .candyimg{width:104px;height:104px}
 @keyframes shkb{0%,100%{transform:scale(1)}40%{transform:scale(1.18) rotate(6deg)}}
 /* 认颜色 */
-#colors,#colorquiz{background:linear-gradient(180deg,#FFF7EA 0%,#FFE9F2 60%,#E8F4FF 100%)}
+/* 认颜色（现代风） */
+#colors,#colorquiz{background:linear-gradient(165deg,#FFF9F0 0%,#FDF1F6 55%,#EBF3FF 100%)}
+.colorgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:16px 14px}
+.colorcard{background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-radius:24px;padding:16px 4px 12px;display:flex;flex-direction:column;align-items:center;gap:9px;box-shadow:0 10px 22px rgba(90,140,200,.13);border:1px solid rgba(255,255,255,.7);cursor:pointer;transition:transform .15s}
+.colorcard:active{transform:scale(.93)}
+.cdot{width:70px;height:70px;border-radius:50%;position:relative;box-shadow:inset 0 -10px 16px rgba(0,0,0,.18),inset 0 8px 12px rgba(255,255,255,.4),0 8px 16px rgba(0,0,0,.15)}
+.cdot::after{content:'';position:absolute;top:11%;left:15%;width:34%;height:22%;border-radius:50%;background:rgba(255,255,255,.6);transform:rotate(-24deg)}
+.cname{font-size:16px;font-weight:700;color:#49536a;letter-spacing:.5px}
+.colorcard.bounce .cdot{animation:shkb .5s}
+.coloropts{display:flex;gap:22px;justify-content:center;align-items:center;padding:30px 16px;flex-wrap:wrap}
+.coloropt{width:112px;height:112px;border-radius:50%;border:6px solid #fff;box-shadow:0 12px 26px rgba(0,0,0,.18),inset 0 -10px 16px rgba(0,0,0,.14);cursor:pointer;position:relative;transition:transform .15s}
+.coloropt:active{transform:scale(.92)}
+.coloropt::after{content:'';position:absolute;top:11%;left:15%;width:34%;height:22%;border-radius:50%;background:rgba(255,255,255,.55);transform:rotate(-24deg)}
+.coloropt.ok{outline:6px solid #51CF66;outline-offset:3px}
 .swatch{width:96px;height:96px;border-radius:50%;box-shadow:inset 0 -8px 16px rgba(0,0,0,.14),0 6px 12px rgba(0,0,0,.12)}
 .shapeopts{flex:1;display:flex;flex-direction:column;gap:16px;padding:10px 44px;justify-content:center}
 .shapeopt{background:#fff;border-radius:24px;padding:20px;display:flex;justify-content:center;cursor:pointer;box-shadow:0 8px 22px rgba(180,120,60,.14);border:none}
@@ -148,6 +161,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .acard .fact{font-size:15px;color:#8a97ad;max-width:420px;text-align:center;line-height:1.6}
 .bounce{animation:bnc .45s ease}
 @keyframes bnc{0%{transform:scale(1)}35%{transform:scale(1.14) rotate(-3deg)}70%{transform:scale(.96)}100%{transform:scale(1)}}
+.acount{text-align:center;font-size:15px;font-weight:700;color:#8a97ad;padding:2px 0 10px}
+.enbtn{display:inline-flex;align-items:center;gap:6px;margin:2px auto 6px;padding:7px 16px;border:none;border-radius:999px;background:#E7F1FF;color:#1971C2;font-size:16px;font-weight:700;cursor:pointer}
+.enbtn img{width:22px;height:22px}
 .adots{display:flex;justify-content:center;gap:8px;padding:10px}
 .adot{width:10px;height:10px;border-radius:50%;background:#c9d6e8;transition:all .2s}
 .adot.on{background:#FF9A3D;transform:scale(1.4)}
@@ -378,7 +394,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="carousel" id="acar"></div>
-    <div class="adots" id="adots"></div>
+    <div class="acount" id="acount">1 / 20</div>
     <div class="abtns">
       <button class="btn ghost" onclick="go('home')">‹ 返回</button>
     </div>
@@ -496,7 +512,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="toptitle">认颜色</div>
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
-    <div class="shapegrid" id="colorGrid"></div>
+    <div class="colorgrid" id="colorGrid"></div>
     <div style="padding:0 20px calc(16px + env(safe-area-inset-bottom))"><button class="btn blue" style="width:100%" onclick="startColorQuiz()"><img class="btnico" src="assets/icons/find.webp" alt="">考一考：找颜色</button></div>
   </section>
 
@@ -511,7 +527,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <h2 id="colorQ">哪个是红色？</h2>
       <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askColor()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
     </div>
-    <div class="shapeopts" id="colorOpts"></div>
+    <div class="coloropts" id="colorOpts"></div>
     <div class="countfb" id="colorFb"></div>
   </section>
 
@@ -673,26 +689,208 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
 <script>
 /* ================= 数据 ================= */
 const ANIMALS = [
-  {name:'小狗', img:'assets/animals/dog.png', emoji:'🐶', audio:'assets/audio/a_dog.mp3', sound:'汪汪', fact:'狗狗喜欢和人玩，摇尾巴就是开心。'},
-  {name:'小猫', img:'assets/animals/cat.png', emoji:'🐱', audio:'assets/audio/a_cat.mp3', sound:'喵喵', fact:'猫咪喜欢晒太阳，呼噜呼噜表示舒服。'},
-  {name:'小兔子', img:'assets/animals/rabbit.png', emoji:'🐰', audio:'assets/audio/a_rabbit.mp3', sound:'蹦蹦跳', fact:'兔子爱吃胡萝卜，跑起来一蹦一蹦的。'},
-  {name:'小熊', img:'assets/animals/bear.png', emoji:'🐻', audio:'assets/audio/a_bear.mp3', sound:'嗷呜', fact:'小熊冬天会冬眠，睡一个长长的觉。'},
-  {name:'大象', img:'assets/animals/elephant.png', emoji:'🐘', audio:'assets/audio/a_elephant.mp3', sound:'嘟——', fact:'大象的鼻子很长，能卷起东西。'},
-  {name:'狮子', img:'assets/animals/lion.png', emoji:'🦁', audio:'assets/audio/a_lion.mp3', sound:'吼！', fact:'狮子是草原之王，头发像围脖。'},
-  {name:'猴子', img:'assets/animals/monkey.png', emoji:'🐵', audio:'assets/audio/a_monkey.mp3', sound:'吱吱', fact:'猴子爱爬树，尾巴能勾住树枝。'},
-  {name:'小鸭', img:'assets/animals/duck.png', emoji:'🦆', audio:'assets/audio/a_duck.mp3', sound:'嘎嘎', fact:'小鸭子会游泳，羽毛不怕水。'},
-  {name:'青蛙', img:'assets/animals/frog.webp', emoji:'🐸', audio:'assets/audio/a_frog.mp3', sound:'呱呱', fact:'青蛙从小蝌蚪长大，爱吃害虫。'},
-  {name:'熊猫', img:'assets/animals/panda.webp', emoji:'🐼', audio:'assets/audio/a_panda.mp3', sound:'嗯嗯', fact:'熊猫是中国国宝，最爱吃竹子。'},
-  {name:'小马', img:'assets/animals/horse.png', emoji:'🐴', audio:'assets/audio/a_horse.mp3', sound:'嘶', fact:'小马跑得很快，长大可以骑。'},
-  {name:'小鸡', img:'assets/animals/chick.png', emoji:'🐤', audio:'assets/audio/a_chick.mp3', sound:'叽叽', fact:'小鸡爱吃米，整天跟着鸡妈妈。'},
-  {name:'小猪', img:'assets/animals/pig.png', emoji:'🐷', audio:'assets/audio/a_pig.mp3', sound:'哼哼', fact:'小猪爱打滚，鼻子圆圆的。'},
-  {name:'小羊', img:'assets/animals/sheep.png', emoji:'🐑', audio:'assets/audio/a_sheep.mp3', sound:'咩咩', fact:'小羊的毛卷卷的，摸起来软软的。'},
-  {name:'小牛', img:'assets/animals/cow.png', emoji:'🐮', audio:'assets/audio/a_cow.mp3', sound:'哞哞', fact:'小牛爱吃草，长大能产牛奶。'},
-  {name:'老虎', img:'assets/animals/tiger.png', emoji:'🐯', audio:'assets/audio/a_tiger.mp3', sound:'嗷呜', fact:'老虎头上有个王字，是森林之王。'},
-  {name:'长颈鹿', img:'assets/animals/giraffe.png', emoji:'🦒', audio:'assets/audio/a_giraffe.mp3', sound:'嗯', fact:'长颈鹿脖子最长，能吃到高高的叶子。'},
-  {name:'斑马', img:'assets/animals/zebra.png', emoji:'🦓', audio:'assets/audio/a_zebra.mp3', sound:'嘶嘶', fact:'斑马穿着条纹衣，每只花纹都不一样。'},
-  {name:'企鹅', img:'assets/animals/penguin.png', emoji:'🐧', audio:'assets/audio/a_penguin.mp3', sound:'嘎嘎', fact:'企鹅住在南极，走路一摇一摆。'},
-  {name:'袋鼠', img:'assets/animals/kangaroo.png', emoji:'🦘', audio:'assets/audio/a_kangaroo.mp3', sound:'呜呜', fact:'袋鼠妈妈有育儿袋，宝宝住在里面。'},
+  {name:'小狗', en:'Dog', img:'assets/animals/dog.png', emoji:'🐶', audio:'assets/audio/a_dog.mp3', sound:'汪汪', fact:'狗狗喜欢和人玩，摇尾巴就是开心。'},
+  {name:'小猫', en:'Cat', img:'assets/animals/cat.png', emoji:'🐱', audio:'assets/audio/a_cat.mp3', sound:'喵喵', fact:'猫咪喜欢晒太阳，呼噜呼噜表示舒服。'},
+  {name:'小兔子', en:'Rabbit', img:'assets/animals/rabbit.png', emoji:'🐰', audio:'assets/audio/a_rabbit.mp3', sound:'蹦蹦跳', fact:'兔子爱吃胡萝卜，跑起来一蹦一蹦的。'},
+  {name:'小熊', en:'Bear', img:'assets/animals/bear.png', emoji:'🐻', audio:'assets/audio/a_bear.mp3', sound:'嗷呜', fact:'小熊冬天会冬眠，睡一个长长的觉。'},
+  {name:'大象', en:'Elephant', img:'assets/animals/elephant.png', emoji:'🐘', audio:'assets/audio/a_elephant.mp3', sound:'嘟——', fact:'大象的鼻子很长，能卷起东西。'},
+  {name:'狮子', en:'Lion', img:'assets/animals/lion.png', emoji:'🦁', audio:'assets/audio/a_lion.mp3', sound:'吼！', fact:'狮子是草原之王，头发像围脖。'},
+  {name:'猴子', en:'Monkey', img:'assets/animals/monkey.png', emoji:'🐵', audio:'assets/audio/a_monkey.mp3', sound:'吱吱', fact:'猴子爱爬树，尾巴能勾住树枝。'},
+  {name:'小鸭', en:'Duck', img:'assets/animals/duck.png', emoji:'🦆', audio:'assets/audio/a_duck.mp3', sound:'嘎嘎', fact:'小鸭子会游泳，羽毛不怕水。'},
+  {name:'青蛙', en:'Frog', img:'assets/animals/frog.webp', emoji:'🐸', audio:'assets/audio/a_frog.mp3', sound:'呱呱', fact:'青蛙从小蝌蚪长大，爱吃害虫。'},
+  {name:'熊猫', en:'Panda', img:'assets/animals/panda.webp', emoji:'🐼', audio:'assets/audio/a_panda.mp3', sound:'嗯嗯', fact:'熊猫是中国国宝，最爱吃竹子。'},
+  {name:'小马', en:'Horse', img:'assets/animals/horse.png', emoji:'🐴', audio:'assets/audio/a_horse.mp3', sound:'嘶', fact:'小马跑得很快，长大可以骑。'},
+  {name:'小鸡', en:'Chick', img:'assets/animals/chick.png', emoji:'🐤', audio:'assets/audio/a_chick.mp3', sound:'叽叽', fact:'小鸡爱吃米，整天跟着鸡妈妈。'},
+  {name:'小猪', en:'Pig', img:'assets/animals/pig.png', emoji:'🐷', audio:'assets/audio/a_pig.mp3', sound:'哼哼', fact:'小猪爱打滚，鼻子圆圆的。'},
+  {name:'小羊', en:'Sheep', img:'assets/animals/sheep.png', emoji:'🐑', audio:'assets/audio/a_sheep.mp3', sound:'咩咩', fact:'小羊的毛卷卷的，摸起来软软的。'},
+  {name:'小牛', en:'Cow', img:'assets/animals/cow.png', emoji:'🐮', audio:'assets/audio/a_cow.mp3', sound:'哞哞', fact:'小牛爱吃草，长大能产牛奶。'},
+  {name:'老虎', en:'Tiger', img:'assets/animals/tiger.png', emoji:'🐯', audio:'assets/audio/a_tiger.mp3', sound:'嗷呜', fact:'老虎头上有个王字，是森林之王。'},
+  {name:'长颈鹿', en:'Giraffe', img:'assets/animals/giraffe.png', emoji:'🦒', audio:'assets/audio/a_giraffe.mp3', sound:'嗯', fact:'长颈鹿脖子最长，能吃到高高的叶子。'},
+  {name:'斑马', en:'Zebra', img:'assets/animals/zebra.png', emoji:'🦓', audio:'assets/audio/a_zebra.mp3', sound:'嘶嘶', fact:'斑马穿着条纹衣，每只花纹都不一样。'},
+  {name:'企鹅', en:'Penguin', img:'assets/animals/penguin.png', emoji:'🐧', audio:'assets/audio/a_penguin.mp3', sound:'嘎嘎', fact:'企鹅住在南极，走路一摇一摆。'},
+  {name:'袋鼠', en:'Kangaroo', img:'assets/animals/kangaroo.png', emoji:'🦘', audio:'assets/audio/a_kangaroo.mp3', sound:'呜呜', fact:'袋鼠妈妈有育儿袋，宝宝住在里面。'},
+  {name:'黑熊', en:'Asian Black Bear', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/280918640/medium.jpg', emoji:'🐻', audio:'assets/audio/a_c021.mp3', sound:'嗷呜', fact:'胸前有一弯小月牙。'},
+  {name:'雪豹', en:'Snow leopard', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Irbis4.JPG/500px-Irbis4.JPG?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐆', audio:'assets/audio/a_c022.mp3', sound:'吼', fact:'住在高高的雪山上。'},
+  {name:'猎豹', en:'Cheetah', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/TheCheethcat.jpg/500px-TheCheethcat.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐆', audio:'assets/audio/a_c023.mp3', sound:'吼', fact:'跑得比汽车还快。'},
+  {name:'云豹', en:'Clouded leopard', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Clouded_leopard.jpg/500px-Clouded_leopard.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐆', audio:'assets/audio/a_c024.mp3', sound:'吼', fact:'牙齿长长像小剑。'},
+  {name:'狼', en:'Wolf', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/European_grey_wolf_in_Prague_zoo.jpg/500px-European_grey_wolf_in_Prague_zoo.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐺', audio:'assets/audio/a_c025.mp3', sound:'嗷呜——', fact:'喜欢和家人一起生活。'},
+  {name:'鹿', en:'Deer', img:'https://static.inaturalist.org/photos/11328568/medium.jpg', emoji:'🦌', audio:'assets/audio/a_c026.mp3', sound:'哟哟', fact:'公鹿头上长着大角。'},
+  {name:'马', en:'Horse', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Nokota_Horses_cropped.jpg/500px-Nokota_Horses_cropped.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐴', audio:'assets/audio/a_c027.mp3', sound:'嘶——', fact:'跑起来像风一样快。'},
+  {name:'驴', en:'Donkey', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Donkey_%28Equus_asinus%29_at_Disney%27s_Animal_Kingdom_%2816-01-2005%29.jpg/500px-Donkey_%28Equus_asinus%29_at_Disney%27s_Animal_Kingdom_%2816-01-2005%29.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🫏', audio:'assets/audio/a_c028.mp3', sound:'嗯啊', fact:'倔强但是很能干。'},
+  {name:'水牛', en:'Water buffalo', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Wasserb%C3%BCffel_%2825787818312%29.jpg/500px-Wasserb%C3%BCffel_%2825787818312%29.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐃', audio:'assets/audio/a_c029.mp3', sound:'哞——', fact:'最爱泡在水里。'},
+  {name:'美洲野牛', en:'American bison', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/American_bison_k5680-1.jpg/500px-American_bison_k5680-1.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦬', audio:'assets/audio/a_c030.mp3', sound:'哞——', fact:'头大肩膀高力气大。'},
+  {name:'疣猪', en:'Warthogs', img:'https://static.inaturalist.org/photos/63916580/medium.jpg', emoji:'🐷', audio:'assets/audio/a_c031.mp3', sound:'哼哼', fact:'脸上长着小疙瘩。'},
+  {name:'骆驼', en:'Camel', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/07._Camel_Profile%2C_near_Silverton%2C_NSW%2C_07.07.2007.jpg/500px-07._Camel_Profile%2C_near_Silverton%2C_NSW%2C_07.07.2007.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐫', audio:'assets/audio/a_c032.mp3', sound:'哼', fact:'驼峰里存着能量。'},
+  {name:'刺猬', en:'Hedgehog', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Igel.JPG/500px-Igel.JPG?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦔', audio:'assets/audio/a_c033.mp3', sound:'呼哧', fact:'缩成刺球保护自己。'},
+  {name:'蝙蝠', en:'Bat', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Haeckel_Chiroptera.jpg/500px-Haeckel_Chiroptera.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦇', audio:'assets/audio/a_c034.mp3', sound:'吱吱', fact:'倒挂着睡觉会飞。'},
+  {name:'穿山甲', en:'Pangolin', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Manidae.jpg/500px-Manidae.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐾', audio:'assets/audio/a_c035.mp3', sound:'呼哧', fact:'穿着盔甲吃蚂蚁。'},
+  {name:'懒猴', en:'Sunda slow loris', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Nycticebus_coucang_004.jpg/500px-Nycticebus_coucang_004.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐵', audio:'assets/audio/a_c036.mp3', sound:'吱吱', fact:'夜里慢慢爬的。'},
+  {name:'水獭', en:'Eurasian Otter', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/100389336/medium.jpg', emoji:'🦦', audio:'assets/audio/a_c037.mp3', sound:'吱吱', fact:'爱仰泳吃小鱼。'},
+  {name:'海獭', en:'Sea Otter', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/311432614/medium.jpg', emoji:'🦦', audio:'assets/audio/a_c038.mp3', sound:'吱吱', fact:'抱着石头砸贝壳。'},
+  {name:'浣熊', en:'Raccoon', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/Raccoon_in_Central_Park_%2835264%29.jpg/500px-Raccoon_in_Central_Park_%2835264%29.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦝', audio:'assets/audio/a_c039.mp3', sound:'吱吱', fact:'爱把食物洗洗再吃。'},
+  {name:'座头鲸', en:'Humpback Whale', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/255461843/medium.jpg', emoji:'🐳', audio:'assets/audio/a_c040.mp3', sound:'呜——', fact:'会唱歌会跳跃。'},
+  {name:'白鲸', en:'Beluga', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/212179651/medium.jpg', emoji:'🐳', audio:'assets/audio/a_c041.mp3', sound:'嘤嘤', fact:'白白的爱笑。'},
+  {name:'抹香鲸', en:'Sperm Whale', img:'https://static.inaturalist.org/photos/359394875/medium.jpg', emoji:'🐳', audio:'assets/audio/a_c042.mp3', sound:'呜——', fact:'头方方潜水最深。'},
+  {name:'灰鲸', en:'Grey Whale', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/98429162/medium.jpg', emoji:'🐳', audio:'assets/audio/a_c043.mp3', sound:'呜——', fact:'爱贴着海岸旅行。'},
+  {name:'虎鲸', en:'Orca', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/223550594/medium.jpg', emoji:'🐋', audio:'assets/audio/a_c044.mp3', sound:'嘤嘤', fact:'黑白花纹很聪明。'},
+  {name:'海豚', en:'Oceanic Dolphins', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/9861/medium.jpg', emoji:'🐬', audio:'assets/audio/a_c045.mp3', sound:'嘤嘤', fact:'会顶球会跳跃。'},
+  {name:'鼠海豚', en:'Porpoises', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/105623447/medium.jpg', emoji:'🐬', audio:'assets/audio/a_c046.mp3', sound:'嘤嘤', fact:'小小个的海豚。'},
+  {name:'海豹', en:'Earless Seals', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/445879661/medium.jpeg', emoji:'🦭', audio:'assets/audio/a_c047.mp3', sound:'嗷嗷', fact:'爱晒太阳拍肚皮。'},
+  {name:'海狮', en:'Eared Seals', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/17940763/medium.jpg', emoji:'🦭', audio:'assets/audio/a_c048.mp3', sound:'嗷嗷', fact:'会用鳍走路。'},
+  {name:'海象', en:'Walrus', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/65857/medium.jpg', emoji:'🦭', audio:'assets/audio/a_c049.mp3', sound:'嗷嗷', fact:'胡子长长有獠牙。'},
+  {name:'儒艮', en:'Dugong', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/415728148/medium.jpg', emoji:'🦭', audio:'assets/audio/a_c050.mp3', sound:'呜——', fact:'像童话里的美人鱼。'},
+  {name:'鸭嘴兽', en:'Platypus', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/430934363/medium.jpeg', emoji:'🐾', audio:'assets/audio/a_c051.mp3', sound:'呜呜', fact:'会生蛋的哺乳动物。'},
+  {name:'针鼹', en:'Echidnas', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/56806189/medium.jpg', emoji:'🦔', audio:'assets/audio/a_c052.mp3', sound:'呼哧', fact:'满身刺也会生蛋。'},
+  {name:'跳鼠', en:'Jerboas', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/47140100/medium.jpeg', emoji:'🐭', audio:'assets/audio/a_c053.mp3', sound:'吱吱', fact:'后腿长长会跳。'},
+  {name:'田鼠', en:'Common Vole', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/27341640/medium.jpg', emoji:'🐭', audio:'assets/audio/a_c054.mp3', sound:'吱吱', fact:'住在田野里。'},
+  {name:'蹄兔', en:'Rock Hyrax', img:'https://static.inaturalist.org/photos/131657139/medium.jpeg', emoji:'🐾', audio:'assets/audio/a_c055.mp3', sound:'吱吱', fact:'大象的小小亲戚。'},
+  {name:'白虎', en:'White Tiger', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Wadang-baihu.jpg/500px-Wadang-baihu.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐯', audio:'assets/audio/a_c056.mp3', sound:'嗷呜', fact:'白白的老虎很漂亮。'},
+  {name:'美洲狮', en:'Mountain Lion', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/9834553/medium.jpg', emoji:'🐆', audio:'assets/audio/a_c057.mp3', sound:'吼', fact:'也叫山狮跑得快。'},
+  {name:'薮猫', en:'Serval', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/127018903/medium.jpg', emoji:'🐱', audio:'assets/audio/a_c058.mp3', sound:'喵呜', fact:'耳朵大腿长长。'},
+  {name:'豹猫', en:'Mainland Leopard Cat', img:'https://static.inaturalist.org/photos/275816639/medium.jpg', emoji:'🐱', audio:'assets/audio/a_c059.mp3', sound:'喵呜', fact:'身上有豹子花纹。'},
+  {name:'狞猫', en:'Caracal', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/29894444/medium.jpg', emoji:'🐱', audio:'assets/audio/a_c060.mp3', sound:'喵呜', fact:'跳起来能抓飞鸟。'},
+  {name:'长尾猴', en:'Guenons', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/9364520/medium.jpg', emoji:'🐵', audio:'assets/audio/a_c061.mp3', sound:'吱吱', fact:'尾巴比身体还长。'},
+  {name:'白面僧面猴', en:'White-faced Saki', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/110106748/medium.jpg', emoji:'🐵', audio:'assets/audio/a_c062.mp3', sound:'吱吱', fact:'脸白白像戴面具。'},
+  {name:'绿头鸭', en:'Mallard', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/95268822/medium.jpg', emoji:'🦆', audio:'assets/audio/a_c063.mp3', sound:'嘎嘎', fact:'公鸭头绿得发亮。'},
+  {name:'斑嘴鸭', en:'Eastern Spot-billed Duck', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/28097563/medium.jpg', emoji:'🦆', audio:'assets/audio/a_c064.mp3', sound:'嘎嘎', fact:'嘴上长着黄斑点。'},
+  {name:'鸳鸯', en:'Mandarin Duck', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/171955255/medium.jpg', emoji:'🦆', audio:'assets/audio/a_c065.mp3', sound:'嘎嘎', fact:'羽毛漂亮成双飞。'},
+  {name:'大天鹅', en:'Whooper Swan', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/61003700/medium.jpeg', emoji:'🦢', audio:'assets/audio/a_c066.mp3', sound:'嘎——', fact:'脖子长长爱唱歌。'},
+  {name:'小天鹅', en:'Tundra Swan', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/183205026/medium.jpeg', emoji:'🦢', audio:'assets/audio/a_c067.mp3', sound:'嘎——', fact:'叫声清脆像哨子。'},
+  {name:'黑天鹅', en:'Black Swan', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/464046604/medium.jpg', emoji:'🦢', audio:'assets/audio/a_c068.mp3', sound:'嘎——', fact:'黑羽毛红嘴巴。'},
+  {name:'疣鼻天鹅', en:'Mute Swan', img:'https://static.inaturalist.org/photos/264781420/medium.jpg', emoji:'🦢', audio:'assets/audio/a_c069.mp3', sound:'嘶嘶', fact:'鼻子上有小疙瘩。'},
+  {name:'大雁', en:'Canada Goose', img:'https://static.inaturalist.org/photos/181719420/medium.jpg', emoji:'🪿', audio:'assets/audio/a_c070.mp3', sound:'嘎嘎', fact:'排成人字往南飞。'},
+  {name:'灰雁', en:'Greylag Goose', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/61334030/medium.jpg', emoji:'🪿', audio:'assets/audio/a_c071.mp3', sound:'嘎嘎', fact:'家鹅的野生祖先。'},
+  {name:'斑头雁', en:'Bar-headed Goose', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/151124905/medium.jpg', emoji:'🪿', audio:'assets/audio/a_c072.mp3', sound:'嘎嘎', fact:'能飞过喜马拉雅山。'},
+  {name:'雪雁', en:'Snow Goose', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/467051457/medium.jpg', emoji:'🪿', audio:'assets/audio/a_c073.mp3', sound:'嘎嘎', fact:'浑身雪白飞得远。'},
+  {name:'母鸡', en:'Chicken', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Male_and_female_chicken_sitting_together.jpg/500px-Male_and_female_chicken_sitting_together.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐔', audio:'assets/audio/a_c074.mp3', sound:'咯咯', fact:'会下蛋会护小鸡。'},
+  {name:'火鸡', en:'Wild Turkey', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/31353610/medium.jpg', emoji:'🦃', audio:'assets/audio/a_c075.mp3', sound:'咕咕', fact:'尾巴像把大扇子。'},
+  {name:'珠鸡', en:'Guineafowl', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/67442285/medium.jpg', emoji:'🐔', audio:'assets/audio/a_c076.mp3', sound:'咕咕', fact:'满身珍珠小点点。'},
+  {name:'鹌鹑', en:'Japanese Quail', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/455759568/medium.jpg', emoji:'🐤', audio:'assets/audio/a_c077.mp3', sound:'叽叽', fact:'小小个爱躲草丛。'},
+  {name:'环颈雉', en:'Ring-necked Pheasant', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/176733796/medium.jpg', emoji:'🐔', audio:'assets/audio/a_c078.mp3', sound:'咕咕', fact:'脖子上有白项圈。'},
+  {name:'红腹锦鸡', en:'Golden Pheasant', img:'https://static.inaturalist.org/photos/437939340/medium.jpg', emoji:'🐔', audio:'assets/audio/a_c079.mp3', sound:'咕咕', fact:'像穿着红肚兜。'},
+  {name:'白鹇', en:'Silver Pheasant', img:'https://static.inaturalist.org/photos/115182958/medium.jpeg', emoji:'🐔', audio:'assets/audio/a_c080.mp3', sound:'咕咕', fact:'白衣飘飘的山中仙子。'},
+  {name:'蓝孔雀', en:'Indian Peafowl', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/165318600/medium.jpg', emoji:'🦚', audio:'assets/audio/a_c081.mp3', sound:'啊——', fact:'开屏像把大扇子。'},
+  {name:'绿孔雀', en:'Green Peafowl', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/210255393/medium.jpg', emoji:'🦚', audio:'assets/audio/a_c082.mp3', sound:'啊——', fact:'头上顶着小皇冠。'},
+  {name:'山斑鸠', en:'Oriental Turtle-Dove', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/64197228/medium.jpg', emoji:'🕊️', audio:'assets/audio/a_c083.mp3', sound:'咕咕', fact:'脖子上有珍珠点。'},
+  {name:'珠颈斑鸠', en:'Spotted Dove', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/230618423/medium.jpg', emoji:'🕊️', audio:'assets/audio/a_c084.mp3', sound:'咕咕', fact:'叫声像在说咕咕。'},
+  {name:'冠鸠', en:'Crested Pigeon', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/53253035/medium.jpg', emoji:'🕊️', audio:'assets/audio/a_c085.mp3', sound:'咕咕', fact:'头上顶着扇形冠。'},
+  {name:'帝企鹅', en:'Emperor Penguin', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/7229/medium.jpg', emoji:'🐧', audio:'assets/audio/a_c086.mp3', sound:'嘎嘎', fact:'最高的企鹅爸爸孵蛋。'},
+  {name:'王企鹅', en:'King Penguin', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/602978114/medium.jpg', emoji:'🐧', audio:'assets/audio/a_c087.mp3', sound:'嘎嘎', fact:'脖子上有金色围脖。'},
+  {name:'跳岩企鹅', en:'Moseley\'s Rockhopper Penguin', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/144194066/medium.jpg', emoji:'🐧', audio:'assets/audio/a_c088.mp3', sound:'嘎嘎', fact:'眉毛长长会跳跃。'},
+  {name:'帽带企鹅', en:'Chinstrap Penguin', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/67003315/medium.jpg', emoji:'🐧', audio:'assets/audio/a_c089.mp3', sound:'嘎嘎', fact:'下巴有条黑线条。'},
+  {name:'阿德利企鹅', en:'Adelie Penguin', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/49209619/medium.jpg', emoji:'🐧', audio:'assets/audio/a_c090.mp3', sound:'嘎嘎', fact:'眼睛有白圈圈。'},
+  {name:'老鹰', en:'Hawk', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Goshawk_%2820120569249%29.jpg/500px-Goshawk_%2820120569249%29.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦅', audio:'assets/audio/a_c091.mp3', sound:'啾——', fact:'眼睛锐利飞得高。'},
+  {name:'金雕', en:'Golden Eagle', img:'https://static.inaturalist.org/photos/168362446/medium.jpg', emoji:'🦅', audio:'assets/audio/a_c092.mp3', sound:'啾——', fact:'金色羽毛的大雕。'},
+  {name:'白头海雕', en:'Bald Eagle', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/28935620/medium.jpg', emoji:'🦅', audio:'assets/audio/a_c093.mp3', sound:'啾啾', fact:'白头白尾很威风。'},
+  {name:'游隼', en:'Peregrine Falcon', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/212499566/medium.jpg', emoji:'🦅', audio:'assets/audio/a_c094.mp3', sound:'啾啾', fact:'俯冲最快的鸟。'},
+  {name:'红隼', en:'Eurasian Kestrel', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/598044895/medium.jpg', emoji:'🦅', audio:'assets/audio/a_c095.mp3', sound:'叽叽', fact:'会在空中定点。'},
+  {name:'秃鹫', en:'Cinereous Vulture', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/192396793/medium.jpeg', emoji:'🦅', audio:'assets/audio/a_c096.mp3', sound:'嘶——', fact:'光头大力士。'},
+  {name:'黑鸢', en:'Black Kite', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/547540505/medium.jpg', emoji:'🦅', audio:'assets/audio/a_c097.mp3', sound:'啾——', fact:'尾巴像剪刀。'},
+  {name:'猫头鹰', en:'Owl', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Strix_aluco_aluco.jpg/500px-Strix_aluco_aluco.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦉', audio:'assets/audio/a_c098.mp3', sound:'咕咕', fact:'夜里眼睛亮晶晶。'},
+  {name:'雪鸮', en:'Snowy Owl', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/150549757/medium.jpg', emoji:'🦉', audio:'assets/audio/a_c099.mp3', sound:'咕咕', fact:'白白的住在雪地。'},
+  {name:'长耳鸮', en:'Long-eared Owl', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/133553640/medium.jpg', emoji:'🦉', audio:'assets/audio/a_c100.mp3', sound:'呜呜', fact:'耳朵羽毛长长的。'},
+  {name:'仓鸮', en:'Eastern Barn Owl', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/388849682/medium.jpg', emoji:'🦉', audio:'assets/audio/a_c101.mp3', sound:'嘶嘶', fact:'脸像一颗爱心。'},
+  {name:'鹦鹉', en:'Parrots', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/144156085/medium.jpg', emoji:'🦜', audio:'assets/audio/a_c102.mp3', sound:'你好', fact:'会学人说话。'},
+  {name:'葵花鹦鹉', en:'Sulphur-crested Cockatoo', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/247007913/medium.jpg', emoji:'🦜', audio:'assets/audio/a_c103.mp3', sound:'啊啊', fact:'头上顶着小葵花。'},
+  {name:'虎皮鹦鹉', en:'Budgerigar', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/66388650/medium.jpg', emoji:'🦜', audio:'assets/audio/a_c104.mp3', sound:'叽叽', fact:'小小个爱热闹。'},
+  {name:'非洲灰鹦鹉', en:'Gray Parrot', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/47367883/medium.jpg', emoji:'🦜', audio:'assets/audio/a_c105.mp3', sound:'你好', fact:'最会说话的鹦鹉。'},
+  {name:'丹顶鹤', en:'Red-crowned Crane', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/122932380/medium.jpg', emoji:'🪶', audio:'assets/audio/a_c106.mp3', sound:'呦呦', fact:'头顶一点红。'},
+  {name:'白鹤', en:'Siberian Crane', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/42649395/medium.jpg', emoji:'🪶', audio:'assets/audio/a_c107.mp3', sound:'呦呦', fact:'浑身雪白很珍贵。'},
+  {name:'黑颈鹤', en:'Black-necked Crane', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/260820140/medium.jpg', emoji:'🪶', audio:'assets/audio/a_c108.mp3', sound:'呦呦', fact:'住在高原上。'},
+  {name:'白鹭', en:'Little Egret', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/205293169/medium.jpg', emoji:'🪶', audio:'assets/audio/a_c109.mp3', sound:'呱呱', fact:'白衣天使爱吃鱼。'},
+  {name:'苍鹭', en:'Grey Heron', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/73516715/medium.jpg', emoji:'🪶', audio:'assets/audio/a_c110.mp3', sound:'呱呱', fact:'灰灰的站着不动。'},
+  {name:'夜鹭', en:'Black-crowned Night Heron', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/49357930/medium.jpg', emoji:'🪶', audio:'assets/audio/a_c111.mp3', sound:'呱呱', fact:'夜里出来找鱼吃。'},
+  {name:'锦鲤', en:'Koi', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Ojiya_Nishikigoi_no_Sato_ac_%283%29.jpg/500px-Ojiya_Nishikigoi_no_Sato_ac_%283%29.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🐠', audio:'assets/audio/a_c112.mp3', sound:'咕噜', fact:'花衣裳带来好运。'},
+  {name:'孔雀鱼', en:'Guppy', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/634774007/medium.jpg', emoji:'🐠', audio:'assets/audio/a_c113.mp3', sound:'咕噜', fact:'尾巴像孔雀开屏。'},
+  {name:'泰国斗鱼', en:'Siamese Fighting Fish', img:'https://static.inaturalist.org/photos/564865375/medium.jpg', emoji:'🐠', audio:'assets/audio/a_c114.mp3', sound:'咕噜', fact:'好斗的大尾巴。'},
+  {name:'地图鱼', en:'Oscar', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/533128/medium.jpg', emoji:'🐠', audio:'assets/audio/a_c115.mp3', sound:'咕噜', fact:'身上花纹像地图。'},
+  {name:'红绿灯鱼', en:'Neon Tetra', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/71484030/medium.jpg', emoji:'🐠', audio:'assets/audio/a_c116.mp3', sound:'咕噜', fact:'红绿灯管会发光。'},
+  {name:'斑马鱼', en:'Zebra Danio', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/11066492/medium.jpg', emoji:'🐠', audio:'assets/audio/a_c117.mp3', sound:'咕噜', fact:'条纹像小斑马。'},
+  {name:'接吻鱼', en:'Kissing Gourami', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/60076721/medium.jpg', emoji:'🐠', audio:'assets/audio/a_c118.mp3', sound:'咕噜', fact:'嘴对嘴像亲亲。'},
+  {name:'大白鲨', en:'Great white shark', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/500px-White_shark.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦈', audio:'assets/audio/a_c119.mp3', sound:'哗啦', fact:'海洋里的大白。'},
+  {name:'鲸鲨', en:'Whale Shark', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/519729370/medium.jpg', emoji:'🦈', audio:'assets/audio/a_c120.mp3', sound:'哗啦', fact:'最大的鱼吃浮游。'},
+  {name:'锤头鲨', en:'Hammerhead shark', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Hammerhead_shark%2C_Cocos_Island%2C_Costa_Rica.jpg/500px-Hammerhead_shark%2C_Cocos_Island%2C_Costa_Rica.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦈', audio:'assets/audio/a_c121.mp3', sound:'哗啦', fact:'头扁扁像锤子。'},
+  {name:'虎鲨', en:'Bullhead Sharks', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/19029159/medium.jpg', emoji:'🦈', audio:'assets/audio/a_c122.mp3', sound:'哗啦', fact:'身上有虎斑纹。'},
+  {name:'柠檬鲨', en:'Lemon Sharks', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/70552666/medium.jpg', emoji:'🦈', audio:'assets/audio/a_c123.mp3', sound:'哗啦', fact:'黄黄的像柠檬。'},
+  {name:'姥鲨', en:'Basking Shark', img:'https://static.inaturalist.org/photos/310765197/medium.jpg', emoji:'🦈', audio:'assets/audio/a_c124.mp3', sound:'哗啦', fact:'第二大的鲨鱼。'},
+  {name:'长尾鲨', en:'Thresher Sharks', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/161383/medium.jpg', emoji:'🦈', audio:'assets/audio/a_c125.mp3', sound:'哗啦', fact:'尾巴长长像鞭子。'},
+  {name:'巨口鲨', en:'Megamouth Shark', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/838235/medium.JPG', emoji:'🦈', audio:'assets/audio/a_c126.mp3', sound:'哗啦', fact:'大嘴巴吃浮游。'},
+  {name:'蝠鲼', en:'Spinetail Devil Ray', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/44702041/medium.png', emoji:'🐟', audio:'assets/audio/a_c127.mp3', sound:'哗啦', fact:'海中飞毯大扁平。'},
+  {name:'电鳐', en:'Electric Rays', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/4969470/medium.jpg', emoji:'🐟', audio:'assets/audio/a_c128.mp3', sound:'噼啪', fact:'会放电麻麻的。'},
+  {name:'豆丁海马', en:'Pygmy Seahorse', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/154272428/medium.jpg', emoji:'🐟', audio:'assets/audio/a_c129.mp3', sound:'咕噜', fact:'小到像颗豆子。'},
+  {name:'中华鳖', en:'Chinese Softshell Turtle', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/374737417/medium.jpeg', emoji:'🐢', audio:'assets/audio/a_c130.mp3', sound:'静悄悄', fact:'就是甲鱼。'},
+  {name:'黄喉拟水龟', en:'Yellow Pond Turtle', img:'https://static.inaturalist.org/photos/78895596/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c131.mp3', sound:'静悄悄', fact:'喉咙黄黄的。'},
+  {name:'黄缘闭壳龟', en:'Chinese Box Turtle', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/200188424/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c132.mp3', sound:'静悄悄', fact:'会把壳关起来。'},
+  {name:'地图龟', en:'Northern Map Turtle', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/13212543/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c133.mp3', sound:'静悄悄', fact:'背上有地图纹。'},
+  {name:'红耳龟', en:'Red-eared Slider', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/107072446/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c134.mp3', sound:'静悄悄', fact:'耳朵红红的。'},
+  {name:'蛇颈龟', en:'Austro-American Side-necked Turtles', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/29151098/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c135.mp3', sound:'静悄悄', fact:'脖子像条蛇。'},
+  {name:'鳄龟', en:'Snapping Turtles', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/397483082/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c136.mp3', sound:'静悄悄', fact:'咬合力超强。'},
+  {name:'大鳄龟', en:'Alligator Snapping Turtle', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/12726192/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c137.mp3', sound:'静悄悄', fact:'舌头会钓鱼。'},
+  {name:'苏卡达陆龟', en:'African Spurred Tortoise', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/286883668/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c138.mp3', sound:'静悄悄', fact:'第三大陆龟。'},
+  {name:'红腿陆龟', en:'Red-footed Tortoise', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/748687534/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c139.mp3', sound:'静悄悄', fact:'腿红红的。'},
+  {name:'豹纹陆龟', en:'Leopard Tortoise', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/12902301/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c140.mp3', sound:'静悄悄', fact:'豹纹衣裳。'},
+  {name:'辐射陆龟', en:'Radiated Tortoise', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/71756380/medium.jpeg', emoji:'🐢', audio:'assets/audio/a_c141.mp3', sound:'静悄悄', fact:'背上有放射纹。'},
+  {name:'印度星龟', en:'Indian Star Tortoise', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/109310050/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c142.mp3', sound:'静悄悄', fact:'背上全是小星星。'},
+  {name:'赫曼陆龟', en:'Hermann\'s Tortoise', img:'https://static.inaturalist.org/photos/345032230/medium.jpg', emoji:'🐢', audio:'assets/audio/a_c143.mp3', sound:'静悄悄', fact:'欧洲的小陆龟。'},
+  {name:'四爪陆龟', en:'Afghan Tortoise', img:'https://static.inaturalist.org/photos/72809697/medium.jpeg', emoji:'🐢', audio:'assets/audio/a_c144.mp3', sound:'静悄悄', fact:'只有四个脚趾。'},
+  {name:'虎纹蛙', en:'Crowned Bullfrogs and Tiger Frogs', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/36059/medium.jpg', emoji:'🐸', audio:'assets/audio/a_c145.mp3', sound:'呱呱', fact:'虎纹衣裳。'},
+  {name:'牛蛙', en:'American Bullfrog', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/519633752/medium.jpg', emoji:'🐸', audio:'assets/audio/a_c146.mp3', sound:'哞哞', fact:'叫声像牛叫。'},
+  {name:'弹琴蛙', en:'East China Music Frog', img:'https://static.inaturalist.org/photos/161662111/medium.jpg', emoji:'🐸', audio:'assets/audio/a_c147.mp3', sound:'呱呱', fact:'叫声像弹琴。'},
+  {name:'棘蛙', en:'Lesser Spiny Frog', img:'https://static.inaturalist.org/photos/96691073/medium.jpg', emoji:'🐸', audio:'assets/audio/a_c148.mp3', sound:'呱呱', fact:'胸前有小刺。'},
+  {name:'大头蛙', en:'Kuhl\'s Creek Frog', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/7707069/medium.jpg', emoji:'🐸', audio:'assets/audio/a_c149.mp3', sound:'呱呱', fact:'头大大的。'},
+  {name:'花姬蛙', en:'Beautiful Pygmy Frog', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/371482474/medium.jpg', emoji:'🐸', audio:'assets/audio/a_c150.mp3', sound:'呱呱', fact:'花纹像大理石。'},
+  {name:'中国雨蛙', en:'Common Chinese Tree Frog', img:'https://static.inaturalist.org/photos/167430474/medium.jpg', emoji:'🐸', audio:'assets/audio/a_c151.mp3', sound:'呱呱', fact:'下雨天出来。'},
+  {name:'菜粉蝶', en:'Small White', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/28420401/medium.jpg', emoji:'🦋', audio:'assets/audio/a_c152.mp3', sound:'静悄悄', fact:'白翅膀的菜园客。'},
+  {name:'黄粉蝶', en:'Yellows and Sulphurs', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/25194599/medium.jpeg', emoji:'🦋', audio:'assets/audio/a_c153.mp3', sound:'静悄悄', fact:'黄衣小粉蝶。'},
+  {name:'柑橘凤蝶', en:'Chinese Yellow Swallowtail', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/65717950/medium.jpg', emoji:'🦋', audio:'assets/audio/a_c154.mp3', sound:'静悄悄', fact:'爱柑橘树。'},
+  {name:'章鱼', en:'Typical Octopuses', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/14157922/medium.jpg', emoji:'🐙', audio:'assets/audio/a_c155.mp3', sound:'咕噜', fact:'八条腿很聪明。'},
+  {name:'长蛸', en:'Whiparm Octopus', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/14122602/medium.jpg', emoji:'🐙', audio:'assets/audio/a_c156.mp3', sound:'咕噜', fact:'腿长长的。'},
+  {name:'短蛸', en:'Gold-spot Octopus', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/162203672/medium.jpg', emoji:'🐙', audio:'assets/audio/a_c157.mp3', sound:'咕噜', fact:'腿短短的。'},
+  {name:'船蛸', en:'Greater Argonaut', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/65093771/medium.jpg', emoji:'🐙', audio:'assets/audio/a_c158.mp3', sound:'咕噜', fact:'抱着纸船。'},
+  {name:'水母', en:'True Jellies', img:'https://static.inaturalist.org/photos/13185688/medium.jpg', emoji:'🪼', audio:'assets/audio/a_c159.mp3', sound:'静悄悄', fact:'透明的小伞。'},
+  {name:'海月水母', en:'Common Moon Jelly', img:'https://static.inaturalist.org/photos/128613708/medium.jpg', emoji:'🪼', audio:'assets/audio/a_c160.mp3', sound:'静悄悄', fact:'像轮明月。'},
+  {name:'霞水母', en:'Cyaneid Jellies', img:'https://static.inaturalist.org/photos/81645162/medium.png', emoji:'🪼', audio:'assets/audio/a_c161.mp3', sound:'静悄悄', fact:'晚霞颜色。'},
+  {name:'澳洲斑点水母', en:'Australian Spotted Jelly', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/370877482/medium.jpg', emoji:'🪼', audio:'assets/audio/a_c162.mp3', sound:'静悄悄', fact:'满身斑点。'},
+  {name:'僧帽水母', en:'Portuguese Man o\' War', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/544306293/medium.jpg', emoji:'🪼', audio:'assets/audio/a_c163.mp3', sound:'静悄悄', fact:'像顶僧帽。'},
+  {name:'帆水母', en:'By-the-wind Sailor', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/362651247/medium.jpg', emoji:'🪼', audio:'assets/audio/a_c164.mp3', sound:'静悄悄', fact:'张着小帆。'},
+  {name:'对虾', en:'Penaeoid Prawns', img:'https://static.inaturalist.org/photos/30436742/medium.jpg', emoji:'🦐', audio:'assets/audio/a_c165.mp3', sound:'静悄悄', fact:'大个子虾。'},
+  {name:'斑节对虾', en:'giant tiger prawn', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/127303566/medium.jpg', emoji:'🦐', audio:'assets/audio/a_c166.mp3', sound:'静悄悄', fact:'斑纹衣裳。'},
+  {name:'南美白对虾', en:'Whiteleg Shrimp', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/1441420/medium.jpg', emoji:'🦐', audio:'assets/audio/a_c167.mp3', sound:'静悄悄', fact:'白衣虾。'},
+  {name:'罗氏沼虾', en:'Giant river prawn', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/8875244/medium.jpg', emoji:'🦐', audio:'assets/audio/a_c168.mp3', sound:'静悄悄', fact:'大钳子。'},
+  {name:'螳螂虾', en:'Peacock Mantis Shrimp', img:'https://static.inaturalist.org/photos/30551110/medium.jpeg', emoji:'🦐', audio:'assets/audio/a_c169.mp3', sound:'咔嚓', fact:'出拳最快。'},
+  {name:'清洁虾', en:'Ambon Cleaner Shrimp', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/109110752/medium.jpeg', emoji:'🦐', audio:'assets/audio/a_c170.mp3', sound:'静悄悄', fact:'给鱼洗澡。'},
+  {name:'梭子蟹', en:'Swimming Crabs and Allies', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/1970/medium.jpg', emoji:'🦀', audio:'assets/audio/a_c171.mp3', sound:'静悄悄', fact:'像个梭子。'},
+  {name:'青蟹', en:'Mud Crabs', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/187855377/medium.jpg', emoji:'🦀', audio:'assets/audio/a_c172.mp3', sound:'静悄悄', fact:'青衣大钳。'},
+  {name:'雪蟹', en:'Tanner Crabs', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/1916369/medium.jpg', emoji:'🦀', audio:'assets/audio/a_c173.mp3', sound:'静悄悄', fact:'雪白的蟹。'},
+  {name:'蜘蛛蟹', en:'Spider Crabs and Decorator Crabs', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/134565795/medium.jpg', emoji:'🦀', audio:'assets/audio/a_c174.mp3', sound:'静悄悄', fact:'腿长长。'},
+  {name:'椰子蟹', en:'Coconut Crab', img:'https://static.inaturalist.org/photos/48576066/medium.jpg', emoji:'🦀', audio:'assets/audio/a_c175.mp3', sound:'咔嚓', fact:'能夹开椰子。'},
+  {name:'寄居蟹', en:'Hermit Crabs', img:'https://static.inaturalist.org/photos/28916225/medium.jpg', emoji:'🐚', audio:'assets/audio/a_c176.mp3', sound:'静悄悄', fact:'借住贝壳。'},
+  {name:'龙虾', en:'Spiny Lobsters', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/304063887/medium.jpg', emoji:'🦞', audio:'assets/audio/a_c177.mp3', sound:'静悄悄', fact:'大钳子。'},
+  {name:'锦绣龙虾', en:'Ornate Spiny Lobster', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/15587/medium.jpg', emoji:'🦞', audio:'assets/audio/a_c178.mp3', sound:'静悄悄', fact:'花衣裳。'},
+  {name:'海星', en:'Sea Stars and Brittle Stars', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/2658217/medium.JPG', emoji:'⭐', audio:'assets/audio/a_c179.mp3', sound:'静悄悄', fact:'五角星。'},
+  {name:'面包海星', en:'Pillow Cushion Star', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/38261246/medium.jpg', emoji:'⭐', audio:'assets/audio/a_c180.mp3', sound:'静悄悄', fact:'胖胖的。'},
+  {name:'太阳海星', en:'Solasterid Sun Stars', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/820794/medium.jpg', emoji:'⭐', audio:'assets/audio/a_c181.mp3', sound:'静悄悄', fact:'好多只脚。'},
+  {name:'蛇尾', en:'Brittle Stars', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/108603901/medium.jpg', emoji:'⭐', audio:'assets/audio/a_c182.mp3', sound:'静悄悄', fact:'细胳膊。'},
+  {name:'海胆', en:'sea urchins and sea cucumbers', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/65472908/medium.jpeg', emoji:'🦔', audio:'assets/audio/a_c183.mp3', sound:'静悄悄', fact:'满身刺。'},
+  {name:'海参', en:'Sea Cucumbers', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/47789199/medium.jpg', emoji:'🥒', audio:'assets/audio/a_c184.mp3', sound:'静悄悄', fact:'海里的人参。'},
+  {name:'霸王龙', en:'Tyrannosaurus', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/FMNH_SUE_Trex.jpg/500px-FMNH_SUE_Trex.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦖', audio:'assets/audio/a_c185.mp3', sound:'吼——', fact:'最有名的暴君。'},
+  {name:'三角龙', en:'Triceratops', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Triceratops_mount.jpg/500px-Triceratops_mount.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦕', audio:'assets/audio/a_c186.mp3', sound:'哞', fact:'三只角的大盾。'},
+  {name:'剑龙', en:'Stegosaurus', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Journal.pone.0138352.g001A.jpg/500px-Journal.pone.0138352.g001A.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦕', audio:'assets/audio/a_c187.mp3', sound:'静悄悄', fact:'背上长着剑板。'},
+  {name:'腕龙', en:'Brachiosaurus', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Brachiosaurus_mount.jpg/500px-Brachiosaurus_mount.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦕', audio:'assets/audio/a_c188.mp3', sound:'静悄悄', fact:'前腿比后腿长。'},
+  {name:'雷龙', en:'Brontosaurus', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Brontosaurus_Yale_Peabody_cropped.jpg/500px-Brontosaurus_Yale_Peabody_cropped.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦕', audio:'assets/audio/a_c189.mp3', sound:'静悄悄', fact:'打雷一样走路。'},
+  {name:'禽龙', en:'Iguanodon', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Iguanodon_de_Bernissart_IRSNB_01.JPG/500px-Iguanodon_de_Bernissart_IRSNB_01.JPG?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦕', audio:'assets/audio/a_c190.mp3', sound:'静悄悄', fact:'拇指有尖刺。'},
+  {name:'异特龙', en:'Allosaurus', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/WLA_hmns_Allosaurus.jpg/500px-WLA_hmns_Allosaurus.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦖', audio:'assets/audio/a_c191.mp3', sound:'吼——', fact:'侏罗纪猎手。'},
+  {name:'伶盗龙', en:'Velociraptor', img:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/Velociraptor_skeleton.jpg/500px-Velociraptor_skeleton.jpg?utm_source=zh.wikipedia.org&utm_campaign=api&utm_content=thumbnail', emoji:'🦖', audio:'assets/audio/a_c192.mp3', sound:'吼', fact:'聪明的迅猛龙。'},
+  {name:'中华蜜蜂', en:'Chinese Honey Bee', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/70875422/medium.jpeg', emoji:'🐝', audio:'assets/audio/a_c193.mp3', sound:'嗡嗡', fact:'中国的蜜蜂。'},
+  {name:'七星瓢虫', en:'Seven-spotted Lady Beetle', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/267168450/medium.jpg', emoji:'🐞', audio:'assets/audio/a_c194.mp3', sound:'静悄悄', fact:'七颗星吃蚜虫。'},
+  {name:'碧伟蜓', en:'Lesser Emperor', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/245142794/medium.jpg', emoji:'🐞', audio:'assets/audio/a_c195.mp3', sound:'嗡嗡', fact:'绿衣大蜻蜓。'},
+  {name:'黑蚱蝉', en:'Eastern horse cicada', img:'https://static.inaturalist.org/photos/296705529/medium.jpg', emoji:'🐞', audio:'assets/audio/a_c196.mp3', sound:'知了', fact:'夏天唱歌。'},
+  {name:'麻雀', en:'Eurasian Tree Sparrow', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/165351252/medium.jpg', emoji:'🐦', audio:'assets/audio/a_c197.mp3', sound:'叽叽喳喳', fact:'最常见的小邻居。'},
+  {name:'喜鹊', en:'Oriental Magpie', img:'https://static.inaturalist.org/photos/94413038/medium.jpg', emoji:'🐦', audio:'assets/audio/a_c198.mp3', sound:'喳喳', fact:'报喜的黑白鸟。'},
+  {name:'萤火虫', en:'Common Eastern Firefly', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/4202184/medium.jpg', emoji:'🪲', audio:'assets/audio/a_c199.mp3', sound:'静悄悄', fact:'屁股会发光。'},
+  {name:'蜂鸟', en:'Hummingbirds', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/12739525/medium.jpg', emoji:'🐦', audio:'assets/audio/a_c200.mp3', sound:'嗡嗡', fact:'最小的鸟会悬停。'},
+  {name:'中华大刀螳', en:'Chinese Mantis', img:'https://static.inaturalist.org/photos/11747415/medium.jpg', emoji:'🦗', audio:'assets/audio/a_c201.mp3', sound:'静悄悄', fact:'中国的大刀。'},
+  {name:'红蜻', en:'Scarlet Skimmer', img:'https://inaturalist-open-data.s3.amazonaws.com/photos/162243824/medium.jpg', emoji:'🐞', audio:'assets/audio/a_c202.mp3', sound:'嗡嗡', fact:'红衣蜻蜓。'},
 ];
 const STORIES = [
   {title:'宝宝和小熊找月亮', parentTip:'问问她：月亮像什么呀？', pages:[
@@ -903,28 +1101,30 @@ function closeRest(){ document.getElementById('restModal').classList.remove('sho
 
 /* ================= 动物卡 ================= */
 const acar = document.getElementById('acar');
-const adots = document.getElementById('adots');
 ANIMALS.forEach((a,i)=>{
   const card = document.createElement('div');
   card.className = 'acard';
   card.innerHTML = (a.img
-      ? `<img src="${a.img}" alt="${a.name}">`
+      ? `<img loading="lazy" src="${a.img}" alt="${a.name}">`
       : `<div class="bigemoji">${a.emoji}</div>`)
-    + `<h2>${a.name}</h2><div class="snd">“${a.sound}”</div><div class="fact">${a.fact}</div>`;
+    + `<h2>${a.name}</h2>`
+    + (a.en ? `<button class="enbtn" aria-label="读英文"><span>${a.en}</span><img src="assets/icons/speaker.webp" alt=""></button>` : '')
+    + `<div class="snd">“${a.sound}”</div><div class="fact">${a.fact}</div>`;
   const media = card.querySelector('img') || card.querySelector('.bigemoji');
   media.onclick = ()=>{
     media.classList.remove('bounce'); void media.offsetWidth; media.classList.add('bounce');
-    play(a.audio);
+    if(a.audio) play(a.audio); else say(a.name);
   };
+  const enbtn = card.querySelector('.enbtn');
+  if(enbtn) enbtn.onclick = (ev)=>{ ev.stopPropagation(); sayEn(a.en); };
   acar.appendChild(card);
-  const d = document.createElement('div');
-  d.className = 'adot' + (i===0 ? ' on' : '');
-  adots.appendChild(d);
 });
-acar.addEventListener('scroll', ()=>{
+function updateAcount(){
   const i = Math.round(acar.scrollLeft / acar.clientWidth);
-  [...adots.children].forEach((d,j)=>d.classList.toggle('on', j===i));
-}, {passive:true});
+  document.getElementById('acount').textContent = `${i+1} / ${ANIMALS.length}`;
+}
+acar.addEventListener('scroll', updateAcount, {passive:true});
+updateAcount();
 
 /* ================= 考一考（动物世界同类出题） ================= */
 let findTarget = null;
@@ -969,7 +1169,7 @@ function askFind(){
 }
 
 /* ================= 数一数 ================= */
-const COUNT_EMOJI = [['🍎','苹果'],['🐤','小鸡'],['⭐','星星'],['🍓','草莓'],['🐟','小鱼'],['🌼','小花'],['🍇','葡萄'],['🐶','小狗'],['🚗','小汽车'],['🎈','气球'],['🐚','贝壳'],['🌙','月亮'],['🍉','西瓜'],['🐰','小兔'],['🚂','小火车'],['⚽','皮球'],['🦋','蝴蝶'],['🍪','饼干'],['🐠','热带鱼'],['🍩','甜甜圈'],['🐢','乌龟'],['🍒','樱桃'],['🧸','小熊'],['🪁','风筝']];
+const COUNT_EMOJI = [['🍎','苹果'],['🐤','小鸡'],['⭐','星星'],['🍓','草莓'],['🐟','小鱼'],['🌼','小花'],['🍇','葡萄'],['🐶','小狗'],['🚗','小汽车'],['🎈','气球'],['🐚','贝壳'],['🌙','月亮'],['🍉','西瓜'],['🐰','小兔'],['🚂','小火车'],['⚽','皮球'],['🦋','蝴蝶'],['🍪','饼干'],['🐠','热带鱼'],['🍩','甜甜圈'],['🐢','乌龟'],['🍒','樱桃'],['🧸','小熊'],['🪁','风筝'],['🍐','梨'],['🍑','桃子'],['🍍','菠萝'],['🥝','猕猴桃'],['🍋','柠檬'],['🥥','椰子'],['🫐','蓝莓'],['🥕','胡萝卜'],['🌽','玉米'],['🍆','茄子'],['🥔','土豆'],['🍅','番茄'],['🥦','西兰花'],['🍞','面包'],['🧀','奶酪'],['🥚','鸡蛋'],['🍦','冰淇淋'],['🍰','蛋糕'],['🥛','牛奶'],['🍿','爆米花'],['🥟','饺子'],['🍜','面条'],['🧁','纸杯蛋糕'],['🐭','小老鼠'],['🐹','仓鼠'],['🦊','小狐狸'],['🐼','熊猫'],['🐨','考拉'],['🦁','小狮子'],['🐯','小老虎'],['🐸','青蛙'],['🐵','小猴子'],['🐔','母鸡'],['🐧','企鹅'],['🐦','小鸟'],['🦆','小鸭子'],['🦉','猫头鹰'],['🐝','小蜜蜂'],['🐌','蜗牛'],['🐞','瓢虫'],['🦀','小螃蟹'],['🐙','小章鱼'],['🐬','小海豚'],['🐳','小鲸鱼'],['🦕','小恐龙'],['🦄','独角兽'],['🐴','小马'],['🐷','小猪'],['🌵','仙人掌'],['🌴','棕榈树'],['🌳','大树'],['🌲','松树'],['🌱','小草'],['🌷','郁金香'],['🌻','向日葵'],['🌹','玫瑰花'],['🍄','小蘑菇'],['🌈','彩虹'],['☁️','白云'],['❄️','雪花'],['💧','小水滴'],['🌊','海浪'],['🎁','礼物'],['🎀','蝴蝶结'],['🧩','拼图'],['🪀','悠悠球'],['🎲','骰子'],['✈️','小飞机'],['🚀','小火箭'],['⛵','小帆船'],['🚲','小自行车'],['🏀','篮球'],['🎾','网球'],['🎺','小喇叭'],['🥁','小鼓'],['🖍️','蜡笔']];
 const NUM_WORD = ['一','二','三','四','五','六','七','八','九','十'];
 let countN = 0, countName = '';
 function startCount(){
@@ -1039,6 +1239,86 @@ const SHAPES = [
   {n:'半圆形', c:'#A9E34B', svg:'<path d="M10 90 A50 50 0 0 1 110 90 Z"/>'},
   {n:'橄榄形', c:'#94D82D', svg:'<path d="M60 15 C90 40 90 80 60 105 C30 80 30 40 60 15 Z"/>'},
   {n:'八边形', c:'#FFA8A8', svg:'<polygon points="40,8 80,8 112,40 112,80 80,112 40,112 8,80 8,40"/>'},
+  {n:'七边形', c:'#FF6B6B', svg:'<polygon points="60.0,10.0 99.1,28.8 108.7,71.1 81.7,105.0 38.3,105.0 11.3,71.1 20.9,28.8"/>'},
+  {n:'九边形', c:'#4DABF7', svg:'<polygon points="60.0,10.0 92.1,21.7 109.2,51.3 103.3,85.0 77.1,107.0 42.9,107.0 16.7,85.0 10.8,51.3 27.9,21.7"/>'},
+  {n:'十边形', c:'#69DB7C', svg:'<polygon points="60.0,10.0 89.4,19.5 107.6,44.5 107.6,75.5 89.4,100.5 60.0,110.0 30.6,100.5 12.4,75.5 12.4,44.5 30.6,19.5"/>'},
+  {n:'十二边形', c:'#FFD43B', svg:'<polygon points="60.0,10.0 85.0,16.7 103.3,35.0 110.0,60.0 103.3,85.0 85.0,103.3 60.0,110.0 35.0,103.3 16.7,85.0 10.0,60.0 16.7,35.0 35.0,16.7"/>'},
+  {n:'六角星', c:'#B197FC', svg:'<polygon points="60.0,10.0 71.0,40.9 103.3,35.0 82.0,60.0 103.3,85.0 71.0,79.1 60.0,110.0 49.0,79.1 16.7,85.0 38.0,60.0 16.7,35.0 49.0,40.9"/>'},
+  {n:'八角星', c:'#FFA94D', svg:'<polygon points="60.0,10.0 68.4,39.7 95.4,24.6 80.3,51.6 110.0,60.0 80.3,68.4 95.4,95.4 68.4,80.3 60.0,110.0 51.6,80.3 24.6,95.4 39.7,68.4 10.0,60.0 39.7,51.6 24.6,24.6 51.6,39.7"/>'},
+  {n:'上箭头', c:'#63E6BE', svg:'<polygon points="10,45 65,45 65,20 110,60 65,100 65,75 10,75" transform="rotate(-90 60 60)"/>'},
+  {n:'下箭头', c:'#F783AC', svg:'<polygon points="10,45 65,45 65,20 110,60 65,100 65,75 10,75" transform="rotate(90 60 60)"/>'},
+  {n:'左箭头', c:'#74C0FC', svg:'<polygon points="10,45 65,45 65,20 110,60 65,100 65,75 10,75" transform="rotate(180 60 60)"/>'},
+  {n:'半月形', c:'#E599F7', svg:'<path d="M60 12 A48 48 0 0 1 60 108 Z"/>'},
+  {n:'娥眉月形', c:'#FFC078', svg:'<path d="M72 14 A46 46 0 1 0 72 106 A34 34 0 1 1 72 14 Z"/>'},
+  {n:'正方体', c:'#8CE99A', svg:'<polygon points="60,12 96,32 60,52 24,32" fill-opacity=".55"/><polygon points="24,32 60,52 60,104 24,84" fill-opacity=".8"/><polygon points="96,32 60,52 60,104 96,84"/>'},
+  {n:'圆柱体', c:'#66D9E5', svg:'<rect x="28" y="38" width="64" height="44"/><ellipse cx="60" cy="38" rx="32" ry="11"/><ellipse cx="60" cy="82" rx="32" ry="11" fill-opacity=".7"/>'},
+  {n:'圆锥体', c:'#FCC419', svg:'<polygon points="60,14 94,92 26,92"/><ellipse cx="60" cy="92" rx="34" ry="10" fill-opacity=".7"/>'},
+  {n:'球体', c:'#A9E34B', svg:'<circle cx="60" cy="60" r="44"/><ellipse cx="45" cy="42" rx="14" ry="9" fill="#fff" fill-opacity=".55" transform="rotate(-30 45 42)"/>'},
+  {n:'字母A', c:'#FF8787', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">A</text>'},
+  {n:'字母B', c:'#3BC9DB', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">B</text>'},
+  {n:'字母C', c:'#D0BFFF', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">C</text>'},
+  {n:'字母D', c:'#FFA8A8', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">D</text>'},
+  {n:'字母E', c:'#94D82D', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">E</text>'},
+  {n:'字母F', c:'#FF6B6B', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">F</text>'},
+  {n:'字母G', c:'#4DABF7', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">G</text>'},
+  {n:'字母H', c:'#69DB7C', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">H</text>'},
+  {n:'字母I', c:'#FFD43B', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">I</text>'},
+  {n:'字母J', c:'#B197FC', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">J</text>'},
+  {n:'字母K', c:'#FFA94D', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">K</text>'},
+  {n:'字母L', c:'#63E6BE', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">L</text>'},
+  {n:'字母M', c:'#F783AC', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">M</text>'},
+  {n:'字母N', c:'#74C0FC', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">N</text>'},
+  {n:'字母O', c:'#E599F7', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">O</text>'},
+  {n:'字母P', c:'#FFC078', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">P</text>'},
+  {n:'字母Q', c:'#8CE99A', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">Q</text>'},
+  {n:'字母R', c:'#66D9E5', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">R</text>'},
+  {n:'字母S', c:'#FCC419', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">S</text>'},
+  {n:'字母T', c:'#A9E34B', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">T</text>'},
+  {n:'字母U', c:'#FF8787', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">U</text>'},
+  {n:'字母V', c:'#3BC9DB', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">V</text>'},
+  {n:'字母W', c:'#D0BFFF', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">W</text>'},
+  {n:'字母X', c:'#FFA8A8', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">X</text>'},
+  {n:'字母Y', c:'#94D82D', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">Y</text>'},
+  {n:'字母Z', c:'#FF6B6B', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">Z</text>'},
+  {n:'数字0', c:'#4DABF7', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">0</text>'},
+  {n:'数字1', c:'#69DB7C', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">1</text>'},
+  {n:'数字2', c:'#FFD43B', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">2</text>'},
+  {n:'数字3', c:'#B197FC', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">3</text>'},
+  {n:'数字4', c:'#FFA94D', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">4</text>'},
+  {n:'数字5', c:'#63E6BE', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">5</text>'},
+  {n:'数字6', c:'#F783AC', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">6</text>'},
+  {n:'数字7', c:'#74C0FC', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">7</text>'},
+  {n:'数字8', c:'#E599F7', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">8</text>'},
+  {n:'数字9', c:'#FFC078', svg:'<text x="60" y="84" text-anchor="middle" font-size="74" font-weight="900" font-family="system-ui,sans-serif">9</text>'},
+  {n:'云朵形', c:'#8CE99A', svg:'<circle cx="38" cy="68" r="17"/><circle cx="60" cy="56" r="22"/><circle cx="82" cy="68" r="17"/><rect x="26" y="66" width="68" height="20" rx="10"/>'},
+  {n:'雪花形', c:'#74C0FC', svg:'<path d="M60 14 V106 M21 37 L99 83 M21 83 L99 37" stroke="#74C0FC" stroke-width="9" stroke-linecap="round" fill="none"/>'},
+  {n:'闪电形', c:'#FCC419', svg:'<polygon points="68,10 30,68 55,68 48,110 90,50 62,50"/>'},
+  {n:'树叶形', c:'#A9E34B', svg:'<path d="M60 10 C95 40 95 80 60 110 C25 80 25 40 60 10 Z"/><path d="M60 28 V92" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>'},
+  {n:'花朵形', c:'#FF8787', svg:'<circle cx="60" cy="28" r="16"/><circle cx="91" cy="51" r="16"/><circle cx="79" cy="85" r="16"/><circle cx="41" cy="85" r="16"/><circle cx="29" cy="51" r="16"/><circle cx="60" cy="60" r="12" fill="#fff" fill-opacity=".65"/>'},
+  {n:'太阳形', c:'#3BC9DB', svg:'<circle cx="60" cy="60" r="24"/><path d="M60 12 V24 M60 96 V108 M12 60 H24 M96 60 H108 M26 26 L34 34 M86 86 L94 94 M94 26 L86 34 M34 86 L26 94" stroke-width="8" stroke-linecap="round" fill="none" stroke="#3BC9DB"/>'},
+  {n:'房子形', c:'#D0BFFF', svg:'<polygon points="60,12 108,58 100,58 100,108 20,108 20,58 12,58"/>'},
+  {n:'船形', c:'#FFA8A8', svg:'<polygon points="18,68 102,68 82,100 38,100"/><rect x="56" y="22" width="8" height="46"/><polygon points="68,26 68,60 98,60"/>'},
+  {n:'皇冠形', c:'#94D82D', svg:'<polygon points="20,88 28,44 48,64 60,28 72,64 92,44 100,88"/><rect x="20" y="88" width="80" height="10" rx="5"/>'},
+  {n:'钻石形', c:'#FF6B6B', svg:'<polygon points="35,28 85,28 108,54 60,104 12,54"/><path d="M12 54 H108 M35 28 L48 54 L60 104 M85 28 L72 54 L60 104" stroke="#fff" stroke-width="3" fill="none" opacity=".6"/>'},
+  {n:'盾牌形', c:'#4DABF7', svg:'<path d="M60 10 L100 28 V60 C100 86 80 100 60 108 C40 100 20 86 20 60 V28 Z"/>'},
+  {n:'风筝形', c:'#69DB7C', svg:'<polygon points="60,10 90,55 60,100 30,55"/><path d="M30 55 H90 M60 10 V100" stroke="#fff" stroke-width="4" fill="none" opacity=".7"/>'},
+  {n:'圆环形', c:'#FF8787', svg:'<circle cx="60" cy="60" r="38" fill="none" stroke="#FF8787" stroke-width="18"/>'},
+  {n:'问号形', c:'#B197FC', svg:'<text x="60" y="92" text-anchor="middle" font-size="88" font-weight="900" font-family="system-ui,sans-serif">?</text>'},
+  {n:'感叹号形', c:'#FFA94D', svg:'<text x="60" y="92" text-anchor="middle" font-size="88" font-weight="900" font-family="system-ui,sans-serif">!</text>'},
+  {n:'波浪形', c:'#63E6BE', svg:'<path d="M10 60 q15-25 30 0 t30 0 t30 0" fill="none" stroke="#63E6BE" stroke-width="10" stroke-linecap="round"/>'},
+  {n:'之字形', c:'#F783AC', svg:'<path d="M18 24 L58 24 L38 58 L78 58 L52 96" fill="none" stroke="#F783AC" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {n:'螺旋形', c:'#74C0FC', svg:'<path d="M60 60 m0 -4 a4 4 0 0 1 4 4 a9 9 0 0 1 -9 9 a16 16 0 0 1 -16 -16 a25 25 0 0 1 25 -25 a36 36 0 0 1 36 36 a48 48 0 0 1 -48 48" fill="none" stroke="#74C0FC" stroke-width="8" stroke-linecap="round"/>'},
+  {n:'同心圆形', c:'#E599F7', svg:'<circle cx="60" cy="60" r="42" fill="none" stroke="#E599F7" stroke-width="9"/><circle cx="60" cy="60" r="26" fill="none" stroke="#E599F7" stroke-width="9"/><circle cx="60" cy="60" r="10"/>'},
+  {n:'蘑菇形', c:'#FFC078', svg:'<path d="M14 58 a46 34 0 0 1 92 0 Z"/><rect x="48" y="58" width="24" height="42" rx="10"/><circle cx="42" cy="40" r="6" fill="#fff" opacity=".8"/><circle cx="70" cy="32" r="5" fill="#fff" opacity=".8"/>'},
+  {n:'铃铛形', c:'#8CE99A', svg:'<path d="M60 18 c-22 0 -32 18 -32 40 v16 l-10 14 h84 l-10 -14 v-16 c0 -22 -10 -40 -32 -40 Z"/><circle cx="60" cy="100" r="8"/>'},
+  {n:'气球形', c:'#66D9E5', svg:'<ellipse cx="60" cy="46" rx="30" ry="36"/><polygon points="54,82 66,82 60,92"/><path d="M60 92 q-8 10 2 16 q-10 6 -2 14" fill="none" stroke="#66D9E5" stroke-width="5" stroke-linecap="round"/>'},
+  {n:'对话框形', c:'#FCC419', svg:'<rect x="16" y="24" width="88" height="54" rx="14"/><polygon points="40,78 40,100 64,78"/>'},
+  {n:'苹果形', c:'#A9E34B', svg:'<path d="M60 36 c-8 -12 -30 -15 -38 1 c-8 18 4 44 20 54 c6 4 12 4 18 0 c6 4 12 4 18 0 c16 -10 28 -36 20 -54 c-8 -16 -30 -13 -38 -1 Z"/><path d="M60 32 q4 -14 16 -18" stroke="#8A5A2B" stroke-width="6" fill="none" stroke-linecap="round"/>'},
+  {n:'四叶草形', c:'#FF8787', svg:'<circle cx="45" cy="45" r="17"/><circle cx="75" cy="45" r="17"/><circle cx="45" cy="75" r="17"/><circle cx="75" cy="75" r="17"/><path d="M60 92 q2 12 -8 16" stroke="#2B8A3E" stroke-width="6" fill="none" stroke-linecap="round"/>'},
+  {n:'双心形', c:'#3BC9DB', svg:'<path d="M32 52 c-8 -10 -28 -6 -28 8 c0 12 16 22 28 30 c12 -8 28 -18 28 -30 c0 -14 -20 -18 -28 -8 Z"/><path d="M88 52 c-8 -10 -28 -6 -28 8 c0 12 16 22 28 30 c12 -8 28 -18 28 -30 c0 -14 -20 -18 -28 -8 Z" fill-opacity=".65"/>'},
+  {n:'风车形', c:'#D0BFFF', svg:'<polygon points="60,60 60,14 92,32"/><polygon points="60,60 106,60 88,92" fill-opacity=".75"/><polygon points="60,60 60,106 28,88" fill-opacity=".55"/><polygon points="60,60 14,60 32,28" fill-opacity=".85"/>'},
+  {n:'雨伞形', c:'#FFA8A8', svg:'<path d="M14 62 a46 46 0 0 1 92 0 Z"/><rect x="56" y="62" width="8" height="34" rx="4"/><path d="M64 96 a8 8 0 0 1 -16 0" fill="none" stroke="#FFA8A8" stroke-width="6"/>'},
+  {n:'三角旗形', c:'#94D82D', svg:'<rect x="22" y="14" width="7" height="92" rx="3.5"/><polygon points="29,20 100,44 29,68"/>'},
 ];
 function shapeSVG(s){ return `<svg viewBox="0 0 120 120"><g fill="${s.c}">${s.svg}</g></svg>`; }
 (function renderShapes(){
@@ -1113,8 +1393,8 @@ const COLORS = [
   const g = document.getElementById('colorGrid');
   COLORS.forEach(c=>{
     const d = document.createElement('div');
-    d.className = 'shapeitem';
-    d.innerHTML = `<div class="swatch" style="background:${c.c}"></div><div class="t">${c.n}</div>`;
+    d.className = 'colorcard';
+    d.innerHTML = `<div class="cdot" style="background:${c.c}"></div><div class="cname">${c.n}</div>`;
     d.onclick = ()=>{
       d.classList.remove('bounce'); void d.offsetWidth; d.classList.add('bounce');
       say(c.n);
@@ -1132,8 +1412,8 @@ function startColorQuiz(){
   box.innerHTML = '';
   opts.forEach(c=>{
     const b = document.createElement('button');
-    b.className = 'shapeopt';
-    b.innerHTML = `<div class="swatch" style="background:${c.c}"></div>`;
+    b.className = 'coloropt';
+    b.style.background = c.c;
     b.setAttribute('aria-label', c.n);
     b.onclick = ()=>{
       if(c.n === colorTarget.n){
@@ -1164,6 +1444,10 @@ const CANDIES = [
   {n:'太妃糖', img:'assets/candy/toffee.png'},
   {n:'果冻', img:'assets/candy/jelly.png'},
   {n:'奶糖', img:'assets/candy/milkcandy.png'},
+  {n:'糖葫芦', img:'assets/candy/tanghulu.png'},
+  {n:'酥糖', img:'assets/candy/susu.png'},
+  {n:'薄荷糖', img:'assets/candy/mint.png'},
+  {n:'水果硬糖', img:'assets/candy/hardcandy.png'},
 ];
 function candyImg(c){ return `<img class="candyimg" src="${c.img}" alt="${c.n}">`; }
 (function renderCandy(){
