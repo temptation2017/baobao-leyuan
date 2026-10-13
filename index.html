@@ -61,8 +61,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 /* 认糖果 */
 #candy{background:linear-gradient(180deg,#FFF0F5 0%,#FFF7EA 100%)}
 #candyquiz{background:linear-gradient(180deg,#FFF0F5 0%,#FFE9F2 100%)}
-.candyimg{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 6px 12px rgba(0,0,0,.12))}
-.shapeopt .candyimg{width:104px;height:104px}
+.candygrid{flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:30px 6px;padding:24px 12px;overflow-y:auto;align-content:start}
+.candyitem{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;background:none;border:none;padding:0}
+.candyitem:active{transform:scale(.95)}
+.candyitem .t{font-size:22px;font-weight:800;color:#3a2e2e}
+.candyimg{width:162px;height:162px;object-fit:contain;border-radius:30px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.15))}
+.candyitem.bounce .candyimg{animation:shkb .5s}
+.candyopts{flex:1;display:flex;flex-direction:column;gap:24px;padding:10px 44px;justify-content:center;align-items:center}
+.candyopt{background:none;border:none;cursor:pointer;padding:0}
+.candyopt:active{transform:scale(.95)}
+.candyopt .candyimg{width:176px;height:176px}
+.candyopt.ok .candyimg{outline:6px solid #8bc34a;outline-offset:4px}
 @keyframes shkb{0%,100%{transform:scale(1)}40%{transform:scale(1.18) rotate(6deg)}}
 /* 认颜色 */
 /* 认颜色（现代风） */
@@ -538,7 +547,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="toptitle">认糖果</div>
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
-    <div class="shapegrid" id="candyGrid"></div>
+    <div class="candygrid" id="candyGrid"></div>
     <div style="padding:0 20px calc(16px + env(safe-area-inset-bottom))"><button class="btn blue" style="width:100%" onclick="startCandyQuiz()"><img class="btnico" src="assets/icons/find.webp" alt="">考一考：找糖果</button></div>
   </section>
 
@@ -553,7 +562,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <h2 id="candyQ">哪个是棒棒糖？</h2>
       <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCandy()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
     </div>
-    <div class="shapeopts" id="candyOpts"></div>
+    <div class="candyopts" id="candyOpts"></div>
     <div class="countfb" id="candyFb"></div>
   </section>
 
@@ -1436,25 +1445,213 @@ function askColor(){ if(colorTarget) say(`哪个是${colorTarget.n}？`); }
 
 /* ================= 认糖果 ================= */
 const CANDIES = [
-  {n:'棒棒糖', img:'assets/candy/lollipop.png'},
-  {n:'小熊软糖', img:'assets/candy/gummy.png'},
-  {n:'巧克力', img:'assets/candy/chocolate.png'},
-  {n:'棉花糖', img:'assets/candy/marshmallow.png'},
-  {n:'彩虹糖', img:'assets/candy/rainbow.png'},
-  {n:'太妃糖', img:'assets/candy/toffee.png'},
-  {n:'果冻', img:'assets/candy/jelly.png'},
-  {n:'奶糖', img:'assets/candy/milkcandy.png'},
-  {n:'糖葫芦', img:'assets/candy/tanghulu.png'},
-  {n:'酥糖', img:'assets/candy/susu.png'},
-  {n:'薄荷糖', img:'assets/candy/mint.png'},
-  {n:'水果硬糖', img:'assets/candy/hardcandy.png'},
+  {n:'棒棒糖', img:'assets/candy/lollipop.webp'},
+  {n:'小熊软糖', img:'assets/candy/gummy.webp'},
+  {n:'巧克力', img:'assets/candy/chocolate.webp'},
+  {n:'棉花糖', img:'assets/candy/marshmallow.webp'},
+  {n:'彩虹糖', img:'assets/candy/rainbow.webp'},
+  {n:'太妃糖', img:'assets/candy/toffee.webp'},
+  {n:'果冻', img:'assets/candy/jelly.webp'},
+  {n:'奶糖', img:'assets/candy/milkcandy.webp'},
+  {n:'糖葫芦', img:'assets/candy/tanghulu.webp'},
+  {n:'酥糖', img:'assets/candy/susu.webp'},
+  {n:'薄荷糖', img:'assets/candy/mint.webp'},
+  {n:'水果硬糖', img:'assets/candy/hardcandy.webp'},
+  {n:'草莓糖', img:'assets/candy/c013.webp'},
+  {n:'紫葡萄糖', img:'assets/candy/c014.webp'},
+  {n:'西瓜糖', img:'assets/candy/c015.webp'},
+  {n:'菠萝糖', img:'assets/candy/c016.webp'},
+  {n:'芒果糖', img:'assets/candy/c017.webp'},
+  {n:'柠檬糖', img:'assets/candy/c018.webp'},
+  {n:'橙子糖', img:'assets/candy/c019.webp'},
+  {n:'青苹果糖', img:'assets/candy/c020.webp'},
+  {n:'桃子糖', img:'assets/candy/c021.webp'},
+  {n:'荔枝糖', img:'assets/candy/c022.webp'},
+  {n:'蓝莓糖', img:'assets/candy/c023.webp'},
+  {n:'樱桃糖', img:'assets/candy/c024.webp'},
+  {n:'香蕉糖', img:'assets/candy/c025.webp'},
+  {n:'哈密瓜糖', img:'assets/candy/c026.webp'},
+  {n:'猕猴桃糖', img:'assets/candy/c027.webp'},
+  {n:'椰子糖', img:'assets/candy/c028.webp'},
+  {n:'柚子糖', img:'assets/candy/c029.webp'},
+  {n:'百香果糖', img:'assets/candy/c030.webp'},
+  {n:'杨梅糖', img:'assets/candy/c031.webp'},
+  {n:'火龙果糖', img:'assets/candy/c032.webp'},
+  {n:'榴莲糖', img:'assets/candy/c033.webp'},
+  {n:'山竹糖', img:'assets/candy/c034.webp'},
+  {n:'木瓜糖', img:'assets/candy/c035.webp'},
+  {n:'李子糖', img:'assets/candy/c036.webp'},
+  {n:'红枣糖', img:'assets/candy/c037.webp'},
+  {n:'桂圆糖', img:'assets/candy/c038.webp'},
+  {n:'石榴糖', img:'assets/candy/c039.webp'},
+  {n:'桑葚糖', img:'assets/candy/c040.webp'},
+  {n:'牛轧糖', img:'assets/candy/c041.webp'},
+  {n:'花生牛轧糖', img:'assets/candy/c042.webp'},
+  {n:'芝麻糖', img:'assets/candy/c043.webp'},
+  {n:'花生糖', img:'assets/candy/c044.webp'},
+  {n:'姜糖', img:'assets/candy/c045.webp'},
+  {n:'杏仁糖', img:'assets/candy/c046.webp'},
+  {n:'核桃糖', img:'assets/candy/c047.webp'},
+  {n:'松子糖', img:'assets/candy/c048.webp'},
+  {n:'腰果酥', img:'assets/candy/c049.webp'},
+  {n:'奶酪糖', img:'assets/candy/c050.webp'},
+  {n:'黄油糖', img:'assets/candy/c051.webp'},
+  {n:'麦芽糖', img:'assets/candy/c052.webp'},
+  {n:'龙须糖', img:'assets/candy/c053.webp'},
+  {n:'糖画', img:'assets/candy/c054.webp'},
+  {n:'糖人', img:'assets/candy/c055.webp'},
+  {n:'麻糖', img:'assets/candy/c056.webp'},
+  {n:'寸金糖', img:'assets/candy/c057.webp'},
+  {n:'粽子糖', img:'assets/candy/c058.webp'},
+  {n:'梨膏糖', img:'assets/candy/c059.webp'},
+  {n:'桂花糖', img:'assets/candy/c060.webp'},
+  {n:'玫瑰糖', img:'assets/candy/c061.webp'},
+  {n:'糖瓜', img:'assets/candy/c062.webp'},
+  {n:'关东糖', img:'assets/candy/c063.webp'},
+  {n:'米花糖', img:'assets/candy/c064.webp'},
+  {n:'糖雪球', img:'assets/candy/c065.webp'},
+  {n:'陈皮糖', img:'assets/candy/c066.webp'},
+  {n:'话梅糖', img:'assets/candy/c067.webp'},
+  {n:'高粱饴', img:'assets/candy/c068.webp'},
+  {n:'山楂卷', img:'assets/candy/c069.webp'},
+  {n:'酸枣糕', img:'assets/candy/c070.webp'},
+  {n:'金桔糖', img:'assets/candy/c071.webp'},
+  {n:'冻米糖', img:'assets/candy/c072.webp'},
+  {n:'小虫软糖', img:'assets/candy/c073.webp'},
+  {n:'青蛙软糖', img:'assets/candy/c074.webp'},
+  {n:'桃子软糖', img:'assets/candy/c075.webp'},
+  {n:'可乐瓶软糖', img:'assets/candy/c076.webp'},
+  {n:'牙齿软糖', img:'assets/candy/c077.webp'},
+  {n:'眼睛软糖', img:'assets/candy/c078.webp'},
+  {n:'汉堡软糖', img:'assets/candy/c079.webp'},
+  {n:'披萨软糖', img:'assets/candy/c080.webp'},
+  {n:'西瓜软糖', img:'assets/candy/c081.webp'},
+  {n:'草莓软糖', img:'assets/candy/c082.webp'},
+  {n:'戒指糖', img:'assets/candy/c083.webp'},
+  {n:'奶嘴糖', img:'assets/candy/c084.webp'},
+  {n:'钻石糖', img:'assets/candy/c085.webp'},
+  {n:'星星软糖', img:'assets/candy/c086.webp'},
+  {n:'心形软糖', img:'assets/candy/c087.webp'},
+  {n:'葡萄软糖', img:'assets/candy/c088.webp'},
+  {n:'酸条糖', img:'assets/candy/c089.webp'},
+  {n:'彩虹绳糖', img:'assets/candy/c090.webp'},
+  {n:'鸡蛋软糖', img:'assets/candy/c091.webp'},
+  {n:'鲨鱼软糖', img:'assets/candy/c092.webp'},
+  {n:'恐龙软糖', img:'assets/candy/c093.webp'},
+  {n:'字母软糖', img:'assets/candy/c094.webp'},
+  {n:'骨头糖', img:'assets/candy/c095.webp'},
+  {n:'嘴唇糖', img:'assets/candy/c096.webp'},
+  {n:'宝石糖', img:'assets/candy/c097.webp'},
+  {n:'爆浆软糖', img:'assets/candy/c098.webp'},
+  {n:'橡皮糖', img:'assets/candy/c099.webp'},
+  {n:'星星棒棒糖', img:'assets/candy/c100.webp'},
+  {n:'心形棒棒糖', img:'assets/candy/c101.webp'},
+  {n:'螺旋棒棒糖', img:'assets/candy/c102.webp'},
+  {n:'波板糖', img:'assets/candy/c103.webp'},
+  {n:'糖拐杖', img:'assets/candy/c104.webp'},
+  {n:'口哨糖', img:'assets/candy/c105.webp'},
+  {n:'眼镜糖', img:'assets/candy/c106.webp'},
+  {n:'奶瓶糖', img:'assets/candy/c107.webp'},
+  {n:'跳跳糖', img:'assets/candy/c108.webp'},
+  {n:'泡泡糖', img:'assets/candy/c109.webp'},
+  {n:'口香糖', img:'assets/candy/c110.webp'},
+  {n:'彩虹棉花糖', img:'assets/candy/c111.webp'},
+  {n:'棉花糖串', img:'assets/candy/c112.webp'},
+  {n:'夹心棉花糖', img:'assets/candy/c113.webp'},
+  {n:'云朵棉花糖', img:'assets/candy/c114.webp'},
+  {n:'粉末蘸糖', img:'assets/candy/c115.webp'},
+  {n:'液体糖', img:'assets/candy/c116.webp'},
+  {n:'喷雾糖', img:'assets/candy/c117.webp'},
+  {n:'牙膏糖', img:'assets/candy/c118.webp'},
+  {n:'白巧克力', img:'assets/candy/c119.webp'},
+  {n:'黑巧克力', img:'assets/candy/c120.webp'},
+  {n:'巧克力豆', img:'assets/candy/c121.webp'},
+  {n:'巧克力球', img:'assets/candy/c122.webp'},
+  {n:'巧克力棒', img:'assets/candy/c123.webp'},
+  {n:'巧克力币', img:'assets/candy/c124.webp'},
+  {n:'巧克力蛋', img:'assets/candy/c125.webp'},
+  {n:'巧克力兔', img:'assets/candy/c126.webp'},
+  {n:'巧克力伞', img:'assets/candy/c127.webp'},
+  {n:'巧克力铅笔', img:'assets/candy/c128.webp'},
+  {n:'夹心巧克力', img:'assets/candy/c129.webp'},
+  {n:'松露巧克力', img:'assets/candy/c130.webp'},
+  {n:'巧克力威化', img:'assets/candy/c131.webp'},
+  {n:'生巧克力', img:'assets/candy/c132.webp'},
+  {n:'巧克力爱心', img:'assets/candy/c133.webp'},
+  {n:'巧克力玫瑰', img:'assets/candy/c134.webp'},
+  {n:'果冻条', img:'assets/candy/c135.webp'},
+  {n:'吸吸冻', img:'assets/candy/c136.webp'},
+  {n:'布丁', img:'assets/candy/c137.webp'},
+  {n:'椰果果冻', img:'assets/candy/c138.webp'},
+  {n:'蒟蒻果冻', img:'assets/candy/c139.webp'},
+  {n:'金平糖', img:'assets/candy/c140.webp'},
+  {n:'玻璃糖', img:'assets/candy/c141.webp'},
+  {n:'琥珀糖', img:'assets/candy/c142.webp'},
+  {n:'冰糖', img:'assets/candy/c143.webp'},
+  {n:'糖果手链', img:'assets/candy/c144.webp'},
+  {n:'糖果项链', img:'assets/candy/c145.webp'},
+  {n:'手表糖', img:'assets/candy/c146.webp'},
+  {n:'唇膏糖', img:'assets/candy/c147.webp'},
+  {n:'珍珠糖', img:'assets/candy/c148.webp'},
+  {n:'彩针糖', img:'assets/candy/c149.webp'},
+  {n:'糖球', img:'assets/candy/c150.webp'},
+  {n:'金币糖', img:'assets/candy/c151.webp'},
+  {n:'玫瑰花糖', img:'assets/candy/c152.webp'},
+  {n:'小鱼糖', img:'assets/candy/c153.webp'},
+  {n:'小猪糖', img:'assets/candy/c154.webp'},
+  {n:'猫爪糖', img:'assets/candy/c155.webp'},
+  {n:'熊猫糖', img:'assets/candy/c156.webp'},
+  {n:'蝴蝶糖', img:'assets/candy/c157.webp'},
+  {n:'寿桃糖', img:'assets/candy/c158.webp'},
+  {n:'枇杷糖', img:'assets/candy/c159.webp'},
+  {n:'罗汉果糖', img:'assets/candy/c160.webp'},
+  {n:'咸柠糖', img:'assets/candy/c161.webp'},
+  {n:'海盐糖', img:'assets/candy/c162.webp'},
+  {n:'咖啡糖', img:'assets/candy/c163.webp'},
+  {n:'抹茶糖', img:'assets/candy/c164.webp'},
+  {n:'可乐糖', img:'assets/candy/c165.webp'},
+  {n:'汽水糖', img:'assets/candy/c166.webp'},
+  {n:'酸奶糖', img:'assets/candy/c167.webp'},
+  {n:'奶片', img:'assets/candy/c168.webp'},
+  {n:'维C糖', img:'assets/candy/c169.webp'},
+  {n:'乌龙茶糖', img:'assets/candy/c170.webp'},
+  {n:'辣椒糖', img:'assets/candy/c171.webp'},
+  {n:'紫苏糖', img:'assets/candy/c172.webp'},
+  {n:'蜂蜜糖', img:'assets/candy/c173.webp'},
+  {n:'人参糖', img:'assets/candy/c174.webp'},
+  {n:'南瓜糖', img:'assets/candy/c175.webp'},
+  {n:'圣诞树糖', img:'assets/candy/c176.webp'},
+  {n:'雪人糖', img:'assets/candy/c177.webp'},
+  {n:'兔子糖', img:'assets/candy/c178.webp'},
+  {n:'元宝糖', img:'assets/candy/c179.webp'},
+  {n:'灯笼糖', img:'assets/candy/c180.webp'},
+  {n:'爆米花糖', img:'assets/candy/c181.webp'},
+  {n:'燕麦糖', img:'assets/candy/c182.webp'},
+  {n:'玉米糖', img:'assets/candy/c183.webp'},
+  {n:'瓜子糖', img:'assets/candy/c184.webp'},
+  {n:'马卡龙', img:'assets/candy/c185.webp'},
+  {n:'土耳其软糖', img:'assets/candy/c186.webp'},
+  {n:'甘草糖', img:'assets/candy/c187.webp'},
+  {n:'水果卷糖', img:'assets/candy/c188.webp'},
+  {n:'焦糖糖', img:'assets/candy/c189.webp'},
+  {n:'麻薯糖', img:'assets/candy/c190.webp'},
+  {n:'羊羹', img:'assets/candy/c191.webp'},
+  {n:'什锦糖', img:'assets/candy/c192.webp'},
+  {n:'糖豆', img:'assets/candy/c193.webp'},
+  {n:'方糖', img:'assets/candy/c194.webp'},
+  {n:'水果软糖', img:'assets/candy/c195.webp'},
+  {n:'夹心糖', img:'assets/candy/c196.webp'},
+  {n:'奶枣', img:'assets/candy/c197.webp'},
+  {n:'雪花酥', img:'assets/candy/c198.webp'},
+  {n:'葡萄糖葫芦', img:'assets/candy/c199.webp'},
+  {n:'草莓糖葫芦', img:'assets/candy/c200.webp'},
 ];
-function candyImg(c){ return `<img class="candyimg" src="${c.img}" alt="${c.n}">`; }
+function candyImg(c){ return `<img class="candyimg" loading="lazy" src="${c.img}" alt="${c.n}">`; }
 (function renderCandy(){
   const g = document.getElementById('candyGrid');
   CANDIES.forEach(c=>{
     const d = document.createElement('div');
-    d.className = 'shapeitem';
+    d.className = 'candyitem';
     d.innerHTML = candyImg(c) + `<div class="t">${c.n}</div>`;
     d.onclick = ()=>{
       d.classList.remove('bounce'); void d.offsetWidth; d.classList.add('bounce');
@@ -1473,7 +1670,7 @@ function startCandyQuiz(){
   box.innerHTML = '';
   opts.forEach(c=>{
     const b = document.createElement('button');
-    b.className = 'shapeopt';
+    b.className = 'candyopt';
     b.innerHTML = candyImg(c);
     b.setAttribute('aria-label', c.n);
     b.onclick = ()=>{
