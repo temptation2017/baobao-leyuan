@@ -171,6 +171,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .memcard .mfront img{width:100%;height:100%;object-fit:cover}
 .memcard.done .mfront{outline:4px solid #7BC96F;outline-offset:-4px}
 .memfb{min-height:52px;text-align:center;font-size:19px;font-weight:800;color:#B4691E;padding:4px 20px}
+/* 认识情绪 */
+#emotion{background:linear-gradient(180deg,#FFF3E2 0%,#FFF9F1 60%,#FFFDF8 100%)}
+.egrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:6px 20px 20px;max-width:480px;margin:0 auto}
+.ecard{background:#fff;border-radius:18px;padding:10px 6px;text-align:center;box-shadow:0 3px 10px rgba(180,120,40,.12);cursor:pointer;border:2px solid transparent}
+.ecard:active{transform:scale(.96)}
+.ecard.on{border-color:#FF9F2E}
+.ecard svg{width:100%;height:auto;display:block}
+.ecard .en{font-size:17px;font-weight:900;color:#8A5A1E;margin-top:2px}
+.edetail{text-align:center;padding:2px 24px 8px}
+.edetail svg{width:150px;height:150px}
+.edetail .enm{font-size:30px;font-weight:900;color:#B4691E;margin:4px 0 2px}
+.edetail .eln{font-size:16px;color:#8d7a5c;line-height:1.6}
+.eqtext{font-size:22px;font-weight:900;color:#7A4E12;text-align:center;padding:10px 26px;line-height:1.7}
+.eopts{display:flex;justify-content:center;gap:14px;padding:6px 20px;flex-wrap:wrap}
+.eopt{background:#fff;border-radius:18px;padding:8px;width:112px;text-align:center;box-shadow:0 3px 10px rgba(180,120,40,.12);cursor:pointer;border:3px solid transparent}
+.eopt:active{transform:scale(.95)}
+.eopt.right{border-color:#52C75A;background:#F2FBEF}
+.eopt svg{width:100%;height:auto;display:block}
+.eopt .en2{font-size:16px;font-weight:800;color:#8A5A1E}
+.eqfb{min-height:40px;text-align:center;font-size:18px;font-weight:800;color:#B4691E;padding:4px 20px}
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
 .bandstage{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 20px;width:100%;max-width:480px;margin:0 auto;min-height:300px}
@@ -406,8 +426,8 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
@@ -442,12 +462,12 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
@@ -531,7 +551,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintF" onclick="startPuzzle()"><img src="assets/icons/puzzle.webp" alt="拼图"><span class="an">拼图</span><span class="as">动动小手</span></div>
       <div class="appcard tintC" onclick="openBubbles()"><img src="assets/icons/bubbles.webp" alt="泡泡"><span class="an">泡泡</span><span class="as">戳一戳泡泡</span></div>
       <div class="appcard tintB" onclick="openMemory()"><img src="assets/icons/find.webp" alt="记忆翻牌"><span class="an">记忆翻牌</span><span class="as">翻牌找朋友</span></div>
-      <div class="appcard tintE" onclick="openBand()"><span class="newbadge">新</span><img src="assets/icons/band.webp" alt="乐器小乐队"><span class="an">乐器小乐队</span><span class="as">木琴·手鼓·沙锤</span></div>
+      <div class="appcard tintE" onclick="openBand()"><img src="assets/icons/band.webp" alt="乐器小乐队"><span class="an">乐器小乐队</span><span class="as">木琴·手鼓·沙锤</span></div>
+      <div class="appcard tintF" onclick="openEmotion()"><span class="newbadge">新</span><img src="assets/icons/emotion.png" alt="认识情绪"><span class="an">认识情绪</span><span class="as">表情卡·猜情绪</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -906,6 +927,29 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     <div class="bandfb" id="bandFb">敲敲打打，奏出美妙的音乐</div>
   </section>
 
+  <!-- 认识情绪 -->
+  <section id="emotion" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">认识情绪</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="emotionTabs">
+      <button class="ztab on" onclick="setEmotionTab(0)">表情卡</button>
+      <button class="ztab" onclick="setEmotionTab(1)">猜一猜</button>
+    </div>
+    <div id="emotionLearn">
+      <div class="edetail" id="emotionDetail"></div>
+      <div class="egrid" id="emotionGrid"></div>
+    </div>
+    <div id="emotionQuiz" style="display:none">
+      <div class="eqtext" id="eqText"></div>
+      <div style="padding:4px 26px"><button class="btn blue" style="width:100%" onclick="eqListen()">🔊 听一听题目</button></div>
+      <div class="eopts" id="eqOpts"></div>
+      <div class="eqfb" id="eqFb"></div>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -951,7 +995,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v4.8 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v4.9 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -3898,6 +3942,113 @@ function setBandTab(n){
       '<button class="shaker" style="background:#6BCB77" onclick="shakerHit();bandHit(this)">右手<br><span style="font-size:13px">晃一晃</span></button>' +
       '</div>';
     document.getElementById('bandFb').textContent = '摇一摇沙锤，左手右手一起打拍子';
+  }
+}
+
+/* ================= 认识情绪 ================= */
+const EMOTIONS = [
+  {id:'happy', name:'开心', line:'开心的时候，我们哈哈大笑，眼睛都眯成月牙啦！'},
+  {id:'sad', name:'难过', line:'难过的时候想哭一哭，抱抱就会好起来。'},
+  {id:'angry', name:'生气', line:'生气的时候小脸鼓鼓的，深呼吸三次，气就跑掉啦。'},
+  {id:'scared', name:'害怕', line:'害怕的时候心跳砰砰响，抓住大人的手就不怕啦。'},
+  {id:'surprised', name:'惊讶', line:'惊讶的时候眼睛瞪得圆圆的，嘴巴变成小圆圈！'},
+  {id:'calm', name:'平静', line:'平静的时候心里安安静静，像湖面一样。'}
+];
+function faceSVG(mood){
+  const base = '<circle cx="50" cy="52" r="40" fill="#FFD76E" stroke="#E8A94B" stroke-width="3"/>';
+  const eye = '<g stroke="#5B3A1E" stroke-width="5" stroke-linecap="round" fill="none">';
+  const dot = '<g fill="#5B3A1E">';
+  let inner = '';
+  if(mood==='happy'){
+    inner = eye+'<path d="M28 44 Q35 34 42 44"/><path d="M58 44 Q65 34 72 44"/></g>'
+      + '<ellipse cx="27" cy="64" rx="7" ry="5" fill="#FF9E9E" opacity=".85"/><ellipse cx="73" cy="64" rx="7" ry="5" fill="#FF9E9E" opacity=".85"/>'
+      + '<path d="M30 60 Q50 84 70 60" stroke="#5B3A1E" stroke-width="5" stroke-linecap="round" fill="none"/>';
+  } else if(mood==='sad'){
+    inner = '<path d="M26 30 L40 37" stroke="#5B3A1E" stroke-width="4" stroke-linecap="round"/><path d="M74 30 L60 37" stroke="#5B3A1E" stroke-width="4" stroke-linecap="round"/>'
+      + dot+'<circle cx="35" cy="48" r="5"/><circle cx="65" cy="48" r="5"/></g>'
+      + '<path d="M72 56 q6 9 0 14 q-6 -5 0 -14" fill="#6DB6FF"/>'
+      + '<path d="M32 76 Q50 64 68 76" stroke="#5B3A1E" stroke-width="5" stroke-linecap="round" fill="none"/>';
+  } else if(mood==='angry'){
+    inner = '<path d="M25 30 L43 41" stroke="#5B3A1E" stroke-width="5" stroke-linecap="round"/><path d="M75 30 L57 41" stroke="#5B3A1E" stroke-width="5" stroke-linecap="round"/>'
+      + dot+'<circle cx="36" cy="52" r="5"/><circle cx="64" cy="52" r="5"/></g>'
+      + '<path d="M34 74 L44 69 L54 75 L66 69" stroke="#5B3A1E" stroke-width="4" stroke-linecap="round" fill="none"/>';
+  } else if(mood==='scared'){
+    inner = '<circle cx="35" cy="46" r="10" fill="#fff" stroke="#5B3A1E" stroke-width="3"/><circle cx="65" cy="46" r="10" fill="#fff" stroke="#5B3A1E" stroke-width="3"/>'
+      + dot+'<circle cx="35" cy="48" r="3.6"/><circle cx="65" cy="48" r="3.6"/></g>'
+      + '<ellipse cx="50" cy="74" rx="7" ry="9" fill="#5B3A1E"/>';
+  } else if(mood==='surprised'){
+    inner = '<circle cx="35" cy="44" r="10" fill="#fff" stroke="#5B3A1E" stroke-width="3"/><circle cx="65" cy="44" r="10" fill="#fff" stroke="#5B3A1E" stroke-width="3"/>'
+      + dot+'<circle cx="35" cy="46" r="3.6"/><circle cx="65" cy="46" r="3.6"/></g>'
+      + '<ellipse cx="50" cy="74" rx="9" ry="11" fill="#8A4B2A" stroke="#5B3A1E" stroke-width="3"/>';
+  } else {
+    inner = eye+'<path d="M28 46 Q35 52 42 46"/><path d="M58 46 Q65 52 72 46"/></g>'
+      + '<path d="M40 68 Q50 74 60 68" stroke="#5B3A1E" stroke-width="4" stroke-linecap="round" fill="none"/>';
+  }
+  return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">'+base+inner+'</svg>';
+}
+let emoQ = 0;
+const EMO_QUIZ = [
+  {t:'宝宝得到了最喜欢的糖果，他会怎么样？', a:'happy'},
+  {t:'小朋友摔倒了，膝盖好痛，他的心情是？', a:'sad'},
+  {t:'弟弟把姐姐搭好的积木推倒了，姐姐会？', a:'angry'},
+  {t:'半夜打雷了，轰隆隆好响，宝宝觉得？', a:'scared'},
+  {t:'妈妈突然从门后跳出来喊“抓到你啦”，宝宝？', a:'surprised'},
+  {t:'宝宝躺在妈妈怀里，听着摇篮曲，他觉得？', a:'calm'},
+  {t:'最心爱的玩具小熊找不到了，宝宝？', a:'sad'},
+  {t:'生日蛋糕点着蜡烛，大家唱生日歌，宝宝？', a:'happy'}
+];
+function emoName(id){ const e = EMOTIONS.find(x=>x.id===id); return e ? e.name : ''; }
+function openEmotion(){ setEmotionTab(0); go('emotion'); }
+function setEmotionTab(n){
+  document.querySelectorAll('#emotionTabs .ztab').forEach((b,i)=>b.classList.toggle('on', i===n));
+  document.getElementById('emotionLearn').style.display = n===0 ? '' : 'none';
+  document.getElementById('emotionQuiz').style.display = n===1 ? '' : 'none';
+  if(n===0) renderEmoCards();
+  else { emoQ = 0; renderEmoQuiz(); }
+}
+function renderEmoCards(){
+  document.getElementById('emotionGrid').innerHTML = EMOTIONS.map((e,i)=>
+    '<div class="ecard" onclick="showEmo('+i+',this)">'+faceSVG(e.id)+'<div class="en">'+e.name+'</div></div>').join('');
+  document.getElementById('emotionDetail').innerHTML = '<div class="eln">点一张表情卡，听听它的名字</div>';
+}
+function showEmo(i, el){
+  const e = EMOTIONS[i];
+  document.querySelectorAll('#emotionGrid .ecard').forEach(c=>c.classList.remove('on'));
+  if(el) el.classList.add('on');
+  document.getElementById('emotionDetail').innerHTML = faceSVG(e.id)+'<div class="enm">'+e.name+'</div><div class="eln">'+e.line+'</div>';
+  say(e.name+'。'+e.line);
+}
+function renderEmoQuiz(){
+  const q = EMO_QUIZ[emoQ];
+  document.getElementById('eqText').textContent = '第 '+(emoQ+1)+' 题：'+q.t;
+  document.getElementById('eqFb').textContent = '';
+  const pool = EMOTIONS.filter(e=>e.id!==q.a).sort(()=>Math.random()-.5).slice(0,2);
+  const opts = [EMOTIONS.find(e=>e.id===q.a)].concat(pool).sort(()=>Math.random()-.5);
+  document.getElementById('eqOpts').innerHTML = opts.map(e=>
+    '<div class="eopt" onclick="answerEmo(\''+e.id+'\',this)">'+faceSVG(e.id)+'<div class="en2">'+e.name+'</div></div>').join('');
+}
+function eqListen(){ say(EMO_QUIZ[emoQ].t); }
+function answerEmo(id, el){
+  const q = EMO_QUIZ[emoQ];
+  if(id === q.a){
+    el.classList.add('right');
+    addStar();
+    say('对啦，就是'+emoName(id)+'！');
+    emoQ++;
+    setTimeout(()=>{
+      if(emoQ >= EMO_QUIZ.length){
+        const rounds = +(localStorage.getItem('park_emotion_rounds')||0)+1;
+        localStorage.setItem('park_emotion_rounds', rounds);
+        document.getElementById('eqText').textContent = '全部答对，太棒了！';
+        document.getElementById('eqOpts').innerHTML = '';
+        document.getElementById('eqFb').textContent = '你认识了 '+EMOTIONS.length+' 种情绪，马上再来一轮～';
+        say('全部答对，你真是个懂情绪的小高手！');
+        setTimeout(()=>{ emoQ = 0; renderEmoQuiz(); }, 4000);
+      } else renderEmoQuiz();
+    }, 1200);
+  } else {
+    say('再想一想，他的心情是什么呢？');
+    document.getElementById('eqFb').textContent = '再想一想～';
   }
 }
 
