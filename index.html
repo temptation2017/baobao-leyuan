@@ -248,6 +248,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .hygtip{text-align:center;font-size:13px;color:#B9A98F;padding:8px 24px 18px;line-height:1.6}
 
 /* 动物食堂 v5.3 */
+
+/* 数字描红 v5.4 */
+#trace{background:linear-gradient(180deg,#EAF3FB 0%,#FFF9F0 100%)}
+.tracedigits{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:12px 18px 4px}
+.tracebtn{width:58px;height:58px;border-radius:18px;background:#fff;border:3px solid #C9DCEF;font-size:30px;font-weight:900;color:#3E6E9E;box-shadow:0 4px 10px rgba(0,0,0,.07);cursor:pointer}
+.tracebtn:active{transform:scale(.92)}
+.tracebtn.on{background:#3E6E9E;color:#fff;border-color:#3E6E9E}
+.tracewrap{position:relative;margin:10px auto 0;width:min(86vw,340px);aspect-ratio:3/4;border-radius:24px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.08);overflow:hidden;touch-action:none}
+.tracewrap canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
+.tracefb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:6px 20px}
+.tracebar{display:flex;gap:10px;padding:8px 18px 26px}
+body.ink .tracewrap{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 #feed{background:linear-gradient(180deg,#FFE9D6 0%,#FFF7EA 100%)}
 .feedstage{display:flex;flex-direction:column;align-items:center;padding:10px 20px 2px;gap:2px}
 .feedanimal{font-size:96px;line-height:1.15;filter:drop-shadow(0 8px 16px rgba(0,0,0,.12))}
@@ -505,7 +517,7 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
@@ -542,17 +554,17 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
 body.ink .bandfb{color:#5c5c55}
-body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb,body.ink .feedfb{color:#5c5c55}
+body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb,body.ink .feedfb,body.ink .tracefb{color:#5c5c55}
 body.ink .shdcard.done{background:#F7F7F3}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
@@ -623,6 +635,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintE" onclick="go('candy')"><img src="assets/icons/candy.webp" alt="认糖果"><span class="an">认糖果</span><span class="as">200 种糖果</span></div>
       <div class="appcard tintF" onclick="go('hanzi')"><img src="assets/icons/hanzi.webp" alt="认汉字"><span class="an">认汉字</span><span class="as">5000 个汉字</span></div>
       <div class="appcard tintC" onclick="startCount()"><img src="assets/icons/count.webp" alt="数一数"><span class="an">数一数</span><span class="as">数到 100</span></div>
+      <div class="appcard tintC" onclick="openTrace()"><span class="newbadge">新</span><img src="assets/icons/trace.webp" alt="数字描红"><span class="an">数字描红</span><span class="as">1-10 描红闯关</span></div>
     </div>
     <div class="sech">玩 一 玩</div>
     <div class="appgrid">
@@ -638,7 +651,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintA" onclick="openShadow()"><img src="assets/icons/shadow.webp" alt="影子找朋友"><span class="an">影子找朋友</span><span class="as">找影子·3 档难度</span></div>
       <div class="appcard tintC" onclick="openMixlab()"><img src="assets/icons/mix.webp" alt="颜色魔法师"><span class="an">颜色魔法师</span><span class="as">调出新颜色·魔法食谱</span></div>
       <div class="appcard tintD" onclick="openHygiene()"><img src="assets/icons/hyg.webp" alt="我会刷牙"><span class="an">我会刷牙</span><span class="as">刷牙·洗手步骤闯关</span></div>
-      <div class="appcard tintB" onclick="openFeed()"><span class="newbadge">新</span><img src="assets/icons/feed.webp" alt="动物食堂"><span class="an">动物食堂</span><span class="as">喂 10 种小动物</span></div>
+      <div class="appcard tintB" onclick="openFeed()"><img src="assets/icons/feed.webp" alt="动物食堂"><span class="an">动物食堂</span><span class="as">喂 10 种小动物</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -1125,6 +1138,22 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+  <!-- 数字描红 -->
+  <section id="trace" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">数字描红</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="tracedigits" id="traceDigits"></div>
+    <div class="tracewrap"><canvas id="traceGuide"></canvas><canvas id="traceDraw"></canvas></div>
+    <div class="tracefb" id="traceFb">选一个数字，用小手指描一描</div>
+    <div class="tracebar">
+      <button class="btn ghost" style="flex:1" onclick="traceClear()">🧽 擦掉重来</button>
+      <button class="btn ghost" style="flex:1" onclick="traceHear()">🔊 听一听</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1170,7 +1199,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.3 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.4 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -4557,6 +4586,73 @@ function tapFeed(k){
   }
 }
 function nextFeedAnimal(){feedIdx++;startFeedRound();}
+
+/* 数字描红 v5.4：1-10 描红闯关（写前准备·手眼协调） */
+var TRACE_N=0,TRACE_DRAWING=false,TRACE_LAST=null,TRACE_DONE=false,TRACE_GUIDE=[];
+var TRACE_NAMES=['一','二','三','四','五','六','七','八','九','十'];
+function openTrace(){go('trace');traceBuildDigits();tracePick(1,true);}
+function traceBuildDigits(){
+  var box=document.getElementById('traceDigits');box.innerHTML='';
+  for(var i=1;i<=10;i++){var b=document.createElement('button');b.className='tracebtn';b.id='td_'+i;b.textContent=i;b.onclick=(function(n){return function(){tracePick(n);};})(i);box.appendChild(b);}
+}
+function tracePick(n,quiet){
+  TRACE_N=n;TRACE_DONE=false;
+  document.querySelectorAll('.tracebtn').forEach(function(b){b.classList.remove('on');});
+  document.getElementById('td_'+n).classList.add('on');
+  traceClear();traceDrawGuide();
+  document.getElementById('traceFb').textContent='描一描数字 '+n+'（'+TRACE_NAMES[n-1]+'）';
+  if(!quiet)say('描一描数字 '+n);
+}
+function traceDrawGuide(){
+  var g=document.getElementById('traceGuide'),ctx=g.getContext('2d');
+  g.width=g.clientWidth||340;g.height=g.clientHeight||452;
+  var d=document.getElementById('traceDraw');d.width=g.width;d.height=g.height;
+  ctx.clearRect(0,0,g.width,g.height);
+  var fs=Math.floor(g.height*(TRACE_N===10?0.5:0.68));
+  ctx.font='900 '+fs+'px "PingFang SC","Microsoft YaHei",sans-serif';
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.lineWidth=Math.floor(g.width*0.16);ctx.strokeStyle='#E2DDCE';
+  ctx.strokeText(TRACE_N,g.width/2,g.height/2);
+  ctx.lineWidth=Math.max(6,Math.floor(g.width*0.028));ctx.strokeStyle='#F2C14E';
+  ctx.setLineDash([14,12]);ctx.strokeText(TRACE_N,g.width/2,g.height/2);ctx.setLineDash([]);
+  traceSampleGuide();
+}
+function traceSampleGuide(){
+  var g=document.getElementById('traceGuide'),ctx=g.getContext('2d');
+  var img=ctx.getImageData(0,0,g.width,g.height).data;TRACE_GUIDE=[];
+  for(var y=7;y<g.height;y+=14)for(var x=7;x<g.width;x+=14){
+    if(img[((Math.floor(y)*g.width)+Math.floor(x))*4+3]>70)TRACE_GUIDE.push([Math.floor(x),Math.floor(y)]);
+  }
+}
+function tracePos(e){var c=document.getElementById('traceDraw'),r=c.getBoundingClientRect();return [(e.clientX-r.left)*(c.width/r.width),(e.clientY-r.top)*(c.height/r.height)];}
+function traceStart(e){if(TRACE_DONE)return;TRACE_DRAWING=true;TRACE_LAST=tracePos(e);e.preventDefault();}
+function traceMove(e){
+  if(!TRACE_DRAWING||TRACE_DONE)return;e.preventDefault();
+  var c=document.getElementById('traceDraw'),ctx=c.getContext('2d'),p=tracePos(e);
+  ctx.strokeStyle='#3E6E9E';ctx.lineWidth=Math.max(18,Math.floor(c.width*0.06));ctx.lineCap='round';ctx.lineJoin='round';
+  ctx.beginPath();ctx.moveTo(TRACE_LAST[0],TRACE_LAST[1]);ctx.lineTo(p[0],p[1]);ctx.stroke();
+  TRACE_LAST=p;
+}
+function traceEnd(){if(!TRACE_DRAWING)return;TRACE_DRAWING=false;traceCheck();}
+function traceCheck(){
+  var c=document.getElementById('traceDraw'),ctx=c.getContext('2d');
+  var img=ctx.getImageData(0,0,c.width,c.height).data,hit=0;
+  for(var i=0;i<TRACE_GUIDE.length;i++){
+    var x=TRACE_GUIDE[i][0],y=TRACE_GUIDE[i][1];
+    if(img[(y*c.width+x)*4+3]>70)hit++;
+  }
+  var ratio=TRACE_GUIDE.length?hit/TRACE_GUIDE.length:0;
+  if(ratio>=0.42){
+    TRACE_DONE=true;addStar();
+    try{var k=parseInt(localStorage.getItem('park_trace_done')||'0',10)||0;localStorage.setItem('park_trace_done',String(k+1));}catch(e){}
+    document.getElementById('traceFb').textContent='🎉 数字 '+TRACE_N+' 描得真棒！';
+    say('数字 '+TRACE_N+'，写得真棒！');
+    setTimeout(function(){var n=TRACE_N>=10?1:TRACE_N+1;tracePick(n,true);say('再描一描数字 '+n);},2600);
+  }
+}
+function traceClear(){var c=document.getElementById('traceDraw');c.getContext('2d').clearRect(0,0,c.width,c.height);}
+function traceHear(){say('描一描数字 '+TRACE_N);}
+(function(){var d=document.getElementById('traceDraw');d.addEventListener('pointerdown',traceStart);d.addEventListener('pointermove',traceMove);window.addEventListener('pointerup',traceEnd);d.addEventListener('pointercancel',traceEnd);})();
 
 // 初始化星星显示
 document.getElementById('homeStars').textContent = stars;
