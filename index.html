@@ -226,6 +226,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .mixrcpt{font-size:13px;font-weight:800;color:#4A3F35}
 .mixrcp.locked .mixrcpdot{background:#E5E7EB !important}
 .mixrcp.locked .mixrcpt{color:#B9A98F}
+
+/* 我会刷牙 v5.2 */
+#hygiene{background:linear-gradient(180deg,#E8F6FF 0%,#FFF7EA 100%)}
+.hygtabs{display:flex;gap:10px;justify-content:center;padding:10px 20px 2px}
+.hygtab{border:none;border-radius:999px;padding:12px 26px;font-size:17px;font-weight:900;background:#fff;color:#8a7a63;box-shadow:0 4px 12px rgba(0,0,0,.08);cursor:pointer;min-height:52px}
+.hygtab.on{background:#3E7DE0;color:#fff;box-shadow:0 4px 12px rgba(62,125,224,.4)}
+.hyglabel{text-align:center;font-size:15px;font-weight:800;color:#8a7a63;padding:6px 20px}
+.hyggrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:4px 20px 8px}
+.hygcard{background:#fff;border-radius:22px;padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;box-shadow:0 5px 14px rgba(0,0,0,.08);border:4px solid transparent;transition:transform .15s,border-color .15s;min-height:152px;justify-content:center}
+.hygcard:active{transform:scale(.95)}
+.hygcard svg{width:72px;height:72px}
+.hygcard .hn{font-size:16px;font-weight:900;color:#4A3F35}
+.hygcard .hord{font-size:12px;color:#B9A98F;font-weight:800;min-height:16px}
+.hygcard.done{border-color:#4CAF50;background:#F2FBF2}
+.hygcard.done .hn{color:#2E7D32}
+.hygcard.wrong{animation:hygwig .45s}
+@keyframes hygwig{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px) rotate(-3deg)}75%{transform:translateX(8px) rotate(3deg)}}
+.hygcard.hint{border-color:#F6C90E;box-shadow:0 0 0 5px rgba(246,201,14,.35)}
+.hygfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
+.hygtip{text-align:center;font-size:13px;color:#B9A98F;padding:8px 24px 18px;line-height:1.6}
+
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
 .bandstage{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 20px;width:100%;max-width:480px;margin:0 auto;min-height:300px}
@@ -461,13 +482,13 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
 body.paper .bandfb{color:#6d5c3f}
-body.paper .shdfb,body.paper .shdname,body.paper .mixfb{color:#6d5c3f}
+body.paper .shdfb,body.paper .shdname,body.paper .mixfb,body.paper .hygfb{color:#6d5c3f}
 body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -498,17 +519,17 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
 body.ink .bandfb{color:#5c5c55}
-body.ink .shdfb,body.ink .shdname,body.ink .mixfb{color:#5c5c55}
+body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb{color:#5c5c55}
 body.ink .shdcard.done{background:#F7F7F3}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
@@ -592,7 +613,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintE" onclick="openBand()"><img src="assets/icons/band.webp" alt="乐器小乐队"><span class="an">乐器小乐队</span><span class="as">木琴·手鼓·沙锤</span></div>
       <div class="appcard tintF" onclick="openEmotion()"><img src="assets/icons/emotion.png" alt="认识情绪"><span class="an">认识情绪</span><span class="as">表情卡·猜情绪</span></div>
       <div class="appcard tintA" onclick="openShadow()"><img src="assets/icons/shadow.webp" alt="影子找朋友"><span class="an">影子找朋友</span><span class="as">找影子·3 档难度</span></div>
-      <div class="appcard tintC" onclick="openMixlab()"><span class="newbadge">新</span><img src="assets/icons/mix.webp" alt="颜色魔法师"><span class="an">颜色魔法师</span><span class="as">调出新颜色·魔法食谱</span></div>
+      <div class="appcard tintC" onclick="openMixlab()"><img src="assets/icons/mix.webp" alt="颜色魔法师"><span class="an">颜色魔法师</span><span class="as">调出新颜色·魔法食谱</span></div>
+      <div class="appcard tintD" onclick="openHygiene()"><span class="newbadge">新</span><img src="assets/icons/hyg.webp" alt="我会刷牙"><span class="an">我会刷牙</span><span class="as">刷牙·洗手步骤闯关</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -1040,6 +1062,25 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+
+  <!-- 我会刷牙 -->
+  <section id="hygiene" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">我会刷牙</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="hygtabs">
+      <button class="hygtab on" id="hygTab0" onclick="setHygTab(0)">🪥 刷牙</button>
+      <button class="hygtab" id="hygTab1" onclick="setHygTab(1)">🧼 洗手</button>
+    </div>
+    <div class="hyglabel" id="hygLabel">按顺序点一点：刷牙第一步是什么呢？</div>
+    <div class="hyggrid" id="hygGrid"></div>
+    <div class="hygfb" id="hygFb">点卡片听步骤名，按正确顺序点完</div>
+    <div style="padding:0 20px"><button class="btn ghost" style="width:100%" onclick="hygHint()">💡 提示一下</button></div>
+    <div class="hygtip">每天早晚刷牙，饭前便后洗手<br>牙齿白白，小手香香</div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1085,7 +1126,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.1 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.2 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -4305,6 +4346,93 @@ function renderMixBook(){
     g.appendChild(d);
   });
   document.getElementById('mixBookH').textContent='📖 魔法食谱（已发现 '+done+' / '+MIX_KEY_ORDER.length+'）';
+}
+
+
+/* 我会刷牙 v5.2 */
+const HYG_SVGS={
+cup:'<svg viewBox="0 0 64 64"><rect x="38" y="6" width="7" height="26" rx="3.5" fill="#F29BB4"/><rect x="36" y="2" width="11" height="10" rx="3" fill="#fff" stroke="#E8A96C" stroke-width="2.5"/><path d="M18 18h28l-3.4 32a5 5 0 0 1-5 5h-11.2a5 5 0 0 1-5-5z" fill="#7ED6F2" stroke="#3E7DE0" stroke-width="3"/><rect x="18" y="18" width="28" height="6" fill="#3E7DE0"/></svg>',
+paste:'<svg viewBox="0 0 64 64"><g transform="rotate(-18 22 20)"><rect x="14" y="10" width="16" height="24" rx="5" fill="#F29BB4" stroke="#D96A8E" stroke-width="2.5"/><rect x="18" y="4" width="8" height="8" rx="2" fill="#8E44AD"/></g><rect x="30" y="42" width="24" height="8" rx="4" fill="#3E7DE0"/><ellipse cx="42" cy="46" rx="8" ry="4.5" fill="#fff"/><path d="M34 40c-2-7 3-12 9-11" stroke="#fff" stroke-width="4.5" stroke-linecap="round" fill="none"/></svg>',
+brush:'<svg viewBox="0 0 64 64"><path d="M20 8h24c4.5 0 8 3.5 8 8v7c0 4-2 6-4 10.5C46 39 44 46 40 46c-4.5 0-3.5-10-8-10s-3.5 10-8 10c-4 0-6-7-8-12.5C14 29 12 27 12 23v-7c0-4.5 3.5-8 8-8z" fill="#fff" stroke="#D9CFC2" stroke-width="2.5"/><circle cx="26" cy="21" r="2.6" fill="#4A3F35"/><circle cx="38" cy="21" r="2.6" fill="#4A3F35"/><path d="M27 28c2.4 2.4 7.6 2.4 10 0" stroke="#4A3F35" stroke-width="2.2" fill="none" stroke-linecap="round"/><rect x="36" y="44" width="24" height="8" rx="4" fill="#3E7DE0" transform="rotate(-20 48 48)"/><circle cx="12" cy="12" r="3" fill="#F6C90E"/><circle cx="54" cy="12" r="2.4" fill="#F6C90E"/></svg>',
+rinse:'<svg viewBox="0 0 64 64"><path d="M18 18h28l-3.2 30a5 5 0 0 1-5 5H26.2a5 5 0 0 1-5-5z" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="3"/><path d="M20 30c4-3.4 8 3.4 12 0s8 3.4 12 0" stroke="#3E7DE0" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="51" cy="10" r="3" fill="#7ED6F2"/><circle cx="57" cy="20" r="2.2" fill="#7ED6F2"/></svg>',
+spit:'<svg viewBox="0 0 64 64"><path d="M12 52c6 4.5 12-4.5 18 0s12-4.5 18 0" stroke="#E8A96C" stroke-width="4" fill="none" stroke-linecap="round"/><circle cx="22" cy="38" r="5" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="2"/><circle cx="35" cy="27" r="7" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="2"/><circle cx="47" cy="37" r="4" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="2"/><circle cx="28" cy="12" r="3" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="2"/><circle cx="44" cy="14" r="2.4" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="2"/></svg>',
+towel:'<svg viewBox="0 0 64 64"><rect x="10" y="22" width="44" height="26" rx="8" fill="#F9E39A" stroke="#E8A96C" stroke-width="3"/><path d="M10 32h44" stroke="#E8A96C" stroke-width="2.5"/><path d="M24 41c3 3 9 3 12 0" stroke="#D96A8E" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="50" cy="12" r="3" fill="#F6C90E"/></svg>',
+tap:'<svg viewBox="0 0 64 64"><rect x="12" y="10" width="10" height="24" rx="4" fill="#9AA0A6" stroke="#6B7280" stroke-width="2.5"/><rect x="12" y="6" width="24" height="9" rx="4.5" fill="#9AA0A6" stroke="#6B7280" stroke-width="2.5"/><rect x="28" y="2" width="7" height="9" rx="3" fill="#6B7280"/><path d="M22 15h10a6 6 0 0 1 6 6v5h-9v-4h-7z" fill="#9AA0A6" stroke="#6B7280" stroke-width="2.5"/><path d="M34 34c2.6 4.2 2.6 7.4 0 10.6-2.6-3.2-2.6-6.4 0-10.6z" fill="#3E7DE0"/><path d="M34 48c2 3.4 2 6 0 8.6-2-2.6-2-5.2 0-8.6z" fill="#7ED6F2"/></svg>',
+wet:'<svg viewBox="0 0 64 64"><rect x="15" y="12" width="7" height="22" rx="3.5" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><rect x="25" y="12" width="7" height="22" rx="3.5" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><rect x="35" y="12" width="7" height="22" rx="3.5" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><rect x="45" y="14" width="7" height="20" rx="3.5" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><ellipse cx="33" cy="45" rx="13" ry="11" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><ellipse cx="19" cy="44" rx="4" ry="7" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5" transform="rotate(25 19 44)"/><path d="M52 2c2.6 4.2 2.6 7.4 0 10.6-2.6-3.2-2.6-6.4 0-10.6z" fill="#3E7DE0"/><path d="M59 10c2 3.4 2 6 0 8.6-2-2.6-2-5.2 0-8.6z" fill="#7ED6F2"/></svg>',
+soap:'<svg viewBox="0 0 64 64"><rect x="10" y="26" width="38" height="20" rx="10" fill="#F29BB4" stroke="#D96A8E" stroke-width="3"/><path d="M19 33c3.5-2.4 8-2.4 11.5 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".75" stroke-linecap="round"/><circle cx="52" cy="16" r="5" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="2"/><circle cx="42" cy="9" r="3" fill="#BEE7FB" stroke="#3E7DE0" stroke-width="2"/></svg>',
+rub:'<svg viewBox="0 0 64 64"><circle cx="17" cy="30" r="3.6" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><circle cx="25" cy="28" r="3.6" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><circle cx="33" cy="30" r="3.6" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><ellipse cx="25" cy="40" rx="10" ry="9" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><circle cx="33" cy="22" r="3.6" fill="#FFE4C4" stroke="#E8A96C" stroke-width="2.5"/><circle cx="41" cy="20" r="3.6" fill="#FFE4C4" stroke="#E8A96C" stroke-width="2.5"/><circle cx="49" cy="22" r="3.6" fill="#FFE4C4" stroke="#E8A96C" stroke-width="2.5"/><ellipse cx="41" cy="32" rx="10" ry="9" fill="#FFE4C4" stroke="#E8A96C" stroke-width="2.5"/><path d="M8 16c5-6 12-9 19-9" stroke="#F6C90E" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M56 50c-5 3.4-11 5-17 5" stroke="#F6C90E" stroke-width="3.5" fill="none" stroke-linecap="round"/></svg>',
+rinse2:'<svg viewBox="0 0 64 64"><path d="M22 4v12M32 4v12M42 4v12" stroke="#3E7DE0" stroke-width="4.5" stroke-linecap="round"/><path d="M22 22c1.8 3 1.8 5.6 0 8.4M32 22c1.8 3 1.8 5.6 0 8.4M42 22c1.8 3 1.8 5.6 0 8.4" stroke="#7ED6F2" stroke-width="3.5" stroke-linecap="round"/><ellipse cx="32" cy="46" rx="12" ry="10" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/></svg>',
+dry:'<svg viewBox="0 0 64 64"><ellipse cx="32" cy="20" rx="11" ry="10" fill="#FFD9B3" stroke="#E8A96C" stroke-width="2.5"/><rect x="10" y="34" width="44" height="20" rx="8" fill="#F9E39A" stroke="#E8A96C" stroke-width="3"/><path d="M10 44h44" stroke="#E8A96C" stroke-width="2.5"/><path d="M25 28c2.5 2.5 6.5 2.5 9 0" stroke="#E8A96C" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>'
+};
+const HYG_TABS=[
+  {name:'刷牙',steps:[
+    {id:'cup',name:'拿起牙杯'},{id:'paste',name:'挤上牙膏'},{id:'brush',name:'刷呀刷'},
+    {id:'rinse',name:'漱漱口'},{id:'spit',name:'吐掉泡泡'},{id:'towel',name:'擦干净嘴巴'}]},
+  {name:'洗手',steps:[
+    {id:'tap',name:'打开水龙头'},{id:'wet',name:'打湿小手'},{id:'soap',name:'抹上肥皂'},
+    {id:'rub',name:'搓一搓'},{id:'rinse2',name:'冲干净'},{id:'dry',name:'擦干小手'}]}
+];
+let hygTab=0, hygOrder=[], hygNext=0;
+function openHygiene(){ setHygTab(0); go('hygiene'); }
+function setHygTab(t){
+  hygTab=t;
+  document.getElementById('hygTab0').classList.toggle('on',t===0);
+  document.getElementById('hygTab1').classList.toggle('on',t===1);
+  startHygRound();
+}
+function startHygRound(){
+  const tab=HYG_TABS[hygTab];
+  hygOrder=tab.steps.slice();
+  for(let i=hygOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const tmp=hygOrder[i];hygOrder[i]=hygOrder[j];hygOrder[j]=tmp;}
+  hygNext=0;
+  const g=document.getElementById('hygGrid'); g.innerHTML='';
+  hygOrder.forEach(function(s,idx){
+    const d=document.createElement('div');
+    d.className='hygcard'; d.id='hyg_'+s.id;
+    d.innerHTML=HYG_SVGS[s.id]+'<div class="hn">'+s.name+'</div><div class="hord"></div>';
+    d.onclick=function(){tapHyg(idx);};
+    g.appendChild(d);
+  });
+  document.getElementById('hygLabel').textContent='按顺序点一点：'+tab.name+'第一步是什么呢？';
+  document.getElementById('hygFb').textContent='点卡片听步骤名，按正确顺序点完';
+  say(tab.name+'第一步是什么呢？按顺序点一点');
+}
+function tapHyg(idx){
+  const tab=HYG_TABS[hygTab]; const s=hygOrder[idx];
+  const el=document.getElementById('hyg_'+s.id);
+  if(el.classList.contains('done')){ say(s.name); return; }
+  const expect=tab.steps[hygNext];
+  if(s.id===expect.id){
+    el.classList.add('done');
+    el.querySelector('.hord').textContent='第'+(hygNext+1)+'步';
+    hygNext++; addStar();
+    const label=document.getElementById('hygLabel'), fb=document.getElementById('hygFb');
+    if(hygNext>=tab.steps.length){
+      try{localStorage.setItem('park_hyg_rounds',String((parseInt(localStorage.getItem('park_hyg_rounds')||'0',10)||0)+1));}catch(e){}
+      addStar(); addStar(); addStar();
+      fb.textContent='太棒了！'+tab.name+'成功';
+      label.textContent=tab.name+'完成了，真能干！';
+      say('太棒了，'+tab.name+'成功！');
+      setTimeout(startHygRound,3500);
+    }else{
+      fb.textContent='对啦！下一步：'+tab.steps[hygNext].name;
+      label.textContent='按顺序点一点：'+tab.name+'第'+(hygNext+1)+'步是什么呢？';
+      say('对啦，下一步'+tab.steps[hygNext].name);
+    }
+  }else{
+    say(s.name);
+    el.classList.remove('wrong'); void el.offsetWidth; el.classList.add('wrong');
+    document.getElementById('hygFb').textContent='再想想，这个不是第'+(hygNext+1)+'步哦';
+    setTimeout(function(){say('再想想，这个不是第'+(hygNext+1)+'步哦');},600);
+  }
+}
+function hygHint(){
+  const tab=HYG_TABS[hygTab]; const expect=tab.steps[hygNext];
+  if(!expect) return;
+  const el=document.getElementById('hyg_'+expect.id);
+  el.classList.add('hint');
+  say(expect.name+'是第'+(hygNext+1)+'步');
+  setTimeout(function(){el.classList.remove('hint');},1600);
 }
 
 // 初始化星星显示
