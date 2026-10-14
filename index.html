@@ -157,6 +157,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .bub.pop{animation:pop .18s forwards}
 @keyframes pop{to{transform:scale(1.6);opacity:0}}
 .bubbar{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;font-size:20px;font-weight:800;color:#3a6a9a}
+/* 记忆翻牌 */
+#memory{background:linear-gradient(180deg,#FFE9D6 0%,#FFF6EA 60%,#FFFDF8 100%)}
+.memtabs{display:flex;justify-content:center;gap:10px;padding:10px 18px 4px}
+.memgrid{flex:1;display:grid;gap:10px;padding:8px 20px;width:100%;max-width:430px;margin:0 auto;align-content:center}
+.memcard{aspect-ratio:1;perspective:600px;cursor:pointer;border:none;background:none;padding:0}
+.memcard .mi{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s}
+.memcard.open .mi,.memcard.done .mi{transform:rotateY(180deg)}
+.memcard .mf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:18px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 4px 12px rgba(200,120,60,.16)}
+.memcard .mback{background:linear-gradient(135deg,#FFB56B,#FF8E53)}
+.memcard .mback img{width:56%;height:56%;object-fit:contain}
+.memcard .mfront{transform:rotateY(180deg);background:#fff}
+.memcard .mfront img{width:100%;height:100%;object-fit:cover}
+.memcard.done .mfront{outline:4px solid #7BC96F;outline-offset:-4px}
+.memfb{min-height:52px;text-align:center;font-size:19px;font-weight:800;color:#B4691E;padding:4px 20px}
 .micbtn{margin-left:auto;width:52px;height:52px;border-radius:50%;background:#fff;border:none;box-shadow:0 4px 12px rgba(180,120,60,.18);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .micbtn img{width:32px;height:32px}
 .micbtn:active{transform:scale(.92)}
@@ -261,7 +275,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .homescroll{flex:1;overflow-y:auto;padding-bottom:calc(14px + env(safe-area-inset-bottom))}
 .sech{font-size:14px;font-weight:900;color:#B09A83;letter-spacing:3px;padding:16px 22px 0}
 .applogo{border:3px solid rgba(255,255,255,.95);box-shadow:0 6px 16px rgba(180,120,60,.20)}
-.appcard{display:flex;flex-direction:column;align-items:center;padding:14px 4px 11px;border-radius:24px;cursor:pointer;box-shadow:0 6px 16px rgba(180,120,60,.10)}
+.appcard{position:relative;display:flex;flex-direction:column;align-items:center;padding:14px 4px 11px;border-radius:24px;cursor:pointer;box-shadow:0 6px 16px rgba(180,120,60,.10)}
+.newbadge{position:absolute;top:7px;right:9px;background:#FF6B6B;color:#fff;font-size:11px;font-weight:900;padding:3px 10px;border-radius:999px;box-shadow:0 2px 8px rgba(255,90,90,.45);z-index:2;animation:badgepulse 1.6s ease-in-out infinite}
+@keyframes badgepulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
 .appcard:active{transform:scale(.94)}
 .appcard img{width:62px;height:62px;border-radius:18px;background:#fff;box-shadow:0 4px 10px rgba(180,120,60,.14)}
 .appcard .an{font-size:15.5px;font-weight:800;color:#4A3B2F;margin-top:7px}
@@ -376,10 +392,13 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
+body.paper .memfb{color:#6d5c3f}
+body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
+body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
 body.paper .hero p,body.paper .mcard .d,body.paper .sitem .d,body.paper .zoocount,body.paper .zcredit,body.paper .homefoot{color:#8d7a5c}
 body.paper .themebtn,body.paper .starpill,body.paper .ztab,body.paper .backbtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
@@ -408,13 +427,18 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
 body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
+body.ink .memfb{color:#5c5c55}
+body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .memcard .mback{background:#2b2b2b}
+body.ink .memcard .mf{box-shadow:none}
+body.ink .newbadge{background:#2b2b2b;box-shadow:none;animation:none}
 body.ink .hero h1,body.ink .toptitle,body.ink .mcard .t,body.ink .sitem .t,body.ink .appicon span,body.ink .widget .wt,body.ink .widget.small .wb,body.ink .shapeitem .t,body.ink .hitem .t{color:#1c1c1c}
 body.ink .hero p,body.ink .mcard .d,body.ink .sitem .d,body.ink .zoocount,body.ink .zcredit,body.ink .homefoot,body.ink .widget .wk,body.ink .widget .wd{color:#5c5c55}
 body.ink .themebtn,body.ink .starpill,body.ink .ztab,body.ink .backbtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-shadow:none}
@@ -489,6 +513,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintD" onclick="openStudioHome()"><img src="assets/icons/mic.webp" alt="录音棚"><span class="an">录音棚</span><span class="as">家人的声音</span></div>
       <div class="appcard tintF" onclick="startPuzzle()"><img src="assets/icons/puzzle.webp" alt="拼图"><span class="an">拼图</span><span class="as">动动小手</span></div>
       <div class="appcard tintC" onclick="openBubbles()"><img src="assets/icons/bubbles.webp" alt="泡泡"><span class="an">泡泡</span><span class="as">戳一戳泡泡</span></div>
+      <div class="appcard tintB" onclick="openMemory()"><span class="newbadge">新</span><img src="assets/icons/find.webp" alt="记忆翻牌"><span class="an">记忆翻牌</span><span class="as">翻牌找朋友</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -827,6 +852,26 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     <div class="bubbar">戳破了 <b id="bubN">0</b> 个泡泡</div>
   </section>
 
+  <!-- 记忆翻牌 -->
+  <section id="memory" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">记忆翻牌</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="memTabs">
+      <button class="ztab" onclick="setMemDiff(3)">简单</button>
+      <button class="ztab on" onclick="setMemDiff(6)">中等</button>
+      <button class="ztab" onclick="setMemDiff(8)">困难</button>
+    </div>
+    <div class="memgrid" id="memGrid"></div>
+    <div class="memfb" id="memFb"></div>
+    <div style="padding:2px 20px 18px;display:flex;gap:10px">
+      <button class="btn ghost" style="flex:1;min-height:56px;font-size:17px" onclick="peekMemory()">偷看一眼</button>
+      <button class="btn" style="flex:1;min-height:56px;font-size:17px" onclick="startMemory()">再来一局</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -872,6 +917,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v4.7 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -3639,6 +3685,73 @@ function setRest(min){
   scheduleRest();
   closeGate();
   alert(`家长设置：\n• 单节 ${min} 分钟，到点温柔收尾\n• 内容全部内置，无网络无广告\n• 语音全部本机，不上传`);
+}
+
+/* ================= 记忆翻牌 ================= */
+let memDiff = 6, memDeck = [], memFirst = -1, memLock = false, memFound = 0;
+function openMemory(){ setMemDiff(6); go('memory'); }
+function setMemDiff(n){
+  memDiff = n;
+  const lv = [3,6,8];
+  document.querySelectorAll('#memTabs .ztab').forEach((b,i)=>b.classList.toggle('on', lv[i]===n));
+  startMemory();
+}
+function startMemory(){
+  memFirst = -1; memLock = false; memFound = 0;
+  const pool = ANIMALS_ALL.filter(a=>a.img);
+  const picks = [], used = new Set();
+  while(picks.length < memDiff && picks.length < pool.length){
+    const i = Math.floor(Math.random()*pool.length);
+    if(!used.has(i)){ used.add(i); picks.push(pool[i]); }
+  }
+  memDeck = [];
+  picks.forEach((a,k)=>{ memDeck.push({a,k}); memDeck.push({a,k}); });
+  for(let i=memDeck.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=memDeck[i]; memDeck[i]=memDeck[j]; memDeck[j]=t; }
+  const grid = document.getElementById('memGrid');
+  grid.style.gridTemplateColumns = 'repeat(' + (memDiff<=3 ? 3 : 4) + ',1fr)';
+  grid.innerHTML = memDeck.map((c,i)=>
+    '<div class="memcard" id="mem'+i+'" onclick="flipMem('+i+')"><div class="mi">'+
+    '<div class="mf mback"><img src="assets/icons/logo.webp" alt="翻牌"></div>'+
+    '<div class="mf mfront"><img src="'+c.a.img+'" alt="'+c.a.n+'" loading="lazy"></div>'+
+    '</div></div>').join('');
+  document.getElementById('memFb').textContent = '记住小动物的位置，把相同的两张找出来';
+}
+function flipMem(i){
+  if(memLock) return;
+  const el = document.getElementById('mem'+i);
+  if(!el || el.classList.contains('open') || el.classList.contains('done')) return;
+  el.classList.add('open');
+  const c = memDeck[i];
+  say(c.a.n);
+  if(memFirst < 0){ memFirst = i; return; }
+  if(memFirst !== i && memDeck[memFirst].k === c.k){
+    const f = document.getElementById('mem'+memFirst);
+    memFirst = -1; memFound++;
+    setTimeout(()=>{ el.classList.add('done'); if(f) f.classList.add('done'); }, 350);
+    if(memFound === memDiff){
+      memLock = true;
+      setTimeout(()=>{
+        addStar(); addStar(); addStar();
+        document.getElementById('memFb').textContent = '太棒了，全部找到了！奖励 3 颗星';
+        say('太棒了，全部找到了');
+        memLock = false;
+      }, 700);
+    }
+  } else {
+    memLock = true;
+    const f = document.getElementById('mem'+memFirst);
+    memFirst = -1;
+    setTimeout(()=>{ el.classList.remove('open'); if(f) f.classList.remove('open'); memLock = false; }, 900);
+  }
+}
+function peekMemory(){
+  if(memLock) return;
+  const rest = document.querySelectorAll('.memcard:not(.done)');
+  if(!rest.length) return;
+  memLock = true;
+  rest.forEach(el=>el.classList.add('open'));
+  say('看清楚，想一想');
+  setTimeout(()=>{ rest.forEach(el=>el.classList.remove('open')); memFirst = -1; memLock = false; }, 1600);
 }
 
 // 初始化星星显示
