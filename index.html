@@ -3964,7 +3964,7 @@ function renderZooDetail(){
     const speakBtn = document.createElement('button');
     speakBtn.className = 'btn blue';
     speakBtn.style.cssText = 'width:100%;max-width:360px';
-    speakBtn.innerHTML = '<img class="btnico" src="assets/icons/speaker.webp" alt="">读给我听';
+    speakBtn.innerHTML = '<span class="ic ic-spk"></span>朗读';
     speakBtn.onclick = ()=>say(`${a.n}。${a.s}。${a.f}`);
     s.appendChild(speakBtn);
     const realKey = window.REAL_AN && (REAL_AN[a.n] || REAL_AN[String(a.n).replace(/^小/, '')]);
@@ -3972,7 +3972,7 @@ function renderZooDetail(){
       const sndBtn = document.createElement('button');
       sndBtn.className = 'btn';
       sndBtn.style.cssText = 'width:100%;max-width:360px;margin-top:10px';
-      sndBtn.innerHTML = '<img class="btnico" src="assets/icons/speaker.webp" alt="">听听它的叫声';
+      sndBtn.innerHTML = '<span class="ic ic-play"></span>听一听叫声';
       sndBtn.onclick = ()=>play('assets/audio/' + realKey);
       s.appendChild(sndBtn);
     }
