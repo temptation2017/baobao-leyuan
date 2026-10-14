@@ -281,6 +281,22 @@ body.ink .tracewrap{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 @keyframes feedfly{0%{transform:translateY(0) scale(1);opacity:1}50%{transform:translateY(-26px) scale(1.25);opacity:.9}100%{transform:translateY(-46px) scale(.6);opacity:.2}}
 .feedfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
 .feedbar{display:flex;gap:10px;justify-content:center;padding:0 20px 16px;width:100%;max-width:470px}
+/* 交通工具声音馆 */
+.vehgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:8px 20px;width:100%;max-width:470px}
+.vehcard{background:#fff;border-radius:22px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;box-shadow:0 5px 14px rgba(0,0,0,.08);border:4px solid transparent;transition:transform .15s,border-color .15s;min-height:132px;justify-content:center}
+.vehcard:active{transform:scale(.94)}
+.vehemo{font-size:60px;line-height:1.15;filter:drop-shadow(0 6px 12px rgba(0,0,0,.12))}
+.vehcard .vn{font-size:16px;font-weight:900;color:#4A3F35}
+.vehcard.playing{border-color:#FF9A3D}
+.vehcard.playing .vehemo{animation:vehbounce .45s ease}
+.vehcard.wrong{animation:hygwig .45s;border-color:#E14D4D}
+.vehcard.correct{border-color:#4CAF50;background:#F2FBF2}
+@keyframes vehbounce{0%{transform:scale(1)}35%{transform:scale(1.18) rotate(-4deg)}70%{transform:scale(.95) rotate(3deg)}100%{transform:scale(1)}}
+.vehfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
+.vehquizplay{font-size:84px;text-align:center;cursor:pointer;margin:8px auto 0;width:150px;height:150px;line-height:150px;background:#fff;border-radius:50%;box-shadow:0 8px 20px rgba(0,0,0,.1);border:4px solid #FF9A3D}
+.vehquizplay:active{transform:scale(.93)}
+.vehquizq{text-align:center;font-size:19px;font-weight:900;color:#4A3F35;padding:10px 20px 0}
+.vehprog{display:flex;gap:6px;justify-content:center;padding:8px 0 2px}
 
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
@@ -517,13 +533,13 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace,body.paper #vehicle{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard,body.paper .vehcard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
 body.paper .bandfb{color:#6d5c3f}
-body.paper .shdfb,body.paper .shdname,body.paper .mixfb,body.paper .hygfb,body.paper .feedfb{color:#6d5c3f}
+body.paper .shdfb,body.paper .shdname,body.paper .mixfb,body.paper .hygfb,body.paper .feedfb,body.paper .vehfb{color:#6d5c3f}
 body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -554,17 +570,17 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace,body.ink #vehicle{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn,body.ink .vehcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
 body.ink .bandfb{color:#5c5c55}
-body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb,body.ink .feedfb,body.ink .tracefb{color:#5c5c55}
+body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb,body.ink .feedfb,body.ink .tracefb,body.ink .vehfb{color:#5c5c55}
 body.ink .shdcard.done{background:#F7F7F3}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
@@ -635,7 +651,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintE" onclick="go('candy')"><img src="assets/icons/candy.webp" alt="认糖果"><span class="an">认糖果</span><span class="as">200 种糖果</span></div>
       <div class="appcard tintF" onclick="go('hanzi')"><img src="assets/icons/hanzi.webp" alt="认汉字"><span class="an">认汉字</span><span class="as">5000 个汉字</span></div>
       <div class="appcard tintC" onclick="startCount()"><img src="assets/icons/count.webp" alt="数一数"><span class="an">数一数</span><span class="as">数到 100</span></div>
-      <div class="appcard tintC" onclick="openTrace()"><span class="newbadge">新</span><img src="assets/icons/trace.webp" alt="数字描红"><span class="an">数字描红</span><span class="as">1-10 描红闯关</span></div>
+      <div class="appcard tintC" onclick="openTrace()"><img src="assets/icons/trace.webp" alt="数字描红"><span class="an">数字描红</span><span class="as">1-10 描红闯关</span></div>
     </div>
     <div class="sech">玩 一 玩</div>
     <div class="appgrid">
@@ -652,6 +668,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintC" onclick="openMixlab()"><img src="assets/icons/mix.webp" alt="颜色魔法师"><span class="an">颜色魔法师</span><span class="as">调出新颜色·魔法食谱</span></div>
       <div class="appcard tintD" onclick="openHygiene()"><img src="assets/icons/hyg.webp" alt="我会刷牙"><span class="an">我会刷牙</span><span class="as">刷牙·洗手步骤闯关</span></div>
       <div class="appcard tintB" onclick="openFeed()"><img src="assets/icons/feed.webp" alt="动物食堂"><span class="an">动物食堂</span><span class="as">喂 10 种小动物</span></div>
+      <div class="appcard tintE" onclick="openVehicle()"><span class="newbadge">新</span><img src="assets/icons/vehicle.webp" alt="交通工具声音馆"><span class="an">交通工具声音馆</span><span class="as">10 种车车·听声音</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -1154,6 +1171,25 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+  <!-- 交通工具声音馆 -->
+  <section id="vehicle" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">交通工具声音馆</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="vehTabs">
+      <button class="ztab on" onclick="setVehTab(0)">&#128266; 声音馆</button>
+      <button class="ztab" onclick="setVehTab(1)">&#127919; 猜声音</button>
+    </div>
+    <div id="vehStage"></div>
+    <div class="vehfb" id="vehFb">点一点车车，听听它是什么声音</div>
+    <div class="feedbar">
+      <button class="btn ghost" style="flex:1" onclick="vehReplay()">&#128266; 再听一遍</button>
+      <button class="btn ghost" style="flex:1;display:none" id="vehQuizBtn" onclick="vehNewQuiz()">&#127922; 换一道题</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1199,7 +1235,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.4 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.5 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -4653,6 +4689,161 @@ function traceCheck(){
 function traceClear(){var c=document.getElementById('traceDraw');c.getContext('2d').clearRect(0,0,c.width,c.height);}
 function traceHear(){say('描一描数字 '+TRACE_N);}
 (function(){var d=document.getElementById('traceDraw');d.addEventListener('pointerdown',traceStart);d.addEventListener('pointermove',traceMove);window.addEventListener('pointerup',traceEnd);d.addEventListener('pointercancel',traceEnd);})();
+
+/* ================= 交通工具声音馆 ================= */
+const VEHICLES = [
+  {e:'\uD83D\uDE97', n:'小汽车', w:'嘀嘀', d:0.7},
+  {e:'\uD83D\uDE8C', n:'公交车', w:'叭叭', d:1.0},
+  {e:'\uD83D\uDE82', n:'火车', w:'呜呜', d:1.9},
+  {e:'\u2708\uFE0F', n:'飞机', w:'轰隆隆', d:1.5},
+  {e:'\uD83D\uDEA2', n:'轮船', w:'呜', d:1.6},
+  {e:'\uD83D\uDE91', n:'救护车', w:'哔啵哔啵', d:2.2},
+  {e:'\uD83D\uDE92', n:'消防车', w:'哇呜哇呜', d:1.8},
+  {e:'\uD83D\uDEB2', n:'自行车', w:'叮铃铃', d:1.1},
+  {e:'\uD83D\uDE9C', n:'拖拉机', w:'突突突', d:1.4},
+  {e:'\uD83D\uDE81', n:'直升机', w:'哒哒哒', d:1.6}
+];
+let vehCtx = null, vehNoise = null, vehTab = 0, vehTaps = 0, vehLast = 0;
+let vehQuizTarget = -1, vehQuizLock = false, vehQuizDone = 0;
+function vehAudio(){
+  if(!vehCtx){ vehCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+  if(vehCtx.state === 'suspended') vehCtx.resume();
+  return vehCtx;
+}
+function vehNoiseBuf(ctx){
+  if(vehNoise) return vehNoise;
+  const len = Math.floor(ctx.sampleRate * 1.2), buf = ctx.createBuffer(1, len, ctx.sampleRate), ch = buf.getChannelData(0);
+  for(let i=0;i<len;i++) ch[i] = Math.random()*2-1;
+  vehNoise = buf; return buf;
+}
+function vehOsc(type, f0, f1, t0, dur, vol){
+  const ctx = vehAudio(), t = ctx.currentTime + t0;
+  const o = ctx.createOscillator(), g = ctx.createGain();
+  o.type = type; o.frequency.setValueAtTime(f0, t);
+  if(f1 && f1 !== f0) o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol, t + 0.03);
+  g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+  o.connect(g); g.connect(ctx.destination);
+  o.start(t); o.stop(t + dur + 0.05);
+}
+function vehBlast(fType, fr0, fr1, t0, dur, vol){
+  const ctx = vehAudio(), t = ctx.currentTime + t0;
+  const src = ctx.createBufferSource(); src.buffer = vehNoiseBuf(ctx); src.loop = true;
+  const f = ctx.createBiquadFilter(); f.type = fType; f.Q.value = 1.2;
+  f.frequency.setValueAtTime(fr0, t);
+  if(fr1 !== fr0) f.frequency.exponentialRampToValueAtTime(fr1, t + dur);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol, t + 0.08);
+  g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+  src.connect(f); f.connect(g); g.connect(ctx.destination);
+  src.start(t); src.stop(t + dur + 0.05);
+}
+function vehSound(i){
+  let k;
+  switch(i){
+    case 0: vehOsc('square', 440, 440, 0, 0.16, 0.45); vehOsc('square', 440, 440, 0.22, 0.16, 0.45); break;
+    case 1: vehOsc('sawtooth', 196, 185, 0, 0.55, 0.4); vehOsc('sawtooth', 247, 233, 0, 0.55, 0.28); break;
+    case 2: vehOsc('sine', 622, 660, 0, 0.9, 0.45); vehOsc('sine', 830, 880, 0, 0.9, 0.28);
+            for(k=0;k<4;k++) vehBlast('lowpass', 320, 320, 1.05 + k*0.22, 0.12, 0.32); break;
+    case 3: vehBlast('bandpass', 500, 2600, 0, 1.4, 0.5); break;
+    case 4: vehOsc('sine', 98, 92, 0, 1.4, 0.65); vehOsc('sine', 147, 138, 0, 1.4, 0.22); break;
+    case 5: for(k=0;k<3;k++){ vehOsc('sine', 660, 1180, k*0.72, 0.34, 0.45); vehOsc('sine', 1180, 660, k*0.72+0.36, 0.34, 0.45); } break;
+    case 6: for(k=0;k<4;k++){ vehOsc('square', 720, 720, k*0.44, 0.2, 0.28); vehOsc('square', 960, 960, k*0.44+0.22, 0.2, 0.28); } break;
+    case 7: vehOsc('sine', 2093, 2093, 0, 0.35, 0.35); vehOsc('sine', 2637, 2637, 0, 0.3, 0.18);
+            vehOsc('sine', 2093, 2093, 0.45, 0.35, 0.35); vehOsc('sine', 2637, 2637, 0.45, 0.3, 0.18); break;
+    case 8: vehOsc('square', 78, 70, 0, 1.15, 0.45); vehBlast('lowpass', 240, 240, 0, 1.15, 0.28);
+            for(k=0;k<5;k++) vehOsc('square', 95, 60, k*0.23, 0.14, 0.35); break;
+    case 9: vehBlast('lowpass', 900, 500, 0, 1.5, 0.45);
+            { const ctx = vehAudio(), t = ctx.currentTime;
+              const o = ctx.createOscillator(), g = ctx.createGain(), lfo = ctx.createOscillator(), lg = ctx.createGain();
+              o.type = 'sawtooth'; o.frequency.value = 95; g.gain.value = 0.55;
+              lfo.type = 'sine'; lfo.frequency.value = 13; lg.gain.value = 0.35;
+              lfo.connect(lg); lg.connect(g.gain); o.connect(g); g.connect(ctx.destination);
+              o.start(t); lfo.start(t); o.stop(t + 1.55); lfo.stop(t + 1.55); } break;
+  }
+}
+function openVehicle(){ setVehTab(0); go('vehicle'); }
+function setVehTab(n){
+  vehTab = n; vehTaps = 0;
+  document.querySelectorAll('#vehTabs .ztab').forEach((b,i)=>b.classList.toggle('on', i===n));
+  document.getElementById('vehQuizBtn').style.display = (n === 1) ? '' : 'none';
+  if(n === 0){
+    document.getElementById('vehStage').innerHTML = '<div class="vehgrid">' + VEHICLES.map((v,i)=>
+      '<div class="vehcard" onclick="vehTap('+i+',this)"><div class="vehemo">'+v.e+'</div><div class="vn">'+v.n+'</div></div>').join('') + '</div>';
+    document.getElementById('vehFb').textContent = '点一点车车，听听它是什么声音';
+  } else {
+    vehQuizDone = 0;
+    startVehQuiz();
+  }
+}
+function vehTap(i, el){
+  el.classList.remove('playing'); void el.offsetWidth; el.classList.add('playing');
+  vehLast = i;
+  const v = VEHICLES[i], ms = Math.round(v.d * 1000) + 150;
+  vehSound(i);
+  document.getElementById('vehFb').textContent = v.n + '：' + v.w;
+  vehTaps++;
+  if(vehTaps >= 10){
+    vehTaps = 0; addStar();
+    document.getElementById('vehFb').textContent = '小耳朵真灵！奖励 1 颗星';
+    setTimeout(()=>say('小耳朵真灵'), ms);
+  } else {
+    setTimeout(()=>say(v.n + '，' + v.w), ms);
+  }
+}
+function vehQuizPick(){
+  const idx = Math.floor(Math.random() * VEHICLES.length), opts = [idx];
+  while(opts.length < 3){ const r = Math.floor(Math.random() * VEHICLES.length); if(opts.indexOf(r) < 0) opts.push(r); }
+  for(let k=opts.length-1;k>0;k--){ const j = Math.floor(Math.random()*(k+1)), t = opts[k]; opts[k] = opts[j]; opts[j] = t; }
+  return {target: idx, opts: opts};
+}
+function startVehQuiz(){
+  vehQuizLock = false;
+  const q = vehQuizPick(); vehQuizTarget = q.target;
+  let dots = '';
+  for(let k=0;k<5;k++) dots += '<div class="feeddot' + (k < vehQuizDone ? ' on' : '') + '"></div>';
+  document.getElementById('vehStage').innerHTML =
+    '<div class="vehquizplay" onclick="vehReplay()">&#128266;</div>' +
+    '<div class="vehquizq">听一听，这是哪辆车车？</div>' +
+    '<div class="vehprog">' + dots + '</div>' +
+    '<div class="vehgrid">' + q.opts.map(o=>
+      '<div class="vehcard" onclick="vehAnswer('+o+',this)"><div class="vehemo">'+VEHICLES[o].e+'</div><div class="vn">'+VEHICLES[o].n+'</div></div>').join('') + '</div>';
+  document.getElementById('vehFb').textContent = '点大喇叭可以再听一遍';
+  setTimeout(()=>{ if(vehTab === 1) vehSound(vehQuizTarget); }, 350);
+}
+function vehReplay(){
+  if(vehTab === 1){ if(vehQuizTarget >= 0 && !vehQuizLock) vehSound(vehQuizTarget); }
+  else { const v = VEHICLES[vehLast]; vehSound(vehLast); document.getElementById('vehFb').textContent = v.n + '：' + v.w; }
+}
+function vehNewQuiz(){ startVehQuiz(); }
+function vehAnswer(o, el){
+  if(vehQuizLock) return;
+  if(o === vehQuizTarget){
+    vehQuizLock = true;
+    el.classList.add('correct');
+    addStar();
+    vehQuizDone++;
+    const nm = VEHICLES[o].n;
+    document.getElementById('vehFb').textContent = '对啦，是' + nm + '！奖励 1 颗星';
+    say('对啦，是' + nm);
+    if(vehQuizDone >= 5){
+      const r = +(localStorage.getItem('park_vehicle_rounds') || 0);
+      localStorage.setItem('park_vehicle_rounds', r + 1);
+      addStar(); addStar(); addStar();
+      setTimeout(()=>{ say('全部答对，太厉害了'); document.getElementById('vehFb').textContent = '全部答对！再来一轮吧'; }, 1700);
+      setTimeout(()=>{ vehQuizDone = 0; if(vehTab === 1) startVehQuiz(); }, 3800);
+    } else {
+      setTimeout(()=>{ if(vehTab === 1) startVehQuiz(); }, 1800);
+    }
+  } else {
+    el.classList.add('wrong');
+    setTimeout(()=>el.classList.remove('wrong'), 520);
+    document.getElementById('vehFb').textContent = '再听听，是哪辆车车呀？';
+    say('再听听');
+  }
+}
 
 // 初始化星星显示
 document.getElementById('homeStars').textContent = stars;
