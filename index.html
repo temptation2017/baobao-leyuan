@@ -313,6 +313,24 @@ body.ink .tracewrap{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 .wthdoll{font-size:74px;text-align:center;margin:4px auto 0}
 .wthdoll .wthwear{display:inline-block;vertical-align:middle;animation:vehbounce .5s ease}
 
+/* 过马路安全课 */
+.safegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:8px 20px;width:100%;max-width:470px}
+.safecard{background:#fff;border-radius:22px;padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;box-shadow:0 5px 14px rgba(0,0,0,.08);border:4px solid transparent;transition:transform .15s,border-color .15s;min-height:150px;justify-content:center}
+.safecard:active{transform:scale(.94)}
+.safecard .wn{font-size:17px;font-weight:900;color:#4A3F35}
+.safecard .st{font-size:12px;color:#8A7A5F;font-weight:700;text-align:center;padding:0 6px}
+.safecard.playing{border-color:#FF9A3D}
+.safecard.wrong{animation:hygwig .45s;border-color:#E14D4D}
+.safecard.correct{border-color:#4CAF50;background:#F2FBF2}
+.safetl{background:#2b2b2b;border-radius:16px;padding:10px 13px;display:flex;flex-direction:column;gap:7px;box-shadow:inset 0 2px 6px rgba(0,0,0,.5)}
+.safetl i{width:32px;height:32px;border-radius:50%;background:#4a4a4a;display:block}
+.safetl i.lit{box-shadow:0 0 16px 4px currentColor;animation:safeglow 1.2s ease-in-out infinite}
+@keyframes safeglow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.28)}}
+.safefb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
+.safequizq{text-align:center;font-size:19px;font-weight:900;color:#4A3F35;padding:10px 20px 0}
+.safeprog{display:flex;gap:6px;justify-content:center;padding:8px 0 2px}
+.safeqimg{font-size:64px;text-align:center;margin:6px auto 0;filter:drop-shadow(0 6px 12px rgba(0,0,0,.12))}
+
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
 .bandstage{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 20px;width:100%;max-width:480px;margin:0 auto;min-height:300px}
@@ -548,13 +566,13 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace,body.paper #vehicle,body.paper #weather{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard,body.paper .vehcard,body.paper .wthcard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace,body.paper #vehicle,body.paper #weather,body.paper #safety{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard,body.paper .vehcard,body.paper .wthcard,body.paper .safecard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
 body.paper .bandfb{color:#6d5c3f}
-body.paper .shdfb,body.paper .shdname,body.paper .mixfb,body.paper .hygfb,body.paper .feedfb,body.paper .vehfb,body.paper .wthfb{color:#6d5c3f}
+body.paper .shdfb,body.paper .shdname,body.paper .mixfb,body.paper .hygfb,body.paper .feedfb,body.paper .vehfb,body.paper .wthfb,body.paper .safefb{color:#6d5c3f}
 body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -585,17 +603,17 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace,body.ink #vehicle,body.ink #weather{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace,body.ink #vehicle,body.ink #weather,body.ink #safety{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn,body.ink .vehcard,body.ink .wthcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn,body.ink .vehcard,body.ink .wthcard,body.ink .safecard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
 body.ink .bandfb{color:#5c5c55}
-body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb,body.ink .feedfb,body.ink .tracefb,body.ink .vehfb,body.ink .wthfb{color:#5c5c55}
+body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb,body.ink .feedfb,body.ink .tracefb,body.ink .vehfb,body.ink .wthfb,body.ink .safefb{color:#5c5c55}
 body.ink .shdcard.done{background:#F7F7F3}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
@@ -684,7 +702,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintD" onclick="openHygiene()"><img src="assets/icons/hyg.webp" alt="我会刷牙"><span class="an">我会刷牙</span><span class="as">刷牙·洗手步骤闯关</span></div>
       <div class="appcard tintB" onclick="openFeed()"><img src="assets/icons/feed.webp" alt="动物食堂"><span class="an">动物食堂</span><span class="as">喂 10 种小动物</span></div>
       <div class="appcard tintE" onclick="openVehicle()"><img src="assets/icons/vehicle.webp" alt="交通工具声音馆"><span class="an">交通工具声音馆</span><span class="as">10 种车车·听声音</span></div>
-      <div class="appcard tintA" onclick="openWeather()"><span class="newbadge">新</span><img src="assets/icons/weather.webp" alt="天气穿衣挑战"><span class="an">天气穿衣挑战</span><span class="as">看天气选衣服·5 轮闯关</span></div>
+      <div class="appcard tintA" onclick="openWeather()"><img src="assets/icons/weather.webp" alt="天气穿衣挑战"><span class="an">天气穿衣挑战</span><span class="as">看天气选衣服·5 轮闯关</span></div>
+      <div class="appcard tintB" onclick="openSafety()"><span class="newbadge">新</span><img src="assets/icons/safety.webp" alt="过马路安全课"><span class="an">过马路安全课</span><span class="as">红绿灯·安全闯关</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -1225,6 +1244,25 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+  <!-- 过马路安全课 -->
+  <section id="safety" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">过马路安全课</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="safeTabs">
+      <button class="ztab on" onclick="setSafeTab(0)">&#128678; 认识红绿灯</button>
+      <button class="ztab" onclick="setSafeTab(1)">&#128697; 安全大闯关</button>
+    </div>
+    <div id="safeStage"></div>
+    <div class="safefb" id="safeFb">点一点红绿灯，认识三种灯</div>
+    <div class="feedbar">
+      <button class="btn ghost" style="flex:1" onclick="safeReplay()">&#128266; 再听一遍</button>
+      <button class="btn ghost" style="flex:1;display:none" id="safeQuizBtn" onclick="safeNewQuiz()">&#127922; 换一道题</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1275,7 +1313,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.6 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.7 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -4851,6 +4889,21 @@ const WTH_CLOTHES = [
   {e:'\U0001F9F6', n:'毛衣', w:3}, {e:'\U0001F456', n:'长裤', w:3}, {e:'\U0001F3A9', n:'帽子', w:3},
 ];
 var wthTab = 0, wthLast = -1, wthQuizWi = -1, wthQuizTarget = -1, wthQuizLock = false, wthQuizDone = 0, wthWear = [];
+const SAFETY_LIGHTS = [
+  {c:'#E14D4D', n:'红灯', big:'红灯停', say:'红灯亮了，停一停，不能过马路', tip:'停下脚步等一等'},
+  {c:'#F2B233', n:'黄灯', big:'黄灯等一等', say:'黄灯亮了，等一等，马上就要换灯了', tip:'站在原地别着急'},
+  {c:'#4CAF50', n:'绿灯', big:'绿灯行', say:'绿灯亮了可以走，左右看看再过马路', tip:'看着左右慢慢走'},
+];
+const SAFETY_Q = [
+  {e:'\U0001F6A6', q:'红灯亮了，宝宝应该怎么做？', opts:[{e:'\u270B',n:'站在路边等一等'},{e:'\U0001F3C3',n:'跑过去'},{e:'\u26BD',n:'在马路上玩'}]},
+  {e:'\U0001F7E2', q:'绿灯亮了，过马路前先做什么？', opts:[{e:'\U0001F440',n:'左看、右看、再看左'},{e:'\U0001F648',n:'闭着眼睛冲'},{e:'\U0001F436',n:'先和狗狗玩'}]},
+  {e:'\U0001F993', q:'过马路要走哪里最安全？', opts:[{e:'\U0001F993',n:'走斑马线'},{e:'\U0001F697',n:'车多的地方'},{e:'\U0001F6E3\uFE0F',n:'马路中间'}]},
+  {e:'\U0001F9D1\u200D\U0001F91D\u200D\U0001F9D1', q:'过马路要拉着谁的手？', opts:[{e:'\U0001F468\u200D\U0001F469\u200D\U0001F467',n:'爸爸妈妈的手'},{e:'\U0001F9CD',n:'自己一个人'},{e:'\U0001F9F8',n:'抱着玩具熊'}]},
+  {e:'\u26BD', q:'皮球滚到马路中间，宝宝应该？', opts:[{e:'\U0001F4E2',n:'叫大人帮忙捡'},{e:'\U0001F3C3',n:'自己追过去'},{e:'\U0001F622',n:'跑到马路边哭'}]},
+  {e:'\U0001F6B8', q:'可以在马路上玩游戏吗？', opts:[{e:'\U0001F6AB',n:'不可以，太危险'},{e:'\u26BD',n:'可以，很好玩'},{e:'\u23F0',n:'只玩一小会儿'}]},
+  {e:'\U0001F6B6', q:'走路的时候要走在哪里？', opts:[{e:'\U0001F6B6',n:'走人行道上'},{e:'\U0001F697',n:'走汽车道上'},{e:'\U0001F6B4',n:'在车道上跑'}]},
+];
+var safeTab = 0, safeLast = -1, safeQuizQi = -1, safeQuizLock = false, safeQuizDone = 0;
 function openWeather(){ setWthTab(0); go('weather'); }
 function setWthTab(n){
   wthTab = n;
@@ -4933,6 +4986,85 @@ function wthAnswer(o, el){
     el.classList.add('wrong');
     setTimeout(()=>el.classList.remove('wrong'), 520);
     document.getElementById('wthFb').textContent = '再想想，' + WEATHERS[wthQuizWi].say + '天穿什么最合适？';
+    say('再想想');
+  }
+}
+function openSafety(){ setSafeTab(0); go('safety'); }
+function setSafeTab(n){
+  safeTab = n;
+  document.querySelectorAll('#safeTabs .ztab').forEach((b,i)=>b.classList.toggle('on', i===n));
+  document.getElementById('safeQuizBtn').style.display = (n === 1) ? '' : 'none';
+  if(n === 0){
+    safeLast = -1;
+    document.getElementById('safeStage').innerHTML = '<div class="safegrid">' + SAFETY_LIGHTS.map((l,i)=>{
+      const lamps = SAFETY_LIGHTS.map((x,k)=>'<i'+(k===i?' class="lit" style="color:'+x.c+';background:'+x.c+'"':'')+'></i>').join('');
+      return '<div class="safecard" onclick="safeTap('+i+',this)"><div class="safetl">'+lamps+'</div><div class="wn">'+l.big+'</div><div class="st">'+l.tip+'</div></div>';
+    }).join('') + '</div>';
+    document.getElementById('safeFb').textContent = '点一点红绿灯，认识三种灯';
+  } else {
+    safeQuizDone = 0;
+    startSafeQuiz();
+  }
+}
+function safeTap(i, el){
+  el.classList.remove('playing'); void el.offsetWidth; el.classList.add('playing');
+  safeLast = i;
+  const l = SAFETY_LIGHTS[i];
+  document.getElementById('safeFb').textContent = l.n + '：' + l.say;
+  say(l.say);
+}
+function safeQuizPick(){
+  const qi = Math.floor(Math.random() * SAFETY_Q.length);
+  const opts = SAFETY_Q[qi].opts.map((o,i)=>i);
+  for(let k=opts.length-1;k>0;k--){ const j = Math.floor(Math.random()*(k+1)), t = opts[k]; opts[k] = opts[j]; opts[j] = t; }
+  return {qi: qi, opts: opts};
+}
+function safeAsk(){
+  const q = SAFETY_Q[safeQuizQi];
+  document.getElementById('safeFb').textContent = q.q;
+  say(q.q);
+}
+function startSafeQuiz(){
+  safeQuizLock = false;
+  const p = safeQuizPick(); safeQuizQi = p.qi;
+  const q = SAFETY_Q[p.qi];
+  let dots = '';
+  for(let k=0;k<5;k++) dots += '<div class="feeddot' + (k < safeQuizDone ? ' on' : '') + '"></div>';
+  document.getElementById('safeStage').innerHTML =
+    '<div class="safeqimg">' + q.e + '</div>' +
+    '<div class="safequizq">' + q.q + '</div>' +
+    '<div class="safeprog">' + dots + '</div>' +
+    '<div class="wthgrid">' + p.opts.map(o=>
+      '<div class="safecard" style="min-height:118px" onclick="safeAnswer('+o+',this)"><div style="font-size:44px;line-height:1.1">'+q.opts[o].e+'</div><div class="wn">'+q.opts[o].n+'</div></div>').join('') + '</div>';
+  setTimeout(()=>{ if(safeTab === 1) safeAsk(); }, 350);
+}
+function safeReplay(){
+  if(safeTab === 1){ if(safeQuizQi >= 0 && !safeQuizLock) safeAsk(); }
+  else if(safeLast >= 0){ const l = SAFETY_LIGHTS[safeLast]; say(l.say); }
+}
+function safeNewQuiz(){ startSafeQuiz(); }
+function safeAnswer(o, el){
+  if(safeQuizLock) return;
+  if(o === 0){
+    safeQuizLock = true;
+    el.classList.add('correct');
+    addStar();
+    safeQuizDone++;
+    document.getElementById('safeFb').textContent = '答对了！你真是个安全小达人';
+    say('答对啦，你真是个安全小达人');
+    if(safeQuizDone >= 5){
+      const r = +(localStorage.getItem('park_safety_rounds') || 0);
+      localStorage.setItem('park_safety_rounds', r + 1);
+      addStar(); addStar(); addStar();
+      setTimeout(()=>{ say('五道题全对，太厉害了'); document.getElementById('safeFb').textContent = '五道题全对！再来一轮吧'; }, 1700);
+      setTimeout(()=>{ safeQuizDone = 0; if(safeTab === 1) startSafeQuiz(); }, 3800);
+    } else {
+      setTimeout(()=>{ if(safeTab === 1) startSafeQuiz(); }, 1800);
+    }
+  } else {
+    el.classList.add('wrong');
+    setTimeout(()=>el.classList.remove('wrong'), 520);
+    document.getElementById('safeFb').textContent = '再想想，怎样做才最安全？';
     say('再想想');
   }
 }
