@@ -191,6 +191,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .eopt svg{width:100%;height:auto;display:block}
 .eopt .en2{font-size:16px;font-weight:800;color:#8A5A1E}
 .eqfb{min-height:40px;text-align:center;font-size:18px;font-weight:800;color:#B4691E;padding:4px 20px}
+/* 影子找朋友 */
+#shadow{background:linear-gradient(180deg,#E3F1FD 0%,#F2F8FE 60%,#FFFDF8 100%)}
+.shdlabel{text-align:center;font-size:17px;font-weight:800;color:#5B7B9B;padding:6px 20px 0}
+.shdrow{display:flex;justify-content:center;gap:12px;padding:10px 20px;flex-wrap:wrap;max-width:480px;margin:0 auto}
+.shdcard{background:#fff;border-radius:20px;padding:8px;width:108px;text-align:center;box-shadow:0 3px 10px rgba(80,130,190,.14);cursor:pointer;border:3px solid transparent}
+.shdcard:active{transform:scale(.95)}
+.shdcard img{width:100%;height:92px;object-fit:cover;border-radius:14px;display:block}
+.shdcard.shdsil img{filter:brightness(0)}
+.shdcard.sel{border-color:#4D9DE0;background:#EAF4FD}
+.shdcard.done{border-color:#52C75A;background:#F2FBEF}
+.shdcard.done img{filter:none}
+.shdname{font-size:15px;font-weight:800;color:#5B7B9B;margin-top:4px;min-height:22px}
+.shdfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
 .bandstage{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 20px;width:100%;max-width:480px;margin:0 auto;min-height:300px}
@@ -426,12 +439,13 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
 body.paper .bandfb{color:#6d5c3f}
+body.paper .shdfb,body.paper .shdname{color:#6d5c3f}
 body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -462,16 +476,18 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
 body.ink .bandfb{color:#5c5c55}
+body.ink .shdfb,body.ink .shdname{color:#5c5c55}
+body.ink .shdcard.done{background:#F7F7F3}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
 body.ink .memcard .mf{box-shadow:none}
@@ -552,7 +568,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintC" onclick="openBubbles()"><img src="assets/icons/bubbles.webp" alt="泡泡"><span class="an">泡泡</span><span class="as">戳一戳泡泡</span></div>
       <div class="appcard tintB" onclick="openMemory()"><img src="assets/icons/find.webp" alt="记忆翻牌"><span class="an">记忆翻牌</span><span class="as">翻牌找朋友</span></div>
       <div class="appcard tintE" onclick="openBand()"><img src="assets/icons/band.webp" alt="乐器小乐队"><span class="an">乐器小乐队</span><span class="as">木琴·手鼓·沙锤</span></div>
-      <div class="appcard tintF" onclick="openEmotion()"><span class="newbadge">新</span><img src="assets/icons/emotion.png" alt="认识情绪"><span class="an">认识情绪</span><span class="as">表情卡·猜情绪</span></div>
+      <div class="appcard tintF" onclick="openEmotion()"><img src="assets/icons/emotion.png" alt="认识情绪"><span class="an">认识情绪</span><span class="as">表情卡·猜情绪</span></div>
+      <div class="appcard tintA" onclick="openShadow()"><span class="newbadge">新</span><img src="assets/icons/shadow.webp" alt="影子找朋友"><span class="an">影子找朋友</span><span class="as">找影子·3 档难度</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -950,6 +967,29 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+  <!-- 影子找朋友 -->
+  <section id="shadow" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">影子找朋友</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="shdTabs">
+      <button class="ztab" onclick="setShdDiff(2)">简单</button>
+      <button class="ztab on" onclick="setShdDiff(3)">中等</button>
+      <button class="ztab" onclick="setShdDiff(4)">困难</button>
+    </div>
+    <div class="shdlabel">🔍 先点一个黑影子，再点它的真身</div>
+    <div class="shdrow" id="shdTop"></div>
+    <div class="shdlabel">👇 动物在这里</div>
+    <div class="shdrow" id="shdBottom"></div>
+    <div class="shdfb" id="shdFb"></div>
+    <div style="padding:2px 20px 18px;display:flex;gap:10px">
+      <button class="btn ghost" style="flex:1;min-height:56px;font-size:17px" onclick="peekShadow()">偷看一眼</button>
+      <button class="btn" style="flex:1;min-height:56px;font-size:17px" onclick="startShadow()">再来一局</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -995,7 +1035,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v4.9 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.0 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -4050,6 +4090,84 @@ function answerEmo(id, el){
     say('再想一想，他的心情是什么呢？');
     document.getElementById('eqFb').textContent = '再想一想～';
   }
+}
+
+/* ================= 影子找朋友 ================= */
+let shdDiff = 3, shdPairs = [], shdSel = -1, shdFound = 0, shdLock = false;
+function openShadow(){ setShdDiff(3); go('shadow'); }
+function setShdDiff(n){
+  shdDiff = n;
+  const lv = [2,3,4];
+  document.querySelectorAll('#shdTabs .ztab').forEach((b,i)=>b.classList.toggle('on', lv[i]===n));
+  startShadow();
+}
+function shdPick(){
+  const pool = ANIMALS_ALL.filter(a=>a.img);
+  const picks = [], used = new Set();
+  while(picks.length < shdDiff && picks.length < pool.length){
+    const i = Math.floor(Math.random()*pool.length);
+    if(!used.has(i)){ used.add(i); picks.push(pool[i]); }
+  }
+  return picks;
+}
+function startShadow(){
+  shdPairs = shdPick(); shdSel = -1; shdFound = 0; shdLock = false;
+  document.getElementById('shdTop').innerHTML = shdPairs.map((a,i)=>
+    '<div class="shdcard shdsil" id="shdT'+i+'" onclick="tapShd('+i+')"><img src="'+a.img+'" alt="影子" loading="lazy"><div class="shdname" id="shdN'+i+'">？</div></div>').join('');
+  const order = shdPairs.map((a,i)=>i).sort(()=>Math.random()-.5);
+  document.getElementById('shdBottom').innerHTML = order.map(i=>
+    '<div class="shdcard" id="shdB'+i+'" onclick="tapShdColor('+i+')"><img src="'+shdPairs[i].img+'" alt="'+shdPairs[i].n+'" loading="lazy"><div class="shdname">'+shdPairs[i].n+'</div></div>').join('');
+  document.getElementById('shdFb').textContent = '看看黑影子的轮廓，找到它的真身';
+}
+function tapShd(i){
+  if(shdLock) return;
+  const el = document.getElementById('shdT'+i);
+  if(!el || el.classList.contains('done')) return;
+  document.querySelectorAll('#shdTop .shdcard').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  shdSel = i;
+  say('这是谁的影子呢？点一点下面的动物找一找');
+}
+function tapShdColor(i){
+  if(shdLock) return;
+  if(shdSel < 0){ say('先选一个黑影子，再找它的真身'); return; }
+  const t = document.getElementById('shdT'+shdSel);
+  if(i === shdSel){
+    shdLock = true;
+    t.classList.remove('sel','shdsil'); t.classList.add('done');
+    document.getElementById('shdN'+shdSel).textContent = shdPairs[shdSel].n;
+    const b = document.getElementById('shdB'+i);
+    if(b) b.classList.add('done');
+    addStar();
+    const nm = shdPairs[shdSel].n;
+    shdFound++;
+    document.getElementById('shdFb').textContent = '找对啦，这是'+nm+'！';
+    say('找对啦，这是'+nm);
+    const done = shdFound === shdPairs.length;
+    setTimeout(()=>{
+      shdSel = -1; shdLock = false;
+      if(done){
+        addStar(); addStar();
+        const rounds = +(localStorage.getItem('park_shadow_rounds')||0)+1;
+        localStorage.setItem('park_shadow_rounds', rounds);
+        document.getElementById('shdFb').textContent = '全部找对，太厉害了！奖励 3 颗星';
+        say('全部找对，你的眼睛真厉害');
+        setTimeout(()=>startShadow(), 3500);
+      }
+    }, 900);
+  } else {
+    say('再看一看，影子的轮廓长什么样呢？');
+    document.getElementById('shdFb').textContent = '再看一看影子的轮廓～';
+  }
+}
+function peekShadow(){
+  if(shdLock) return;
+  const rest = document.querySelectorAll('#shdTop .shdcard:not(.done)');
+  if(!rest.length) return;
+  shdLock = true;
+  rest.forEach(el=>el.classList.remove('shdsil'));
+  say('看清楚，记住它们的样子');
+  setTimeout(()=>{ rest.forEach(el=>{ if(!el.classList.contains('done')) el.classList.add('shdsil'); }); shdLock = false; }, 1600);
 }
 
 // 初始化星星显示
