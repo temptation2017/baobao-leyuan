@@ -675,8 +675,6 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
 .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
 .numpad button{border:none;background:#F4EFE6;border-radius:16px;font-size:26px;font-weight:800;min-height:62px;cursor:pointer;color:#3a2e2e}
 .numpad button:active{background:#EADFCB}
-#fsBtn{position:fixed;right:14px;bottom:16px;z-index:998;width:46px;height:46px;border-radius:50%;border:none;background:rgba(60,50,40,.55);color:#fff;font-size:22px;line-height:46px;text-align:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.25)}
-#fsBtn:active{transform:scale(.94)}
 #poems{background:linear-gradient(180deg,#E4F2E4 0%,#FFF7EA 100%)}
 .poemgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
 .poemcard{background:#FFFDF6;border:2px solid #D9C9A3;border-radius:16px;padding:14px 10px;text-align:center;cursor:pointer}
@@ -720,16 +718,35 @@ button:focus-visible{outline:3px solid rgba(255,138,61,.55);outline-offset:2px}
 .stubtn.ghost2{background:#FFF3E4;color:#D96C1E;box-shadow:none}
 .pvplay{background:linear-gradient(135deg,#8FC97F,#7FB069);box-shadow:0 6px 14px rgba(127,176,105,.35)}
 .pvnav button{min-height:48px}
-#fsBtn{width:52px;height:52px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));background:#fff;color:#3A2E2E;font-size:21px;line-height:52px;box-shadow:var(--shl)}
-body.paper #fsBtn{background:#FAF3DF;border:2px solid #D8C6A0;color:#6d5c3f;box-shadow:none}
-body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-shadow:none}
-#pkToast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(16px);background:rgba(40,32,24,.93);color:#fff;font-size:15px;line-height:1.55;padding:12px 18px;border-radius:14px;max-width:86vw;text-align:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:1200}
-#pkToast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+body.paper body.ink 
+/* ===== v6.1 图标系统：mask 着色随文字色，三主题通用 ===== */
+.ic{display:inline-block;width:20px;height:20px;vertical-align:-4px;margin-right:7px;background:currentColor;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+.ic-spk{-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M3%209v6h4l5%204V5L7%209H3z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M15.5%208.7a4.5%204.5%200%20010%206.6M18%206a8%208%200%20010%2012%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M3%209v6h4l5%204V5L7%209H3z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22M15.5%208.7a4.5%204.5%200%20010%206.6M18%206a8%208%200%20010%2012%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E')}
+.ic-play{-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M8%205.5v13l11-6.5z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M8%205.5v13l11-6.5z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E')}
+.ic-dice{-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Crect%20x%3D%223.2%22%20y%3D%223.2%22%20width%3D%2217.6%22%20height%3D%2217.6%22%20rx%3D%225%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%228.6%22%20cy%3D%228.6%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2215.4%22%20cy%3D%228.6%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%228.6%22%20cy%3D%2215.4%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2215.4%22%20cy%3D%2215.4%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Crect%20x%3D%223.2%22%20y%3D%223.2%22%20width%3D%2217.6%22%20height%3D%2217.6%22%20rx%3D%225%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%2F%3E%3Ccircle%20cx%3D%228.6%22%20cy%3D%228.6%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2215.4%22%20cy%3D%228.6%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%228.6%22%20cy%3D%2215.4%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3Ccircle%20cx%3D%2215.4%22%20cy%3D%2215.4%22%20r%3D%221.9%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E')}
+.ic-prev{-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14.5%205.5L8%2012l6.5%206.5%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14.5%205.5L8%2012l6.5%206.5%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E')}
+.ic-next{-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9.5%205.5L16%2012l-6.5%206.5%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9.5%205.5L16%2012l-6.5%206.5%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E')}
+.ic-redo{-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17.65%206.35A8%208%200%201019.73%2014h-2.08a6%206%200%2011-1.41-6.41L13%2011h7V4l-2.35%202.35z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M17.65%206.35A8%208%200%201019.73%2014h-2.08a6%206%200%2011-1.41-6.41L13%2011h7V4l-2.35%202.35z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E')}
+.ic-bulb{-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9%2021a1%201%200%20001%201h4a1%201%200%20001-1v-1H9v1zm3-19a7%207%200%2000-4%2012.74V17a1%201%200%20001%201h6a1%201%200%20001-1v-2.26A7%207%200%200012%202z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9%2021a1%201%200%20001%201h4a1%201%200%20001-1v-1H9v1zm3-19a7%207%200%2000-4%2012.74V17a1%201%200%20001%201h6a1%201%200%20001-1v-2.26A7%207%200%200012%202z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E')}
+.iconly .ic{margin-right:0;width:24px;height:24px;vertical-align:middle}
+.rbtn .ic{margin-right:0;width:26px;height:26px;vertical-align:middle}
+.rbtn{width:64px;height:64px}
+.rbtn.main{height:64px}
+.pvbar{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:30px}
+.pvbtn{width:64px;height:64px;border-radius:50%;border:2px solid #EAD9B8;background:#FFFDF6;color:#8A6D3B;cursor:pointer;box-shadow:var(--sh);display:flex;align-items:center;justify-content:center}
+.pvmain{height:64px;border:none;border-radius:999px;padding:0 38px;background:linear-gradient(135deg,var(--acc2),var(--acc));color:#fff;font-size:20px;font-weight:800;cursor:pointer;box-shadow:0 8px 18px rgba(255,122,41,.35);display:flex;align-items:center}
+body.paper .pvbtn{background:#FAF3DF;border-color:#D8C6A0;color:#6d5c3f;box-shadow:none}
+body.ink .pvbtn{background:#F7F7F3;border-color:#2b2b2b;color:#1c1c1c;box-shadow:none}
+body.ink .pvmain{background:#2b2b2b;box-shadow:none}
+.ztab{min-height:44px}
+.backbtn{font-size:0;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14.5%205.5L8%2012l6.5%206.5%22%20stroke%3D%22%233A2E2E%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:center;background-size:22px}
+body.paper .backbtn{font-size:0;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14.5%205.5L8%2012l6.5%206.5%22%20stroke%3D%22%236D5C3F%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:center;background-size:22px}
+body.ink .backbtn{font-size:0;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14.5%205.5L8%2012l6.5%206.5%22%20stroke%3D%22%231C1C1C%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:center;background-size:22px}
+#reader .backbtn{font-size:0;background-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M14.5%205.5L8%2012l6.5%206.5%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%222.6%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E');background-repeat:no-repeat;background-position:center;background-size:22px}
 </style>
 </head>
 <body>
-<button id="fsBtn" aria-label="全屏">⛶</button>
-<div id="pkToast" role="status"></div>
+
 <div id="app">
 
   <!-- 首页 -->
@@ -819,7 +836,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <div class="findq">
       <h2 id="findQ">哪个是…？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askFind()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askFind()"><span class="ic ic-spk"></span>再听一遍</button>
     </div>
     <div class="findgrid" id="findGrid"></div>
     <div class="findfb" id="findFb"></div>
@@ -833,7 +850,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
     <div class="chips" id="storyChips"></div>
-    <div class="randbar"><button onclick="randomStory()">随机听一个故事</button></div>
+    <div class="randbar"><button onclick="randomStory()"><span class="ic ic-dice"></span>随机听一个</button></div>
     <div class="slist" id="slist"></div>
   </section>
 
@@ -844,7 +861,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
       <div class="toptitle">古诗</div>
       <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
     </div>
-    <div class="randbar"><button onclick="randomPoem()">随机听一首</button></div>
+    <div class="randbar"><button onclick="randomPoem()"><span class="ic ic-dice"></span>随机听一个</button></div>
     <div class="poemgrid" id="poemGrid"></div>
   </section>
 
@@ -858,8 +875,11 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="pvwrap">
       <div class="pvauthor" id="pvAuthor"></div>
       <div class="pvlines" id="pvLines"></div>
-      <button class="pvplay" onclick="playPoem()">🔊 读给我听</button>
-      <div class="pvnav"><button onclick="poemNav(-1)">‹ 上一首</button><button onclick="poemNav(1)">下一首 ›</button></div>
+      <div class="pvbar">
+        <button class="pvbtn iconly" onclick="poemNav(-1)" aria-label="上一首"><span class="ic ic-prev"></span></button>
+        <button class="pvmain" onclick="playPoem()"><span class="ic ic-spk"></span>朗读</button>
+        <button class="pvbtn iconly" onclick="poemNav(1)" aria-label="下一首"><span class="ic ic-next"></span></button>
+      </div>
     </div>
   </section>
 
@@ -878,9 +898,9 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="rtip" id="rtip" style="display:none"></div>
     <div class="rdots" id="rdots"></div>
     <div class="rbar">
-      <button class="rbtn" id="rprev" onclick="rGo(cur-1)">‹</button>
-      <button class="rbtn main" onclick="rSpeak()"><img class="btnico" src="assets/icons/speaker.webp" alt="">朗读</button>
-      <button class="rbtn" id="rnext" onclick="rGo(cur+1)">›</button>
+      <button class="rbtn" id="rprev" onclick="rGo(cur-1)"><span class="ic ic-prev"></span></button>
+      <button class="rbtn main" onclick="rSpeak()"><span class="ic ic-spk"></span>朗读</button>
+      <button class="rbtn" id="rnext" onclick="rGo(cur+1)"><span class="ic ic-next"></span></button>
     </div>
     <div class="rbar" id="rdonebar" style="display:none;padding-top:0">
       <button class="btn" onclick="finishStory()">讲完啦 <img class="starico" src="assets/icons/star.webp" alt="星"></button>
@@ -919,7 +939,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="padtools">
       <button class="padtool" id="padUndoBtn">撤销</button>
       <button class="padtool" id="padEraserBtn">橡皮擦</button>
-      <button class="padtool" id="padResetBtn">重新涂</button>
+      <button class="padtool" id="padResetBtn"><span class="ic ic-redo"></span>重新开始</button>
       <button class="padtool done" id="padDoneBtn">涂完啦</button>
     </div>
     <div class="palette" id="palette2"></div>
@@ -935,7 +955,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <div class="countq">
       <h2 id="countQ">有几个？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCount()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCount()"><span class="ic ic-spk"></span>再听一遍</button>
     </div>
     <div class="countitems" id="countItems"></div>
     <div class="countfb" id="countFb"></div>
@@ -962,7 +982,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <div class="findq">
       <h2 id="shapeQ">哪个是圆形？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askShape()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askShape()"><span class="ic ic-spk"></span>再听一遍</button>
     </div>
     <div class="shapeopts" id="shapeOpts"></div>
     <div class="countfb" id="shapeFb"></div>
@@ -988,7 +1008,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <div class="findq">
       <h2 id="colorQ">哪个是红色？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askColor()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askColor()"><span class="ic ic-spk"></span>再听一遍</button>
     </div>
     <div class="coloropts" id="colorOpts"></div>
     <div class="countfb" id="colorFb"></div>
@@ -1014,7 +1034,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <div class="findq">
       <h2 id="candyQ">哪个是棒棒糖？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCandy()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askCandy()"><span class="ic ic-spk"></span>再听一遍</button>
     </div>
     <div class="candyopts" id="candyOpts"></div>
     <div class="countfb" id="candyFb"></div>
@@ -1074,7 +1094,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
         <div class="hzdtip" id="hzdTip" style="display:none"></div>
         <div class="hzdnav">
           <button class="padtool" id="hzdPrev">‹ 上一个</button>
-          <button class="padtool on" id="hzdSpeak">朗读</button>
+          <button class="padtool on" id="hzdSpeak"><span class="ic ic-spk"></span>朗读</button>
           <button class="padtool" id="hzdNext">下一个 ›</button>
         </div>
       </div>
@@ -1090,7 +1110,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <div class="findq">
       <h2 id="hzQ">哪个是…？</h2>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askHanzi()"><img class="btnico" src="assets/icons/speaker.webp" alt="">再听一遍</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:8px" onclick="askHanzi()"><span class="ic ic-spk"></span>再听一遍</button>
     </div>
     <div class="hzopts" id="hzOpts"></div>
     <div class="countfb" id="hzFb"></div>
@@ -1134,7 +1154,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="puzq">
       <h2 id="puzQ">拼一拼</h2>
       <div class="cpages" id="puzTabs" style="padding:4px 0"></div>
-      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:4px" onclick="startPuzzle()"><img class="btnico" src="assets/icons/speaker.webp" alt="">换一张</button>
+      <button class="btn ghost" style="min-height:56px;font-size:17px;margin-top:4px" onclick="startPuzzle()"><span class="ic ic-dice"></span>换一个</button>
     </div>
     <div class="puzref"><img id="puzRef" src="" alt="参考图"><span>照着这张图拼</span></div>
     <div class="puzgrid" id="puzGrid"></div>
@@ -1205,7 +1225,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <div id="emotionQuiz" style="display:none">
       <div class="eqtext" id="eqText"></div>
-      <div style="padding:4px 26px"><button class="btn blue" style="width:100%" onclick="eqListen()">🔊 听一听题目</button></div>
+      <div style="padding:4px 26px"><button class="btn blue" style="width:100%" onclick="eqListen()"><span class="ic ic-spk"></span>朗读题目</button></div>
       <div class="eopts" id="eqOpts"></div>
       <div class="eqfb" id="eqFb"></div>
     </div>
@@ -1248,7 +1268,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
       <div class="mixplus">＋</div>
       <div class="mixslot" id="mixSlot1">❓</div>
     </div>
-    <div style="padding:2px 20px 4px"><button class="btn" style="width:100%;min-height:58px;font-size:18px" onclick="stirMix()">🌀 搅拌魔法</button></div>
+    <div style="padding:2px 20px 4px"><button class="btn" style="width:100%;min-height:58px;font-size:18px" onclick="stirMix()">搅拌魔法</button></div>
     <div class="mixres">
       <div class="mixresdot" id="mixResDot" style="background:#fff"></div>
       <div class="mixresname" id="mixResName">？</div>
@@ -1276,7 +1296,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="hyglabel" id="hygLabel">按顺序点一点：刷牙第一步是什么呢？</div>
     <div class="hyggrid" id="hygGrid"></div>
     <div class="hygfb" id="hygFb">点卡片听步骤名，按正确顺序点完</div>
-    <div style="padding:0 20px"><button class="btn ghost" style="width:100%" onclick="hygHint()">💡 提示一下</button></div>
+    <div style="padding:0 20px"><button class="btn ghost" style="width:100%" onclick="hygHint()"><span class="ic ic-bulb"></span>提示一下</button></div>
     <div class="hygtip">每天早晚刷牙，饭前便后洗手<br>牙齿白白，小手香香</div>
   </section>
 
@@ -1295,8 +1315,8 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="feedgrid" id="feedGrid"></div>
     <div class="feedfb" id="feedFb">点一盘食物喂给小动物</div>
     <div class="feedbar">
-      <button class="btn ghost" style="flex:1" onclick="nextFeedAnimal()">🦘 换一只动物</button>
-      <button class="btn ghost" style="flex:1" onclick="sayFeedWant()">🔊 再听一遍</button>
+      <button class="btn ghost" style="flex:1" onclick="nextFeedAnimal()"><span class="ic ic-dice"></span>换一个</button>
+      <button class="btn ghost" style="flex:1" onclick="sayFeedWant()"><span class="ic ic-spk"></span>再听一遍</button>
     </div>
   </section>
 
@@ -1311,8 +1331,8 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="tracewrap"><canvas id="traceGuide"></canvas><canvas id="traceDraw"></canvas></div>
     <div class="tracefb" id="traceFb">选一个数字，用小手指描一描</div>
     <div class="tracebar">
-      <button class="btn ghost" style="flex:1" onclick="traceClear()">🧽 擦掉重来</button>
-      <button class="btn ghost" style="flex:1" onclick="traceHear()">🔊 听一听</button>
+      <button class="btn ghost" style="flex:1" onclick="traceClear()"><span class="ic ic-redo"></span>重新开始</button>
+      <button class="btn ghost" style="flex:1" onclick="traceHear()"><span class="ic ic-play"></span>听一听</button>
     </div>
   </section>
 
@@ -1330,8 +1350,8 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div id="vehStage"></div>
     <div class="vehfb" id="vehFb">点一点车车，听听它是什么声音</div>
     <div class="feedbar">
-      <button class="btn ghost" style="flex:1" onclick="vehReplay()">&#128266; 再听一遍</button>
-      <button class="btn ghost" style="flex:1;display:none" id="vehQuizBtn" onclick="vehNewQuiz()">&#127922; 换一道题</button>
+      <button class="btn ghost" style="flex:1" onclick="vehReplay()"><span class="ic ic-spk"></span>再听一遍</button>
+      <button class="btn ghost" style="flex:1;display:none" id="vehQuizBtn" onclick="vehNewQuiz()"><span class="ic ic-dice"></span>换一个</button>
     </div>
   </section>
 
@@ -1349,8 +1369,8 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div id="wthStage"></div>
     <div class="wthfb" id="wthFb">点一点卡片，认识四种天气</div>
     <div class="feedbar">
-      <button class="btn ghost" style="flex:1" onclick="wthReplay()">&#128266; 再听一遍</button>
-      <button class="btn ghost" style="flex:1;display:none" id="wthQuizBtn" onclick="wthNewQuiz()">&#127922; 换一道题</button>
+      <button class="btn ghost" style="flex:1" onclick="wthReplay()"><span class="ic ic-spk"></span>再听一遍</button>
+      <button class="btn ghost" style="flex:1;display:none" id="wthQuizBtn" onclick="wthNewQuiz()"><span class="ic ic-dice"></span>换一个</button>
     </div>
   </section>
 
@@ -1368,8 +1388,8 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div id="safeStage"></div>
     <div class="safefb" id="safeFb">点一点红绿灯，认识三种灯</div>
     <div class="feedbar">
-      <button class="btn ghost" style="flex:1" onclick="safeReplay()">&#128266; 再听一遍</button>
-      <button class="btn ghost" style="flex:1;display:none" id="safeQuizBtn" onclick="safeNewQuiz()">&#127922; 换一道题</button>
+      <button class="btn ghost" style="flex:1" onclick="safeReplay()"><span class="ic ic-spk"></span>再听一遍</button>
+      <button class="btn ghost" style="flex:1;display:none" id="safeQuizBtn" onclick="safeNewQuiz()"><span class="ic ic-dice"></span>换一个</button>
     </div>
   </section>
 
@@ -1389,8 +1409,8 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div class="diffwrap" id="diffStage"></div>
     <div class="safefb" id="diffFb">下面这幅图有 3 个地方不一样，点一点找出来</div>
     <div class="feedbar">
-      <button class="btn ghost" style="flex:1" onclick="diffReplay()">&#128266; 再听一遍</button>
-      <button class="btn ghost" style="flex:1" onclick="diffNext()">&#127922; 换一幅图</button>
+      <button class="btn ghost" style="flex:1" onclick="diffReplay()"><span class="ic ic-spk"></span>再听一遍</button>
+      <button class="btn ghost" style="flex:1" onclick="diffNext()"><span class="ic ic-dice"></span>换一个</button>
     </div>
   </section>
 
@@ -1408,8 +1428,8 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     <div id="nightStage"></div>
     <div class="safefb" id="nightFb">点一点，把睡前准备都做好</div>
     <div class="feedbar">
-      <button class="btn ghost" style="flex:1" onclick="nightReplay()">🔊 再听一遍</button>
-      <button class="btn ghost" style="flex:1" id="nightActBtn" onclick="nightAction()">🔁 重新开始</button>
+      <button class="btn ghost" style="flex:1" onclick="nightReplay()"><span class="ic ic-spk"></span>再听一遍</button>
+      <button class="btn ghost" style="flex:1" id="nightActBtn" onclick="nightAction()"><span class="ic ic-redo"></span>重新开始</button>
     </div>
   </section>
 
@@ -1463,7 +1483,7 @@ body.ink #fsBtn{background:#F7F7F3;border:2px solid #2b2b2b;color:#1c1c1c;box-sh
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v6.0 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v6.1 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -5529,37 +5549,6 @@ function nightStopBreath(){
 document.getElementById('homeStars').textContent = stars;
 document.querySelectorAll('.starN').forEach(el=>el.textContent = stars);
 </script>
-<script>
-(function(){
-  var btn = document.getElementById('fsBtn');
-  function el(){ return document.documentElement; }
-  function supported(){ return !!(el().requestFullscreen || el().webkitRequestFullscreen); }
-  function inFs(){ return !!(document.fullscreenElement || document.webkitFullscreenElement); }
-  function enter(){ try{ var p = el().requestFullscreen ? el().requestFullscreen() : el().webkitRequestFullscreen(); if(p && p.catch) p.catch(function(){}); }catch(e){} }
-  function exit(){ try{ if(document.exitFullscreen) document.exitFullscreen(); else if(document.webkitExitFullscreen) document.webkitExitFullscreen(); }catch(e){} }
-  var toastTimer = null;
-  window.pkToast = function(msg){
-    var t = document.getElementById('pkToast');
-    if(!t) return;
-    t.textContent = msg;
-    t.classList.add('on');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ t.classList.remove('on'); }, 4200);
-  };
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    if(!supported()){
-      window.pkToast('这台手机不支持网页全屏。用 Safari 打开时，点底部的分享按钮，选择「添加到主屏幕」，以后从主屏幕打开就是全屏啦。');
-      return;
-    }
-    if(inFs()) exit(); else enter();
-  });
-  var autoTried = false;
-  document.addEventListener('pointerdown', function(){
-    if(autoTried) return; autoTried = true;
-    if(supported() && !inFs()) enter();
-  });
-})();
-</script>
+
 </body>
 </html>
