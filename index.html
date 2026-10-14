@@ -330,6 +330,15 @@ body.ink .tracewrap{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 .safequizq{text-align:center;font-size:19px;font-weight:900;color:#4A3F35;padding:10px 20px 0}
 .safeprog{display:flex;gap:6px;justify-content:center;padding:8px 0 2px}
 .safeqimg{font-size:64px;text-align:center;margin:6px auto 0;filter:drop-shadow(0 6px 12px rgba(0,0,0,.12))}
+/* v5.8 找不同：手绘 SVG 场景，复用 safefb/feeddot/ztab/btn 主题 */
+.diffwrap{display:flex;flex-direction:column;gap:8px;padding:6px 14px 2px;max-width:520px;margin:0 auto;width:100%}
+.diffpanel{background:#fff;border-radius:18px;box-shadow:0 5px 14px rgba(0,0,0,.08);overflow:hidden}
+.diffpanel .dlab{font-size:12px;font-weight:800;color:#8A7A5F;padding:8px 12px 0}
+.diffpanel svg{display:block;width:100%;height:auto;touch-action:manipulation}
+.diffzone{fill:rgba(0,0,0,0);stroke:none;cursor:pointer}
+.diffzone.hit{fill:none;stroke:#E14D4D;stroke-width:6;stroke-linecap:round;transform-box:fill-box;transform-origin:center;animation:diffpop .45s ease-out}
+@keyframes diffpop{0%{transform:scale(.3);opacity:0}70%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+.diffprog{display:flex;gap:6px;justify-content:center;padding:6px 0 2px}
 
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
@@ -566,8 +575,8 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace,body.paper #vehicle,body.paper #weather,body.paper #safety{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard,body.paper .vehcard,body.paper .wthcard,body.paper .safecard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace,body.paper #vehicle,body.paper #weather,body.paper #safety,body.paper #diffs{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard,body.paper .vehcard,body.paper .wthcard,body.paper .safecard,body.paper .diffpanel{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
@@ -603,12 +612,12 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace,body.ink #vehicle,body.ink #weather,body.ink #safety{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace,body.ink #vehicle,body.ink #weather,body.ink #safety,body.ink #diffs{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn,body.ink .vehcard,body.ink .wthcard,body.ink .safecard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn,body.ink .vehcard,body.ink .wthcard,body.ink .safecard,body.ink .diffpanel{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
@@ -703,7 +712,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintB" onclick="openFeed()"><img src="assets/icons/feed.webp" alt="动物食堂"><span class="an">动物食堂</span><span class="as">喂 10 种小动物</span></div>
       <div class="appcard tintE" onclick="openVehicle()"><img src="assets/icons/vehicle.webp" alt="交通工具声音馆"><span class="an">交通工具声音馆</span><span class="as">10 种车车·听声音</span></div>
       <div class="appcard tintA" onclick="openWeather()"><img src="assets/icons/weather.webp" alt="天气穿衣挑战"><span class="an">天气穿衣挑战</span><span class="as">看天气选衣服·5 轮闯关</span></div>
-      <div class="appcard tintB" onclick="openSafety()"><span class="newbadge">新</span><img src="assets/icons/safety.webp" alt="过马路安全课"><span class="an">过马路安全课</span><span class="as">红绿灯·安全闯关</span></div>
+      <div class="appcard tintB" onclick="openSafety()"><img src="assets/icons/safety.webp" alt="过马路安全课"><span class="an">过马路安全课</span><span class="as">红绿灯·安全闯关</span></div>
+      <div class="appcard tintC" onclick="openDiffs()"><span class="newbadge">新</span><img src="assets/icons/diff.webp" alt="找不同"><span class="an">找不同</span><span class="as">3 幅图·眼力大挑战</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -1263,6 +1273,27 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+  <!-- 找不同 v5.8 -->
+  <section id="diffs" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">找不同</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="diffTabs">
+      <button class="ztab on" onclick="setDiffTab(0)">&#127799; 小花园</button>
+      <button class="ztab" onclick="setDiffTab(1)">&#127859; 小厨房</button>
+      <button class="ztab" onclick="setDiffTab(2)">&#128031; 海底世界</button>
+    </div>
+    <div class="diffprog" id="diffProg"></div>
+    <div class="diffwrap" id="diffStage"></div>
+    <div class="safefb" id="diffFb">下面这幅图有 3 个地方不一样，点一点找出来</div>
+    <div class="feedbar">
+      <button class="btn ghost" style="flex:1" onclick="diffReplay()">&#128266; 再听一遍</button>
+      <button class="btn ghost" style="flex:1" onclick="diffNext()">&#127922; 换一幅图</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1313,7 +1344,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.7 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.8 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -5148,6 +5179,78 @@ function vehAnswer(o, el){
     say('再听听');
   }
 }
+
+
+/* ================= 找不同 v5.8：手绘 SVG 双图眼力挑战（3 场景×3 处不同） ================= */
+const DIFFS = [
+{
+  name: '小花园',
+  a: `<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="300" height="190" fill="#CDEFFB"/><rect x="0" y="150" width="300" height="40" fill="#8ED081"/><ellipse cx="40" cy="152" rx="30" ry="10" fill="#9AD988"/><ellipse cx="150" cy="153" rx="36" ry="11" fill="#9AD988"/><ellipse cx="258" cy="152" rx="30" ry="10" fill="#9AD988"/><g stroke="#FFD94D" stroke-width="4" stroke-linecap="round"><line x1="70" y1="42" x2="76" y2="42"/><line x1="62.7" y1="59.7" x2="66.9" y2="63.9"/><line x1="45" y1="67" x2="45" y2="73"/><line x1="27.3" y1="59.7" x2="23.1" y2="63.9"/><line x1="20" y1="42" x2="14" y2="42"/><line x1="27.3" y1="24.3" x2="23.1" y2="20.1"/><line x1="45" y1="17" x2="45" y2="11"/><line x1="62.7" y1="24.3" x2="66.9" y2="20.1"/></g><circle cx="45" cy="42" r="20" fill="#FFD94D"/><circle cx="38" cy="38" r="2.6" fill="#5A4632"/><circle cx="52" cy="38" r="2.6" fill="#5A4632"/><path d="M38,48 Q45,54 52,48" stroke="#5A4632" stroke-width="2.5" fill="none" stroke-linecap="round"/><g fill="#FFFFFF" opacity="0.95"><ellipse cx="232" cy="34" rx="26" ry="14"/><ellipse cx="252" cy="30" rx="20" ry="12"/><ellipse cx="214" cy="32" rx="16" ry="10"/></g><line x1="60" y1="150" x2="60" y2="105" stroke="#4E9A51" stroke-width="5" stroke-linecap="round"/><ellipse cx="50" cy="130" rx="9" ry="5" fill="#6FAE6F" transform="rotate(-25 50 130)"/><g fill="#F26D6D"><circle cx="60" cy="82" r="9"/><circle cx="47.6" cy="99" r="9"/><circle cx="52.3" cy="105.5" r="9"/><circle cx="67.7" cy="105.5" r="9"/><circle cx="72.4" cy="99" r="9"/></g><circle cx="60" cy="95" r="7" fill="#FFD94D"/><line x1="150" y1="150" x2="150" y2="105" stroke="#4E9A51" stroke-width="5" stroke-linecap="round"/><ellipse cx="140" cy="130" rx="9" ry="5" fill="#6FAE6F" transform="rotate(-25 140 130)"/><g fill="#FFD94D"><circle cx="150" cy="82" r="9"/><circle cx="137.6" cy="99" r="9"/><circle cx="142.3" cy="105.5" r="9"/><circle cx="157.7" cy="105.5" r="9"/><circle cx="162.4" cy="99" r="9"/></g><circle cx="150" cy="95" r="7" fill="#F26D6D"/><line x1="240" y1="150" x2="240" y2="105" stroke="#4E9A51" stroke-width="5" stroke-linecap="round"/><ellipse cx="230" cy="130" rx="9" ry="5" fill="#6FAE6F" transform="rotate(-25 230 130)"/><g fill="#6DA8F2"><circle cx="240" cy="82" r="9"/><circle cx="227.6" cy="99" r="9"/><circle cx="232.3" cy="105.5" r="9"/><circle cx="247.7" cy="105.5" r="9"/><circle cx="252.4" cy="99" r="9"/></g><circle cx="240" cy="95" r="7" fill="#FFD94D"/><ellipse cx="104" cy="76" rx="8" ry="11" fill="#F2A0C0" transform="rotate(-20 104 76)"/><ellipse cx="120" cy="76" rx="8" ry="11" fill="#F2A0C0" transform="rotate(20 120 76)"/><line x1="112" y1="72" x2="112" y2="88" stroke="#5A4632" stroke-width="4" stroke-linecap="round"/><line x1="112" y1="72" x2="107" y2="66" stroke="#5A4632" stroke-width="2" stroke-linecap="round"/><line x1="112" y1="72" x2="117" y2="66" stroke="#5A4632" stroke-width="2" stroke-linecap="round"/><ellipse cx="197" cy="96" rx="8" ry="11" fill="#A0C4F2" transform="rotate(-20 197 96)"/><ellipse cx="213" cy="96" rx="8" ry="11" fill="#A0C4F2" transform="rotate(20 213 96)"/><line x1="205" y1="92" x2="205" y2="108" stroke="#5A4632" stroke-width="4" stroke-linecap="round"/><line x1="205" y1="92" x2="200" y2="86" stroke="#5A4632" stroke-width="2" stroke-linecap="round"/><line x1="205" y1="92" x2="210" y2="86" stroke="#5A4632" stroke-width="2" stroke-linecap="round"/></svg>`,
+  b: `<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" onclick="diffMiss(event)"><rect x="0" y="0" width="300" height="190" fill="#CDEFFB"/><rect x="0" y="150" width="300" height="40" fill="#8ED081"/><ellipse cx="40" cy="152" rx="30" ry="10" fill="#9AD988"/><ellipse cx="150" cy="153" rx="36" ry="11" fill="#9AD988"/><ellipse cx="258" cy="152" rx="30" ry="10" fill="#9AD988"/><g stroke="#FFD94D" stroke-width="4" stroke-linecap="round"><line x1="70" y1="42" x2="76" y2="42"/><line x1="62.7" y1="59.7" x2="66.9" y2="63.9"/><line x1="45" y1="67" x2="45" y2="73"/><line x1="27.3" y1="59.7" x2="23.1" y2="63.9"/><line x1="20" y1="42" x2="14" y2="42"/><line x1="27.3" y1="24.3" x2="23.1" y2="20.1"/><line x1="45" y1="17" x2="45" y2="11"/><line x1="62.7" y1="24.3" x2="66.9" y2="20.1"/></g><circle cx="45" cy="42" r="20" fill="#FFD94D"/><circle cx="38" cy="38" r="2.6" fill="#5A4632"/><circle cx="52" cy="38" r="2.6" fill="#5A4632"/><g fill="#FFFFFF" opacity="0.95"><ellipse cx="232" cy="34" rx="26" ry="14"/><ellipse cx="252" cy="30" rx="20" ry="12"/><ellipse cx="214" cy="32" rx="16" ry="10"/></g><line x1="60" y1="150" x2="60" y2="105" stroke="#4E9A51" stroke-width="5" stroke-linecap="round"/><ellipse cx="50" cy="130" rx="9" ry="5" fill="#6FAE6F" transform="rotate(-25 50 130)"/><g fill="#F26D6D"><circle cx="60" cy="82" r="9"/><circle cx="47.6" cy="99" r="9"/><circle cx="52.3" cy="105.5" r="9"/><circle cx="67.7" cy="105.5" r="9"/><circle cx="72.4" cy="99" r="9"/></g><circle cx="60" cy="95" r="7" fill="#FFD94D"/><line x1="150" y1="150" x2="150" y2="105" stroke="#4E9A51" stroke-width="5" stroke-linecap="round"/><ellipse cx="140" cy="130" rx="9" ry="5" fill="#6FAE6F" transform="rotate(-25 140 130)"/><g fill="#B678E8"><circle cx="150" cy="82" r="9"/><circle cx="137.6" cy="99" r="9"/><circle cx="142.3" cy="105.5" r="9"/><circle cx="157.7" cy="105.5" r="9"/><circle cx="162.4" cy="99" r="9"/></g><circle cx="150" cy="95" r="7" fill="#F26D6D"/><line x1="240" y1="150" x2="240" y2="105" stroke="#4E9A51" stroke-width="5" stroke-linecap="round"/><ellipse cx="230" cy="130" rx="9" ry="5" fill="#6FAE6F" transform="rotate(-25 230 130)"/><g fill="#6DA8F2"><circle cx="240" cy="82" r="9"/><circle cx="227.6" cy="99" r="9"/><circle cx="232.3" cy="105.5" r="9"/><circle cx="247.7" cy="105.5" r="9"/><circle cx="252.4" cy="99" r="9"/></g><circle cx="240" cy="95" r="7" fill="#FFD94D"/><ellipse cx="104" cy="76" rx="8" ry="11" fill="#F2A0C0" transform="rotate(-20 104 76)"/><ellipse cx="120" cy="76" rx="8" ry="11" fill="#F2A0C0" transform="rotate(20 120 76)"/><line x1="112" y1="72" x2="112" y2="88" stroke="#5A4632" stroke-width="4" stroke-linecap="round"/><line x1="112" y1="72" x2="107" y2="66" stroke="#5A4632" stroke-width="2" stroke-linecap="round"/><line x1="112" y1="72" x2="117" y2="66" stroke="#5A4632" stroke-width="2" stroke-linecap="round"/><circle class="diffzone" cx="150" cy="95" r="26" onclick="diffTap(0,this)"/><circle class="diffzone" cx="205" cy="100" r="26" onclick="diffTap(1,this)"/><circle class="diffzone" cx="45" cy="50" r="18" onclick="diffTap(2,this)"/></svg>`,
+  spots: [
+    {say: '找到了！中间的花变成紫色了'},
+    {say: '找到了！少了一只小蝴蝶'},
+    {say: '找到了！太阳公公的嘴不见了'}
+  ]
+},
+{
+  name: '小厨房',
+  a: `<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="300" height="190" fill="#FFF3D6"/><rect x="0" y="118" width="300" height="72" fill="#D9A066"/><rect x="0" y="118" width="300" height="8" fill="#C68B4E"/><ellipse cx="88" cy="140" rx="36" ry="13" fill="#FFFFFF" stroke="#E0D5C0" stroke-width="2"/><circle cx="88" cy="124" r="15" fill="#E14D4D"/><line x1="88" y1="110" x2="88" y2="102" stroke="#7A5C3E" stroke-width="3" stroke-linecap="round"/><ellipse cx="96" cy="105" rx="7" ry="4" fill="#6FAE6F" transform="rotate(30 96 105)"/><rect x="168" y="100" width="34" height="44" rx="8" fill="#6DA8F2"/><path d="M202,110 q16,8 0,26" stroke="#6DA8F2" stroke-width="7" fill="none" stroke-linecap="round"/><rect x="172" y="104" width="26" height="8" rx="4" fill="#FFFFFF" opacity="0.85"/><ellipse cx="250" cy="148" rx="22" ry="15" fill="#F5B971"/><path d="M270,148 q14,-4 10,-20" stroke="#F5B971" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="232" cy="132" r="13" fill="#F5B971"/><polygon points="222,124 225,111 230,122" fill="#F5B971"/><polygon points="234,122 238,111 242,124" fill="#F5B971"/><circle cx="227" cy="130" r="2" fill="#5A4632"/><circle cx="237" cy="130" r="2" fill="#5A4632"/><circle cx="232" cy="135" r="1.6" fill="#E14D4D"/><line x1="218" y1="134" x2="210" y2="132" stroke="#8A7A5F" stroke-width="1.2"/><line x1="218" y1="137" x2="210" y2="139" stroke="#8A7A5F" stroke-width="1.2"/><line x1="246" y1="134" x2="254" y2="132" stroke="#8A7A5F" stroke-width="1.2"/><line x1="246" y1="137" x2="254" y2="139" stroke="#8A7A5F" stroke-width="1.2"/></svg>`,
+  b: `<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" onclick="diffMiss(event)"><rect x="0" y="0" width="300" height="190" fill="#FFF3D6"/><rect x="0" y="118" width="300" height="72" fill="#D9A066"/><rect x="0" y="118" width="300" height="8" fill="#C68B4E"/><ellipse cx="88" cy="140" rx="36" ry="13" fill="#FFFFFF" stroke="#E0D5C0" stroke-width="2"/><circle cx="88" cy="124" r="15" fill="#6FAE6F"/><line x1="88" y1="110" x2="88" y2="102" stroke="#7A5C3E" stroke-width="3" stroke-linecap="round"/><ellipse cx="96" cy="105" rx="7" ry="4" fill="#6FAE6F" transform="rotate(30 96 105)"/><rect x="168" y="100" width="34" height="44" rx="8" fill="#F2994A"/><path d="M202,110 q16,8 0,26" stroke="#F2994A" stroke-width="7" fill="none" stroke-linecap="round"/><rect x="172" y="104" width="26" height="8" rx="4" fill="#FFFFFF" opacity="0.85"/><ellipse cx="250" cy="148" rx="22" ry="15" fill="#F5B971"/><circle cx="232" cy="132" r="13" fill="#F5B971"/><polygon points="222,124 225,111 230,122" fill="#F5B971"/><polygon points="234,122 238,111 242,124" fill="#F5B971"/><circle cx="227" cy="130" r="2" fill="#5A4632"/><circle cx="237" cy="130" r="2" fill="#5A4632"/><circle cx="232" cy="135" r="1.6" fill="#E14D4D"/><line x1="218" y1="134" x2="210" y2="132" stroke="#8A7A5F" stroke-width="1.2"/><line x1="218" y1="137" x2="210" y2="139" stroke="#8A7A5F" stroke-width="1.2"/><line x1="246" y1="134" x2="254" y2="132" stroke="#8A7A5F" stroke-width="1.2"/><line x1="246" y1="137" x2="254" y2="139" stroke="#8A7A5F" stroke-width="1.2"/><circle class="diffzone" cx="88" cy="124" r="20" onclick="diffTap(0,this)"/><circle class="diffzone" cx="185" cy="122" r="26" onclick="diffTap(1,this)"/><circle class="diffzone" cx="274" cy="140" r="18" onclick="diffTap(2,this)"/></svg>`,
+  spots: [
+    {say: '找到了！苹果变成绿色的了'},
+    {say: '找到了！杯子变成橙色的了'},
+    {say: '找到了！小猫的尾巴不见了'}
+  ]
+},
+{
+  name: '海底世界',
+  a: `<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="300" height="190" fill="#BDE3F7"/><rect x="0" y="158" width="300" height="32" fill="#F2E3B3"/><path d="M30,158 q-6,-20 4,-34 q8,-12 0,-26" stroke="#4E9A51" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M262,158 q6,-18 -4,-32 q-8,-12 0,-24" stroke="#4E9A51" stroke-width="7" fill="none" stroke-linecap="round"/><g stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.8"><circle cx="120" cy="122" r="5"/><circle cx="136" cy="102" r="7"/><circle cx="244" cy="56" r="6"/></g><polygon points="59,66 44,55 44,77" fill="#F2994A"/><ellipse cx="80" cy="66" rx="22" ry="14" fill="#F2994A"/><line x1="76" y1="57" x2="76" y2="75" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/><line x1="86" y1="56" x2="86" y2="76" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/><circle cx="90" cy="62" r="4" fill="#FFFFFF"/><circle cx="91" cy="62" r="2" fill="#2b2b2b"/><polygon points="219,100 233,91 233,109" fill="#6DA8F2"/><ellipse cx="200" cy="100" rx="20" ry="13" fill="#6DA8F2"/><circle cx="191" cy="96" r="3.5" fill="#FFFFFF"/><circle cx="192" cy="96" r="1.8" fill="#2b2b2b"/><polygon points="150,141 153,150 163,150 155,156 158,166 150,160 142,166 145,156 137,150 147,150" fill="#F2994A"/></svg>`,
+  b: `<svg viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg" onclick="diffMiss(event)"><rect x="0" y="0" width="300" height="190" fill="#BDE3F7"/><rect x="0" y="158" width="300" height="32" fill="#F2E3B3"/><path d="M30,158 q-6,-20 4,-34 q8,-12 0,-26" stroke="#4E9A51" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M262,158 q6,-18 -4,-32 q-8,-12 0,-24" stroke="#4E9A51" stroke-width="7" fill="none" stroke-linecap="round"/><g stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.8"><circle cx="120" cy="122" r="5"/><circle cx="136" cy="102" r="7"/><circle cx="244" cy="56" r="6"/></g><polygon points="101,66 116,55 116,77" fill="#F2994A"/><ellipse cx="80" cy="66" rx="22" ry="14" fill="#F2994A"/><line x1="74" y1="57" x2="74" y2="75" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/><line x1="84" y1="56" x2="84" y2="76" stroke="#FFFFFF" stroke-width="3" opacity="0.7"/><circle cx="70" cy="62" r="4" fill="#FFFFFF"/><circle cx="69" cy="62" r="2" fill="#2b2b2b"/><path d="M136,166 a14,14 0 0 1 28,0 z" fill="#F2A0C0"/><line x1="143" y1="156" x2="143" y2="166" stroke="#D9739B" stroke-width="2"/><line x1="150" y1="153" x2="150" y2="166" stroke="#D9739B" stroke-width="2"/><line x1="157" y1="156" x2="157" y2="166" stroke="#D9739B" stroke-width="2"/><circle class="diffzone" cx="200" cy="100" r="26" onclick="diffTap(0,this)"/><circle class="diffzone" cx="150" cy="158" r="20" onclick="diffTap(1,this)"/><circle class="diffzone" cx="80" cy="66" r="28" onclick="diffTap(2,this)"/></svg>`,
+  spots: [
+    {say: '找到了！蓝色的小鱼游走了'},
+    {say: '找到了！海星变成贝壳了'},
+    {say: '找到了！小鱼转了个方向'}
+  ]
+}
+];
+var diffTab = 0, diffFound = [false,false,false], diffLock = false;
+function openDiffs(){ setDiffTab(0); go('diffs'); }
+function setDiffTab(n){
+  diffTab = n; diffFound = [false,false,false]; diffLock = false;
+  document.querySelectorAll('#diffTabs .ztab').forEach((b,i)=>b.classList.toggle('on', i===n));
+  document.getElementById('diffStage').innerHTML =
+    '<div class="diffpanel"><div class="dlab">上面的图</div>' + DIFFS[diffTab].a + '</div>' +
+    '<div class="diffpanel"><div class="dlab">下面的图：点一点不一样的地方</div>' + DIFFS[diffTab].b + '</div>';
+  renderDiffProg();
+  diffSay('下面这幅图有三个地方和上面不一样，点一点找出来吧');
+}
+function renderDiffProg(){
+  document.getElementById('diffProg').innerHTML = diffFound.map(f=>'<div class="feeddot'+(f?' on':'')+'"></div>').join('');
+  if(!diffLock) document.getElementById('diffFb').textContent = '找到 ' + diffFound.filter(Boolean).length + ' / 3';
+}
+function diffSay(t){ document.getElementById('diffFb').textContent = t; say(t); }
+function diffTap(i, el){
+  if(diffLock || diffFound[i]) return;
+  diffFound[i] = true; el.classList.add('hit');
+  addStar(); renderDiffProg();
+  diffSay(DIFFS[diffTab].spots[i].say);
+  if(diffFound.every(Boolean)){
+    diffLock = true;
+    const r = +(localStorage.getItem('park_diffs_rounds') || 0);
+    localStorage.setItem('park_diffs_rounds', r + 1);
+    addStar(); addStar();
+    setTimeout(()=>{ diffSay('三个都找到了，你的眼睛真亮'); }, 1600);
+    setTimeout(()=>{ if(document.getElementById('diffs').classList.contains('active')) diffNext(); }, 3800);
+  }
+}
+function diffMiss(e){
+  if(diffLock) return;
+  if(e.target && e.target.classList && e.target.classList.contains('diffzone')) return;
+  diffSay('这里是一样的，再仔细找找');
+}
+function diffReplay(){ diffSay('下面这幅图有三个地方和上面不一样，点一点找出来吧'); }
+function diffNext(){ setDiffTab((diffTab + 1) % DIFFS.length); }
 
 // 初始化星星显示
 document.getElementById('homeStars').textContent = stars;
