@@ -1267,6 +1267,11 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
         <button class="btn ghost" style="flex:1;min-height:56px;padding:0 10px" onclick="setRest(15)">15 分钟</button>
         <button class="btn ghost" style="flex:1;min-height:56px;padding:0 10px" onclick="setRest(20)">20 分钟</button>
       </div>
+      <p style="margin:14px 0 10px">讲故事和点读的声音</p>
+      <div style="display:flex;gap:10px">
+        <button class="btn ghost" id="nvF" style="flex:1;min-height:56px;padding:0 10px" onclick="setNarrator('f')">薇薇 · 女声</button>
+        <button class="btn ghost" id="nvM" style="flex:1;min-height:56px;padding:0 10px" onclick="setNarrator('m')">阿虎 · 男声</button>
+      </div>
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
@@ -1286,6 +1291,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
 <script src="animals-data.js"></script>
 <script src="hanzi-data.js"></script>
 <script src="coloring-data.js"></script>
+<script src="voice-data.js"></script>
 <script>
 /* ================= 数据 ================= */
 const ANIMALS = [
@@ -2418,11 +2424,33 @@ const PALETTE = ['#FF5A5A','#FF9A3D','#FFD93D','#52C75A','#2EC4B6','#4FACFE','#7
 /* ================= 通用 ================= */
 let stars = +(localStorage.getItem('park_stars') || 0);
 let curAudio = null;
+let narrator = localStorage.getItem('park_narrator') || 'f';
+function setNarrator(v){
+  narrator = v;
+  try{ localStorage.setItem('park_narrator', v); }catch(e){}
+  markNarrator();
+}
+function markNarrator(){
+  const f = document.getElementById('nvF'), m = document.getElementById('nvM');
+  if(f) f.style.outline = narrator === 'f' ? '3px solid #4FACFE' : '';
+  if(m) m.style.outline = narrator === 'm' ? '3px solid #4FACFE' : '';
+}
+try{ markNarrator(); }catch(e){}
+function voiceSrc(src){
+  if(narrator !== 'm' || typeof src !== 'string') return src;
+  if(/^assets\/audio\/(s\d|a_|ph\/)/.test(src)) return src.replace(/\.mp3($|\?)/, '_m.mp3$1');
+  return src;
+}
 function play(src){
   try{
     if(curAudio){ curAudio.pause(); curAudio = null; }
     speechSynthesis.cancel();
-    curAudio = new Audio(src);
+    const vs = voiceSrc(src);
+    const url = vs + (String(vs).includes('?') ? '' : '?vv=2');
+    curAudio = new Audio(url);
+    if(vs !== src){
+      curAudio.onerror = ()=>{ curAudio.onerror = null; curAudio.src = src + '?vv=2'; curAudio.play().catch(()=>{}); };
+    }
     curAudio.play().catch(()=>{});
   }catch(e){}
 }
@@ -2441,6 +2469,7 @@ function pickZhVoice(){
 try{ pickZhVoice(); speechSynthesis.onvoiceschanged = pickZhVoice; }catch(e){}
 function say(text){
   try{
+    if(window.VOICE_MAP && VOICE_MAP[text]){ play('assets/audio/' + VOICE_MAP[text] + '.mp3'); return; }
     stopAll();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'zh-CN'; u.rate = 0.92; u.pitch = 1.05;
@@ -3727,6 +3756,15 @@ function renderZooDetail(){
     speakBtn.innerHTML = '<img class="btnico" src="assets/icons/speaker.webp" alt="">读给我听';
     speakBtn.onclick = ()=>say(`${a.n}。${a.s}。${a.f}`);
     s.appendChild(speakBtn);
+    const realKey = window.REAL_AN && (REAL_AN[a.n] || REAL_AN[String(a.n).replace(/^小/, '')]);
+    if(realKey){
+      const sndBtn = document.createElement('button');
+      sndBtn.className = 'btn';
+      sndBtn.style.cssText = 'width:100%;max-width:360px;margin-top:10px';
+      sndBtn.innerHTML = '<img class="btnico" src="assets/icons/speaker.webp" alt="">听听它的叫声';
+      sndBtn.onclick = ()=>play('assets/audio/' + realKey);
+      s.appendChild(sndBtn);
+    }
     const en = s.querySelector('.enspk');
     if(en) en.onclick = ()=>sayEn(a.en);
     zdcar.appendChild(s);
@@ -4776,6 +4814,7 @@ function vehBlast(fType, fr0, fr1, t0, dur, vol){
   src.start(t); src.stop(t + dur + 0.05);
 }
 function vehSound(i){
+  if(window.REAL_VEH && REAL_VEH[i]){ play('assets/audio/real/veh' + i + '.mp3'); return; }
   let k;
   switch(i){
     case 0: vehOsc('square', 440, 440, 0, 0.16, 0.45); vehOsc('square', 440, 440, 0.22, 0.16, 0.45); break;
