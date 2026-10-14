@@ -247,6 +247,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .hygfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
 .hygtip{text-align:center;font-size:13px;color:#B9A98F;padding:8px 24px 18px;line-height:1.6}
 
+/* 动物食堂 v5.3 */
+#feed{background:linear-gradient(180deg,#FFE9D6 0%,#FFF7EA 100%)}
+.feedstage{display:flex;flex-direction:column;align-items:center;padding:10px 20px 2px;gap:2px}
+.feedanimal{font-size:96px;line-height:1.15;filter:drop-shadow(0 8px 16px rgba(0,0,0,.12))}
+.feedanimal.munch{animation:feedmunch .5s ease}
+@keyframes feedmunch{0%{transform:scale(1)}30%{transform:scale(1.15) rotate(-4deg)}60%{transform:scale(1.08) rotate(3deg)}100%{transform:scale(1)}}
+.feedbubble{background:#fff;border-radius:22px;padding:10px 18px;font-size:17px;font-weight:800;color:#4A3F35;box-shadow:0 5px 14px rgba(0,0,0,.08);position:relative;max-width:340px;text-align:center;margin-top:4px}
+.feedbubble:before{content:'';position:absolute;top:-9px;left:50%;margin-left:-9px;border:9px solid transparent;border-top:none;border-bottom:9px solid #fff}
+.feedprog{display:flex;gap:6px;justify-content:center;padding:8px 0 2px}
+.feeddot{width:12px;height:12px;border-radius:50%;background:#E5D9C3}
+.feeddot.on{background:#FF9A3D}
+.feedgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:8px 20px;width:100%;max-width:470px}
+.feedcard{background:#fff;border-radius:22px;padding:12px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;box-shadow:0 5px 14px rgba(0,0,0,.08);border:4px solid transparent;transition:transform .15s,border-color .15s;min-height:140px;justify-content:center}
+.feedcard:active{transform:scale(.94)}
+.feedcard svg{width:64px;height:64px}
+.feedcard .fn{font-size:16px;font-weight:900;color:#4A3F35}
+.feedcard.wrong{animation:hygwig .45s;border-color:#E14D4D}
+.feedcard.correct{border-color:#4CAF50;background:#F2FBF2}
+.feedcard.correct svg{animation:feedfly .55s ease}
+@keyframes feedfly{0%{transform:translateY(0) scale(1);opacity:1}50%{transform:translateY(-26px) scale(1.25);opacity:.9}100%{transform:translateY(-46px) scale(.6);opacity:.2}}
+.feedfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
+.feedbar{display:flex;gap:10px;justify-content:center;padding:0 20px 16px;width:100%;max-width:470px}
+
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
 .bandstage{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 20px;width:100%;max-width:480px;margin:0 auto;min-height:300px}
@@ -482,13 +505,13 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
 body.paper .bandfb{color:#6d5c3f}
-body.paper .shdfb,body.paper .shdname,body.paper .mixfb,body.paper .hygfb{color:#6d5c3f}
+body.paper .shdfb,body.paper .shdname,body.paper .mixfb,body.paper .hygfb,body.paper .feedfb{color:#6d5c3f}
 body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -519,17 +542,17 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
 body.ink .bandfb{color:#5c5c55}
-body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb{color:#5c5c55}
+body.ink .shdfb,body.ink .shdname,body.ink .mixfb,body.ink .hygfb,body.ink .feedfb{color:#5c5c55}
 body.ink .shdcard.done{background:#F7F7F3}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
@@ -614,7 +637,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintF" onclick="openEmotion()"><img src="assets/icons/emotion.png" alt="认识情绪"><span class="an">认识情绪</span><span class="as">表情卡·猜情绪</span></div>
       <div class="appcard tintA" onclick="openShadow()"><img src="assets/icons/shadow.webp" alt="影子找朋友"><span class="an">影子找朋友</span><span class="as">找影子·3 档难度</span></div>
       <div class="appcard tintC" onclick="openMixlab()"><img src="assets/icons/mix.webp" alt="颜色魔法师"><span class="an">颜色魔法师</span><span class="as">调出新颜色·魔法食谱</span></div>
-      <div class="appcard tintD" onclick="openHygiene()"><span class="newbadge">新</span><img src="assets/icons/hyg.webp" alt="我会刷牙"><span class="an">我会刷牙</span><span class="as">刷牙·洗手步骤闯关</span></div>
+      <div class="appcard tintD" onclick="openHygiene()"><img src="assets/icons/hyg.webp" alt="我会刷牙"><span class="an">我会刷牙</span><span class="as">刷牙·洗手步骤闯关</span></div>
+      <div class="appcard tintB" onclick="openFeed()"><span class="newbadge">新</span><img src="assets/icons/feed.webp" alt="动物食堂"><span class="an">动物食堂</span><span class="as">喂 10 种小动物</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -1081,6 +1105,26 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     <div class="hygtip">每天早晚刷牙，饭前便后洗手<br>牙齿白白，小手香香</div>
   </section>
 
+  <!-- 动物食堂 -->
+  <section id="feed" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">动物食堂</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="feedstage">
+      <div class="feedanimal" id="feedAnimal">🐰</div>
+      <div class="feedbubble" id="feedBubble">小兔想吃胡萝卜</div>
+    </div>
+    <div class="feedprog" id="feedProg"></div>
+    <div class="feedgrid" id="feedGrid"></div>
+    <div class="feedfb" id="feedFb">点一盘食物喂给小动物</div>
+    <div class="feedbar">
+      <button class="btn ghost" style="flex:1" onclick="nextFeedAnimal()">🦘 换一只动物</button>
+      <button class="btn ghost" style="flex:1" onclick="sayFeedWant()">🔊 再听一遍</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1126,7 +1170,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.2 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.3 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -4434,6 +4478,85 @@ function hygHint(){
   say(expect.name+'是第'+(hygNext+1)+'步');
   setTimeout(function(){el.classList.remove('hint');},1600);
 }
+
+/* 动物食堂 v5.3 */
+const FEED_FOODS={
+bone:{name:'大骨头',svg:'<svg viewBox="0 0 64 64"><g transform="rotate(-24 32 32)"><rect x="18" y="26" width="28" height="12" rx="6" fill="#FFF6E9" stroke="#E8CFA8" stroke-width="2.5"/><circle cx="16" cy="25" r="7" fill="#FFF6E9" stroke="#E8CFA8" stroke-width="2.5"/><circle cx="16" cy="39" r="7" fill="#FFF6E9" stroke="#E8CFA8" stroke-width="2.5"/><circle cx="48" cy="25" r="7" fill="#FFF6E9" stroke="#E8CFA8" stroke-width="2.5"/><circle cx="48" cy="39" r="7" fill="#FFF6E9" stroke="#E8CFA8" stroke-width="2.5"/></g></svg>'},
+fish:{name:'小鱼',svg:'<svg viewBox="0 0 64 64"><path d="M8 32l12-13v26z" fill="#F29BB4"/><ellipse cx="32" cy="32" rx="17" ry="12" fill="#F6A96C" stroke="#E0864A" stroke-width="2.5"/><circle cx="38" cy="28" r="2.6" fill="#4A3F35"/><path d="M22 26c4 6 4 6 0 12" stroke="#E0864A" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>'},
+carrot:{name:'胡萝卜',svg:'<svg viewBox="0 0 64 64"><path d="M26 22c-3 14-2 26 2 34 4-8 8-20 6-34z" fill="#F68B3E" stroke="#D96F22" stroke-width="2.5"/><path d="M28 14c-4-6-3-10 2-12 1 5 1 8 0 11 4-4 8-5 12-4-2 4-8 8-14 5z" fill="#58B368" stroke="#3E8F4E" stroke-width="2.5"/><path d="M26 32h6M26 40h7" stroke="#D96F22" stroke-width="2.5" stroke-linecap="round"/></svg>'},
+bamboo:{name:'竹子',svg:'<svg viewBox="0 0 64 64"><rect x="24" y="8" width="16" height="50" rx="8" fill="#58B368" stroke="#3E8F4E" stroke-width="2.5"/><path d="M24 24h16M24 40h16" stroke="#3E8F4E" stroke-width="2.5"/><ellipse cx="40" cy="14" rx="8" ry="5" fill="#7ED6A0" stroke="#3E8F4E" stroke-width="2.5" transform="rotate(-25 40 14)"/><ellipse cx="24" cy="30" rx="8" ry="5" fill="#7ED6A0" stroke="#3E8F4E" stroke-width="2.5" transform="rotate(25 24 30)"/></svg>'},
+banana:{name:'香蕉',svg:'<svg viewBox="0 0 64 64"><path d="M12 20c2 18 14 30 36 32 4 .5 7-2 6-5-1-2.5-4-3.5-7-3C30 42 20 32 18 18c-.6-3.6-5.6-2.4-6 2z" fill="#F6D54E" stroke="#D9A91E" stroke-width="2.5"/><rect x="8" y="12" width="8" height="10" rx="3" fill="#8B5E34"/></svg>'},
+leaf:{name:'树叶',svg:'<svg viewBox="0 0 64 64"><path d="M32 6c14 8 18 24 10 40-6 8-14 10-22 8C10 44 12 26 32 6z" fill="#7ED6A0" stroke="#3E8F4E" stroke-width="2.5"/><path d="M32 10v44M32 24l10-6M32 24l-10-6M32 38l12-6M32 38l-12-6" stroke="#3E8F4E" stroke-width="2" stroke-linecap="round"/></svg>'},
+grass:{name:'青草',svg:'<svg viewBox="0 0 64 64"><path d="M10 52c2-14 6-24 12-30-1 12-2 22 0 30M24 52c0-12 3-24 10-32 0 14 1 24 0 32M40 52c3-10 7-18 14-22-3 10-5 16-6 22" stroke="#58B368" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M8 52h48" stroke="#3E8F4E" stroke-width="4" stroke-linecap="round"/></svg>'},
+honey:{name:'蜂蜜',svg:'<svg viewBox="0 0 64 64"><path d="M20 22h24v26a6 6 0 0 1-6 6H26a6 6 0 0 1-6-6z" fill="#F6B84E" stroke="#D99A2E" stroke-width="2.5"/><rect x="16" y="14" width="32" height="9" rx="4.5" fill="#8B5E34"/><path d="M26 30c3-2.6 6 2.6 9 0s6 2.6 9 0" stroke="#D99A2E" stroke-width="2.5" fill="none" stroke-linecap="round"/><ellipse cx="32" cy="42" rx="7" ry="4.5" fill="#E89B2E" opacity=".55"/></svg>'},
+worm:{name:'小虫子',svg:'<svg viewBox="0 0 64 64"><circle cx="18" cy="40" r="8" fill="#A8E06B" stroke="#6FA83E" stroke-width="2.5"/><circle cx="30" cy="34" r="8" fill="#C6F09A" stroke="#6FA83E" stroke-width="2.5"/><circle cx="42" cy="30" r="8" fill="#A8E06B" stroke="#6FA83E" stroke-width="2.5"/><circle cx="44" cy="27" r="2.4" fill="#4A3F35"/><path d="M50 22c3-3 5-3 8-2M48 16c2-4 4-5 8-4" stroke="#6FA83E" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>'},
+rice:{name:'小米粒',svg:'<svg viewBox="0 0 64 64"><path d="M10 30h44c0 12-8 22-22 22S10 42 10 30z" fill="#7ED6F2" stroke="#3E7DE0" stroke-width="2.5"/><ellipse cx="32" cy="30" rx="22" ry="8" fill="#fff" stroke="#3E7DE0" stroke-width="2.5"/><circle cx="22" cy="27" r="3.4" fill="#F6D54E"/><circle cx="32" cy="25" r="3.4" fill="#F6D54E"/><circle cx="42" cy="27" r="3.4" fill="#F6D54E"/><circle cx="27" cy="31" r="3.4" fill="#F2C230"/><circle cx="37" cy="31" r="3.4" fill="#F2C230"/></svg>'}
+};
+const FEED_ANIMALS=[
+{emoji:'🐶',name:'小狗',food:'bone'},{emoji:'🐱',name:'小猫',food:'fish'},
+{emoji:'🐰',name:'小兔',food:'carrot'},{emoji:'🐼',name:'熊猫',food:'bamboo'},
+{emoji:'🐵',name:'小猴',food:'banana'},{emoji:'🐘',name:'大象',food:'leaf'},
+{emoji:'🦆',name:'小鸭',food:'grass'},{emoji:'🐝',name:'小蜜蜂',food:'honey'},
+{emoji:'🐸',name:'小青蛙',food:'worm'},{emoji:'🐷',name:'小猪',food:'rice'}
+];
+const FEED_YUM=['真好吃，谢谢宝宝！','嗯，好吃好吃！','宝宝喂得真好！','啊呜啊呜，太好吃啦！'];
+let feedOrder=[],feedIdx=0,feedTarget=null,feedOpts=[],feedStreak=0;
+function feedShuf(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function openFeed(){feedOrder=feedShuf(FEED_ANIMALS.slice());feedIdx=0;feedStreak=0;startFeedRound();go('feed');}
+function sayFeedWant(){if(feedTarget)say(feedTarget.name+'想吃'+FEED_FOODS[feedTarget.food].name);}
+function renderFeedProg(){
+  const p=document.getElementById('feedProg');p.innerHTML='';
+  for(let i=0;i<5;i++){const d=document.createElement('div');d.className='feeddot'+(i<Math.floor(feedStreak/3)?' on':'');p.appendChild(d);}
+}
+function startFeedRound(){
+  if(feedIdx>=feedOrder.length){feedOrder=feedShuf(feedOrder);feedIdx=0;}
+  feedTarget=feedOrder[feedIdx];
+  document.getElementById('feedAnimal').textContent=feedTarget.emoji;
+  const ids=Object.keys(FEED_FOODS).filter(function(k){return k!==feedTarget.food;});
+  feedOpts=feedShuf([feedTarget.food,feedShuf(ids)[0],feedShuf(ids)[1]]);
+  const g=document.getElementById('feedGrid');g.innerHTML='';
+  feedOpts.forEach(function(k){
+    const d=document.createElement('div');
+    d.className='feedcard';d.id='feed_'+k;
+    d.innerHTML=FEED_FOODS[k].svg+'<div class="fn">'+FEED_FOODS[k].name+'</div>';
+    d.onclick=function(){tapFeed(k);};
+    g.appendChild(d);
+  });
+  document.getElementById('feedBubble').textContent=feedTarget.name+'想吃'+FEED_FOODS[feedTarget.food].name;
+  document.getElementById('feedFb').textContent='点一盘食物喂给'+feedTarget.name;
+  renderFeedProg();
+  say(feedTarget.name+'饿了，想吃'+FEED_FOODS[feedTarget.food].name+'，喂喂它吧');
+}
+function tapFeed(k){
+  if(k===feedTarget.food){
+    const el=document.getElementById('feed_'+k);
+    el.classList.add('correct');
+    const an=document.getElementById('feedAnimal');
+    an.classList.remove('munch');void an.offsetWidth;an.classList.add('munch');
+    addStar();feedStreak++;feedIdx++;renderFeedProg();
+    const msg=FEED_YUM[Math.floor(Math.random()*FEED_YUM.length)];
+    document.getElementById('feedFb').textContent=msg;
+    document.getElementById('feedBubble').textContent='谢谢宝宝，好好吃呀！';
+    say(msg);
+    if(feedStreak>=15){
+      feedStreak=0;
+      try{localStorage.setItem('park_feed_rounds',String((parseInt(localStorage.getItem('park_feed_rounds')||'0',10)||0)+1));}catch(e){}
+      addStar();addStar();addStar();
+      document.getElementById('feedBubble').textContent='动物们都吃饱啦！';
+      document.getElementById('feedFb').textContent='哇，5 只小动物都吃饱了！';
+      say('哇，小动物们都吃饱了，宝宝真能干！');
+      setTimeout(startFeedRound,3500);
+    }else{
+      setTimeout(startFeedRound,1400);
+    }
+  }else{
+    const el=document.getElementById('feed_'+k);
+    el.classList.remove('wrong');void el.offsetWidth;el.classList.add('wrong');
+    say(FEED_FOODS[k].name+'不是'+feedTarget.name+'想吃的哦');
+    document.getElementById('feedFb').textContent='再想想，'+feedTarget.name+'想吃'+FEED_FOODS[feedTarget.food].name+'呀';
+  }
+}
+function nextFeedAnimal(){feedIdx++;startFeedRound();}
 
 // 初始化星星显示
 document.getElementById('homeStars').textContent = stars;
