@@ -339,6 +339,22 @@ body.ink .tracewrap{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 .diffzone.hit{fill:none;stroke:#E14D4D;stroke-width:6;stroke-linecap:round;transform-box:fill-box;transform-origin:center;animation:diffpop .45s ease-out}
 @keyframes diffpop{0%{transform:scale(.3);opacity:0}70%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
 .diffprog{display:flex;gap:6px;justify-content:center;padding:6px 0 2px}
+/* v5.9 晚安模式：深色夜空舞台为内容呈现，三主题通用；步卡走主题名单 */
+.nightgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px 16px;max-width:520px;margin:0 auto;width:100%}
+.nightcard{background:#fff;border-radius:20px;padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;box-shadow:0 5px 14px rgba(0,0,0,.08);border:4px solid transparent;transition:transform .15s,border-color .15s;min-height:128px;justify-content:center;position:relative}
+.nightcard:active{transform:scale(.94)}
+.nightcard .ne{font-size:44px;line-height:1.1;filter:drop-shadow(0 4px 8px rgba(0,0,0,.15))}
+.nightcard .nn{font-size:15px;font-weight:900;color:#4A3F35}
+.nightcard.done{border-color:#7C9EFF;background:#EFF3FF}
+.nightcard.done::after{content:'✓';position:absolute;top:6px;right:10px;width:26px;height:26px;border-radius:50%;background:#7C9EFF;color:#fff;font-size:16px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.nightcard.done .ne{filter:grayscale(.25) opacity(.7)}
+.nightsky{margin:8px 16px 0;border-radius:22px;background:linear-gradient(180deg,#141B3D 0%,#232E63 55%,#31407E 100%);min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;box-shadow:0 8px 20px rgba(10,15,45,.35)}
+.nightsky .tw{position:absolute;border-radius:50%;background:#FFF8DC;animation:twinkle 2.6s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+.nightmoon{font-size:110px;line-height:1;transition:transform 4s ease-in-out;filter:drop-shadow(0 0 28px rgba(255,236,170,.55));z-index:1}
+.nightmoon.big{transform:scale(1.35)}
+.nightword{color:#F5EEDC;font-size:22px;font-weight:900;letter-spacing:6px;z-index:1;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.nighthint{color:#B9C4EE;font-size:13px;font-weight:700;z-index:1}
 
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
@@ -575,8 +591,8 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace,body.paper #vehicle,body.paper #weather,body.paper #safety,body.paper #diffs,body.paper #poems,body.paper #poemview{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard,body.paper .vehcard,body.paper .wthcard,body.paper .safecard,body.paper .diffpanel{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab,body.paper #hygiene,body.paper #feed,body.paper #trace,body.paper #vehicle,body.paper #weather,body.paper #safety,body.paper #diffs,body.paper #goodnight,body.paper #poems,body.paper #poemview{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp,body.paper .hygcard,body.paper .hygtab,body.paper .feedcard,body.paper .vehcard,body.paper .wthcard,body.paper .safecard,body.paper .diffpanel,body.paper .nightcard{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
@@ -612,12 +628,12 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace,body.ink #vehicle,body.ink #weather,body.ink #safety,body.ink #diffs,body.ink #poems,body.ink #poemview{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab,body.ink #hygiene,body.ink #feed,body.ink #trace,body.ink #vehicle,body.ink #weather,body.ink #safety,body.ink #diffs,body.ink #goodnight,body.ink #poems,body.ink #poemview{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn,body.ink .vehcard,body.ink .wthcard,body.ink .safecard,body.ink .diffpanel{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp,body.ink .hygcard,body.ink .hygtab,body.ink .feedcard,body.ink .tracebtn,body.ink .vehcard,body.ink .wthcard,body.ink .safecard,body.ink .diffpanel,body.ink .nightcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
@@ -732,7 +748,8 @@ body.ink .pvplay{background:#555}
       <div class="appcard tintE" onclick="openVehicle()"><img src="assets/icons/vehicle.webp" alt="交通工具声音馆"><span class="an">交通工具声音馆</span><span class="as">10 种车车·听声音</span></div>
       <div class="appcard tintA" onclick="openWeather()"><img src="assets/icons/weather.webp" alt="天气穿衣挑战"><span class="an">天气穿衣挑战</span><span class="as">看天气选衣服·5 轮闯关</span></div>
       <div class="appcard tintB" onclick="openSafety()"><img src="assets/icons/safety.webp" alt="过马路安全课"><span class="an">过马路安全课</span><span class="as">红绿灯·安全闯关</span></div>
-      <div class="appcard tintC" onclick="openDiffs()"><span class="newbadge">新</span><img src="assets/icons/diff.webp" alt="找不同"><span class="an">找不同</span><span class="as">3 幅图·眼力大挑战</span></div>
+      <div class="appcard tintC" onclick="openDiffs()"><img src="assets/icons/diff.webp" alt="找不同"><span class="an">找不同</span><span class="as">3 幅图·眼力大挑战</span></div>
+      <div class="appcard tintF" onclick="openNight()"><span class="newbadge">新</span><img src="assets/icons/night.webp" alt="晚安模式"><span class="an">晚安模式</span><span class="as">睡前准备·呼吸引导</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -1339,6 +1356,25 @@ body.ink .pvplay{background:#555}
     </div>
   </section>
 
+  <!-- 晚安模式 v5.9 -->
+  <section id="goodnight" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">晚安模式</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="nightTabs">
+      <button class="ztab on" onclick="setNightTab(0)">🌙 睡前准备</button>
+      <button class="ztab" onclick="setNightTab(1)">💤 呼吸引导</button>
+    </div>
+    <div id="nightStage"></div>
+    <div class="safefb" id="nightFb">点一点，把睡前准备都做好</div>
+    <div class="feedbar">
+      <button class="btn ghost" style="flex:1" onclick="nightReplay()">🔊 再听一遍</button>
+      <button class="btn ghost" style="flex:1" id="nightActBtn" onclick="nightAction()">🔁 重新开始</button>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1389,7 +1425,7 @@ body.ink .pvplay{background:#555}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.8 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.9 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -5340,6 +5376,116 @@ function diffMiss(e){
 }
 function diffReplay(){ diffSay('下面这幅图有三个地方和上面不一样，点一点找出来吧'); }
 function diffNext(){ setDiffTab((diffTab + 1) % DIFFS.length); }
+
+/* ================= 晚安模式 v5.9：睡前准备打卡 + 呼吸引导 ================= */
+const NIGHT_STEPS = [
+  {e:'🧸', n:'收好玩具', say:'把玩具收好，明天再玩'},
+  {e:'🪥', n:'刷刷牙', say:'刷刷牙，小牙齿干干净净'},
+  {e:'🛁', n:'洗香香', say:'洗得香香的，真舒服'},
+  {e:'👕', n:'换上睡衣', say:'换上软软的睡衣'},
+  {e:'📖', n:'听个小故事', say:'听一个短短的小故事'},
+  {e:'🤗', n:'抱抱说晚安', say:'抱抱，对妈妈说晚安'}
+];
+let nightTab = 0, nightDone = [], nightLock = false, nightBreathTimer = null, nightBreathRound = 0, nightBreathPhase = 0, nightLastSay = '';
+function openNight(){ setNightTab(0); go('goodnight'); }
+function setNightTab(n){
+  nightTab = n; nightStopBreath();
+  document.querySelectorAll('#nightTabs .ztab').forEach((b,i)=>b.classList.toggle('on', i===n));
+  document.getElementById('nightActBtn').textContent = (n === 0) ? '🔁 重新开始' : '💤 开始呼吸';
+  if(n === 0){ nightRenderSteps(); }
+  else { nightRenderBreath(); }
+}
+function nightSay(t){ nightLastSay = t; document.getElementById('nightFb').textContent = t; say(t); }
+function nightReplay(){ if(nightLastSay) say(nightLastSay); }
+function nightAction(){ if(nightTab === 0){ nightReset(); } else { nightBreathToggle(); } }
+function nightRenderSteps(){
+  document.getElementById('nightStage').innerHTML = '<div class="nightgrid">' + NIGHT_STEPS.map((s,i)=>
+    '<div class="nightcard'+(nightDone[i]?' done':'')+'" onclick="nightTap('+i+',this)"><div class="ne">'+s.e+'</div><div class="nn">'+s.n+'</div></div>').join('') + '</div>';
+  const d = nightDone.filter(Boolean).length;
+  document.getElementById('nightFb').textContent = d === 0 ? '点一点，把睡前准备都做好' : '已经做好 ' + d + ' / 6';
+}
+function nightTap(i, el){
+  if(nightLock || nightDone[i]) return;
+  nightDone[i] = true; nightLock = true;
+  el.classList.add('done');
+  const d = nightDone.filter(Boolean).length;
+  if(d >= 6){
+    const r = +(localStorage.getItem('park_night_rounds') || 0);
+    localStorage.setItem('park_night_rounds', r + 1);
+    addStar();
+    nightSay('准备都做好了，晚安，好梦');
+    nightLullaby();
+    setTimeout(()=>{ nightLock = false; }, 2200);
+  } else {
+    nightSay(NIGHT_STEPS[i].say + '，已经做好 ' + d + ' / 6');
+    setTimeout(()=>{ nightLock = false; }, 600);
+  }
+}
+function nightReset(){ nightDone = []; nightLock = false; nightRenderSteps(); nightSay('重新开始吧'); }
+function nightLullaby(){
+  try{
+    const ctx = bandAudio(), t0 = ctx.currentTime + 0.05;
+    const seq = [523.25, 440.00, 392.00, 329.63, 392.00, 523.25];
+    seq.forEach((f, k)=>{
+      const o = ctx.createOscillator(), g = ctx.createGain(), t = t0 + k * 0.42;
+      o.type = 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(0.25, t + 0.08);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+      o.connect(g); g.connect(ctx.destination);
+      o.start(t); o.stop(t + 0.6);
+    });
+  }catch(e){}
+}
+function nightRenderBreath(){
+  let stars = '';
+  for(let k=0;k<12;k++) stars += '<i class="tw" style="left:'+(3+Math.random()*94).toFixed(1)+'%;top:'+(4+Math.random()*86).toFixed(1)+'%;width:'+(3+Math.random()*4).toFixed(0)+'px;height:'+(3+Math.random()*4).toFixed(0)+'px;animation-delay:'+(Math.random()*2.6).toFixed(1)+'s"></i>';
+  document.getElementById('nightStage').innerHTML =
+    '<div class="nightsky">' + stars +
+    '<div class="nightmoon" id="nightMoon">🌙</div>' +
+    '<div class="nightword" id="nightWord">准备好了吗</div>' +
+    '<div class="nighthint">跟着月亮一起，一呼一吸</div></div>' +
+    '<div class="safeprog" id="nightDots">' + [0,1,2].map(k=>'<div class="feeddot'+(k<nightBreathRound?' on':'')+'"></div>').join('') + '</div>';
+  document.getElementById('nightFb').textContent = '点下面按钮开始，和月亮一起呼吸';
+}
+function nightRenderBreathDots(){
+  const box = document.getElementById('nightDots');
+  if(box) box.innerHTML = [0,1,2].map(k=>'<div class="feeddot'+(k<nightBreathRound?' on':'')+'"></div>').join('');
+}
+function nightBreathToggle(){
+  if(nightBreathTimer){ nightStopBreath(); document.getElementById('nightFb').textContent = '休息一下，随时可以再来'; return; }
+  nightBreathRound = 0; nightBreathPhase = 0; nightRenderBreathDots();
+  document.getElementById('nightActBtn').textContent = '⏹ 停止';
+  nightSay('跟着月亮一起呼吸，吸气');
+  nightBreathStep();
+}
+function nightBreathStep(){
+  const moon = document.getElementById('nightMoon'), word = document.getElementById('nightWord');
+  const gn = document.getElementById('goodnight');
+  if(!moon || !word || !gn || !gn.classList.contains('active')){ nightStopBreath(); return; }
+  if(nightBreathPhase % 2 === 0){ moon.classList.add('big'); word.textContent = '吸——'; }
+  else { moon.classList.remove('big'); word.textContent = '呼——'; }
+  nightBreathTimer = setTimeout(()=>{
+    nightBreathPhase++;
+    if(nightBreathPhase % 2 === 0){
+      nightBreathRound++; nightRenderBreathDots();
+      if(nightBreathRound >= 3){
+        nightStopBreath();
+        addStar();
+        const r = +(localStorage.getItem('park_night_rounds') || 0);
+        localStorage.setItem('park_night_rounds', r + 1);
+        nightSay('呼吸完了，身体放松了，晚安');
+        return;
+      }
+    }
+    nightBreathStep();
+  }, 4000);
+}
+function nightStopBreath(){
+  if(nightBreathTimer){ clearTimeout(nightBreathTimer); nightBreathTimer = null; }
+  const b = document.getElementById('nightActBtn'); if(b && nightTab === 1) b.textContent = '💤 开始呼吸';
+  const moon = document.getElementById('nightMoon'); if(moon) moon.classList.remove('big');
+}
 
 // 初始化星星显示
 document.getElementById('homeStars').textContent = stars;
