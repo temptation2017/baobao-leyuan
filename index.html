@@ -171,6 +171,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .memcard .mfront img{width:100%;height:100%;object-fit:cover}
 .memcard.done .mfront{outline:4px solid #7BC96F;outline-offset:-4px}
 .memfb{min-height:52px;text-align:center;font-size:19px;font-weight:800;color:#B4691E;padding:4px 20px}
+/* 乐器小乐队 */
+#band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
+.bandstage{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 20px;width:100%;max-width:480px;margin:0 auto;min-height:300px}
+.xylo{display:flex;align-items:flex-end;gap:7px;height:100%;max-height:330px;width:100%;justify-content:center}
+.xbar{flex:1;max-width:54px;border:none;border-radius:12px 12px 16px 16px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.14);transition:transform .08s;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;color:#fff;font-weight:900;font-size:17px;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.xbar:active,.xbar.hit{transform:translateY(7px) scale(.97)}
+.drumset{display:flex;align-items:center;justify-content:center;gap:16px;width:100%}
+.drumpad{width:104px;height:104px;border-radius:50%;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#fff;font-weight:900;font-size:18px;text-shadow:0 1px 3px rgba(0,0,0,.3);box-shadow:0 6px 0 rgba(0,0,0,.14);transition:transform .08s}
+.drumpad.big{width:128px;height:128px}
+.drumpad:active,.drumpad.hit{transform:scale(.93)}
+.shakers{display:flex;align-items:center;justify-content:center;gap:26px;width:100%}
+.shaker{width:120px;height:170px;border:none;border-radius:26px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff;font-weight:900;font-size:19px;text-shadow:0 1px 3px rgba(0,0,0,.3);box-shadow:0 6px 0 rgba(0,0,0,.14);transition:transform .08s}
+.shaker:active,.shaker.hit{transform:rotate(-8deg) scale(.96)}
+.bandfb{min-height:52px;text-align:center;font-size:19px;font-weight:800;color:#B4691E;padding:4px 20px}
 .micbtn{margin-left:auto;width:52px;height:52px;border-radius:50%;background:#fff;border:none;box-shadow:0 4px 12px rgba(180,120,60,.18);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .micbtn img{width:32px;height:32px}
 .micbtn:active{transform:scale(.92)}
@@ -392,11 +406,12 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
+body.paper .bandfb{color:#6d5c3f}
 body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -427,14 +442,16 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
+body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
 body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
+body.ink .bandfb{color:#5c5c55}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
 body.ink .memcard .mf{box-shadow:none}
@@ -513,7 +530,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintD" onclick="openStudioHome()"><img src="assets/icons/mic.webp" alt="录音棚"><span class="an">录音棚</span><span class="as">家人的声音</span></div>
       <div class="appcard tintF" onclick="startPuzzle()"><img src="assets/icons/puzzle.webp" alt="拼图"><span class="an">拼图</span><span class="as">动动小手</span></div>
       <div class="appcard tintC" onclick="openBubbles()"><img src="assets/icons/bubbles.webp" alt="泡泡"><span class="an">泡泡</span><span class="as">戳一戳泡泡</span></div>
-      <div class="appcard tintB" onclick="openMemory()"><span class="newbadge">新</span><img src="assets/icons/find.webp" alt="记忆翻牌"><span class="an">记忆翻牌</span><span class="as">翻牌找朋友</span></div>
+      <div class="appcard tintB" onclick="openMemory()"><img src="assets/icons/find.webp" alt="记忆翻牌"><span class="an">记忆翻牌</span><span class="as">翻牌找朋友</span></div>
+      <div class="appcard tintE" onclick="openBand()"><span class="newbadge">新</span><img src="assets/icons/band.webp" alt="乐器小乐队"><span class="an">乐器小乐队</span><span class="as">木琴·手鼓·沙锤</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -872,6 +890,22 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+  <!-- 乐器小乐队 -->
+  <section id="band" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">乐器小乐队</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="memtabs" id="bandTabs">
+      <button class="ztab on" onclick="setBandTab(0)">木琴</button>
+      <button class="ztab" onclick="setBandTab(1)">手鼓</button>
+      <button class="ztab" onclick="setBandTab(2)">沙锤</button>
+    </div>
+    <div class="bandstage" id="bandStage"></div>
+    <div class="bandfb" id="bandFb">敲敲打打，奏出美妙的音乐</div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -917,7 +951,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v4.7 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v4.8 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -3752,6 +3786,119 @@ function peekMemory(){
   rest.forEach(el=>el.classList.add('open'));
   say('看清楚，想一想');
   setTimeout(()=>{ rest.forEach(el=>el.classList.remove('open')); memFirst = -1; memLock = false; }, 1600);
+}
+
+/* ================= 乐器小乐队 ================= */
+let bandCtx = null, bandTab = 0, bandTaps = 0, bandNoise = null;
+function bandAudio(){
+  if(!bandCtx){ bandCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+  if(bandCtx.state === 'suspended') bandCtx.resume();
+  return bandCtx;
+}
+function bandNoiseBuf(ctx){
+  if(bandNoise) return bandNoise;
+  const len = ctx.sampleRate * 0.5, buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+  for(let i=0;i<len;i++) d[i] = Math.random()*2-1;
+  bandNoise = buf; return buf;
+}
+const XYLO_NOTES = [
+  {n:'哆',f:261.63,c:'#FF5A5A'},{n:'来',f:293.66,c:'#FF9F2E'},{n:'咪',f:329.63,c:'#FFD93D'},
+  {n:'发',f:349.23,c:'#6BCB77'},{n:'唆',f:392.00,c:'#4D96FF'},{n:'拉',f:440.00,c:'#9B5DE5'},
+  {n:'西',f:493.88,c:'#F15BB5'},{n:'哆',f:523.25,c:'#A86B3C'}
+];
+function xyloTone(f){
+  const ctx = bandAudio(), t = ctx.currentTime;
+  const o = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain(), g2 = ctx.createGain();
+  o.type = 'sine'; o.frequency.value = f;
+  o2.type = 'triangle'; o2.frequency.value = f * 2;
+  g2.gain.value = 0.25;
+  g.gain.setValueAtTime(0.85, t);
+  g.gain.exponentialRampToValueAtTime(0.001, t + 1.4);
+  o.connect(g); o2.connect(g2); g2.connect(g); g.connect(ctx.destination);
+  o.start(t); o2.start(t); o.stop(t+1.5); o2.stop(t+1.5);
+}
+function drumHit(kind){
+  const ctx = bandAudio(), t = ctx.currentTime;
+  if(kind === 0){ // 大鼓：低音下扫
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(150, t);
+    o.frequency.exponentialRampToValueAtTime(48, t + 0.22);
+    g.gain.setValueAtTime(1.0, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.5);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(t); o.stop(t + 0.55);
+  } else if(kind === 1){ // 小鼓：噪声+中音
+    const src = ctx.createBufferSource(); src.buffer = bandNoiseBuf(ctx);
+    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1800; bp.Q.value = 0.8;
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.9, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
+    src.connect(bp); bp.connect(g); g.connect(ctx.destination);
+    src.start(t); src.stop(t + 0.3);
+    const o = ctx.createOscillator(), g2 = ctx.createGain();
+    o.type = 'triangle'; o.frequency.value = 210;
+    g2.gain.setValueAtTime(0.5, t);
+    g2.gain.exponentialRampToValueAtTime(0.001, t + 0.16);
+    o.connect(g2); g2.connect(ctx.destination);
+    o.start(t); o.stop(t + 0.2);
+  } else { // 铃鼓：高频抖动
+    const src = ctx.createBufferSource(); src.buffer = bandNoiseBuf(ctx);
+    const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 6500;
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.55, t);
+    g.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+    src.connect(hp); hp.connect(g); g.connect(ctx.destination);
+    src.start(t); src.stop(t + 0.25);
+  }
+}
+function shakerHit(){
+  const ctx = bandAudio(), t = ctx.currentTime;
+  [0, 0.09].forEach(dt=>{
+    const src = ctx.createBufferSource(); src.buffer = bandNoiseBuf(ctx);
+    const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 4200;
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.6, t + dt);
+    g.gain.exponentialRampToValueAtTime(0.001, t + dt + 0.12);
+    src.connect(hp); hp.connect(g); g.connect(ctx.destination);
+    src.start(t + dt); src.stop(t + dt + 0.14);
+  });
+}
+function bandHit(el){
+  el.classList.add('hit');
+  setTimeout(()=>el.classList.remove('hit'), 140);
+  bandTaps++;
+  if(bandTaps >= 12){
+    bandTaps = 0;
+    addStar();
+    document.getElementById('bandFb').textContent = '太好听了！奖励 1 颗星';
+    say('太好听了');
+  }
+}
+function openBand(){ setBandTab(0); go('band'); }
+function setBandTab(n){
+  bandTab = n; bandTaps = 0;
+  document.querySelectorAll('#bandTabs .ztab').forEach((b,i)=>b.classList.toggle('on', i===n));
+  const st = document.getElementById('bandStage');
+  if(n === 0){
+    st.innerHTML = '<div class="xylo">' + XYLO_NOTES.map((x,i)=>
+      '<button class="xbar" style="background:'+x.c+';height:'+(100-i*5)+'%" onclick="xyloTone('+x.f+');bandHit(this)">'+x.n+'</button>'
+    ).join('') + '</div>';
+    document.getElementById('bandFb').textContent = '敲敲彩色琴键，从"哆"一直敲到高音"哆"';
+  } else if(n === 1){
+    st.innerHTML = '<div class="drumset">' +
+      '<button class="drumpad big" style="background:#FF6B6B" onclick="drumHit(0);bandHit(this)">大鼓<br><span style="font-size:13px">咚咚</span></button>' +
+      '<button class="drumpad" style="background:#4D96FF" onclick="drumHit(1);bandHit(this)">小鼓<br><span style="font-size:13px">嗒嗒</span></button>' +
+      '<button class="drumpad" style="background:#9B5DE5" onclick="drumHit(2);bandHit(this)">铃鼓<br><span style="font-size:13px">叮叮</span></button>' +
+      '</div>';
+    document.getElementById('bandFb').textContent = '拍一拍鼓面，每个鼓声音都不一样';
+  } else {
+    st.innerHTML = '<div class="shakers">' +
+      '<button class="shaker" style="background:#FF9F2E" onclick="shakerHit();bandHit(this)">左手<br><span style="font-size:13px">摇一摇</span></button>' +
+      '<button class="shaker" style="background:#6BCB77" onclick="shakerHit();bandHit(this)">右手<br><span style="font-size:13px">晃一晃</span></button>' +
+      '</div>';
+    document.getElementById('bandFb').textContent = '摇一摇沙锤，左手右手一起打拍子';
+  }
 }
 
 // 初始化星星显示
