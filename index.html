@@ -204,6 +204,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .shdcard.done img{filter:none}
 .shdname{font-size:15px;font-weight:800;color:#5B7B9B;margin-top:4px;min-height:22px}
 .shdfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
+/* 颜色魔法师 v5.1 */
+.mixpal{display:flex;gap:16px;justify-content:center;padding:16px 20px 4px;flex-wrap:wrap}
+.mixsw{width:68px;height:68px;border-radius:50%;border:4px solid rgba(0,0,0,.08);box-shadow:0 4px 12px rgba(0,0,0,.15);cursor:pointer;transition:transform .15s;min-width:68px;min-height:68px}
+.mixsw:active{transform:scale(.88)}
+.mixslots{display:flex;gap:12px;justify-content:center;align-items:center;padding:12px 20px}
+.mixslot{width:86px;height:86px;border-radius:24px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-size:34px;border:3px dashed #D8C6A0}
+.mixdrop{width:58px;height:58px;border-radius:50%;box-shadow:inset 0 -6px 10px rgba(0,0,0,.15)}
+.mixplus{font-size:30px;color:#B9A98F;font-weight:900}
+.mixfb{min-height:44px;text-align:center;font-size:18px;font-weight:800;color:#3E6E9E;padding:4px 20px}
+.mixres{display:flex;flex-direction:column;align-items:center;padding:6px 20px 2px}
+.mixresdot{width:98px;height:98px;border-radius:50%;box-shadow:0 8px 20px rgba(0,0,0,.18);border:6px solid #fff;transition:background .8s}
+.mixresdot.pop{animation:mixpop .65s ease}
+@keyframes mixpop{0%{transform:scale(.3) rotate(-40deg)}60%{transform:scale(1.25) rotate(8deg)}100%{transform:scale(1) rotate(0)}}
+.mixresname{font-size:26px;font-weight:900;margin-top:8px;color:#4A3F35}
+.mixbook{padding:2px 20px 18px}
+.mixbook h4{font-size:16px;font-weight:900;color:#6d5c3f;margin:10px 0 8px;text-align:center}
+.mixgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mixrcp{background:#fff;border-radius:16px;padding:10px 6px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.mixrcpdot{width:44px;height:44px;border-radius:50%;margin:0 auto 6px;border:3px solid #fff;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+.mixrcpt{font-size:13px;font-weight:800;color:#4A3F35}
+.mixrcp.locked .mixrcpdot{background:#E5E7EB !important}
+.mixrcp.locked .mixrcpt{color:#B9A98F}
 /* 乐器小乐队 */
 #band{background:linear-gradient(180deg,#FFF0DC 0%,#FFF9EF 60%,#FFFDF8 100%)}
 .bandstage{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 20px;width:100%;max-width:480px;margin:0 auto;min-height:300px}
@@ -439,13 +461,13 @@ body.paper .enspk{background:#FAF3DF;border:2px solid #D8C6A0}
 /* 护眼纸质书主题 4.0：低刺激配色——暖纸底、柔对比、无纯白、无高饱和 */
 body.paper{background:#d8c69c}
 body.paper *{text-shadow:none !important}
-body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
-body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
+body.paper #home,body.paper #animals,body.paper #stories,body.paper #storylist,body.paper #coloring,body.paper #findit,body.paper #count,body.paper #zoo,body.paper #zoodetail,body.paper #reader,body.paper #shapes,body.paper #shapequiz,body.paper #habits,body.paper #studio,body.paper #colors,body.paper #colorquiz,body.paper #puzzle,body.paper #bubbles,body.paper #candy,body.paper #candyquiz,body.paper #hanzi,body.paper #hanziquiz,body.paper #colorgrid,body.paper #colorpad,body.paper #hanzipic,body.paper #hzgrid,body.paper #memory,body.paper #band,body.paper #emotion,body.paper #shadow,body.paper #mixlab{background-color:#F2E7C8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+body.paper .mcard,body.paper .acard,body.paper .sitem,body.paper .zcard,body.paper .fopt,body.paper .mbox,body.paper .zdsec,body.paper .zdphoto,body.paper .carousel,body.paper .widget,body.paper .shapeitem,body.paper .shapeopt,body.paper .hitem,body.paper .stuitem,body.paper .stutoggle,body.paper .ptile,body.paper .ecard,body.paper .eopt,body.paper .mixslot,body.paper .mixrcp{background:#FAF3DF;border:2px solid #D8C6A0;box-shadow:0 3px 0 rgba(120,95,50,.1)}
 body.paper .ptile.empty{background:#F2E7C8;box-shadow:inset 0 0 0 3px #D8C6A0}
 body.paper .bubbar{color:#6d5c3f}
 body.paper .memfb{color:#6d5c3f}
 body.paper .bandfb{color:#6d5c3f}
-body.paper .shdfb,body.paper .shdname{color:#6d5c3f}
+body.paper .shdfb,body.paper .shdname,body.paper .mixfb{color:#6d5c3f}
 body.paper .memcard .mfront{background:#FAF3DF;border:2px solid #D8C6A0}
 body.paper .newbadge{background:#C96A3B;box-shadow:0 2px 6px rgba(150,90,40,.35);animation:none}
 body.paper .hero h1,body.paper .toptitle,body.paper .mcard .t,body.paper .sitem .t,body.paper .shapeitem .t,body.paper .hitem .t{font-family:Georgia,'Songti SC','STSong',serif;color:#3a3128}
@@ -476,17 +498,17 @@ body.paper .widget .wt,body.paper .widget.small .wb,body.paper .appicon span{col
 body.paper .widget .wk,body.paper .widget .wd{color:#8d7a5c}
 /* 墨水屏模式：极致护眼，全灰阶无彩色 */
 body.ink{background:#d2d2cc}
-body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow{background:#EBEBE6}
+body.ink #home,body.ink #animals,body.ink #stories,body.ink #storylist,body.ink #coloring,body.ink #findit,body.ink #count,body.ink #zoo,body.ink #zoodetail,body.ink #reader,body.ink #shapes,body.ink #shapequiz,body.ink #habits,body.ink #studio,body.ink #colors,body.ink #colorquiz,body.ink #puzzle,body.ink #bubbles,body.ink #candy,body.ink #candyquiz,body.ink #hanzi,body.ink #hanziquiz,body.ink #colorgrid,body.ink #colorpad,body.ink #hanzipic,body.ink #hzgrid,body.ink #memory,body.ink #band,body.ink #emotion,body.ink #shadow,body.ink #mixlab{background:#EBEBE6}
 body.ink img{filter:grayscale(1) sepia(.2) contrast(.95)}
 body.ink .xbar,body.ink .drumpad,body.ink .shaker{filter:grayscale(1)}
 /* 护眼模式下关闭环境装饰动画，减少视觉刺激 */
 body.paper .remoji,body.ink .remoji,body.paper .rstar,body.ink .rstar{animation:none !important}
-body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
+body.ink .mcard,body.ink .acard,body.ink .sitem,body.ink .zcard,body.ink .fopt,body.ink .mbox,body.ink .zdsec,body.ink .zdphoto,body.ink .carousel,body.ink .widget,body.ink .shapeitem,body.ink .shapeopt,body.ink .hitem,body.ink .stuitem,body.ink .stutoggle,body.ink .ptile,body.ink .ecard,body.ink .eopt,body.ink .shdcard,body.ink .mixslot,body.ink .mixrcp{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .ptile.empty{background:#EBEBE6;box-shadow:inset 0 0 0 3px #2b2b2b}
 body.ink .bubbar{color:#5c5c55}
 body.ink .memfb{color:#5c5c55}
 body.ink .bandfb{color:#5c5c55}
-body.ink .shdfb,body.ink .shdname{color:#5c5c55}
+body.ink .shdfb,body.ink .shdname,body.ink .mixfb{color:#5c5c55}
 body.ink .shdcard.done{background:#F7F7F3}
 body.ink .memcard .mfront{background:#F7F7F3;border:2px solid #2b2b2b;box-shadow:none}
 body.ink .memcard .mback{background:#2b2b2b}
@@ -569,7 +591,8 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
       <div class="appcard tintB" onclick="openMemory()"><img src="assets/icons/find.webp" alt="记忆翻牌"><span class="an">记忆翻牌</span><span class="as">翻牌找朋友</span></div>
       <div class="appcard tintE" onclick="openBand()"><img src="assets/icons/band.webp" alt="乐器小乐队"><span class="an">乐器小乐队</span><span class="as">木琴·手鼓·沙锤</span></div>
       <div class="appcard tintF" onclick="openEmotion()"><img src="assets/icons/emotion.png" alt="认识情绪"><span class="an">认识情绪</span><span class="as">表情卡·猜情绪</span></div>
-      <div class="appcard tintA" onclick="openShadow()"><span class="newbadge">新</span><img src="assets/icons/shadow.webp" alt="影子找朋友"><span class="an">影子找朋友</span><span class="as">找影子·3 档难度</span></div>
+      <div class="appcard tintA" onclick="openShadow()"><img src="assets/icons/shadow.webp" alt="影子找朋友"><span class="an">影子找朋友</span><span class="as">找影子·3 档难度</span></div>
+      <div class="appcard tintC" onclick="openMixlab()"><span class="newbadge">新</span><img src="assets/icons/mix.webp" alt="颜色魔法师"><span class="an">颜色魔法师</span><span class="as">调出新颜色·魔法食谱</span></div>
     </div>
     </div>
     <div class="homefoot">
@@ -990,6 +1013,33 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
   </section>
 
+  <!-- 颜色魔法师 -->
+  <section id="mixlab" class="screen">
+    <div class="topbar">
+      <button class="backbtn" onclick="go('home')">‹</button>
+      <div class="toptitle">颜色魔法师</div>
+      <div class="starpill"><img class="starico" src="assets/icons/star.webp" alt="星"><span class="starN">0</span></div>
+    </div>
+    <div class="shdlabel">🎨 点两种颜料倒进杯子，搅拌出神奇新颜色</div>
+    <div class="mixpal" id="mixPal"></div>
+    <div class="mixslots">
+      <div class="mixslot" id="mixSlot0">❓</div>
+      <div class="mixplus">＋</div>
+      <div class="mixslot" id="mixSlot1">❓</div>
+    </div>
+    <div style="padding:2px 20px 4px"><button class="btn" style="width:100%;min-height:58px;font-size:18px" onclick="stirMix()">🌀 搅拌魔法</button></div>
+    <div class="mixres">
+      <div class="mixresdot" id="mixResDot" style="background:#fff"></div>
+      <div class="mixresname" id="mixResName">？</div>
+    </div>
+    <div class="mixfb" id="mixFb">先点两种颜色，再按搅拌魔法</div>
+    <div style="padding:0 20px"><button class="btn ghost" style="width:100%" onclick="clearMix()">重选颜色</button></div>
+    <div class="mixbook">
+      <h4 id="mixBookH">📖 魔法食谱（已发现 0 / 15）</h4>
+      <div class="mixgrid" id="mixGrid"></div>
+    </div>
+  </section>
+
   <!-- 动物世界 -->
   <section id="zoo" class="screen">
     <div class="topbar">
@@ -1035,7 +1085,7 @@ body.ink .enspk{background:#F7F7F3;border:2px solid #2b2b2b}
     </div>
     <button class="btn blue" id="gateOk" style="width:100%" onclick="gateCheck()">确认</button>
     <button class="btn ghost" style="width:100%;margin-top:10px" onclick="closeGate()">关闭</button>
-    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.0 · 内容全部内置，无网络无广告</p>
+    <p style="font-size:12px;color:#B9A98F;margin:12px 0 0">宝宝乐园 v5.1 · 内容全部内置，无网络无广告</p>
   </div>
 </div>
 
@@ -4168,6 +4218,93 @@ function peekShadow(){
   rest.forEach(el=>el.classList.remove('shdsil'));
   say('看清楚，记住它们的样子');
   setTimeout(()=>{ rest.forEach(el=>{ if(!el.classList.contains('done')) el.classList.add('shdsil'); }); shdLock = false; }, 1600);
+}
+
+/* 颜色魔法师 v5.1 */
+const MIX_PAINTS=[
+  {id:'red',name:'红色',css:'#E8452C'},
+  {id:'yellow',name:'黄色',css:'#F6C90E'},
+  {id:'blue',name:'蓝色',css:'#3E7DE0'},
+  {id:'white',name:'白色',css:'#FFFFFF'},
+  {id:'black',name:'黑色',css:'#2B2B2B'}
+];
+const MIX_RULES={
+  'black+blue':{name:'深蓝色',css:'#1F3A8C'},'black+red':{name:'深红色',css:'#8C1F28'},
+  'black+white':{name:'灰色',css:'#9AA0A6'},'black+yellow':{name:'橄榄色',css:'#8A7B2D'},
+  'blue+red':{name:'紫色',css:'#8E44AD'},'blue+white':{name:'浅蓝色',css:'#9BC8F0'},
+  'blue+yellow':{name:'绿色',css:'#4CAF50'},'red+white':{name:'粉色',css:'#F29BB4'},
+  'red+yellow':{name:'橙色',css:'#F5850B'},'white+yellow':{name:'奶黄色',css:'#F9E39A'},
+  'red+red':{name:'红色',css:'#E8452C'},'yellow+yellow':{name:'黄色',css:'#F6C90E'},
+  'blue+blue':{name:'蓝色',css:'#3E7DE0'},'white+white':{name:'白色',css:'#FFFFFF'},
+  'black+black':{name:'黑色',css:'#2B2B2B'}
+};
+const MIX_KEY_ORDER=Object.keys(MIX_RULES);
+let mixSel=[], mixStirs=0;
+function getMixFound(){ try{return JSON.parse(localStorage.getItem('park_mix_found')||'[]');}catch(e){return[];} }
+function openMixlab(){
+  mixSel=[]; mixStirs=0;
+  const pal=document.getElementById('mixPal'); pal.innerHTML='';
+  MIX_PAINTS.forEach(p=>{
+    const b=document.createElement('button');
+    b.className='mixsw'; b.style.background=p.css; b.setAttribute('aria-label',p.name);
+    b.onclick=()=>pickPaint(p.id); pal.appendChild(b);
+  });
+  clearMix(true);
+  document.getElementById('mixResDot').style.background='#fff';
+  document.getElementById('mixResName').textContent='？';
+  renderMixBook(); go('mixlab');
+}
+function pickPaint(id){
+  if(mixSel.length>=2) return;
+  mixSel.push(id);
+  const p=MIX_PAINTS.find(x=>x.id===id); say(p.name);
+  for(let i=0;i<mixSel.length;i++){
+    const q=MIX_PAINTS.find(x=>x.id===mixSel[i]);
+    document.getElementById('mixSlot'+i).innerHTML='<div class="mixdrop" style="background:'+q.css+'"></div>';
+  }
+}
+function clearMix(silent){
+  mixSel=[];
+  for(let i=0;i<2;i++) document.getElementById('mixSlot'+i).textContent='❓';
+  if(!silent) document.getElementById('mixFb').textContent='先点两种颜色，再按搅拌魔法';
+}
+function stirMix(){
+  if(mixSel.length<2){
+    say('再选一种颜色');
+    document.getElementById('mixFb').textContent='再选一种颜色';
+    return;
+  }
+  const pair=mixSel.slice().sort();
+  const key=pair[0]+'+'+pair[1];
+  const res=MIX_RULES[key];
+  const pa=MIX_PAINTS.find(x=>x.id===pair[0]).name, pb=MIX_PAINTS.find(x=>x.id===pair[1]).name;
+  const dot=document.getElementById('mixResDot');
+  dot.style.background=res.css; dot.classList.remove('pop'); void dot.offsetWidth; dot.classList.add('pop');
+  document.getElementById('mixResName').textContent=res.name;
+  const found=getMixFound();
+  const isNew=found.indexOf(key)<0;
+  if(isNew){ found.push(key); localStorage.setItem('park_mix_found', JSON.stringify(found)); }
+  renderMixBook();
+  const msg = pair[0]===pair[1] ? pa+'加'+pa+'，还是'+res.name+'！' : pa+'加'+pb+'，变成'+res.name+'啦！';
+  document.getElementById('mixFb').textContent=(isNew?'🎉 新发现！':'')+msg;
+  say((isNew?'新发现，':'')+msg);
+  mixStirs++;
+  if(found.length===MIX_KEY_ORDER.length){ addStar(); say('魔法食谱集齐了，你是调色大师'); }
+  else if(isNew || mixStirs%3===0){ addStar(); }
+  for(let i=0;i<2;i++) document.getElementById('mixSlot'+i).textContent='❓';
+  mixSel=[];
+}
+function renderMixBook(){
+  const g=document.getElementById('mixGrid'); if(!g) return; g.innerHTML='';
+  const found=getMixFound(); let done=0;
+  MIX_KEY_ORDER.forEach(k=>{
+    const r=MIX_RULES[k]; const has=found.indexOf(k)>=0; if(has) done++;
+    const d=document.createElement('div');
+    d.className='mixrcp'+(has?'':' locked');
+    d.innerHTML='<div class="mixrcpdot"'+(has?' style="background:'+r.css+'"':'')+'></div><div class="mixrcpt">'+(has?r.name:'？')+'</div>';
+    g.appendChild(d);
+  });
+  document.getElementById('mixBookH').textContent='📖 魔法食谱（已发现 '+done+' / '+MIX_KEY_ORDER.length+'）';
 }
 
 // 初始化星星显示
