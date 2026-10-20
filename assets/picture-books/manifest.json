@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "generatedAt": "2026-10-20T16:25:51+08:00",
+ "generatedAt": "2026-10-20T16:44:34+08:00",
  "scope": "Pilot acceptance batch: pb-001 complete (1 cover + 20 pages). Remaining 1029 assets of the 1050-request set are still pending and are not listed as completed.",
  "requestSource": "muse-illustration-request.json (schemaVersion 1, totalAssetCount 1050)",
  "completedCount": 21,
@@ -147,14 +147,19 @@
    "width": 1344,
    "height": 1792,
    "format": "webp",
-   "bytes": 400108,
-   "sha256": "7ece7c446153e77438ce6f553cf9c3af0ecef805df5315efbc9331fbe034f703",
+   "bytes": 316528,
+   "sha256": "130d978140867ab37698e5895f973035acf5f09ac3fd2bd7ef7eabb40227fe4d",
    "status": "completed",
    "source": {
     "provider": "Muse Image (Meta media generation)",
     "model": "not disclosed by provider",
-    "generatedAt": "2026-10-20T16:00:50+08:00",
+    "generatedAt": "2026-10-20T16:43:55+08:00",
     "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   },
+   "revision": {
+    "revisedAt": "2026-10-20T16:44:34+08:00",
+    "reason": "removed page numeral in bottom-right corner; regenerated with reinforced no-text/no-numeral instruction",
+    "supersedesSha256": "7ece7c446153e77438ce6f553cf9c3af0ecef805df5315efbc9331fbe034f703"
    }
   },
   {
@@ -356,14 +361,19 @@
    "width": 1344,
    "height": 1792,
    "format": "webp",
-   "bytes": 396206,
-   "sha256": "c711a44670b2a7871d82ba3c28ee2258a28c72f4383003ac09a56b9d25c8a415",
+   "bytes": 331456,
+   "sha256": "8201f83742012111a90e4c3461d0820adda4e41ad1b04a0cd667fb1aad751b33",
    "status": "completed",
    "source": {
     "provider": "Muse Image (Meta media generation)",
     "model": "not disclosed by provider",
-    "generatedAt": "2026-10-20T16:23:47+08:00",
+    "generatedAt": "2026-10-20T16:44:12+08:00",
     "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   },
+   "revision": {
+    "revisedAt": "2026-10-20T16:44:34+08:00",
+    "reason": "paper content corrected from geographic map to the child's simple rain-sound drawings (eaves/leaves/circles); clothing state unified (raincoats on wall hooks, not worn)",
+    "supersedesSha256": "e1947543eed1f85d32d35195543f1e947613169d32213186b4bf9b272b5ad30d"
    }
   },
   {
@@ -404,5 +414,19 @@
     "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
    }
   }
- ]
+ ],
+ "provenance": {
+  "generationService": "Muse Image (Meta media generation), accessed through the Muse assistant media pipeline",
+  "model": "not disclosed by provider; not fabricated",
+  "method": "Original illustrations generated from the text prompts in muse-illustration-request.json; no source photographs, stock images, or third-party artwork were used as inputs.",
+  "exportRecord": "Generated files were exported from the generation service on 2026-10-20 (Asia/Shanghai), re-encoded locally to WebP quality 82 at native resolution, and delivered to github.com/temptation2017/baobao-leyuan in commits 3def3e9d283b93d61cb94e35bbd220a4e33e61ce (initial 21) and the rework commit that carries this manifest version.",
+  "commercialUseBasis": "Images are original AI generations created for this project from original text prompts and contain no third-party characters, trademarks, text, or watermarks. Use is governed by the generating service's (Meta/Muse) terms applicable to generated media; no additional third-party license is required for the prompt-based original artwork itself. This note records the basis honestly and is not a legal opinion.",
+  "revisionHistory": [
+   {
+    "date": "2026-10-20",
+    "scope": "pb-001-p07, pb-001-p18",
+    "note": "Reworked per iOS-side review: p07 page numeral removed; p18 paper art and clothing state corrected."
+   }
+  ]
+ }
 }
