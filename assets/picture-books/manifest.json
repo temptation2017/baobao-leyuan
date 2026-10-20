@@ -1,0 +1,408 @@
+{
+ "schemaVersion": 1,
+ "generatedAt": "2026-10-20T16:25:51+08:00",
+ "scope": "Pilot acceptance batch: pb-001 complete (1 cover + 20 pages). Remaining 1029 assets of the 1050-request set are still pending and are not listed as completed.",
+ "requestSource": "muse-illustration-request.json (schemaVersion 1, totalAssetCount 1050)",
+ "completedCount": 21,
+ "pendingCount": 1029,
+ "assets": [
+  {
+   "assetId": "pb-001-cover",
+   "bookId": "pb-001",
+   "kind": "cover",
+   "path": "assets/picture-books/pb-001/pb-001-cover.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 274404,
+   "sha256": "9b648b90630b88021a16ad33a3c10d903d2de0c6b34a4e1041497408a5ee2f44",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T15:56:13+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p01",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 1,
+   "path": "assets/picture-books/pb-001/pb-001-p01.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 349200,
+   "sha256": "abbb13e8ccbb8fd8dc10497ad9aa8313a6753e87ff709170821664038a3a8abe",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T15:56:27+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p02",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 2,
+   "path": "assets/picture-books/pb-001/pb-001-p02.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 280314,
+   "sha256": "52bcb4a10f9f1c91130618fd548115ca00818dc718bf73830ab3a398453392da",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T15:56:04+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p03",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 3,
+   "path": "assets/picture-books/pb-001/pb-001-p03.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 432134,
+   "sha256": "618e54ae0de41a3a434dbede5646956485a67dc58b080dd140bfe72d136a7214",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T15:56:18+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p04",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 4,
+   "path": "assets/picture-books/pb-001/pb-001-p04.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 325706,
+   "sha256": "3e761761a1fb940cff411ef83e73dfd90fdeb8e51a52cc2619db2d1bc37141be",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:00:42+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p05",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 5,
+   "path": "assets/picture-books/pb-001/pb-001-p05.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 336410,
+   "sha256": "56d40d4eff57c8ff88da42db0bbd4588e4bd9194ebe07c093dc46db879ebb33c",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:00:33+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p06",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 6,
+   "path": "assets/picture-books/pb-001/pb-001-p06.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 300532,
+   "sha256": "73d13e74f60020ea22d7bf5bf336c5166321c3d0c179517df4ffed7f861ec0e7",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:00:46+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p07",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 7,
+   "path": "assets/picture-books/pb-001/pb-001-p07.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 400108,
+   "sha256": "7ece7c446153e77438ce6f553cf9c3af0ecef805df5315efbc9331fbe034f703",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:00:50+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p08",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 8,
+   "path": "assets/picture-books/pb-001/pb-001-p08.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 302232,
+   "sha256": "d81b65e25a3f9347e2db2048ba70fd08d04cda4d9ade98b185ee6b0d988673f0",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:20:13+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p09",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 9,
+   "path": "assets/picture-books/pb-001/pb-001-p09.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 393098,
+   "sha256": "916afd9ab8985748dc4a3d73e504d1ed618904b3e59be48ddc4187132ba75245",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:20:15+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p10",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 10,
+   "path": "assets/picture-books/pb-001/pb-001-p10.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 343766,
+   "sha256": "42626f3edc8f1fd0a3e92236a0bebb8f015179066a8a5a1e1bfb49389eb3ba0c",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:20:18+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p11",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 11,
+   "path": "assets/picture-books/pb-001/pb-001-p11.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 332202,
+   "sha256": "b6abcf9fbf27bee2458aefd7572c1b2d623ddbe98e41e5e2119901b7d7f4d5ab",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:20:19+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p12",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 12,
+   "path": "assets/picture-books/pb-001/pb-001-p12.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 389184,
+   "sha256": "59bb836b0d88afeb33f7b99e667326866366d6d08fdfa159e604b83f9bb500d3",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:21:48+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p13",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 13,
+   "path": "assets/picture-books/pb-001/pb-001-p13.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 386016,
+   "sha256": "0d52036e367c6649f03fa49b7535b5872c41fdd5ff5ef68739db304448d74faa",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:21:45+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p14",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 14,
+   "path": "assets/picture-books/pb-001/pb-001-p14.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 342020,
+   "sha256": "a8d82b0b14c3264803cf668fe34a4aa941e7ac18c9b9e33d51f0b1251a5401b6",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:21:45+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p15",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 15,
+   "path": "assets/picture-books/pb-001/pb-001-p15.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 273808,
+   "sha256": "60858d5d4e12f2b9e153ebb5065c1ad66b88729b329bd4e1fa57aa10913e65f3",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:21:42+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p16",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 16,
+   "path": "assets/picture-books/pb-001/pb-001-p16.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 317004,
+   "sha256": "ab8c8a104b48fe427656081883829c05c50da7afe3ce9bdc46333aa58fa1aa62",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:23:31+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p17",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 17,
+   "path": "assets/picture-books/pb-001/pb-001-p17.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 264798,
+   "sha256": "7c234bf8c7aa24842822c3426a480fd42e5fd72cc643d8c85a4f0e373d126746",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:23:45+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p18",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 18,
+   "path": "assets/picture-books/pb-001/pb-001-p18.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 396206,
+   "sha256": "c711a44670b2a7871d82ba3c28ee2258a28c72f4383003ac09a56b9d25c8a415",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:23:47+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p19",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 19,
+   "path": "assets/picture-books/pb-001/pb-001-p19.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 322168,
+   "sha256": "c88d233db4bd67b531a1f7f1f4b7c72e0eaf9f980c1b0e37abdd23ac57a9d2ae",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:23:40+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  },
+  {
+   "assetId": "pb-001-p20",
+   "bookId": "pb-001",
+   "kind": "page",
+   "page": 20,
+   "path": "assets/picture-books/pb-001/pb-001-p20.webp",
+   "width": 1344,
+   "height": 1792,
+   "format": "webp",
+   "bytes": 307426,
+   "sha256": "f30a425be5ece07a0cfaab2469ffd0a51a065c15500dd222174a67fcebf1b8d9",
+   "status": "completed",
+   "source": {
+    "provider": "Muse Image (Meta media generation)",
+    "model": "not disclosed by provider",
+    "generatedAt": "2026-10-20T16:25:11+08:00",
+    "postProcessing": "WebP quality 82 re-encode at native 1344x1792, no resize, no crop"
+   }
+  }
+ ]
+}
