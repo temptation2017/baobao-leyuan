@@ -10,14 +10,13 @@
       "provider": "Volcengine 火山引擎",
       "modelId": "seed-tts-2.0",
       "voiceType": "zh_female_vv_uranus_bigtts",
-      "generatedAt": "2026-10-20T22:11:21+08:00",
-      "sha256": "2ee8170f8a2c06403359bfe2966aba79d67f01f8ff71efbff13a2f4602750111",
+      "generatedAt": "2026-10-20T22:32:55+08:00",
+      "sha256": "e2e4053ba2e880e1b7c115f4ca42d299358861c040e4411d7d36849630bc001a",
       "parameters": {
         "speed": null,
         "pitch": null,
-        "contextTexts": [
-          "用开心、热情表扬小朋友的语气说，声音明亮有活力，像在真心夸奖孩子做得真棒。"
-        ]
+        "ssml": "<speak><phoneme alphabet=\"py\" ph=\"shu3 dui4\">数对</phoneme>啦</speak>",
+        "note": "SSML 注音锁定 数对=shǔ duì、啦直出；用户试听定版"
       },
       "referenceVoice": "沿用项目既定声线：女声薇薇 zh_female_vv_uranus_bigtts / 男声温暖阿虎 zh_male_wennuanahu_uranus_bigtts（火山豆包语音合成2.0）"
     },
@@ -29,14 +28,13 @@
       "provider": "Volcengine 火山引擎",
       "modelId": "seed-tts-2.0",
       "voiceType": "zh_male_wennuanahu_uranus_bigtts",
-      "generatedAt": "2026-10-20T22:11:23+08:00",
-      "sha256": "21de93217f9dc5e932e8a14a79b43305c7928ca1794919dcf09eb6132416c2bd",
+      "generatedAt": "2026-10-20T22:37:02+08:00",
+      "sha256": "9b667d9550752e886a7d7d7867097335b73fa981e6ee8e126f284f72ead581b2",
       "parameters": {
         "speed": null,
         "pitch": null,
-        "contextTexts": [
-          "用开心、热情表扬小朋友的语气说，声音明亮有活力，像在真心夸奖孩子做得真棒。"
-        ]
+        "ssml": "<speak><phoneme alphabet=\"py\" ph=\"shu3 dui4\">数对</phoneme>啦</speak>",
+        "note": "SSML 注音锁定 数对=shǔ duì、啦直出；用户试听确认三声定版"
       },
       "referenceVoice": "沿用项目既定声线：女声薇薇 zh_female_vv_uranus_bigtts / 男声温暖阿虎 zh_male_wennuanahu_uranus_bigtts（火山豆包语音合成2.0）"
     },
