@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "batch": "build15-count-feedback-only-2-texts-4-files",
+  "files": [
+    {
+      "text": "数对啦",
+      "language": "zh-CN",
+      "gender": "f",
+      "path": "assets/audio/ph/7d47028ada33cc16.mp3",
+      "provider": "Volcengine 火山引擎",
+      "modelId": "seed-tts-2.0",
+      "voiceType": "zh_female_vv_uranus_bigtts",
+      "generatedAt": "2026-10-20T22:11:21+08:00",
+      "sha256": "2ee8170f8a2c06403359bfe2966aba79d67f01f8ff71efbff13a2f4602750111",
+      "parameters": {
+        "speed": null,
+        "pitch": null,
+        "contextTexts": [
+          "用开心、热情表扬小朋友的语气说，声音明亮有活力，像在真心夸奖孩子做得真棒。"
+        ]
+      },
+      "referenceVoice": "沿用项目既定声线：女声薇薇 zh_female_vv_uranus_bigtts / 男声温暖阿虎 zh_male_wennuanahu_uranus_bigtts（火山豆包语音合成2.0）"
+    },
+    {
+      "text": "数对啦",
+      "language": "zh-CN",
+      "gender": "m",
+      "path": "assets/audio/ph/7d47028ada33cc16_m.mp3",
+      "provider": "Volcengine 火山引擎",
+      "modelId": "seed-tts-2.0",
+      "voiceType": "zh_male_wennuanahu_uranus_bigtts",
+      "generatedAt": "2026-10-20T22:11:23+08:00",
+      "sha256": "21de93217f9dc5e932e8a14a79b43305c7928ca1794919dcf09eb6132416c2bd",
+      "parameters": {
+        "speed": null,
+        "pitch": null,
+        "contextTexts": [
+          "用开心、热情表扬小朋友的语气说，声音明亮有活力，像在真心夸奖孩子做得真棒。"
+        ]
+      },
+      "referenceVoice": "沿用项目既定声线：女声薇薇 zh_female_vv_uranus_bigtts / 男声温暖阿虎 zh_male_wennuanahu_uranus_bigtts（火山豆包语音合成2.0）"
+    },
+    {
+      "text": "再点着数一数",
+      "language": "zh-CN",
+      "gender": "f",
+      "path": "assets/audio/ph/1578a36639088440.mp3",
+      "provider": "Volcengine 火山引擎",
+      "modelId": "seed-tts-2.0",
+      "voiceType": "zh_female_vv_uranus_bigtts",
+      "generatedAt": "2026-10-20T22:15:27+08:00",
+      "sha256": "4ecdd0c81456cbb4fae6309eb15bf24931c888d9188319e03b26c9647de0c2d1",
+      "parameters": {
+        "speed": null,
+        "pitch": null,
+        "ssml": "<speak>再点着<phoneme alphabet=\"py\" ph=\"shu3\">数</phoneme>一<phoneme alphabet=\"py\" ph=\"shu3\">数</phoneme></speak>",
+        "note": "SSML phoneme 标记锁定 数=shǔ 三声，经用户试听确认"
+      },
+      "referenceVoice": "沿用项目既定声线：女声薇薇 zh_female_vv_uranus_bigtts / 男声温暖阿虎 zh_male_wennuanahu_uranus_bigtts（火山豆包语音合成2.0）"
+    },
+    {
+      "text": "再点着数一数",
+      "language": "zh-CN",
+      "gender": "m",
+      "path": "assets/audio/ph/1578a36639088440_m.mp3",
+      "provider": "Volcengine 火山引擎",
+      "modelId": "seed-tts-2.0",
+      "voiceType": "zh_male_wennuanahu_uranus_bigtts",
+      "generatedAt": "2026-10-20T22:15:25+08:00",
+      "sha256": "fb26657171557b3d4d026600f21d8bfcc780349202388b5288ce179fc340d5a0",
+      "parameters": {
+        "speed": null,
+        "pitch": null,
+        "contextTexts": [
+          "用轻快自然、温和鼓励小朋友的语气说，语速稍快一点，干脆利落，不要拖长音。特别注意读音：句子里的“数”都读第三声 shǔ，是数数、清点的意思，不能读成第四声 shù。“再点着，数一数”连贯说完，中间只有很轻的自然停顿。"
+        ]
+      },
+      "referenceVoice": "沿用项目既定声线：女声薇薇 zh_female_vv_uranus_bigtts / 男声温暖阿虎 zh_male_wennuanahu_uranus_bigtts（火山豆包语音合成2.0）"
+    }
+  ]
+}
