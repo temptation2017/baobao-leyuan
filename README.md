@@ -4,6 +4,14 @@
 
 **在线玩：** https://temptation2017.github.io/baobao-leyuan/
 
+## English overview
+
+Baobao Leyuan is a browser-based learning playground built by a parent for a young child and maintained by [temptation2017](https://github.com/temptation2017). It combines Chinese characters, poems, stories, animal exploration, drawing, puzzles, counting and everyday-life activities.
+
+The application uses plain HTML, CSS and JavaScript, with no build step or application backend. It has no advertising, in-app purchases or account registration. Progress, preferences and family recordings are stored in the browser. Some animal photographs are loaded from external sites; the deployed website does not guarantee complete offline access.
+
+Maintenance focuses on content and pronunciation fixes, touch interactions, responsive layouts, keyboard and focus behavior, and browser regression checks. See the sections below for local setup and test commands.
+
 ## 内容
 
 - **认知与阅读**：202 张动物卡、998 种动物世界、100 种形状、20 种颜色、200 种糖果、5000 字汉字库及 200 张看图识字卡、100 首古诗、100 个故事。
@@ -68,3 +76,9 @@ Linux 若缺少浏览器系统依赖，可使用 `npx playwright install --with-
 设计审计覆盖 40 个页面、57 种界面状态，尺寸为 360×780、390×844、768×1024 与 844×390，检查 228 个组合。脚本会在 JavaScript 异常、初始可见文字溢出、页面横向溢出或过小按钮出现时失败；报告与截图保存到忽略提交的 `test-results/design/`。横向可滚动的分类栏属于有意设计。
 
 这些检查使用 Chromium 和模拟的音频状态，不代替 iOS Safari / Android Chrome 真机试听、录音、拖动及读屏验证，也不构成完整 WCAG 合规认证。
+
+## 维护与贡献
+
+主要维护者：[temptation2017](https://github.com/temptation2017)。欢迎通过 [Issues](https://github.com/temptation2017/baobao-leyuan/issues) 提交可复现的问题、内容纠错和改进建议；提交方式与验证要求见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+图片、音频、外部链接及生成记录的来源说明见 [ASSET_NOTICES.md](ASSET_NOTICES.md)。素材的存在或生成记录本身不代表可将其用于任意用途；请按各项实际授权处理。
