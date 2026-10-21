@@ -82,3 +82,9 @@ Linux 若缺少浏览器系统依赖，可使用 `npx playwright install --with-
 主要维护者：[temptation2017](https://github.com/temptation2017)。欢迎通过 [Issues](https://github.com/temptation2017/baobao-leyuan/issues) 提交可复现的问题、内容纠错和改进建议；提交方式与验证要求见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 图片、音频、外部链接及生成记录的来源说明见 [ASSET_NOTICES.md](ASSET_NOTICES.md)。素材的存在或生成记录本身不代表可将其用于任意用途；请按各项实际授权处理。
+
+## 许可
+
+维护者有权授权的原创程序代码和原创技术文档采用 [MIT License](LICENSE)。具体范围见 [LICENSE_SCOPE.md](LICENSE_SCOPE.md)；图片、音频、故事与学习内容数据、第三方作品和外部资源按各自实际授权处理。
+
+The maintainer's original program code and original technical documentation are licensed under the [MIT License](LICENSE). Media, learning-content data and third-party works are governed separately; see the [license scope](LICENSE_SCOPE.md) and [asset notices](ASSET_NOTICES.md).
